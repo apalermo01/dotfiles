@@ -6,11 +6,27 @@ if [ ! -d ./themes/$1 ]; then
 fi
 
 if [ -f ./current_theme ]; then
-
 	current_theme=$(cat current_theme)
+    echo "un-stowing current theme: $current_theme"
 	stow --delete . -d themes/$current_theme -t ~/ --dotfiles
 fi
 
+echo "stowing new theme: $1"
 stow . -d themes/$1 -t ~/ --dotfiles
+
+if [ -d ./themes/$1/.config/theme_scripts/ ]; then
+    echo "running theme install scripts"
+    for fname in $(ls ./themes/$1/.config/theme_scripts/ | sort); do
+        script="./themes/$1/.config/theme_scripts/$fname"
+        if [ -x "$script" ]; then
+            echo "Executing $script"
+            "$script"
+        else
+            echo "Skipping $script: not executable"
+        fi
+    done
+else
+    echo "no theme install scripts detected"
+fi
 
 echo $1 > current_theme

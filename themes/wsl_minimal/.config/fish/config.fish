@@ -89,7 +89,7 @@ abbr --add a . env/bin/activate.fish
 abbr --add o ~/appimages/Obsidian-1.7.7.AppImage
 set -U OBSIDIAN_NOTES_DIR /mnt/c/Users/apalermo/Documents/Main\ Vault
 set -U OBSIDIAN_NOTES_DIR /mnt/c/Users/apalermo/github/notes/
-set -U NOTES_DIR /mnt/c/Users/apalermo/github/notes/
+set -gx NOTES_PATH /mnt/c/Users/apalermo/github/notes/
 abbr --add notes cd /mnt/c/Users/apalermo/github/notes/
 abbr --add work-notes "cd /mnt/c/Users/apalermo/Documents/Main\ Vault/ && nvim Working-Memory.md"
 

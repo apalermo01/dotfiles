@@ -87,9 +87,10 @@ abbr --add notes cd ~/Documents/git/notes/
 abbr --add zen /usr/local/bin/zen/zen
 abbr --add a . env/bin/activate.fish
 abbr --add o ~/appimages/Obsidian-1.7.7.AppImage
-
+#export PATH="/opt/nvim-linux64/bin/nvim:$PATH"
 set -U OBSIDIAN_NOTES_DIR /mnt/c/Users/apalermo/github/notes/
 set -U NOTES_DIR /mnt/c/Users/apalermo/github/notes/
+fish_config theme choose "Rosé Pine"
 set -U OBSIDIAN_NOTES_DIR /mnt/c/Users/apalermo/github/notes/
 set -gx NOTES_PATH /mnt/c/Users/apalermo/github/notes/
 abbr --add notes cd /mnt/c/Users/apalermo/github/notes/

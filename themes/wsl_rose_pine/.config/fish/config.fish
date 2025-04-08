@@ -90,21 +90,7 @@ abbr --add o ~/appimages/Obsidian-1.7.7.AppImage
 #export PATH="/opt/nvim-linux64/bin/nvim:$PATH"
 set -U OBSIDIAN_NOTES_DIR /mnt/c/Users/apalermo/github/notes/
 set -U NOTES_DIR /mnt/c/Users/apalermo/github/notes/
-
-if status is-interactive
-    set -l onedark_options '-b'
-
-    if set -q VIM
-        # Using from vim/neovim.
-        set onedark_options "-256"
-    else if string match -iq "eterm*" $TERM
-        # Using from emacs.
-        function fish_title; true; end
-        set onedark_options "-256"
-    end
-
-    set_onedark $onedark_options
-end
+fish_config theme choose "Rosé Pine"
 set -U OBSIDIAN_NOTES_DIR /mnt/c/Users/apalermo/github/notes/
 set -gx NOTES_PATH /mnt/c/Users/apalermo/github/notes/
 abbr --add notes cd /mnt/c/Users/apalermo/github/notes/

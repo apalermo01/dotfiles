@@ -88,4 +88,4 @@ abbr --add zen /usr/local/bin/zen/zen
 abbr --add a . env/bin/activate.fish
 abbr --add o ~/appimages/Obsidian-1.7.7.AppImage
 fastfetch
-wal -n -e -i /home/apalermo/Pictures/wallpapers/000.png > /dev/null 
+wal -n -e -i /home/alex/Pictures/wallpapers/000.png > /dev/null 

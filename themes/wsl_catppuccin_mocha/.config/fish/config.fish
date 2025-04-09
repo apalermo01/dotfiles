@@ -88,4 +88,5 @@ abbr --add zen /usr/local/bin/zen/zen
 abbr --add a . env/bin/activate.fish
 abbr --add o ~/appimages/Obsidian-1.7.7.AppImage
 set -U OBSIDIAN_NOTES_DIR /mnt/c/Users/apalermo/Documents/Main\ Vault
+fish ~/work_cmds.fish
 fastfetch

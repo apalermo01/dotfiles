@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "====================================="
+echo "==== Running switch theme script ===="
+echo "====================================="
+
 if [ ! -d ./themes/$1 ]; then 
 	echo "theme $1 does not exist"
 	exit
@@ -11,6 +15,9 @@ if [ -f ./current_theme ]; then
 	stow --delete . -d themes/$current_theme -t ~/ --dotfiles
     if [ $? -ne 0 ]; then
         echo "unstow failed, exiting"
+        exit
+    else    
+        echo "unstow successful!"
     fi
 fi
 
@@ -19,11 +26,14 @@ stow . -d themes/$1 -t ~/ --dotfiles
 
 if [ $? -ne 0 ]; then
     echo "stow failed, exiting"
+    exit
+else 
+    echo "stow successful!"
 fi
 
 
+echo "running theme install scripts"
 if [ -d ./themes/$1/.config/theme_scripts/ ]; then
-    echo "running theme install scripts"
     for fname in $(ls ./themes/$1/.config/theme_scripts/ | sort); do
         script="./themes/$1/.config/theme_scripts/$fname"
         if [ -x "$script" ]; then
@@ -38,3 +48,4 @@ else
 fi
 
 echo $1 > current_theme
+

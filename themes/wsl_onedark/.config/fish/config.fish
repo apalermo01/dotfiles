@@ -105,12 +105,4 @@ if status is-interactive
 
     set_onedark $onedark_options
 end
-set -U OBSIDIAN_NOTES_DIR /mnt/c/Users/apalermo/github/notes/
-set -gx NOTES_PATH /mnt/c/Users/apalermo/github/notes/
-abbr --add notes cd /mnt/c/Users/apalermo/github/notes/
-abbr --add work-notes "cd /mnt/c/Users/apalermo/Documents/Main\ Vault/ && nvim Working-Memory.md"
-
-set -U DBT_DIR ~/Documents/git/dbt/
-abbr --add dbt-enter "cd $DBT_DIR && source dbt.env && . venv/bin/activate.fish && cd src/level_dbt"
-abbr --add dbt-main "cd $DBT_DIR && source dbt.env && . venv/bin/activate.fish && cd src/level_dbt && git checkout develop && git pull"
 fastfetch

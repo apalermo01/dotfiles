@@ -21,6 +21,11 @@
     pkgs.tmux
     pkgs.fish
     pkgs.neovim
+    pkgs.xournalpp
+    pkgs.sioyek
+    pkgs.xournalpp
+    pkgs.jetbrains-mono
+    pkgs.rofi
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello

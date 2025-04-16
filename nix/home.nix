@@ -26,6 +26,7 @@
     pkgs.xournalpp
     pkgs.jetbrains-mono
     pkgs.rofi
+    pkgs.git
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -81,4 +82,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.git.userName = "Alex";
+  programs.git.userEmail = "alex.palermo.ai@gmail.com";
 }

@@ -3,4 +3,3 @@ current_theme
 **/fish/completions
 **/fish/conf.d
 **/fish/functions
-flake.lock

@@ -6,7 +6,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ( if builtins.pathExists ./hardware-configuration.nix
+      	then ./hardware-configuration.nix
+	else throw "Missing hardware-configuration.nix" )
       inputs.home-manager.nixosModules.home-manager
     ];
 
@@ -90,7 +92,6 @@
     packages = with pkgs; [
       kdePackages.kate
       neovim
-      git
       stow
       kitty 
       firefox

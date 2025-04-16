@@ -12,16 +12,24 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
+      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+      lib = nixpkgs.lib;
+      mkSystem = pkgs: system: hostname:
+        pkgs.lib.nixosSystem {
+            system = system;
+            modules = [
+                { networking.hostName = hostname; }
+                ./nix/modules/system/configuration.nix
+                ./nix/hosts/${hostname}/hardware-configuration.nix
+            ]
+            home-manager.nixosModules.home-manager
+        }
+
     in
     {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-	      ./nix/configuration.nix
-          inputs.home-manager.nixosModules.home-manager
-	];
-	system = system;
+      nixosConfigurations = {
+        vm = mkSystem inputs.nixpkgs "x86_64-linux" "vm";
+        personal = mkSystem inputs.nixpkgs "x86_64-linux" "personal";
       };
     };
- 
 }

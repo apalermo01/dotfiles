@@ -1,23 +1,21 @@
-# Edit this configuration file to define what should be installed on your system.  Help is available in the configuration.nix(5) man page and in the NixOS manual (accessible by running 
-# ‘nixos-help’).
-
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ( if builtins.pathExists ./hardware-configuration.nix
-      	then ./hardware-configuration.nix
-	else throw "Missing hardware-configuration.nix" )
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  programs.fish.enable = true;
+  
+  fonts = {
+    fonts = with pkgs; [
+            jetbrains-mono
+        ]
 
+
+  }
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-b465c8ed-5151-4e2e-b18c-fab741b2f46f".device = "/dev/disk/by-uuid/b465c8ed-5151-4e2e-b18c-fab741b2f46f";
-  networking.hostName = "nixos"; # Define your hostname.
+  # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -84,37 +82,36 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alex = {
-    isNormalUser = true;
-    description = "alex";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
-    packages = with pkgs; [
-      kdePackages.kate
-      neovim
-      stow
-      kitty 
-      firefox
-      tree
-      pyright
-    ];
-  };
-  
-  home-manager.users.alex = import ./home.nix;
+  # users.users.alex = {
+  #   isNormalUser = true;
+  #   description = "alex";
+  #   extraGroups = [ "networkmanager" "wheel" ];
+  #   shell = pkgs.fish;
+  #   packages = with pkgs; [
+  #     kdePackages.kate
+  #     neovim
+  #     stow
+  #     kitty 
+  #     firefox
+  #     tree
+  #     pyright
+  #   ];
+  # };
+  #
+
+  # home-manager.users.alex = import ./home.nix;
 
   # Install firefox.
-  programs.firefox.enable = true;
-  programs.fish.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    gcc
-    htop
-    ncdu
-    rclone
-    postgresql
+  # environment.systemPackages = with pkgs; [
+  #   neovim
+  #   wget
+  #   gcc
+  #   htop
+  #   ncdu
+  #   rclone
+  #   postgresql
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];

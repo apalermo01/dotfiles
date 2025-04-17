@@ -6,15 +6,22 @@
   fonts = {
     fonts = with pkgs; [
             jetbrains-mono
-        ]
+            (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        ];
+  };
 
+  users.users.alex = {
+            isNormalUser = true;
+            extraGroups = [ "wheel" "networkmanager" ];
+            shell = pkgs.fish;
+  };
 
-  }
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-b465c8ed-5151-4e2e-b18c-fab741b2f46f".device = "/dev/disk/by-uuid/b465c8ed-5151-4e2e-b18c-fab741b2f46f";
+
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -81,24 +88,6 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alex = {
-  #   isNormalUser = true;
-  #   description = "alex";
-  #   extraGroups = [ "networkmanager" "wheel" ];
-  #   shell = pkgs.fish;
-  #   packages = with pkgs; [
-  #     kdePackages.kate
-  #     neovim
-  #     stow
-  #     kitty 
-  #     firefox
-  #     tree
-  #     pyright
-  #   ];
-  # };
-  #
-
   # home-manager.users.alex = import ./home.nix;
 
   # Install firefox.
@@ -114,7 +103,7 @@
   #   postgresql
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-  ];
+  # ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

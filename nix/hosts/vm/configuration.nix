@@ -7,5 +7,5 @@
         fish.enable = true;
         git.enable = true;
         stow.enable = true;
-    }
+    };
 }

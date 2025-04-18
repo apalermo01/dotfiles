@@ -16,6 +16,7 @@
         neovim
         sioyek
         stow
+        fastfetch
 
         # lsp stuff
         pyright

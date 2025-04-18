@@ -7,6 +7,7 @@
     neovim
     nodejs
     unzip
+    nix-index
     git
     wget
     gcc
@@ -18,6 +19,12 @@
   ];
   
   programs.fish.enable = true;
+  programs.nix-ld.enable = true;
+  # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib
+    zlib
+  ];
 
   # bootloader
   boot.loader.systemd-boot.enable = true;

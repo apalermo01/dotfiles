@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     nodejs
+    unzip
     git
     wget
     gcc

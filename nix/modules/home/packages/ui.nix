@@ -14,6 +14,7 @@
         xournalpp
         rofi
         i3
+        feh
         polybar
         picom
         kitty

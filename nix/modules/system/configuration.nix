@@ -59,12 +59,15 @@
   
 
   # fonts
-  fonts = {
-    fonts = with pkgs; [
-      jetbrains-mono
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    ];
-  };
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+  ];
+  # fonts.packages = with pkgs; [
+  #   (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
+  #   fira-code
+  #   jetbrains-mono
+  # ];
 
   # default users
   users.users.alex = {

@@ -19,7 +19,8 @@
   ];
   
   programs.fish.enable = true;
-  programs.nix-ld.enable = true;
+  programs.nix-ld.dev.enable = true;
+
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc.lib

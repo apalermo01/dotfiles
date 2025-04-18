@@ -25,6 +25,7 @@
                 { networking.hostName = hostname; }
                 ./nix/modules/system/configuration.nix
                 ./nix/hosts/${hostname}/hardware-configuration.nix
+                nix-ld.nixosModules.nix-ld
                 home-manager.nixosModules.home-manager {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;

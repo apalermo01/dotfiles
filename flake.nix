@@ -1,3 +1,6 @@
+# github.com/sioodmy/dotfiles/blob/main/flake.nix
+# github.com/notusknow/dotfiles-nix
+
 {
   description = "A very basic flake";
 
@@ -15,7 +18,6 @@
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib;
 
-      # github.com/sioodmy/dotfiles/blob/main/flake.nix
       mkSystem = pkgs: system: hostname:
         pkgs.lib.nixosSystem {
             system = system;
@@ -23,15 +25,6 @@
                 { networking.hostName = hostname; }
                 ./nix/modules/system/configuration.nix
                 ./nix/hosts/${hostname}/hardware-configuration.nix
-                home-manager.nixosModules.home-manager
-                {
-                    home-manager = {
-                        useUserPackages = true;
-                        useGlobalPackages = true;
-                        specialArgs = { inherit inputs; };
-                        users.alex = (./nix/hosts/${hostname}/configuration.nix);
-                    };
-                }
             ];
         };
 

@@ -56,6 +56,7 @@
 
   # system-wide programs
   programs.fish.enable = true;
+  programs.firefox.enable = true;
   
 
   # fonts

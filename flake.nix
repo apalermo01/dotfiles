@@ -25,7 +25,14 @@
                 { networking.hostName = hostname; }
                 ./nix/modules/system/configuration.nix
                 ./nix/hosts/${hostname}/hardware-configuration.nix
+                home-manager.nixosModules.home-manager {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users.alex = import (./nix/hosts + "/${hostname}/user.nix");
+                  home-manager.extraSpecialArgs = { inherit inputs; };
+                }
             ];
+            specialArgs = { inherit inputs; };
         };
 
     in

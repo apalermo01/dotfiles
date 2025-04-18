@@ -4,7 +4,7 @@
   with lib;
 
   let 
-    cfg = config.modules.packages;
+    cfg = config.modules.packages.headless;
   in {
     options.modules.packages.headless = { enable = mkEnableOption "Headless Packages"; };
 
@@ -16,6 +16,9 @@
         neovim
         sioyek
         stow
+
+        # lsp stuff
+        pyright
       ];
     };
 }

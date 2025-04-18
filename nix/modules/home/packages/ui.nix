@@ -4,7 +4,7 @@
   with lib;
 
   let 
-    cfg = config.modules.packages;
+    cfg = config.modules.packages.ui;
   in {
     options.modules.packages.ui = { enable = mkEnableOption "UI Packages"; };
 
@@ -13,7 +13,7 @@
       home.packages = with pkgs; [
         xournalpp
         rofi
-        i3wm
+        i3
         polybar
         picom
         kitty

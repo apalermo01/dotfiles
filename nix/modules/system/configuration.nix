@@ -5,14 +5,18 @@
   # system packages
   environment.systemPackages = with pkgs; [
     neovim
+    nodejs
     git
     wget
     gcc
+    cargo
     btop
     ncdu
     rclone
     postgresql
   ];
+  
+  programs.fish.enable = true;
 
   # bootloader
   boot.loader.systemd-boot.enable = true;

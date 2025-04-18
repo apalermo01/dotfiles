@@ -6,7 +6,6 @@
       ./packages/headless.nix
       ./packages/ui.nix
       ./git.nix
-      ./stow.nix
     ];
 
 }

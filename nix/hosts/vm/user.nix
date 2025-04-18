@@ -1,7 +1,7 @@
 { config, lib, inputs, ... }:
 
 {
-    imports = [ ../../modules/default.nix ];
+    imports = [ import ../../modules/default.nix ];
     config.modules = {
         firefox.enable = true;
         fish.enable = true;

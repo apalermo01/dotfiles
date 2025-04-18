@@ -10,7 +10,6 @@
       packages.headless.enable = true;
       packages.ui.enable = true;
       git.enable = true;
-      stow.enable = true;
     };
     
 }

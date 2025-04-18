@@ -15,6 +15,7 @@
         fish
         neovim
         sioyek
+        stow
       ];
     };
 }

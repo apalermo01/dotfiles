@@ -2,5 +2,7 @@
 
 {
     home.stateVersion = "21.03";
-    imports = [];
+    imports = [
+      ./packages/default.nix
+    ];
 }

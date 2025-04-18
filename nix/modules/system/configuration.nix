@@ -16,10 +16,16 @@
     ncdu
     rclone
     postgresql
+    devenv
+    gnumake
+    killall
+    fortune
+    cowsay
+    pywal
   ];
   
   programs.fish.enable = true;
-  programs.nix-ld.dev.enable = true;
+  #programs.nix-ld.dev.enable = true;
 
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
   programs.nix-ld.libraries = with pkgs; [

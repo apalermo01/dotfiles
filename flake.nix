@@ -23,7 +23,7 @@
             system = system;
             modules = [
                 { networking.hostName = hostname; }
-                ./nix/modules/system/configuration.nix
+                ./nix/modules/system_configuration/configuration.nix
                 ./nix/hosts/${hostname}/hardware-configuration.nix
                 home-manager.nixosModules.home-manager {
                   home-manager.useGlobalPkgs = true;

@@ -54,21 +54,11 @@
     pulse.enable = true;
   };
 
-  # system-wide programs
-  programs.fish.enable = true;
-  programs.firefox.enable = true;
-  
-
   # fonts
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
   ];
-  # fonts.packages = with pkgs; [
-  #   (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
-  #   fira-code
-  #   jetbrains-mono
-  # ];
 
   # default users
   users.users.alex = {

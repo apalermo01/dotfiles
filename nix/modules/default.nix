@@ -1,13 +1,13 @@
 { inputs, pkgs, config, ... }:
 
 {
+    home.stateVersion = "21.03";
     imports = [
-      ./packages/default.nix
+      ./packages_user/headless.nix
+      ./packages_user/ui.nix
+      ./packages_system/default.nix
+      ./git/default.nix
+      ./stow/default.nix
     ];
-    config = {
-      home.stateVersion = "21.03";
-      programs.neovim.enable = true;
-      programs.git.enable = true;
-    };
 
 }

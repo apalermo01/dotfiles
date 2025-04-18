@@ -2,6 +2,18 @@
 
 {
   
+  # system packages
+  environment.systemPackages = with pkgs; [
+    neovim
+    git
+    wget
+    gcc
+    btop
+    ncdu
+    rclone
+    postgresql
+  ];
+
   # bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -68,23 +80,6 @@
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # home-manager.users.alex = import ./home.nix;
-
-  # Install firefox.
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   neovim
-  #   wget
-  #   gcc
-  #   htop
-  #   ncdu
-  #   rclone
-  #   postgresql
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  # ];
 
 
   # This value determines the NixOS release from which the default

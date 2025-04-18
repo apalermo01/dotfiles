@@ -16,6 +16,7 @@
         i3wm
         polybar
         picom
+        kitty
       ];
     };
 }

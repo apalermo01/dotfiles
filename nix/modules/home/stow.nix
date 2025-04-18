@@ -1,10 +1,10 @@
 { pkgs, lib, config, ... }:
 
 with lib;
-let cfg = config.modules.git;
+let cfg = config.modules.stow;
 
 in {
-    options.modules.git = { enable = mkEnableOption "stow"; };
+    options.modules.stow = { enable = mkEnableOption "stow"; };
     config = mkIf cfg.enable {
         programs.stow = {
             enable = true;

@@ -5,8 +5,8 @@
     imports = [
       ./packages/headless.nix
       ./packages/ui.nix
-      ./git/default.nix
-      ./stow/default.nix
+      ./git.nix
+      ./stow.nix
     ];
 
 }

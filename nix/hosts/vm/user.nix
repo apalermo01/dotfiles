@@ -2,7 +2,7 @@
 
 {
     imports = [ 
-        ../../modules/default.nix 
+        ../../modules/home/default.nix 
     ];
 
     # define what will be installed by home manager here
@@ -11,16 +11,6 @@
       packages.ui.enable = true;
       git.enable = true;
       stow.enable = true;
-
-      # define system packages here
-      # view list of available binaries at
-      # nix/modules/system_configuration/configuration.nix
-      programs.fish.enable = true;
-      programs.neovim.enable = true;
-      programs.wget.enable = true;
-      programs.gcc.enable = true;
-      programs.btop.enable = true;
-      programs.ncdu.enable = true;
     };
     
 }

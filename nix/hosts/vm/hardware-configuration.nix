@@ -12,7 +12,9 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/47007a19-7927-4553-8c3a-dea4ab12980a";
+    { 
+      #device = "/dev/disk/by-uuid/47007a19-7927-4553-8c3a-dea4ab12980a";
+      device = "/dev/mapper/luks-30bdd157-9f8f-422f-9131-1dd1735830a0";
       fsType = "ext4";
     };
 
@@ -38,3 +40,4 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   virtualisation.virtualbox.guest.enable = true;
 }
+

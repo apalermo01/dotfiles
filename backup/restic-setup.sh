@@ -2,16 +2,17 @@
 set -euo pipefail
 
 CONFIG_DIR="$HOME/.config/restic-setup"
-RCLONE_NAME="proton"
-RESTIC_REMOTE="${RCLONE_NAME}:proton-restic-backup"
 PASSWORD_FILE="$CONFIG_DIR/restic-password.gpg"
+REMOTE_NAME_FILE="$CONFIG_DIR/remote-name.txt"
 
 mkdir -p "$CONFIG_DIR"
 chmod 700 "$CONFIG_DIR"
 
+read -rp "Enter the rclone remote name (e.g. 'proton-restic-backup'): " RCLONE_NAME
+echo "$RCLONE_NAME" > "$REMOTE_NAME_FILE"
+
 # --- Step 1: Rclone setup ---
-echo "[INFO] Launching rclone config..."
-echo "[IMPORTANT] you MUST call the remote repo 'proton-restic-backup'"
+echo "[INFO] Launching rclone config... for remote: $RCLONE_NAME"
 rclone config --config "$CONFIG_DIR/rclone.conf"
 
 # --- Step 2: Prompt for password and encrypt it ---
@@ -27,9 +28,9 @@ chmod 600 "$PASSWORD_FILE"
 echo "[INFO] Decrypting password and initializing repo..."
 RESTIC_PASSWORD=$(gpg --quiet --decrypt "$PASSWORD_FILE")
 export RESTIC_PASSWORD
-RESTIC_REPOSITORY="rclone:${RESTIC_REMOTE}"
+RESTIC_REPOSITORY="rclone:${RCLONE_NAME}:restic-backup"
 export RESTIC_REPOSITORY
 
 restic init || echo "[WARN] Repo may already be initialized."
 
-echo "[✔] Setup complete. You can now run backups via systemd or manually."
+echo "[✔] Setup complete for $REPO_NAME. You can now run backups via systemd or manually."

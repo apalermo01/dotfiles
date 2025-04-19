@@ -22,9 +22,11 @@
     fortune
     cowsay
     pywal
+    dunst
   ];
   
   programs.fish.enable = true;
+  programs.dunst.enable = true;
 
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
   programs.nix-ld.libraries = with pkgs; [

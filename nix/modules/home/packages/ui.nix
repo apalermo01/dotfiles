@@ -20,6 +20,8 @@
         kitty
 	    firefox
         inputs.zen-browser.packages."${system}".specific
+        obsidian
+        nemo-with-extensions
       ];
     };
 }

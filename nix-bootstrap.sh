@@ -22,8 +22,16 @@ function init_system {
         echo "Host $hostname does not exist. Exiting..."
         exit
     fi
+
+    echo "Installing hardware configuration..."
+    if [[ -d /etc/nixos/hardware-configuration.nix ]]; then 
+        sudo cp /etc/nixos/hardware-configuration.nix ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
+        sudo mv /etc/nixos /etc/nixos.bak
+    else 
+        echo "Default hardware configuration not found. It may have already been initialized."
+    fi
     echo "Installing system..."
-    sudo nixos-rebuild switch --flake .#vm
+    sudo nixos-rebuild switch --flake .#$hostname
 }
 
 read -p "This script expects an ssh key for git to be established. Continue (y/n)?" choice
@@ -44,8 +52,20 @@ case "$choice" in
 esac
 
 # installing theme builder
-echo "Installing theme builder..."
-bash ./scripts/install_theme_builder.sh
+read -p "Install theme builder (y/n)?" choice
+case "$choice" in 
+    y|Y) bash ./scripts/install_theme_builder.sh ;;
+    *) echo "continuing";;
+esac
 
-echo "Building themes..."
-nix-shell --command "cd theme-builder && bash migrate_theme_to_dotfiles.sh all"
+read -p "Build themes (y/n)?" choice
+case "$choice" in 
+    y|Y) 
+        nix-shell --command "cd theme-builder && bash migrate_theme_to_dotfiles.sh all"
+        cd ~/Documents/git/dotfiles/
+        git checkout main
+        git merge dev
+    *) echo "continuing";;
+esac
+
+echo "System fully initilaized"

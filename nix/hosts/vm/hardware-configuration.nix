@@ -12,22 +12,20 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { 
-      #device = "/dev/disk/by-uuid/47007a19-7927-4553-8c3a-dea4ab12980a";
-      device = "/dev/mapper/luks-30bdd157-9f8f-422f-9131-1dd1735830a0";
+    { # device = "/dev/disk/by-uuid/4c62bd77-29b6-4405-8f79-96973fcf3c22";
+      device = "/dev/sda2";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-30bdd157-9f8f-422f-9131-1dd1735830a0".device = "/dev/disk/by-uuid/30bdd157-9f8f-422f-9131-1dd1735830a0";
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/C6D4-7611";
+    { device = "/dev/disk/by-uuid/D2C6-FCCB";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/f8ee24d6-cece-4e30-b2b2-ac18072770ed"; }
+    [ # { device = "/dev/disk/by-uuid/2023aa04-af44-42a1-a0b5-36d5b60144c9"; }
+      { device = "/dev/sda3"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -40,4 +38,3 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   virtualisation.virtualbox.guest.enable = true;
 }
-

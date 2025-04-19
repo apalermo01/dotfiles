@@ -25,7 +25,6 @@
   ];
   
   programs.fish.enable = true;
-  #programs.nix-ld.dev.enable = true;
 
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
   programs.nix-ld.libraries = with pkgs; [
@@ -59,7 +58,13 @@
   };
 
   # x-server. Can disable if only using wayland
-  services.xserver.enable = true;
+  services.xserver = {
+        enable = true;
+        displayManager = {
+            defaultSession = "none+i3";
+        };
+        windowManager.i3.enable = true;
+    };
 
   # default KDE environment. Can use as a fallback 
   # if something happens to i3 or hyprland

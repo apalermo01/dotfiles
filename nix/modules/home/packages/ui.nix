@@ -18,7 +18,7 @@
         polybar
         picom
         kitty
-	firefox
+	    firefox
       ];
     };
 }

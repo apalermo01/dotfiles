@@ -1,8 +1,22 @@
-let
-    pkgs = import <nixpkgs> {};
-in pkgs.mkShell {
-    packages = [
-        (pkgs.python3.withPackages (ps: with ps; [ virtualenv ]))
+{ pkgs ? import <nixpkgs> {} }:
+
+pkgs.mkShell {
+    buildInputs = [
+	pkgs.gcc
+	pkgs.stdenv.cc.cc.lib
+	(pkgs.python311.withPackages (ps: with ps; [
+		pip
+		virtualenv
+		numpy
+		matplotlib
+		toml
+		pyyaml	
+		isort	
+		black	
+		jinja2
+	]))
     ];
+
+    LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/";
 }
 

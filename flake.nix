@@ -10,9 +10,10 @@
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { home-manager, nixpkgs, ... }@inputs:
+  outputs = { home-manager, nixpkgs, zen-browser, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;

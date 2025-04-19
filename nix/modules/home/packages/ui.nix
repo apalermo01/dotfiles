@@ -19,6 +19,7 @@
         picom
         kitty
 	    firefox
+        inputs.zen-browser.packages."${system}".specific
       ];
     };
 }

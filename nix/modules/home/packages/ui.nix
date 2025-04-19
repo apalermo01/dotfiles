@@ -19,7 +19,7 @@
         picom
         kitty
 	    firefox
-        inputs.zen-browser.packages."${system}".specific
+        inputs.zen-browser.packages."${system}".default
         obsidian
         nemo-with-extensions
       ];

@@ -21,9 +21,10 @@
 	    firefox
         inputs.zen-browser.packages."${system}".default
         nemo-with-extensions
-        { nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-                "obsidian"
-            ];}
       ];
+      nixpkgs.config.allowUnfreePredicate = pkg:
+            builtins.elem (pkgs.lib.getName pkg) [
+                "obsidian"
+            ];
     };
 }

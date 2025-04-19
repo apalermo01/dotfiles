@@ -1,3 +1,4 @@
 [submodule "theme-builder"]
 	path = theme-builder
-	url = https://github.com/apalermo01/theme-builder
+	url = git@github.com:apalermo01/theme-builder.git
+	branch = main

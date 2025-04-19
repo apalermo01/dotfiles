@@ -51,7 +51,12 @@ case "$choice" in
     *) echo "continuing";;
 esac
 
-# installing theme builder
+read -p "Install restic backup system (y/n)?" choice
+case "$choice" in 
+    y|Y) bash ./scripts/install_backup.sh ;;
+    *) echo "continuing";;
+esac
+
 read -p "Install theme builder (y/n)?" choice
 case "$choice" in 
     y|Y) bash ./scripts/install_theme_builder.sh ;;
@@ -68,4 +73,4 @@ case "$choice" in
     *) echo "continuing";;
 esac
 
-echo "System fully initilaized"
+echo "System fully initialized"

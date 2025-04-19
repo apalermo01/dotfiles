@@ -1,0 +1,8 @@
+[Unit]
+Description=Restic backup to Proton Drive
+Requires=proton-mount.service
+After=proton-mount.service
+
+[Service]
+ExecStart=%h/.config/restic-setup/decrypt-password.sh %h/.config/restic-setup/backup.sh
+Environment="RCLONE_CONFIG=%h/.config/restic-setup/rclone.conf"

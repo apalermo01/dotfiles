@@ -1,0 +1,16 @@
+[Unit]
+Description=Mount Proton Drive with Rclone
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/.config/restic-setup/mount-proton.sh
+ExecStop=/usr/bin/fusermount -u /home/alex/mnt/proton
+Restart=always
+
+# Prevent errors on startup
+ExecStartPre=/usr/bin/mkdir -p /home/alex/mnt/proton
+
+# Don’t try to unmount unless it's already mounted
+# (Suppress fusermount errors completely)
+ExecStartPre=/bin/sh -c 'mountpoint -q %h/mnt/proton && fusermount -u %h/mnt/proton || true'

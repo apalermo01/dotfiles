@@ -20,8 +20,10 @@
         kitty
 	    firefox
         inputs.zen-browser.packages."${system}".default
-        obsidian
         nemo-with-extensions
+        { nikpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+                "obsidian"
+            ];}
       ];
     };
 }

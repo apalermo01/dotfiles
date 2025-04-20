@@ -25,6 +25,7 @@
     dunst
     rclone
     restic
+    gnupg1
   ];
   
   programs.fish.enable = true;

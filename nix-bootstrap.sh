@@ -34,7 +34,7 @@ function init_system {
         echo "Default hardware configuration not found. It may have already been initialized."
     fi 
 
-    mapfile -t used_uuids < <(grep -o 'by-uuid/[A-Fa-f0-9\-]\+' "$HOME/Documents/git/dotfiles/nix/${hostname}/hardware-configuration.nix" | sed 's/by-uuid\///')
+    mapfile -t used_uuids < <(grep -o 'by-uuid/[A-Fa-f0-9\-]\+' "$HOME/Documents/git/dotfiles/nix/hosts/${hostname}/hardware-configuration.nix" | sed 's/by-uuid\///')
 
     for uuid in "${used_uuids[@]}"; do
         if ! blkid | grep -q "$uuid"; then

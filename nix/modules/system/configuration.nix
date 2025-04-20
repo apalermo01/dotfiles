@@ -9,7 +9,12 @@
       '';
     };
   };
-
+  # Enable FUSE configuration
+  services.fuse = {
+    enable = true;  # Enable FUSE service
+    mountMax = 1000;  # Max number of FUSE mounts for non-root users
+    userAllowOther = true;  # Allow the "allow_other" option in FUSE
+  };
   # system packages
   environment.systemPackages = with pkgs; [
     neovim
@@ -43,7 +48,7 @@
   # programs.dunst.enable = true;
 
   # Enable FUSE service
-  programs.fuse.enable = true; 
+  # programs.fuse.enable = true; 
 
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
   programs.nix-ld.libraries = with pkgs; [

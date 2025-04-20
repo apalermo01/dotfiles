@@ -87,5 +87,7 @@ abbr --add notes cd ~/Documents/git/notes/
 abbr --add zen /usr/local/bin/zen/zen
 abbr --add a . env/bin/activate.fish
 abbr --add o ~/appimages/Obsidian-1.7.7.AppImage
+abbr --add backup-status systemctl --user status restic-backup.service
+abbr --add backup-status systemctl --user status proton-mount.service
 fastfetch
 wal -n -e -i /home/alex/Pictures/wallpapers/000.png > /dev/null 

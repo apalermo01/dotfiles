@@ -48,7 +48,7 @@
   ];
   
   programs.fish.enable = true;
-  # programs.dunst.enable = true;
+  programs.dunst.enable = true;
 
   # Enable FUSE service
   # programs.fuse.enable = true; 

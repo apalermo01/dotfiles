@@ -28,6 +28,7 @@
     gnupg1
     pinentry-rofi
     ripgrep
+    fuse
   ];
   
   programs.fish.enable = true;
@@ -54,7 +55,7 @@
   };
 
   # You may also want to ensure FUSE is enabled
-  services.fuse.enable = true;
+  # services.fuse.enable = true;
   # bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

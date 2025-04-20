@@ -27,14 +27,14 @@ function init_system {
     if [[ -f /etc/nixos/hardware-configuration.nix ]]; then 
         sudo cp /etc/nixos/hardware-configuration.nix ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
         echo "copied hardware configuration to hosts directory. nix/hosts/${hostname} = "
-        cat ~/Documents/git/dotfiles/nix/hosts/$hostname
+        cat ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
         sudo mv /etc/nixos /etc/nixos.bak
 
     else 
         echo "Default hardware configuration not found. It may have already been initialized."
     fi 
 
-    mapfile -t used_uuids < <(grep -o 'by-uuid/[A-Fa-f0-9\-]\+' "~/Documents/git/dotfiles/hardware-configuration.nix" | sed 's/by-uuid\///')
+    mapfile -t used_uuids < <(grep -o 'by-uuid/[A-Fa-f0-9\-]\+' "~/Documents/git/dotfiles/nix/${hostname}/hardware-configuration.nix" | sed 's/by-uuid\///')
 
     for uuid in "${used_uuids[@]}"; do
         if ! blkid | grep -q "$uuid"; then

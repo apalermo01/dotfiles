@@ -26,7 +26,7 @@
     rclone
     restic
     gnupg1
-    pinentry-curses
+    pinentry-rofi
     ripgrep
   ];
   
@@ -41,7 +41,7 @@
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentryPackage = pkgs.pinentry-rofi;
     enableSSHSupport = true;
   };
 

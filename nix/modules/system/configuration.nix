@@ -22,7 +22,7 @@
     fortune
     cowsay
     pywal
-    dunst
+    # dunst
     rclone
     restic
     gnupg1

@@ -23,6 +23,8 @@
     cowsay
     pywal
     dunst
+    rclone
+    restic
   ];
   
   programs.fish.enable = true;

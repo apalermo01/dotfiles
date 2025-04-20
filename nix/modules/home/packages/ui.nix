@@ -21,6 +21,8 @@
 	    firefox
         inputs.zen-browser.packages."${system}".default
         nemo-with-extensions
+        libnotify
+        dunst
       ];
       nixpkgs.config.allowUnfreePredicate = pkg:
             builtins.elem (pkgs.lib.getName pkg) [

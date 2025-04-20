@@ -37,7 +37,7 @@ function init_system {
     mapfile -t used_uuids < <(grep -o 'by-uuid/[A-Fa-f0-9\-]\+' "./nix/hosts/${hostname}/hardware-configuration.nix" | sed 's/by-uuid\///')
 
     for uuid in "${used_uuids[@]}"; do
-        if ! blkid | grep -q "$uuid"; then
+        if ! findmnt --output=SOURCE | grep -q "$uuid"; then
             echo "❌ UUID $uuid not found on system. Hardware config likely invalid."
             echo "🛑 Aborting to avoid boot failure."
             exit 1

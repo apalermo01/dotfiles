@@ -1,16 +1,22 @@
 { config, pkgs, inputs, lib, ... }:
 
-{
-  environment.etc = {
-    "fuse.conf" = {
-      text = ''
-        ${lib.optionalString (config.programs.fuse.userAllowOther) "user_allow_other"}
-        mount_max = ${config.programs.fuse.mountMax}
-      '';
-    };
-
+{  
+  # Enable FUSE filesystem support
   boot.supportedFilesystems = [ "fuse" ];
-  security.wrappers.fusermount.source = "${pkgs.fuse}/bin/fusermount"; };
+  
+  # Add user_allow_other to fuse.conf
+  environment.etc."fuse.conf" = {
+    text = "user_allow_other\n";
+    mode = "0644";
+  };
+  
+  # Optionally, ensure FUSE is properly wrapped
+  security.wrappers.fusermount = {
+    source = "${pkgs.fuse}/bin/fusermount";
+    owner = "root";
+    group = "root";
+    setuid = true;
+  };
 
   # system packages
   environment.systemPackages = with pkgs; [

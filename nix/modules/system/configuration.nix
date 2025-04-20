@@ -44,6 +44,9 @@
     pinentry-rofi
     ripgrep
     fuse
+    dbus
+    libnotify
+    dunst
   ];
   
   programs.fish.enable = true;

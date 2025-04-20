@@ -6,3 +6,6 @@ After=proton-mount.service
 [Service]
 ExecStart=%h/.config/restic-setup/decrypt-password.sh %h/.config/restic-setup/backup.sh
 Environment="RCLONE_CONFIG=%h/.config/restic-setup/rclone.conf"
+
+[Install]
+WantedBy=default.target

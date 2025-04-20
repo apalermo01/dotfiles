@@ -12,10 +12,17 @@ echo "[INFO] Copying backup scripts... "
 cp "$DOTFILES_BACKUP_DIR"/*.sh "$CONFIG_DIR/"
 chmod +x "$CONFIG_DIR"/*.sh
 
+
+MOUNT_PATH="$HOME/mnt/proton"
+mkdir -p "$MOUNT_PATH"
+mkdir -p "$HOME/.local/share/rclone"
+
 echo "[INFO] Copying systemd units..."
 mkdir -p "$HOME/.config/systemd/user"
 cp "$DOTFILES_BACKUP_DIR/systemd/"*.service "$HOME/.config/systemd/user/"
 cp "$DOTFILES_BACKUP_DIR/systemd/"*.timer "$HOME/.config/systemd/user/"
+mkdir -p ~/mnt/proton
+bash ./backup/restic-setup.sh
 
 systemctl --user daemon-reload
 systemctl --user enable --now proton-mount.service

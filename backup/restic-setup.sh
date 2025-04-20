@@ -28,9 +28,10 @@ chmod 600 "$PASSWORD_FILE"
 echo "[INFO] Decrypting password and initializing repo..."
 RESTIC_PASSWORD=$(gpg --quiet --decrypt "$PASSWORD_FILE")
 export RESTIC_PASSWORD
-RESTIC_REPOSITORY="rclone:${RCLONE_NAME}:restic-backup"
+RESTIC_REPOSITORY="rclone:${RCLONE_NAME}:${RCLONE_NAME}"
 export RESTIC_REPOSITORY
 
+export RCLONE_CONFIG="$CONFIG_DIR/rclone.conf"
 restic init || echo "[WARN] Repo may already be initialized."
 
-echo "[✔] Setup complete for $REPO_NAME. You can now run backups via systemd or manually."
+echo "[✔] Setup complete for $RCLONE_NAME. You can now run backups via systemd or manually."

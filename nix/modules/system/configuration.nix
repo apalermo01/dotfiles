@@ -18,6 +18,11 @@
     setuid = true;
   };
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "obsidian"
+  ];
+
   # system packages
   environment.systemPackages = with pkgs; [
     neovim

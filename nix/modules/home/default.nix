@@ -6,6 +6,7 @@
       ./packages/headless.nix
       ./packages/ui.nix
       ./git.nix
+      ./dunst.nix
     ];
 
 }

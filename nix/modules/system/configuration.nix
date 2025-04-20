@@ -26,6 +26,8 @@
     rclone
     restic
     gnupg1
+    pinentry-curses
+    ripgrep
   ];
   
   programs.fish.enable = true;
@@ -36,6 +38,12 @@
     stdenv.cc.cc.lib
     zlib
   ];
+
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+    enableSSHSupport = true;
+  };
 
   # bootloader
   boot.loader.systemd-boot.enable = true;

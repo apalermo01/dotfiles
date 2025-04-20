@@ -10,7 +10,7 @@
     };
   };
   # Enable FUSE configuration
-  services.fuse = {
+  programs.fuse = {
     enable = true;  # Enable FUSE service
     mountMax = 1000;  # Max number of FUSE mounts for non-root users
     userAllowOther = true;  # Allow the "allow_other" option in FUSE

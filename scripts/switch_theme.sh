@@ -49,3 +49,5 @@ fi
 
 echo $1 > current_theme
 
+echo "copying user scripts"
+cp ./theme-builder/scripts/* ~

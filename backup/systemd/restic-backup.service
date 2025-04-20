@@ -1,9 +1,34 @@
 [Unit]
 Description=Restic backup to s3
+Wants=network-online.target
+After=network-online.target
 
 [Service]
+Type=simple
 ExecStart=%h/.config/restic-setup/decrypt-password.sh %h/.config/restic-setup/backup.sh
-Environment="RCLONE_CONFIG=%h/.config/restic-setup/rclone.conf"
+# Systemd hardening and isolation
+; ProtectSystem=full
+; ProtectHome=true
+; PrivateTmp=true
+; NoNewPrivileges=true
+; ProtectControlGroups=true
+; ProtectKernelModules=true
+; ProtectKernelTunables=true
+; ProtectClock=true
+; RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+; ReadWritePaths=/run/user/%U
+; RuntimeDirectory=restic-backup
+; CacheDirectory=restic
+; SystemCallFilter=@system-service
+; CapabilityBoundingSet=
+; LockPersonality=true
+; MemoryDenyWriteExecute=true
+
+# Logs & Timeout
+StandardOutput=journal
+StandardError=journal
+TimeoutStartSec=1h
+Restart=no
 
 [Install]
 WantedBy=default.target

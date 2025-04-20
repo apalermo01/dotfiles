@@ -1,11 +1,10 @@
 [Unit]
-Description=Run restic backup daily
+Description=Run restic backup every 12 hours
 
 [Timer]
-OnCalendar=daily
+OnBootSec=10min
+OnUnitActiveSec=12h
 Persistent=true
-AccuracySec=1h
-RandomizedDelaySec=30m
 
 [Install]
 WantedBy=timers.target

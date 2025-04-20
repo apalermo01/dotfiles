@@ -24,6 +24,7 @@
         libnotify
         dunst
         obsidian
+        mailutils
       ];
       nixpkgs.config.allowUnfreePredicate = pkg:
             builtins.elem (pkgs.lib.getName pkg) [

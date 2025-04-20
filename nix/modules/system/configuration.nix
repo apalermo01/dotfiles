@@ -44,7 +44,17 @@
     pinentryPackage = pkgs.pinentry-rofi;
     enableSSHSupport = true;
   };
+  # Ensure user_allow_other is set in /etc/fuse.conf
+  environment.etc = {
+    "fuse.conf" = {
+      text = ''
+        user_allow_other
+      '';
+    };
+  };
 
+  # You may also want to ensure FUSE is enabled
+  services.fuse.enable = true;
   # bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

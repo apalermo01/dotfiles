@@ -41,7 +41,7 @@
     rclone
     restic
     gnupg1
-    pinentry-rofi
+    pinentry-qt
     ripgrep
     fuse
     dbus
@@ -62,7 +62,7 @@
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-rofi;
+    pinentryPackage = pkgs.pinentry-qt;
     enableSSHSupport = true;
   };
 

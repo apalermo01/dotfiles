@@ -86,7 +86,7 @@ case "$choice" in
         nix-shell --command "cd theme-builder && bash migrate_theme_to_dotfiles.sh all"
         cd ~/Documents/git/dotfiles/
         git checkout main
-        git merge dev
+        git merge dev;;
     *) echo "continuing";;
 esac
 

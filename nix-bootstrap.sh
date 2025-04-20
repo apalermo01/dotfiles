@@ -18,7 +18,7 @@ function clone_dotfiles {
 function init_system {
     echo "available hosts: $(ls nix/hosts)"
     read -p "Select host: " hostname
-    if [[ ! -d ~/Documents/git/dotfiles/nix/hosts/$hostname ]]; then 
+    if [[ ! -d $HOME/Documents/git/dotfiles/nix/hosts/$hostname ]]; then 
         echo "Host $hostname does not exist. Exiting..."
         exit
     fi

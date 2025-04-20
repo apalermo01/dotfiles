@@ -8,13 +8,10 @@
         mount_max = ${config.programs.fuse.mountMax}
       '';
     };
-  };
-  # Enable FUSE configuration
-  programs.fuse = {
-    enable = true;  # Enable FUSE service
-    mountMax = 1000;  # Max number of FUSE mounts for non-root users
-    userAllowOther = true;  # Allow the "allow_other" option in FUSE
-  };
+
+  boot.supportedFilesystems = [ "fuse" ];
+  security.wrappers.fusermount.source = "${pkgs.fuse}/bin/fusermount"; };
+
   # system packages
   environment.systemPackages = with pkgs; [
     neovim

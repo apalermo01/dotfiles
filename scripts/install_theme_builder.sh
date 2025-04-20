@@ -18,3 +18,6 @@ fi
 
 echo "Copying wallpapers to home directory..."
 cp ./theme-builder/wallpapers/* $HOME/Pictures/wallpapers/ --verbose
+
+echo "Copying scripts to home directory..."
+cp ./theme-builder/scripts/* $HOME/

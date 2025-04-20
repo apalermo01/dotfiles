@@ -18,18 +18,34 @@ function clone_dotfiles {
 function init_system {
     echo "available hosts: $(ls nix/hosts)"
     read -p "Select host: " hostname
-    if [[ ! -d ~/Documents/git/dotfiles/nix/hosts/$hostname ]]; then 
+    if [[ ! -f ~/Documents/git/dotfiles/nix/hosts/$hostname ]]; then 
         echo "Host $hostname does not exist. Exiting..."
         exit
     fi
 
     echo "Installing hardware configuration..."
-    if [[ -d /etc/nixos/hardware-configuration.nix ]]; then 
+    if [[ -f /etc/nixos/hardware-configuration.nix ]]; then 
         sudo cp /etc/nixos/hardware-configuration.nix ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
+        echo "copied hardware configuration to hosts directory. nix/hosts/${hostname} = "
+        cat ~/Documents/git/dotfiles/nix/hosts/$hostname
         sudo mv /etc/nixos /etc/nixos.bak
+
     else 
         echo "Default hardware configuration not found. It may have already been initialized."
-    fi
+    fi 
+
+    mapfile -t used_uuids < <(grep -o 'by-uuid/[A-Fa-f0-9\-]\+' "~/Documents/git/dotfiles/hardware-configuration.nix" | sed 's/by-uuid\///')
+
+    for uuid in "${used_uuids[@]}"; do
+        if ! blkid | grep -q "$uuid"; then
+            echo "❌ UUID $uuid not found on system. Hardware config likely invalid."
+            echo "🛑 Aborting to avoid boot failure."
+            exit 1
+        fi
+    done
+
+    echo "✅ Hardware config validated. Press any key to continue install"
+    read -p "..." _
     echo "Installing system..."
     sudo nixos-rebuild switch --flake .#$hostname
 }

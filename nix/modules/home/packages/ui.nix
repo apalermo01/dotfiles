@@ -23,6 +23,7 @@
         nemo-with-extensions
         libnotify
         dunst
+        obsidian
       ];
       nixpkgs.config.allowUnfreePredicate = pkg:
             builtins.elem (pkgs.lib.getName pkg) [

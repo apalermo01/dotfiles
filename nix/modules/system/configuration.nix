@@ -18,6 +18,11 @@
     setuid = true;
   };
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [
+      "obsidian"
+  ];
+
   # system packages
   environment.systemPackages = with pkgs; [
     neovim
@@ -41,7 +46,7 @@
     rclone
     restic
     gnupg1
-    pinentry-rofi
+    pinentry-qt
     ripgrep
     fuse
     dbus
@@ -62,7 +67,7 @@
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-rofi;
+    pinentryPackage = pkgs.pinentry-qt;
     enableSSHSupport = true;
   };
 

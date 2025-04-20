@@ -87,5 +87,6 @@ abbr --add notes cd ~/Documents/git/notes/
 abbr --add zen /usr/local/bin/zen/zen
 abbr --add a . env/bin/activate.fish
 abbr --add o ~/appimages/Obsidian-1.7.7.AppImage
+abbr --add backup-status ~/backup_status.sh
 fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
 wal -n -e -i /home/alex/Pictures/wallpapers/synth.jpg > /dev/null 

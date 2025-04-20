@@ -87,7 +87,6 @@ abbr --add notes cd ~/Documents/git/notes/
 abbr --add zen /usr/local/bin/zen/zen
 abbr --add a . env/bin/activate.fish
 abbr --add o ~/appimages/Obsidian-1.7.7.AppImage
-abbr --add backup-status ~/backup_status.sh
 #export PATH="/opt/nvim-linux64/bin/nvim:$PATH"
 set -U OBSIDIAN_NOTES_DIR /mnt/c/Users/apalermo/github/notes/
 set -U NOTES_DIR /mnt/c/Users/apalermo/github/notes/

@@ -1,7 +1,5 @@
 [Unit]
-Description=Restic backup to Proton Drive
-Requires=proton-mount.service
-After=proton-mount.service
+Description=Restic backup to s3
 
 [Service]
 ExecStart=%h/.config/restic-setup/decrypt-password.sh %h/.config/restic-setup/backup.sh

@@ -1,11 +1,10 @@
 { config, pkgs, inputs, ... }:
 
 {
-   # Ensure user_allow_other is set in /etc/fuse.conf
   environment.etc = {
     "fuse.conf" = {
       text = ''
-        ${lib.optionalString !config.programs.fuse.userAllowOther "#"}user_allow_other
+        ${lib.optionalString (config.programs.fuse.userAllowOther) "user_allow_other"}
         mount_max = ${config.programs.fuse.mountMax}
       '';
     };

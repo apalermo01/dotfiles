@@ -24,3 +24,6 @@ cp ./theme-builder/scripts/* $HOME/ --verbose
 
 mkdir -p ~/.config/polybar
 cp ./theme-builder/scripts/i3_polybar_start.sh ~/.config/polybar/i3_polybar_start.sh
+
+# fisher
+fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"

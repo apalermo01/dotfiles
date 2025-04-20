@@ -10,9 +10,6 @@
     };
   };
 
-  # Enable FUSE service
-  services.fuse.enable = true; 
-
   # system packages
   environment.systemPackages = with pkgs; [
     neovim
@@ -44,6 +41,9 @@
   
   programs.fish.enable = true;
   # programs.dunst.enable = true;
+
+  # Enable FUSE service
+  programs.fuse.enable = true; 
 
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
   programs.nix-ld.libraries = with pkgs; [

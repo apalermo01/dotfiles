@@ -17,6 +17,7 @@
         sioyek
         stow
         fastfetch
+        cbonsai
 
         # lsp stuff
         pyright

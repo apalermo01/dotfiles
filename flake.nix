@@ -41,7 +41,7 @@
     {
       nixosConfigurations = {
         vm = mkSystem inputs.nixpkgs "x86_64-linux" "vm";
-        personal = mkSystem inputs.nixpkgs "x86_64-linux" "personal";
+        laptop = mkSystem inputs.nixpkgs "x86_64-linux" "laptop";
       };
     };
 }

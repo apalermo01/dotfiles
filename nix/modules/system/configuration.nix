@@ -52,6 +52,7 @@
     dbus
     libnotify
     dunst
+    nm-applet
   ];
   
   programs.fish.enable = true;

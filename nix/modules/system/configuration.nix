@@ -53,6 +53,7 @@
     libnotify
     dunst
     networkmanagerapplet
+    shutter
   ];
   
   programs.fish.enable = true;

@@ -41,6 +41,6 @@ trap 'rm -f "$TMP_RCLONE_CONF" "$MAILRC_TMP"' EXIT
 
 if [[ $# -gt 0 ]]; then
     exec "$@"
-else
-    exec "$CONFIG_DIR/backup.sh"
+# else
+#     exec "$CONFIG_DIR/backup.sh"
 fi

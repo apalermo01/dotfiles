@@ -4,7 +4,7 @@ pkgs.mkShell {
     buildInputs = [
 	pkgs.gcc
 	pkgs.stdenv.cc.cc.lib
-	(pkgs.python311.withPackages (ps: with ps; [
+	(pkgs.python311Full.withPackages (ps: with ps; [
 		pip
 		virtualenv
 		numpy

@@ -21,7 +21,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "obsidian"
-      "zoom-us"
+      "zoom"
   ];
 
   # system packages
@@ -58,7 +58,7 @@
     any-nix-shell
     pavucontrol
     direnv
-    zoom-us
+    zoom
     # kwallet-pam
   ];
   

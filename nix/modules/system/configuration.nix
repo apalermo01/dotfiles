@@ -55,6 +55,7 @@
     networkmanagerapplet
     shutter
     any-nix-shell
+    pavucontrol
   ];
   
   programs.fish.enable = true;

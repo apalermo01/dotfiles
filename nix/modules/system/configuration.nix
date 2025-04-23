@@ -21,6 +21,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "obsidian"
+      "zoom-us"
   ];
 
   # system packages
@@ -57,9 +58,12 @@
     any-nix-shell
     pavucontrol
     direnv
+    zoom-us
+    kwallet-pam
   ];
   
   programs.fish.enable = true;
+  programs.kdeconnect.enable = true;
 
   # Enable FUSE service
   # programs.fuse.enable = true; 

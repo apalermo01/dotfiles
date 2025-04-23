@@ -54,6 +54,7 @@
     dunst
     networkmanagerapplet
     shutter
+    any-nix-shell
   ];
   
   programs.fish.enable = true;

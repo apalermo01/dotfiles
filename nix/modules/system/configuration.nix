@@ -59,7 +59,7 @@
     pavucontrol
     direnv
     zoom-us
-    kwallet-pam
+    # kwallet-pam
   ];
   
   programs.fish.enable = true;

@@ -7,11 +7,16 @@ if test (grep ^ID= /etc/os-release | sed -E 's/ID=(.*)/\1/') = 'nixos'
 end
 
 # make sure fisher is installed
-if ! test -e ~/.config/fish/functions/fisher.fish
-    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+set fisher_path ~/.config/fish/functions/fisher.fish
+
+if ! test -e $fisher_path
+    echo "Installing fisher"
+    mkdir -p (dirname $fisher_path)
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish -o $fisher_path
 end
+
 if not functions -q fisher 
-    source ~/.config/fish/functions/fisher.fish
+    source $fisher_path
     fisher install forgebucaran/fisher
 end
 # Path stuff

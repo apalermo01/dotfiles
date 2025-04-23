@@ -56,6 +56,7 @@
     shutter
     any-nix-shell
     pavucontrol
+    direnv
   ];
   
   programs.fish.enable = true;

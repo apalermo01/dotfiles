@@ -6,7 +6,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
@@ -34,11 +34,18 @@
                   home-manager.useUserPackages = true;
                   home-manager.users.alex = import (./nix/hosts + "/${hostname}/user.nix");
                   home-manager.extraSpecialArgs = { 
-                    inherit inputs pkgs unstablePkgs; 
-                    };
+                    inherit 
+                        inputs
+                        pkgs
+                        unstablePkgs
+                    ; };
                 }
             ];
-            specialArgs = { inherit inputs pkgs unstablePkgs; };
+            specialArgs = { inherit
+                                inputs
+                                pkgs
+                                # unstablePkgs
+                        ; };
         };
 
     in

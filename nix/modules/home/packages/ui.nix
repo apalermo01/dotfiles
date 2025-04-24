@@ -1,4 +1,9 @@
-{ pkgs, unstablePkgs, lib, config, inputs, ... }:
+{ pkgs,
+  # unstablePkgs,
+  lib,
+  config,
+  inputs,
+  ... }:
 
 
   with lib;
@@ -24,8 +29,6 @@
         libnotify
         dunst
         mailutils
-
-      ] ++ with unstablePkgs; [
         zoom-us
         obsidian
       ];

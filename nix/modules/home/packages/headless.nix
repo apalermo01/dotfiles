@@ -21,6 +21,7 @@
 
         # lsp stuff
         pyright
+        nil
       ];
     };
 }

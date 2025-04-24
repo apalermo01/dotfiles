@@ -17,18 +17,13 @@
     let
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.${system};
-      nixpkgs.config.allowUnfree = true;
       lib = nixpkgs.lib;
-      # pkgs = import inputs.nixpkgs {
-      #           system = system; 
-      #           config = {
-      #               allowUnfreePredicate = pkg:
-      #                   builtins.elem (lib.getName pkg) [
-      #                       "obsidian"
-      #                       "zoom-us"
-      #               ];
-      #     };
-      # };
+      pkgs = import inputs.nixpkgs {
+        system = system;
+        config = {
+          allowUnfree = true;
+        };
+      };
       # unstablePkgs = inputs.unstable.legacyPackages.${system};
 
       mkSystem = pkgs: system: hostname:

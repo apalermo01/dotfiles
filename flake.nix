@@ -18,7 +18,7 @@
     let
       system = "x86_64-linux";
       pkgs = inputs.nixpkgs.legacyPackages.${system};
-      unstablePkgs = inputs.unstable.legacyPackages.${system};
+      # unstablePkgs = inputs.unstable.legacyPackages.${system};
       lib = nixpkgs.lib;
 
       mkSystem = pkgs: system: hostname:
@@ -28,7 +28,6 @@
                 { networking.hostName = hostname; }
                 ./nix/modules/system/configuration.nix
                 ./nix/hosts/${hostname}/hardware-configuration.nix
-                # nix-ld.nixosModules.nix-ld
                 home-manager.nixosModules.home-manager {
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
@@ -37,7 +36,7 @@
                     inherit 
                         inputs
                         pkgs
-                        unstablePkgs
+                        # unstablePkgs
                     ; };
                 }
             ];

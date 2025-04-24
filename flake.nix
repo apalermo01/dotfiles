@@ -26,7 +26,7 @@
             builtins.elem (lib.getName pkg) [
               "obsidian"
               "zoom"
-            ]
+            ];
           };
       };
       # unstablePkgs = inputs.unstable.legacyPackages.${system};

@@ -2,19 +2,25 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+echo "testing if we're on nix"
 if test (grep ^ID= /etc/os-release | sed -E 's/ID=(.*)/\1/') = 'nixos'
+    echo "we are on nix- running any nix shell"
     any-nix-shell fish --info-right | source
 end
 
 set fisher_path ~/.config/fish/functions/fisher.fish
 
+echo "testing if $fisher_path exists"
 if ! test -e $fisher_path
+    echo "it doesn't exist - installing fisher"
     echo "Installing fisher"
     mkdir -p (dirname $fisher_path)
     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish -o $fisher_path
 end
 
+echo "testing if fisher function exists"
 if not functions -q fisher 
+    echo "it doesn't exist - running fisher install"
     source $fisher_path
     fisher install forgebucaran/fisher
 end

@@ -20,13 +20,13 @@
       # nixpkgs.config.allowUnfree = true;
       lib = nixpkgs.lib;
       pkgs = import inputs.nixpkgs {
-                system = system; 
-                config = {
-                    allowUnfreePredicate = pkg:
-                        builtins.elem (lib.getName pkg) [
-                            "obsidian"
-                            "zoom-us"
-                    ];
+        system = system; 
+        config = {
+          allowUnfreePredicate = pkg:
+            builtins.elem (lib.getName pkg) [
+              "obsidian"
+              "zoom-us"
+            ];
           };
       };
       # unstablePkgs = inputs.unstable.legacyPackages.${system};

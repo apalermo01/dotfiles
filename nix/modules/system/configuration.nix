@@ -23,7 +23,8 @@
       "obsidian"
       "zoom-us"
   ];
-
+  
+  
   # system packages
   environment.systemPackages = with pkgs; [
     neovim
@@ -58,7 +59,6 @@
     any-nix-shell
     pavucontrol
     direnv
-    zoom-us
     # kwallet-pam
   ];
   

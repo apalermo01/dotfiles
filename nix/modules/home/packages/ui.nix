@@ -1,4 +1,4 @@
-{ pkgs, lib, config, inputs, ... }:
+{ pkgs, unstablePkgs, lib, config, inputs, ... }:
 
 
   with lib;
@@ -23,12 +23,16 @@
         nemo-with-extensions
         libnotify
         dunst
-        obsidian
         mailutils
+
+      ] ++ with unstablePkgs; [
+        zoom-us
+        obsidian
       ];
       nixpkgs.config.allowUnfreePredicate = pkg:
             builtins.elem (pkgs.lib.getName pkg) [
                 "obsidian"
+                "zoom-us"
             ];
     };
 }

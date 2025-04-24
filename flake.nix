@@ -5,7 +5,8 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +17,8 @@
   outputs = { home-manager, nixpkgs, zen-browser, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      unstablePkgs = inputs.unstable.legacyPackages.${system};
       lib = nixpkgs.lib;
 
       mkSystem = pkgs: system: hostname:
@@ -31,10 +33,12 @@
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.users.alex = import (./nix/hosts + "/${hostname}/user.nix");
-                  home-manager.extraSpecialArgs = { inherit inputs; };
+                  home-manager.extraSpecialArgs = { 
+                    inherit inputs pkgs unstablePkgs; 
+                    };
                 }
             ];
-            specialArgs = { inherit inputs; };
+            specialArgs = { inherit inputs pkgs unstablePkgs; };
         };
 
     in

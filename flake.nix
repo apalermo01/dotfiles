@@ -16,7 +16,6 @@
   outputs = { home-manager, nixpkgs, zen-browser, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
       lib = nixpkgs.lib;
       pkgs = import inputs.nixpkgs {
         system = system;

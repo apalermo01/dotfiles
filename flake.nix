@@ -34,6 +34,7 @@
       mkSystem = pkgs: system: hostname:
         # pkgs.lib.nixosSystem {
         lib.nixosSystem {
+            pkgs = pkgs;
             system = system;
             modules = [
                 { networking.hostName = hostname; }

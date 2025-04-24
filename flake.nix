@@ -35,14 +35,14 @@
                   home-manager.extraSpecialArgs = { 
                     inherit 
                         inputs
-                        pkgs
+                        # pkgs
                         # unstablePkgs
                     ; };
                 }
             ];
             specialArgs = { inherit
                                 inputs
-                                pkgs
+                                # pkgs
                                 # unstablePkgs
                         ; };
         };

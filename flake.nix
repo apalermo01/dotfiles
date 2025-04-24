@@ -25,8 +25,8 @@
           allowUnfreePredicate = pkg:
             builtins.elem (lib.getName pkg) [
               "obsidian"
-              "zoom-us"
-            ];
+            ] ||
+            builtins.match "zoom-[0-9.*]" (lib.getName pkg) != null;
           };
       };
       # unstablePkgs = inputs.unstable.legacyPackages.${system};

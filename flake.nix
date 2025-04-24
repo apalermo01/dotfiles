@@ -3,7 +3,6 @@
 
 {
   description = "A very basic flake";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -18,18 +17,18 @@
     let
       system = "x86_64-linux";
       # pkgs = inputs.nixpkgs.legacyPackages.${system};
+      lib = nixpkgs.lib;
       pkgs = import inputs.nixpkgs {
                 system = system; 
                 config = {
                     allowUnfreePredicate = pkg:
-                        builtins.elem (pkgs.lib.getName pkg) [
+                        builtins.elem (lib.getName pkg) [
                             "obsidian"
                             "zoom-us"
                     ];
           };
       };
       # unstablePkgs = inputs.unstable.legacyPackages.${system};
-      lib = nixpkgs.lib;
 
       mkSystem = pkgs: system: hostname:
         pkgs.lib.nixosSystem {

@@ -32,10 +32,10 @@
         zoom-us
         obsidian
       ];
-      nixpkgs.config.allowUnfreePredicate = pkg:
-            builtins.elem (pkgs.lib.getName pkg) [
-                "obsidian"
-                "zoom-us"
-            ];
+      # nixpkgs.config.allowUnfreePredicate = pkg:
+      #       builtins.elem (pkgs.lib.getName pkg) [
+      #           "obsidian"
+      #           "zoom-us"
+      #       ];
     };
 }

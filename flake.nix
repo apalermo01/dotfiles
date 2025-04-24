@@ -16,18 +16,19 @@
   outputs = { home-manager, nixpkgs, zen-browser, ... }@inputs:
     let
       system = "x86_64-linux";
-      # pkgs = inputs.nixpkgs.legacyPackages.${system};
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
+      nixpkgs.config.allowUnfree = true;
       lib = nixpkgs.lib;
-      pkgs = import inputs.nixpkgs {
-                system = system; 
-                config = {
-                    allowUnfreePredicate = pkg:
-                        builtins.elem (lib.getName pkg) [
-                            "obsidian"
-                            "zoom-us"
-                    ];
-          };
-      };
+      # pkgs = import inputs.nixpkgs {
+      #           system = system; 
+      #           config = {
+      #               allowUnfreePredicate = pkg:
+      #                   builtins.elem (lib.getName pkg) [
+      #                       "obsidian"
+      #                       "zoom-us"
+      #               ];
+      #     };
+      # };
       # unstablePkgs = inputs.unstable.legacyPackages.${system};
 
       mkSystem = pkgs: system: hostname:

@@ -32,7 +32,8 @@
       # unstablePkgs = inputs.unstable.legacyPackages.${system};
 
       mkSystem = pkgs: system: hostname:
-        pkgs.lib.nixosSystem {
+        # pkgs.lib.nixosSystem {
+        lib.nixosSystem {
             system = system;
             modules = [
                 { networking.hostName = hostname; }

@@ -36,6 +36,8 @@
     any-nix-shell
     pavucontrol
     direnv
+    gnome.gnome-keyring
+    gnome.seahorse
   ];
   
   programs.fish.enable = true;

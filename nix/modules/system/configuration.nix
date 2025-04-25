@@ -18,21 +18,24 @@
     setuid = true;
   };
 
-  security.pam = {
-        services = {
-            alex = {
-            kwallet = {
-            enable = true;
-            package = pkgs.kdePackages.kwallet-pam;
-        };
-        };
-        };
-    };
+  # security.pam = {
+  #       services = {
+  #           alex = {
+  #           kwallet = {
+  #           enable = true;
+  #           package = pkgs.kdePackages.kwallet-pam;
+  #       };
+  #       };
+  #       };
+  #   };
   # security.pam.sevices.alex.kwallet = {
   #       enable = true;
   #       package = pkgs.kdePackages.kwallet-pam;
   #   };
-  
+  security.pam.services = {
+        sddm.kwallet.enable = true;
+        login.kwallet.enable = true;
+  };
   # system packages
   environment.systemPackages = with pkgs; [
     neovim
@@ -67,7 +70,7 @@
     any-nix-shell
     pavucontrol
     direnv
-    # kwallet-pam
+    kdePackages.kwallet-pam
   ];
   
   programs.fish.enable = true;

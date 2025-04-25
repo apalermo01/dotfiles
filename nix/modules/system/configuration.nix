@@ -1,41 +1,7 @@
 { config, pkgs, inputs, lib, ... }:
 
 {  
-  # Enable FUSE filesystem support
-  boot.supportedFilesystems = [ "fuse" ];
-  
-  # Add user_allow_other to fuse.conf
-  environment.etc."fuse.conf" = {
-    text = "user_allow_other\n";
-    mode = "0644";
-  };
-  
-  # Optionally, ensure FUSE is properly wrapped
-  security.wrappers.fusermount = {
-    source = "${pkgs.fuse}/bin/fusermount";
-    owner = "root";
-    group = "root";
-    setuid = true;
-  };
 
-  # security.pam = {
-  #       services = {
-  #           alex = {
-  #           kwallet = {
-  #           enable = true;
-  #           package = pkgs.kdePackages.kwallet-pam;
-  #       };
-  #       };
-  #       };
-  #   };
-  # security.pam.sevices.alex.kwallet = {
-  #       enable = true;
-  #       package = pkgs.kdePackages.kwallet-pam;
-  #   };
-  # security.pam.services = {
-  #       sddm.enableKwallet = true;
-  #       login.enableKwallet = true;
-  # };
   # system packages
   environment.systemPackages = with pkgs; [
     neovim
@@ -76,9 +42,6 @@
   programs.fish.enable = true;
   programs.kdeconnect.enable = true;
 
-  # Enable FUSE service
-  # programs.fuse.enable = true; 
-
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc.lib
@@ -90,16 +53,18 @@
     pinentryPackage = pkgs.pinentry-qt;
     enableSSHSupport = true;
   };
+  
+  # fixes command-not-found error
+  programs.nix-index = {
+        enable = true;
+        enablefishIntegration = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+    };
 
-  # services.kwallet = {
-  #       enable = true;
-  #       enablePamKwallet = true;
-  #       enableSecrets = true;
-  #   };
   # bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  # boot.initrd.luks.devices."luks-b465c8ed-5151-4e2e-b18c-fab741b2f46f".device = "/dev/disk/by-uuid/b465c8ed-5151-4e2e-b18c-fab741b2f46f";
 
   # networking
   networking.networkmanager.enable = true;

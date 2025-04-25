@@ -101,6 +101,11 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # enable gnome keyring
+  # without this, we're getting prompted for the wifi password every time 
+  # we reboot into i3
+  services.gnome.gnome-keyring.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";

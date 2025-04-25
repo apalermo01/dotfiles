@@ -45,7 +45,6 @@ return {
                 -- "sqls",
                 "markdown_oxide",
                 "nil_ls",
-                "alejandra"
             },
             handlers = {
                 function(server_name)

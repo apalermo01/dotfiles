@@ -36,7 +36,7 @@
     any-nix-shell
     pavucontrol
     direnv
-    gnome.gnome-keyring
+    gnome-keyring
     gnome.seahorse
   ];
   

@@ -33,8 +33,8 @@
   #       package = pkgs.kdePackages.kwallet-pam;
   #   };
   security.pam.services = {
-        sddm.kwallet.enable = true;
-        login.kwallet.enable = true;
+        sddm.enableKwallet = true;
+        login.enableKwallet = true;
   };
   # system packages
   environment.systemPackages = with pkgs; [

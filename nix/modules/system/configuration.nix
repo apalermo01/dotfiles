@@ -57,7 +57,7 @@
   # fixes command-not-found error
   programs.nix-index = {
         enable = true;
-        enablefishIntegration = true;
+        enableFishIntegration = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
     };

@@ -36,11 +36,11 @@
     any-nix-shell
     pavucontrol
     direnv
-    kdePackages.kwallet-pam
   ];
   
   programs.fish.enable = true;
   programs.kdeconnect.enable = true;
+  programs.dconf.enable = true;
 
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
   programs.nix-ld.libraries = with pkgs; [
@@ -88,11 +88,9 @@
   };
 
   # x-server. Can disable if only using wayland
+  services.displayManager.defaultSession = "none+i3";
   services.xserver = {
         enable = true;
-        displayManager = {
-            defaultSession = "none+i3";
-        };
         windowManager.i3.enable = true;
     };
 
@@ -105,6 +103,8 @@
   # without this, we're getting prompted for the wifi password every time 
   # we reboot into i3
   services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {

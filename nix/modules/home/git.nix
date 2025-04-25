@@ -12,6 +12,9 @@ in {
             userEmail = "alex.palermo.ai@gmail.com";
             extraConfig = {
                 init = { defaultBranch = "main"; };
+                core = {
+                    editor = "nvim"; 
+                };
             };
         };
     };

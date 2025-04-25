@@ -18,11 +18,16 @@
     setuid = true;
   };
 
-  # nixpkgs.config.allowUnfreePredicate = pkg:
-  #   builtins.elem (pkgs.lib.getName pkg) [
-  #     "obsidian"
-  #     "zoom-us"
-  # ];
+  # security.pam = {
+  #       services = {
+  #           ${userSettings.alex} = {
+  #           kwallet = {
+  #           enable = true;
+  #           package = pkgs.kdePackages.kwallet-pam;
+  #       }
+  #       }
+  #       }
+  #   }
   
   
   # system packages
@@ -80,6 +85,11 @@
     enableSSHSupport = true;
   };
 
+  services.kwallet = {
+        enable = true;
+        enablePamKwallet = true;
+        enableSecrets = true;
+    };
   # bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

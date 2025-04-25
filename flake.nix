@@ -27,7 +27,6 @@
             ];
           };
       };
-      # unstablePkgs = inputs.unstable.legacyPackages.${system};
 
       mkSystem = pkgs: system: hostname:
         lib.nixosSystem {

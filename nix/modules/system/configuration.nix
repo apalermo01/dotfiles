@@ -91,11 +91,11 @@
     enableSSHSupport = true;
   };
 
-  services.kwallet = {
-        enable = true;
-        enablePamKwallet = true;
-        enableSecrets = true;
-    };
+  # services.kwallet = {
+  #       enable = true;
+  #       enablePamKwallet = true;
+  #       enableSecrets = true;
+  #   };
   # bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

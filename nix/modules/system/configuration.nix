@@ -32,10 +32,10 @@
   #       enable = true;
   #       package = pkgs.kdePackages.kwallet-pam;
   #   };
-  security.pam.services = {
-        sddm.enableKwallet = true;
-        login.enableKwallet = true;
-  };
+  # security.pam.services = {
+  #       sddm.enableKwallet = true;
+  #       login.enableKwallet = true;
+  # };
   # system packages
   environment.systemPackages = with pkgs; [
     neovim

@@ -16,8 +16,6 @@
   outputs = { home-manager, nixpkgs, zen-browser, ... }@inputs:
     let
       system = "x86_64-linux";
-      # pkgs = inputs.nixpkgs.legacyPackages.${system};
-      # nixpkgs.config.allowUnfree = true;
       lib = nixpkgs.lib;
       pkgs = import inputs.nixpkgs {
         system = system; 
@@ -32,7 +30,6 @@
       # unstablePkgs = inputs.unstable.legacyPackages.${system};
 
       mkSystem = pkgs: system: hostname:
-        # pkgs.lib.nixosSystem {
         lib.nixosSystem {
             pkgs = pkgs;
             system = system;
@@ -65,5 +62,21 @@
         vm = mkSystem pkgs "x86_64-linux" "vm";
         laptop = mkSystem pkgs "x86_64-linux" "laptop";
       };
+      devShells.${system}.default = pkgs.mkShell {
+          buildInputs = [
+                      pkgs.gcc
+                      (pkgs.python311.withPackages (ps: with ps; [
+                          pip
+                          virtualenv
+                          numpy
+                          matplotlib
+                          toml
+                          pyyaml
+                          isort
+                          black
+                          jinja2
+                      ]))
+                  ];
+              };
     };
 }

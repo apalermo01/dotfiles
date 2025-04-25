@@ -18,20 +18,20 @@
     setuid = true;
   };
 
-  # security.pam = {
-  #       services = {
-  #           ${userSettings.alex} = {
-  #           kwallet = {
-  #           enable = true;
-  #           package = pkgs.kdePackages.kwallet-pam;
-  #       }
-  #       };
-  #       };
-  #   };
-  security.pam.sevices.alex.kwallet = {
-        enable = true;
-        package = pkgs.kdePackages.kwallet-pam;
+  security.pam = {
+        services = {
+            alex = {
+            kwallet = {
+            enable = true;
+            package = pkgs.kdePackages.kwallet-pam;
+        };
+        };
+        };
     };
+  # security.pam.sevices.alex.kwallet = {
+  #       enable = true;
+  #       package = pkgs.kdePackages.kwallet-pam;
+  #   };
   
   # system packages
   environment.systemPackages = with pkgs; [

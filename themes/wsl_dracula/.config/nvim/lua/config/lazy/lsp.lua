@@ -44,7 +44,7 @@ return {
                 "jsonls",
                 -- "sqls",
                 "markdown_oxide",
-                "nil_ls"
+                "nil_ls",
                 "alejandra"
             },
             handlers = {

@@ -23,7 +23,7 @@
         pyright
         nil
         lua-language-server
-        markdow-oxide
+        markdown-oxide
       ];
     };
 }

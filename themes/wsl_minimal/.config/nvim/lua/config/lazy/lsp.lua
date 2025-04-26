@@ -40,10 +40,7 @@ return {
                 "clangd",
                 "pyright",
                 "ts_ls",
-                -- "gopls",
                 "jsonls",
-                -- "sqls",
-                -- "markdown_oxide",
                 "nil_ls",
             },
             handlers = {
@@ -54,14 +51,14 @@ return {
                 end,
 
                 ["lua_ls"] = function()
-                    require("lspconfig").lua_ls.setup({
+                    require("nvim-lspconfig").lua_ls.setup({
                     cmd = { "lua-language-server" },
                     capabilities = capabilities
                     })
                 end,
 
                 ["markdown_oxide"] = function()
-                    require("lspconfig").markdown_oxide.setup({
+                    require("nvim-lspconfig").markdown_oxide.setup({
                     cmd = { "markdown-oxide" },
                     capabilities = capabilities
                     })

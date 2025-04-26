@@ -53,20 +53,19 @@ return {
                     })
                 end,
 
-                ["lua_ls"] = fucntion()
-                    require("nvim-lspconfig").lua_ls.setup({
+                ["lua_ls"] = function()
+                    require("lspconfig").lua_ls.setup({
                     cmd = { "lua-language-server" },
                     capabilities = capabilities
                     })
                 end,
 
-                ["markdown-oxide"] = fucntion()
-                    require("nvim-lspconfig").lua_ls.setup({
+                ["markdown_oxide"] = function()
+                    require("lspconfig").markdown_oxide.setup({
                     cmd = { "markdown-oxide" },
                     capabilities = capabilities
                     })
                 end,
-
             }
         })
 

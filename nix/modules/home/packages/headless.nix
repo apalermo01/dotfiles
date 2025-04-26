@@ -22,6 +22,8 @@
         # lsp stuff
         pyright
         nil
+        lua-language-server
+        markdow-oxide
       ];
     };
 }

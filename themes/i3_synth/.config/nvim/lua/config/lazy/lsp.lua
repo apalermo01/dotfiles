@@ -34,7 +34,7 @@ return {
         require("mason-lspconfig").setup({
             automatic_installation = true,
             ensure_installed = {
-                -- "lua_ls",
+                "lua_ls",
                 "html",
                 "cssls",
                 "clangd",
@@ -48,7 +48,7 @@ return {
             },
             handlers = {
                 function(server_name)
-                    require('lspconfig')[server_name].setup({
+                    require('nvim-lspconfig')[server_name].setup({
                         capabilities = capabilities
                     })
                 end,
@@ -66,7 +66,6 @@ return {
                     capabilities = capabilities
                     })
                 end,
-
             }
         })
 

@@ -22,7 +22,6 @@
         # lsp stuff
         pyright
         nil
-        markdown-oxide
       ];
     };
 }

@@ -38,6 +38,7 @@
     direnv
     gnome-keyring
     seahorse
+    markdown-oxide
   ];
   
   programs.fish.enable = true;

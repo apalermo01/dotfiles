@@ -140,7 +140,7 @@
     shell = pkgs.fish;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix = {
     settings.auto-optimize-store = true;
@@ -150,7 +150,7 @@
         dates = "weekly";
         options = "--delete-older-than 7d";
     };
-    settings.extraOptions = ''
+    extraOptions = ''
         experimental-features = nix-command flakes
         keep-outputs = true
         keep-derivations = true

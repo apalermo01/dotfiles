@@ -143,7 +143,7 @@
   # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix = {
-    settings.auto-optimize-store = true;
+    settings.auto-optimise-store = true;
     settings.allowed-users = [ "alex" ];
     gc = {
         automatic = true;

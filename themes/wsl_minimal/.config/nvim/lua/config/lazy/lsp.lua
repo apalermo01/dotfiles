@@ -1,3 +1,13 @@
+local function is_nixos()
+  local os_release = vim.fn.readfile("/etc/os-release")
+  for _, line in ipairs(os_release) do
+    if line:match("^ID=nixos") then
+      return true
+    end
+  end
+  return false
+end
+
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -17,6 +27,8 @@ return {
     },
 
     config = function()
+        local nixos = is_nixos()
+
         require("conform").setup({
             formatters_by_ft = {
             }
@@ -32,8 +44,8 @@ return {
         require('fidget').setup({})
         require('mason').setup()
         require("mason-lspconfig").setup({
-            automatic_installation = true,
-            ensure_installed = {
+            automatic_installation = not nixos,
+            ensure_installed = nixos and {
                 "lua_ls",
                 "html",
                 "cssls",
@@ -42,7 +54,19 @@ return {
                 "ts_ls",
                 "jsonls",
                 "nil_ls",
+            } or {
+                "lua_ls",
+                "html",
+                "cssls",
+                "clangd",
+                "pyright",
+                "ts_ls",
+                "jsonls",
+                "nil_ls",
+                "lua_ls",
+                "markdown_oxide",
             },
+
             handlers = {
                 function(server_name)
                     require('lspconfig')[server_name].setup({
@@ -52,14 +76,14 @@ return {
 
                 ["lua_ls"] = function()
                     require("lspconfig").lua_ls.setup({
-                    cmd = { "lua-language-server" },
+                    cmd = nixos and { "lua-language-server" } or nil,
                     capabilities = capabilities
                     })
                 end,
 
                 ["markdown_oxide"] = function()
                     require("lspconfig").markdown_oxide.setup({
-                    cmd = { "markdown-oxide" },
+                    cmd = nixos and { "markdown-oxide" } or nil,
                     capabilities = capabilities
                     })
                 end,

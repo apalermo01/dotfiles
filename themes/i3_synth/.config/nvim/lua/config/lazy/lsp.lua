@@ -34,7 +34,7 @@ return {
         require("mason-lspconfig").setup({
             automatic_installation = true,
             ensure_installed = {
-                "lua_ls",
+                -- "lua_ls",
                 "html",
                 "cssls",
                 "clangd",
@@ -48,20 +48,20 @@ return {
             },
             handlers = {
                 function(server_name)
-                    require('nvim-lspconfig')[server_name].setup({
+                    require('lspconfig')[server_name].setup({
                         capabilities = capabilities
                     })
                 end,
 
-                ["lua_ls"] = fucntion()
-                    require("nvim-lspconfig").lua_ls.setup({
+                ["lua_ls"] = function()
+                    require("lspconfig").lua_ls.setup({
                     cmd = { "lua-language-server" },
                     capabilities = capabilities
                     })
                 end,
 
-                ["markdown-oxide"] = fucntion()
-                    require("nvim-lspconfig").lua_ls.setup({
+                ["markdown_oxide"] = function()
+                    require("lspconfig").markdown_oxide.setup({
                     cmd = { "markdown-oxide" },
                     capabilities = capabilities
                     })

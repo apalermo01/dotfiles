@@ -4,7 +4,11 @@ return {
         config = function()
             require("trouble").setup({
                 auto_close = true,
-                auto_open = true,
+                modes = {
+                    diagnostics = {
+                        auto_open = true,
+                    }
+                }
             })
 
             vim.keymap.set("n", "<leader>tt", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>")

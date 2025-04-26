@@ -43,7 +43,7 @@ return {
                 -- "gopls",
                 "jsonls",
                 -- "sqls",
-                "markdown_oxide",
+                -- "markdown_oxide",
                 "nil_ls",
             },
             handlers = {
@@ -51,7 +51,22 @@ return {
                     require('lspconfig')[server_name].setup({
                         capabilities = capabilities
                     })
-                end
+                end,
+
+                ["lua_ls"] = fucntion()
+                    require("lspconfig").lua_ls.setup({
+                    cmd = { "lua-language-server" },
+                    capabilities = capabilities
+                    })
+                end,
+
+                ["markdown-oxide"] = fucntion()
+                    require("lspconfig").lua_ls.setup({
+                    cmd = { "markdown-oxide" },
+                    capabilities = capabilities
+                    })
+                end,
+
             }
         })
 

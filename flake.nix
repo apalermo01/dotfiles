@@ -1,5 +1,5 @@
 # github.com/sioodmy/dotfiles/blob/main/flake.nix
-# github.com/notusknow/dotfiles-nix
+# github.com/notusknot/dotfiles-nix
 
 {
   description = "A very basic flake";

@@ -142,6 +142,21 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nix = {
+    settings.auto-optimize-store = true;
+    settings.allowed-users = [ "alex" ];
+    gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+    };
+    settings.extraOptions = ''
+        experimental-features = nix-command flakes
+        keep-outputs = true
+        keep-derivations = true
+    '';
+  };
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

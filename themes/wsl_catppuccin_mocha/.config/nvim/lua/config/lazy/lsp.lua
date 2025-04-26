@@ -45,20 +45,20 @@ return {
             },
             handlers = {
                 function(server_name)
-                    require('nvim-lspconfig')[server_name].setup({
+                    require('lspconfig')[server_name].setup({
                         capabilities = capabilities
                     })
                 end,
 
                 ["lua_ls"] = function()
-                    require("nvim-lspconfig").lua_ls.setup({
+                    require("lspconfig").lua_ls.setup({
                     cmd = { "lua-language-server" },
                     capabilities = capabilities
                     })
                 end,
 
                 ["markdown_oxide"] = function()
-                    require("nvim-lspconfig").markdown_oxide.setup({
+                    require("lspconfig").markdown_oxide.setup({
                     cmd = { "markdown-oxide" },
                     capabilities = capabilities
                     })

@@ -27,3 +27,6 @@ cp ./theme-builder/scripts/i3_polybar_start.sh ~/.config/polybar/i3_polybar_star
 
 # fisher
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+
+# tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

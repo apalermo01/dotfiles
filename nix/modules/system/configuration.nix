@@ -121,14 +121,21 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
+  # services.pulseaudio.enable = false;
+  
+  # Enable sound with alsa
+  sound.enable = true;
+
   services.pipewire = {
     enable = true;
+    audio.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
+
+  security.rtkit.enable = true;
 
   # fonts
   fonts.packages = with pkgs; [
@@ -143,7 +150,7 @@
     shell = pkgs.zsh;
   };
     
-
+  hardware.pulseaudio.denable = false;
   hardware.alsa.enable = true;
   # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

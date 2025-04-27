@@ -25,6 +25,7 @@
         nil
         lua-language-server
         markdown-oxide
+        fzf
       ];
     };
 }

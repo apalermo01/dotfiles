@@ -7,6 +7,7 @@
       ./packages/ui.nix
       ./git.nix
       ./direnv.nix
+      ./zoxide.nix
     ];
 
 }

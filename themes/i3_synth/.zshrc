@@ -88,15 +88,15 @@ move_note_on_type() {
 ###########
 
 # Obsidian
-alias ont new_tech_note
-alias onp new_personal_note
-alias og move_note_on_type
+alias ont='new_tech_note'
+alias onp='new_personal_note'
+alias og='move_note_on_type'
 
 # other
-alias personal bash ~/personal_docs.sh
-alias reading bash ~/reading_session.sh
-alias notes cd ~/Documents/git/notes
-alias o obsidian
+alias personal='bash ~/personal_docs.sh'
+alias reading='bash ~/reading_session.sh'
+alias notes='cd ~/Documents/git/notes'
+alias o='obsidian'
 
 #######################
 # Additional settings #

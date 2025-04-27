@@ -138,7 +138,7 @@
   users.users.alex = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 
   # nix.settings.experimental-features = [ "nix-command" "flakes" ];

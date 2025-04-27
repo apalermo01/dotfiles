@@ -11,6 +11,14 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+# global plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+
+# load autocompletions
+autoload -U compinit && compinit
+
 ###########
 # General #
 ###########
@@ -21,6 +29,24 @@ function quick_commit() {
     today=$(date "+%Y-%m-%d")
     git add . && git commit -m "$today"
 }
+
+# history
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dupes
+setopt hist_save_no_dupes
+setopt hist_ignore_dupes
+setopt hist_find_no_dupes
+
+# keybindings
+bindkey -v
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
 ######################
 # Obsidian Functions #
@@ -107,9 +133,12 @@ alias o='obsidian'
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
+
+
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-fortune | cowsay -fr
+fortune | cowsay -r
 wal -n -e -i /home/alex/Pictures/wallpapers/synth.jpg > /dev/null 
 
 eval "$(direnv hook zsh)"

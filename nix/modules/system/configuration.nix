@@ -36,9 +36,7 @@
     pavucontrol
     alsa-utils
     alsa-plugins
-    # pipewire-utils
     pamixer
-    direnv
     gnome-keyring
     seahorse
     zinit

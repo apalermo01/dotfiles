@@ -34,6 +34,7 @@
     shutter
     any-nix-shell
     pavucontrol
+    alsa-utils
     direnv
     gnome-keyring
     seahorse
@@ -141,7 +142,9 @@
     extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.zsh;
   };
+    
 
+  hardware.alsa.enable = true;
   # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix = {

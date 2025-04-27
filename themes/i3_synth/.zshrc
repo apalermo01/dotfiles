@@ -22,6 +22,8 @@ zinit light Aloxaf/fzf-tab
 # load autocompletions
 autoload -U compinit && compinit
 
+zinit cdreplay -q
+
 ###########
 # General #
 ###########
@@ -56,6 +58,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 ######################
 # Obsidian Functions #
@@ -134,6 +137,11 @@ alias notes='cd ~/Documents/git/notes'
 alias o='obsidian'
 alias ls='ls --color'
 
+alias vim='nvim'
+alias vi='nvim'
+alias nivm='nvim'
+
+
 #######################
 # Additional settings #
 #######################
@@ -153,3 +161,4 @@ wal -n -e -i /home/alex/Pictures/wallpapers/synth.jpg > /dev/null
 
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"

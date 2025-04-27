@@ -106,3 +106,5 @@ alias o obsidian
 
 
 wal -n -e -i /home/alex/Pictures/wallpapers/trees.jpg > /dev/null 
+
+eval "$(direnv hook zsh)"

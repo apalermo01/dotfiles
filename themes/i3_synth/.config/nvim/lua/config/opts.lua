@@ -60,6 +60,9 @@ local border = {
 
 vim.cmd([[let g:markdown_folding=1]])
 vim.cmd([[set nofoldenable]])
+
+vim.g.netrw_browse_split = 0
+vim.g.netrw_winsize = 25
 -- folding behavior
 
 -- add binaries installed by mason.nvim to path

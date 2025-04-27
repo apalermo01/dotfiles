@@ -106,3 +106,5 @@ alias o obsidian
 
 
 fastfetch
+
+eval "$(direnv hook zsh)"

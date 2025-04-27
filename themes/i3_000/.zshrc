@@ -22,6 +22,8 @@ zinit light Aloxaf/fzf-tab
 # load autocompletions
 autoload -U compinit && compinit
 
+zinit cdreplay -q
+
 ###########
 # General #
 ###########

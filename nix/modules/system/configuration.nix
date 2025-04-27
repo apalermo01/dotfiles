@@ -36,15 +36,17 @@
     pavucontrol
     alsa-utils
     alsa-plugins
+    pipewire-utils
+    pamixer
     direnv
     gnome-keyring
     seahorse
     zinit
   ];
 
-  environment.sessionVariables = {
-        ALSA_PLUGIN_DIR = "${pkgs.alsa-plugins}/lib/alsa-lib";
-    };
+  # environment.sessionVariables = {
+  #       ALSA_PLUGIN_DIR = "${pkgs.alsa-plugins}/lib/alsa-lib";
+  #   };
   
   programs.fish.enable = true;
   programs.zsh.enable = true;
@@ -97,17 +99,17 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # default KDE environment. Can use as a fallback 
+  # if something happens to i3 or hyprland
+  services.desktopManager.plasma6.enable = true;
+
   # x-server. Can disable if only using wayland
   services.displayManager.defaultSession = "none+i3";
   services.xserver = {
         enable = true;
         windowManager.i3.enable = true;
+        displayManager.sddm.enable = true;
     };
-
-  # default KDE environment. Can use as a fallback 
-  # if something happens to i3 or hyprland
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
 
   # enable gnome keyring
   # without this, we're getting prompted for the wifi password every time 

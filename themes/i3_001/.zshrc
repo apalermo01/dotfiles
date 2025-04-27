@@ -107,3 +107,5 @@ alias o obsidian
 
 fastfetch
 wal -n -e -i /home/alex/Pictures/wallpapers/001.png > /dev/null 
+
+eval "$(direnv hook zsh)"

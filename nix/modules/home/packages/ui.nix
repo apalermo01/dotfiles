@@ -20,7 +20,7 @@
         rofi
         i3
         feh
-        polybar
+        (polybar.override { pulseSupport = true; })
         picom
         kitty
 	    firefox

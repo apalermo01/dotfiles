@@ -36,7 +36,7 @@
     pavucontrol
     alsa-utils
     alsa-plugins
-    pipewire-utils
+    # pipewire-utils
     pamixer
     direnv
     gnome-keyring

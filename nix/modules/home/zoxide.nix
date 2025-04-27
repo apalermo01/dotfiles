@@ -6,6 +6,6 @@ let cfg = config.modules.zoxide;
 in {
     options.modules.zoxide = { enable = mkEnableOption "zoxide"; };
     config = mkIf cfg.enable {
-        enable = true;
+        programs.zoxide.enable = true;
     };
 }

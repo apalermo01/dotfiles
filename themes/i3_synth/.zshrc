@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 #########
 # zinit #
 #########
@@ -113,10 +106,10 @@ alias o obsidian
 
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-fortune | cowsay -fr
-wal -n -e -i /home/alex/Pictures/wallpapers/synth.jpg > /dev/null 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fortune | cowsay -fr
+wal -n -e -i /home/alex/Pictures/wallpapers/synth.jpg > /dev/null 
 
 eval "$(direnv hook zsh)"

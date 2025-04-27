@@ -13,6 +13,7 @@
       home.packages = with pkgs; [
         tmux
         fish
+        zsh
         neovim
         sioyek
         stow

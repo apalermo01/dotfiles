@@ -17,7 +17,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users
+zinit light Aloxaf/fzf-tab
+
 # load autocompletions
 autoload -U compinit && compinit
 

@@ -35,6 +35,7 @@
     any-nix-shell
     pavucontrol
     alsa-utils
+    alsa-plugins
     direnv
     gnome-keyring
     seahorse

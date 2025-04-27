@@ -120,11 +120,12 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  ### sound
   # Enable sound with pipewire.
   # services.pulseaudio.enable = false;
   
   # Enable sound with alsa
-  sound.enable = true;
+  sound.enable = false;
 
   services.pipewire = {
     enable = true;
@@ -134,6 +135,9 @@
     pulse.enable = true;
     jack.enable = true;
   };
+
+  hardware.pulseaudio.enable = false;
+  hardware.alsa.enable = true;
 
   security.rtkit.enable = true;
 
@@ -150,9 +154,6 @@
     shell = pkgs.zsh;
   };
     
-  hardware.pulseaudio.enable = false;
-  hardware.alsa.enable = true;
-  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix = {
     settings.auto-optimise-store = true;

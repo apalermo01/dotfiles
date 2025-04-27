@@ -206,10 +206,6 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 
 # default terminal
 bindsym $mod+Return exec kitty
 
-
-# bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
-# bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2db- unmute
-
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 2%+ unmute
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 2%- unmute
 

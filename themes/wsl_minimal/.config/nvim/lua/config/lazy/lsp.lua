@@ -54,7 +54,7 @@ return {
                 "ts_ls",
                 "jsonls",
                 "nil_ls",
-                "bash-language-server",
+                "bashls",
             } or {
                 "lua_ls",
                 "html",
@@ -66,7 +66,7 @@ return {
                 "nil_ls",
                 "lua_ls",
                 "markdown_oxide",
-                "bash-language-server",
+                "bashls",
             },
 
             handlers = {

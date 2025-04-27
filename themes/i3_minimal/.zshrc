@@ -15,7 +15,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 # General #
 ###########
 
-export MANPAGER "nvim +Man!"
+export MANPAGER="nvim +Man!"
 
 function quick_commit() {
     today=$(date "+%Y-%m-%d")
@@ -26,7 +26,7 @@ function quick_commit() {
 # Obsidian Functions #
 ######################
 
-export NOTES_PATH "/home/alex/Documents/git/notes"
+export NOTES_PATH="/home/alex/Documents/git/notes"
 
 new_tech_note() {
     if [[ "$#" -ne 1 ]]; then
@@ -97,3 +97,10 @@ alias personal bash ~/personal_docs.sh
 alias reading bash ~/reading_session.sh
 alias notes cd ~/Documents/git/notes
 alias o obsidian
+
+#######################
+# Additional settings #
+#######################
+
+
+

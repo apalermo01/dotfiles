@@ -104,3 +104,6 @@ alias o obsidian
 
 
 
+
+
+eval "$(direnv hook zsh)"

@@ -150,7 +150,7 @@
     shell = pkgs.zsh;
   };
     
-  hardware.pulseaudio.denable = false;
+  hardware.pulseaudio.enable = false;
   hardware.alsa.enable = true;
   # nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

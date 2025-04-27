@@ -97,5 +97,14 @@ alias personal bash ~/personal_docs.sh
 alias reading bash ~/reading_session.sh
 alias notes cd ~/Documents/git/notes
 alias o obsidian
+
+#######################
+# Additional settings #
+#######################
+
+
+
+
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 fortune | cowsay -fr
 wal -n -e -i /home/alex/Pictures/wallpapers/synth.jpg > /dev/null 

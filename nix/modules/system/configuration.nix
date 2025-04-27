@@ -40,7 +40,7 @@
     zinit
   ];
   
-  # programs.fish.enable = true;
+  programs.fish.enable = true;
   programs.zsh.enable = true;
   # programs.zsh.ohMyZsh.enable = true;
   programs.kdeconnect.enable = true;

@@ -44,7 +44,7 @@
 
   environment.sessionVariables = {
         ALSA_PLUGIN_DIR = "${pkgs.alsa-plugins}/lib/alsa.lib"
-    }
+    };
   
   programs.fish.enable = true;
   programs.zsh.enable = true;

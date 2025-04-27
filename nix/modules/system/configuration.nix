@@ -125,7 +125,12 @@
   # services.pulseaudio.enable = false;
   
   # Enable sound with alsa
-  sound.enable = false;
+  # sound.enable = false;
+
+  hardware.pulseaudio.enable = false;
+  # hardware.alsa.enable = true;
+
+  security.rtkit.enable = true;
 
   services.pipewire = {
     enable = true;
@@ -136,10 +141,7 @@
     jack.enable = true;
   };
 
-  hardware.pulseaudio.enable = false;
-  hardware.alsa.enable = true;
 
-  security.rtkit.enable = true;
 
   # fonts
   fonts.packages = with pkgs; [

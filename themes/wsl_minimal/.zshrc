@@ -11,6 +11,14 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+# global plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+
+# load autocompletions
+autoload -U compinit && compinit
+
 ###########
 # General #
 ###########
@@ -21,6 +29,24 @@ function quick_commit() {
     today=$(date "+%Y-%m-%d")
     git add . && git commit -m "$today"
 }
+
+# history
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dupes
+setopt hist_save_no_dupes
+setopt hist_ignore_dupes
+setopt hist_find_no_dupes
+
+# keybindings
+bindkey -v
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
 ######################
 # Obsidian Functions #

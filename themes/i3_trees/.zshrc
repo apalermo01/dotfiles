@@ -1,3 +1,5 @@
+# references:
+# https://www.youtube.com/watch?v=ud7YxC33Z3w
 #########
 # zinit #
 #########
@@ -15,7 +17,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-
+zinit light zsh-users
 # load autocompletions
 autoload -U compinit && compinit
 
@@ -38,15 +40,19 @@ HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
-setopt hist_ignore_all_dupes
-setopt hist_save_no_dupes
-setopt hist_ignore_dupes
-setopt hist_find_no_dupes
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
 # keybindings
 bindkey -v
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+
+# completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 ######################
 # Obsidian Functions #
@@ -123,6 +129,7 @@ alias personal='bash ~/personal_docs.sh'
 alias reading='bash ~/reading_session.sh'
 alias notes='cd ~/Documents/git/notes'
 alias o='obsidian'
+alias ls='ls --color'
 
 #######################
 # Additional settings #
@@ -134,3 +141,4 @@ alias o='obsidian'
 wal -n -e -i /home/alex/Pictures/wallpapers/trees.jpg > /dev/null 
 
 eval "$(direnv hook zsh)"
+eval "$(fzf --zsh)"

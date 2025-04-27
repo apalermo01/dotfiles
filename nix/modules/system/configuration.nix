@@ -22,7 +22,6 @@
     fortune
     cowsay
     pywal
-    rclone
     restic
     gnupg1
     pinentry-qt
@@ -40,7 +39,9 @@
     seahorse
   ];
   
-  programs.fish.enable = true;
+  # programs.fish.enable = true;
+  programs.zsh.enable = true;
+  programs.zsh.ohMyZsh.enable = true;
   programs.kdeconnect.enable = true;
   programs.dconf.enable = true;
 

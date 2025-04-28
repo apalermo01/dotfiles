@@ -26,6 +26,7 @@
             fortune
             cowsay
             pywal
+            nix-prefetch
       ];
     };
 }

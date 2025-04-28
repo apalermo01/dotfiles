@@ -19,6 +19,7 @@
         stow
         fastfetch
         cbonsai
+        diff-so-fancy
 
         # lsp stuff
         pyright

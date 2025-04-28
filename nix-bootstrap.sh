@@ -1,6 +1,6 @@
-#!usr/bin/env sh
+#!/usr/bin/env sh
 
-function clone_dotfiles {
+clone_dotfiles() {
     mkdir -p ~/Documents/git
     cd ~/Documents/git
     echo "cloning dotfiles repo"
@@ -15,40 +15,29 @@ function clone_dotfiles {
 
 }
 
-function init_system {
-    echo "available hosts: $(ls nix/hosts)"
+init_system() {
+    echo "available hosts:"
+    ls -1 nix/hosts
     read -p "Select host: " hostname
     if [[ ! -d $HOME/Documents/git/dotfiles/nix/hosts/$hostname ]]; then 
         echo "Host $hostname does not exist. Exiting..."
-        exit
+        exit 1
     fi
+    
+    if grep -qi microsoft /proc/version; then
+        echo "Setting up Home Manager for wsl..."
+        nix run .#homeConfigurations.wsl.activationPackage
+    else
+        echo "Installing hardware configuration..."
+        sudo cp /etc/nixos/hardware-configuration.nix ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
+        echo "copied hardware configuration to hosts directory. nix/hosts/${hostname} = "
+        cat ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
 
-    echo "Installing hardware configuration..."
-    #if [[ -f /etc/nixos/hardware-configuration.nix ]]; then 
-    sudo cp /etc/nixos/hardware-configuration.nix ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
-    echo "copied hardware configuration to hosts directory. nix/hosts/${hostname} = "
-    cat ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
-        #sudo mv /etc/nixos /etc/nixos.bak
-
-    #else 
-    #    echo "Default hardware configuration not found. It may have already been initialized."
-    #fi 
-
-    #mapfile -t used_uuids < <(grep -o 'by-uuid/[A-Fa-f0-9\-]\+' "./nix/hosts/${hostname}/hardware-configuration.nix" | sed 's/by-uuid\///')
-
-    #for uuid in "${used_uuids[@]}"; do
-    #	findmnt --output=SOURCE
-    #    if ! findmnt --output=SOURCE | grep -q "$uuid"; then
-    #        echo "❌ UUID $uuid not found on system. Hardware config likely invalid."
-    #        echo "🛑 Aborting to avoid boot failure."
-    #        exit 1
-    #    fi
-    #done
-
-    echo "✅ Hardware config validated. Press any key to continue install"
-    read -p "..." _
-    echo "Installing system..."
-    sudo nixos-rebuild switch --flake .#$hostname
+        echo "✅ Hardware config validated. Press any key to continue install"
+        read -p "..." _
+        echo "Installing system..."
+        sudo nixos-rebuild switch --flake .#$hostname
+    fi
 }
 
 read -p "This script expects an ssh key for git to be established. Continue (y/n)?" choice

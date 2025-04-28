@@ -19,8 +19,6 @@
         stow
         fastfetch
         cbonsai
-        magick
-        imagemagick
 
         # lsp stuff
         pyright

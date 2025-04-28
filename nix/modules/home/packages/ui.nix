@@ -31,6 +31,8 @@
         mailutils
         zoom-us
         obsidian
+        # magick
+        imagemagick
       ];
       # nixpkgs.config.allowUnfreePredicate = pkg:
       #       builtins.elem (pkgs.lib.getName pkg) [

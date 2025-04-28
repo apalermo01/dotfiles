@@ -147,6 +147,7 @@ alias ga='git add -p'
 alias gc='git commit -p'
 alias gb='git branch'
 alias gp='git push'
+alias gpu='git pull'
 
 #######################
 # Additional settings #

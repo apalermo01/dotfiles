@@ -59,7 +59,7 @@
       mkHome =
         system: hostname:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = pkgs;
           modules = [
             ./nix/hosts/${hostname}/user.nix
             {

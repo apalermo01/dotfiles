@@ -40,12 +40,9 @@
     gnome-keyring
     seahorse
     zinit
+    nixfmt-rfc-style
   ];
 
-  # environment.sessionVariables = {
-  #       ALSA_PLUGIN_DIR = "${pkgs.alsa-plugins}/lib/alsa-lib";
-  #   };
-  
   programs.fish.enable = true;
   programs.zsh.enable = true;
   # programs.zsh.ohMyZsh.enable = true;

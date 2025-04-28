@@ -32,6 +32,7 @@
         zoom-us
         obsidian
         # magick
+        luarocks
         imagemagick
       ];
       # nixpkgs.config.allowUnfreePredicate = pkg:

@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-fill /home/alex/Pictures/wallpapers/darker_unicat.png
+feh --bg-fill /home/apalermo/Pictures/wallpapers/darker_unicat.png

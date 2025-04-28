@@ -5,6 +5,7 @@
     imports = [
       ./packages/headless.nix
       ./packages/ui.nix
+      ./packages/home_only.nix
       ./git.nix
       ./direnv.nix
       ./zoxide.nix

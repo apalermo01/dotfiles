@@ -4,9 +4,9 @@
   with lib;
 
   let 
-    cfg = config.modules.packages.headless;
+    cfg = config.modules.packages.home_only;
   in {
-    options.modules.packages.headless = { enable = mkEnableOption "Packages installed in a home-manager only configuration"; };
+    options.modules.packages.home_only = { enable = mkEnableOption "Packages installed in a home-manager only configuration"; };
 
     # define things that are installed but not managed by home manager here
     config = mkIf cfg.enable {
@@ -25,7 +25,7 @@
             gnumake
             fortune
             cowsay
-            wal
+            pywal
       ];
     };
 }

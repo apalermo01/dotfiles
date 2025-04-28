@@ -16,6 +16,7 @@
 
         modules = {
             packages.headless.enable = true;
+            packages.home_only.enable = true;
             git.enable = true;
             direnv.enable = true;
             zoxide.enable = true;

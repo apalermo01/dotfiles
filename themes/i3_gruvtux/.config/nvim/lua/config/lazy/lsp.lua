@@ -89,6 +89,20 @@ return {
                     capabilities = capabilities
                     })
                 end,
+
+                ["nil_ls"] = function()
+                    require("lspconfig").nil_ls.setup({
+                        autostart = true,
+                        settings = {
+                            ['nil'] = {
+                                testSetting = 42,
+                                formatting = {
+                                    command = { "nixfmt" };
+                                }
+                            }
+                        }
+                    })
+                end
             }
         })
 

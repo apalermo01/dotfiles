@@ -55,14 +55,20 @@
           ];
           specialArgs = { inherit inputs; };
         };
+
       mkHome =
         system: hostname:
         home-manager.lib.homeManagerConfiguration {
-          inherit system;
-          pkgs = import nixpkgs { inherit system; };
-          username = "apalermo";
-          homeDirectory = "/home/apalermo";
-          configuration = import ./nix/hosts/${hostname}/user.nix;
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [
+            ./nix/hosts/${hostname}/user.nix
+            {
+                home = {
+                    username = "apalermo";
+                    homeDirectory = "/home/apalermo";
+                };
+            }
+          ];
           extraSpecialArgs = { inherit inputs; };
         };
 

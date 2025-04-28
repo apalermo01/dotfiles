@@ -26,7 +26,10 @@ init_system() {
     
     if grep -qi microsoft /proc/version; then
         echo "Setting up Home Manager for wsl..."
-        nix run .#homeConfigurations.wsl.activationPackage
+        nix --extra-experimental-features nix-command \
+            --extra-experimental-features flakes \
+            --show-trace \
+            run .#homeConfigurations.wsl.activationPackage 
     else
         echo "Installing hardware configuration..."
         sudo cp /etc/nixos/hardware-configuration.nix ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix

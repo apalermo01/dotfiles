@@ -8,6 +8,7 @@
       ./git.nix
       ./direnv.nix
       ./zoxide.nix
+      ./dbt.nix
     ];
 
 }

@@ -25,6 +25,7 @@
             gnumake
             fortune
             cowsay
+            wal
       ];
     };
 }

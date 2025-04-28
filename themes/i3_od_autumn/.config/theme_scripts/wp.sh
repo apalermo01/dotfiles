@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-fill /home/alex/Pictures/wallpapers/od_autumn.jpg
+feh --bg-fill /home/apalermo/Pictures/wallpapers/od_autumn.jpg

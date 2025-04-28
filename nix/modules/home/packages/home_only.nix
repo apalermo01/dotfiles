@@ -27,6 +27,7 @@
             cowsay
             pywal
             nix-prefetch
+            nix-prefetch-scripts
       ];
     };
 }

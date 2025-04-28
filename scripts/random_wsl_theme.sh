@@ -5,4 +5,4 @@ themes=($(find ./themes -maxdepth 1 -type d -name '*wsl*' -printf "%f\n"))
 
 random_theme=${themes[RANDOM % ${#themes[@]}]}
 
-bash ./switch_theme.sh $random_theme
+bash ./scripts/switch_theme.sh $random_theme

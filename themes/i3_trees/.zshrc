@@ -160,7 +160,7 @@ alias gpu='git pull'
 
 
 
-wal -n -e -i /home/alex/Pictures/wallpapers/trees.jpg > /dev/null 
+wal -n -e -i /home/apalermo/Pictures/wallpapers/trees.jpg > /dev/null 
 
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"

@@ -12,21 +12,38 @@ let
         url = "https://github.com/kitagry/bqls/releases/download/v0.4.0/bqls_linux_amd64.zip";
         sha256 = "sha256-3kt5LiNtgzTOXY6RMtmhWzv7YXuvXOgB99J9zPwlS9Q=";
   };
-  bqls = pkgs.runCommand "bqls-${version}" { 
-        src = asset; 
-        nativeBuildInputs = [ pkgs.unzip pkgs.patchelf ];
-        buildInputs = [ pkgs.glibc pkgs.gcc ];
-    } ''
-        mkdir -p $out/bin
-        unzip $src -d tmp
-        cp tmp/bqls $out/bin
+  bqls = pkgs.stdenv.mkDerivation rec {
+        name              = "bqls-${version}";
+        src               = asset;
+        nativeBuildInputs = [ pkgs.unzip pkgs.makeWrapper ];
+        buildInputs       = [ pkgs.glibc pkgs.libgcc ];
 
-        patchelf \
-            --set-interpreter ${pkgs.glibc.out}/lib/ld-linux-x86-64.so.2 \
-            --set-rpath       ${pkgs.glibc.out}/lib:${pkgs.gcc.out}/lib \
-            $out/bin/bqls
-        chmod +x $out/bin/bqls
-    '';
+        unpackPhase       = "true";
+
+        installPhase = ''
+            mkdir -p $out/bin
+            unzip $src bqls -d $out/bin
+            chmod +x $out/bin/bqls
+
+            wrapProgram $out/bin/bqls \
+                --set LD_LIBRARY_PATH "${pkgs.libgcc}/lib"
+        '';
+  };
+  # bqls = pkgs.runCommand "bqls-${version}" { 
+  #       src = asset; 
+  #       nativeBuildInputs = [ pkgs.unzip pkgs.gcc-libs pkgs.glibc ];
+  #       buildInputs = [ pkgs.glibc pkgs.gcc-libs ];
+  #   } ''
+  #       mkdir -p $out/bin
+  #       unzip $src -d tmp
+  #       mv tmp/bqls $out/bin
+  #       wrapProgram $out/bin/bqls --set LD_LIBRARY_PATH "${pkgs.gcc-libs}/lib" 
+  #       # patchelf \
+  #       #     --set-interpreter ${pkgs.glibc.out}/lib/ld-linux-x86-64.so.2 \
+  #       #     --set-rpath       ${pkgs.glibc.out}/lib:${pkgs.libstdcxx.out}/lib \
+  #       #     $out/bin/bqls
+  #       chmod +x $out/bin/bqls
+  #   '';
   # raw = pkgs.buildGoModule {
   #   pname = "bqls";
   #   version = version;

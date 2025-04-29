@@ -67,7 +67,6 @@ return {
                 "jsonls",
                 "nil_ls",
                 "bashls",
-                "bqls"
             } or {
                 "lua_ls",
                 "html",
@@ -79,7 +78,6 @@ return {
                 "nil_ls",
                 "markdown_oxide",
                 "bashls",
-                "bqls"
             },
 
             handlers = {

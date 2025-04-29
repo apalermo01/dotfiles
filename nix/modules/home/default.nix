@@ -9,7 +9,6 @@
       ./git.nix
       ./direnv.nix
       ./zoxide.nix
-      ./bqls.nix
     ];
 
 }

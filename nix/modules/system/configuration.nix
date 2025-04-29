@@ -40,7 +40,6 @@
     gnome-keyring
     seahorse
     zinit
-    nixfmt-rfc-style
     lua
     luajitPackages.luarocks_bootstrap
   ];

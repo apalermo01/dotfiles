@@ -5,6 +5,11 @@
 
   let 
     cfg = config.modules.packages.headless;
+    python = pkgs.python311.withPackages (ps: [
+        ps.black
+        ps.isort
+        ps.sqlfmt
+    ]);
   in {
     options.modules.packages.headless = { enable = mkEnableOption "Headless Packages"; };
 
@@ -20,13 +25,22 @@
         fastfetch
         cbonsai
         diff-so-fancy
+        fzf
 
-        # lsp stuff
+        # lsp s
         pyright
         nil
         lua-language-server
         markdown-oxide
-        fzf
+
+        # formatters
+        stylua
+        nixfmt-rfc-style
+        python
+        shfmt
+        mdformat
+        yamlfix
+        
       ];
     };
 }

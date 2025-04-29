@@ -27,7 +27,7 @@
             cowsay
             pywal
             dbt
-            dbt-bigquery
+            # dbt-bigquery
       ];
     };
 }

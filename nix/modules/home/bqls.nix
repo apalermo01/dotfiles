@@ -8,46 +8,64 @@
 let
   cfg = config.modules.bqls;
   version = "0.4.0";
-  raw = pkgs.buildGoModule {
-    pname = "bqls";
-    version = version;
-    src = pkgs.fetchFromGitHub {
-      owner = "kitagry";
-      repo = "bqls";
-      rev = "v${version}";
-      hash = "sha256-6BH5xxMSQ+YYZ7mCBXqaF7IaZIOcvs1jL5oYxM0js3k=";
-    };
-    vendorHash = "sha256-HgKdyYWKkVlDIhKbXF/H6cDaTXAUA6ROAHkuzTLkHoc=";
-    # subPackages = [ "." ];
+  asset = pkgs.fetchurl {
+        url = "https://github.com/kitagry/bqls/releases/download/v0.4.0/bqls_linux_amd64.zip";
+        sha256 = "sha256-3kt5LiNtgzTOXY6RMtmhWzv7YXuvXOgB99J9zPwlS9Q=";
   };
+  bqls = pkgs.runCommand "bqls-${version}" { 
+        src = asset; 
+        nativeBuildInputs = [ pkgs.unzip ];
+    } ''
+        mkdir -p $out/bin
+        unzip $src -d tmp
+        cp tmp/bqls $out/bin
+        chmod +x $out/bin/bqls
+    '';
+  # raw = pkgs.buildGoModule {
+  #   pname = "bqls";
+  #   version = version;
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "kitagry";
+  #     repo = "bqls";
+  #     rev = "v${version}";
+  #     hash = "sha256-6BH5xxMSQ+YYZ7mCBXqaF7IaZIOcvs1jL5oYxM0js3k=";
+  #   };
+  #   vendorHash = "sha256-HgKdyYWKkVlDIhKbXF/H6cDaTXAUA6ROAHkuzTLkHoc=";
+  #   # subPackages = [ "." ];
+  # };
 
-  bqlsPkg = raw.overrideAttrs (old: rec {
-        nativeBuildInputs = old.nativeBuildInputs ++ [
-            pkgs.clang
-            pkgs.pkg-config
-            pkgs.icu4c
-        ];
-
-        CGO_ENABLED     = "1";
-        CXX             = "${pkgs.clang}/bin/clang++";
-        CGO_CSSFLAGS    = "-std=c++17 -I${pkgs.icu4c.dev}/include";
-        CGO_LDFLAGS     = "-L${pkgs.icu4c.out}/lib -licuuc -licudata";
-
-        NIX_BUILD_CORES = "1";
-    });
+  # bqlsPkg = raw.overrideAttrs (old: rec {
+  #       nativeBuildInputs = old.nativeBuildInputs ++ [
+  #           pkgs.clang
+  #           pkgs.pkg-config
+  #           pkgs.icu76
+  #       ];
+  #       buildPhase = ''
+  #           export CGO_ENABLED=1
+  #           export CXX=${pkgs.clang}/bin/clang++
+  #           export CGO_CXXFLAGS="-std=c++17 -I${pkgs.icu76.dev}/include"
+  #           export CGO_LDFLAGS="-L${pkgs.icu76.out}/lib -licuuc -licudata"
+  #           ${old.buildPhase}
+  #       '';
+  #
+  #       NIX_BUILD_CORES = "1";
+  #   });
 in
 {
+  # home.packages = [ bqls ];
+
   options.modules.bqls = {
     enable = lib.mkEnableOption "BigQuery Language Server (bqls)";
     package = lib.mkOption {
       type = lib.types.package;
-      default = bqlsPkg;
+      default = bqls;
     };
   };
 
   config = lib.mkIf cfg.enable {
     home.packages = [ cfg.package ];
   };
+
     # programs.go.enable = true;
     #
     # home.activation.installBqls = lib.hm.dag.entryAfter [ "installPackages" ] ''

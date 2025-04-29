@@ -26,8 +26,8 @@
             fortune
             cowsay
             pywal
-            nix-prefetch
-            nix-prefetch-scripts
+            dbt
+            dbt-bigquery
       ];
     };
 }

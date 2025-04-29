@@ -154,7 +154,6 @@ alias gp='git push'
 alias gpu='git pull'
 
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
-    echo "sourcing work cmds"
     source ~/work_cmds.sh
 fi
 #######################

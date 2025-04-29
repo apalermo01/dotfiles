@@ -11,23 +11,31 @@
     # define things that are installed but not managed by home manager here
     config = mkIf cfg.enable {
       home.packages = with pkgs; [
+            # packages / utilities
             neovim
-            nodejs
-            gcc
-            cargo
             btop
             ncdu
             direnv
             ripgrep
             zinit
-            nixfmt-rfc-style
+            dbt
             killall
-            gnumake
             fortune
             cowsay
             pywal
-            dbt
-            # dbt-bigquery
+            
+            # language utils
+            nixfmt-rfc-style
+
+            # compilers / builders
+            gcc
+            cargo
+            gnumake
+
+            # language runtimes
+            nodejs
+            go
+
       ];
     };
 }

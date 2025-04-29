@@ -63,21 +63,23 @@ return {
                 "cssls",
                 "clangd",
                 "pyright",
-                "ts_ls",
+                "tsserver",
                 "jsonls",
                 "nil_ls",
                 "bashls",
+                "bqls"
             } or {
                 "lua_ls",
                 "html",
                 "cssls",
                 "clangd",
                 "pyright",
-                "ts_ls",
+                "tsserver",
                 "jsonls",
                 "nil_ls",
                 "markdown_oxide",
                 "bashls",
+                "bqls"
             },
 
             handlers = {
@@ -118,7 +120,7 @@ return {
                             ['nil'] = {
                                 testSetting = 42,
                                 formatting = {
-                                    command = { "nixfmt" },
+                                    command = { "nixfmt-rfc-style" },
                                 }
                             }
                         }
@@ -194,5 +196,19 @@ return {
         map("n", "<leader>fm", function()
             require("conform").format({ lsp_fallback = true })
         end, { desc = "general format file" })
+
+        -- bigquery
+        local proj_file = vim.fn.expand("$HOME/.bq_project")
+        if vim.fn.filereadable(proj_file) ~= 0 then
+            local project_id = vim.fn.trim(vim.fn.readfile(proj_file)[1] or "")
+            if project_id ~= "" then
+                require("lspconfig").bqls.setup {
+                    settings = {
+                        project_id = project_id,
+                    },
+                }
+            end
+
+        end
     end
 }

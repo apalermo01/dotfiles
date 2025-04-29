@@ -1,11 +1,11 @@
 local function is_nixos()
-  local os_release = vim.fn.readfile("/etc/os-release")
-  for _, line in ipairs(os_release) do
-    if line:match("^ID=nixos") then
-      return true
+    local os_release = vim.fn.readfile("/etc/os-release")
+    for _, line in ipairs(os_release) do
+        if line:match("^ID=nixos") then
+            return true
+        end
     end
-  end
-  return false
+    return false
 end
 
 return {
@@ -31,6 +31,18 @@ return {
 
         require("conform").setup({
             formatters_by_ft = {
+                lua = { "stylua" },
+                python = { "isort", "black" },
+                nix = { "nixfmt" },
+                sql = { "sqlfmt" },
+                bash = { "shfmt" },
+                zsh = { "shfmt" },
+                sh = { "shfmt" },
+                md = { "mdformat" },
+                markdown = { "mdformat" },
+                yaml = { "yamlfix" },
+                yml = { "yamlfix" },
+
             }
         })
 
@@ -64,7 +76,6 @@ return {
                 "ts_ls",
                 "jsonls",
                 "nil_ls",
-                "lua_ls",
                 "markdown_oxide",
                 "bashls",
             },
@@ -78,15 +89,25 @@ return {
 
                 ["lua_ls"] = function()
                     require("lspconfig").lua_ls.setup({
-                    cmd = nixos and { "lua-language-server" } or nil,
-                    capabilities = capabilities
+                        cmd = nixos and { "lua-language-server" } or nil,
+                        capabilities = capabilities
                     })
                 end,
 
                 ["markdown_oxide"] = function()
                     require("lspconfig").markdown_oxide.setup({
-                    cmd = nixos and { "markdown-oxide" } or nil,
-                    capabilities = capabilities
+                        cmd = nixos and { "markdown-oxide" } or nil,
+                        capabilities = vim.tbl_deep_extend(
+                            'force',
+                            capabilities,
+                            {
+                                workspace = {
+                                    didChangeWatchedFiles = {
+                                        dynamicRegistration = true,
+                                    }
+                                }
+                            }
+                        )
                     })
                 end,
 
@@ -97,7 +118,7 @@ return {
                             ['nil'] = {
                                 testSetting = 42,
                                 formatting = {
-                                    command = { "nixfmt" };
+                                    command = { "nixfmt" },
                                 }
                             }
                         }
@@ -173,20 +194,5 @@ return {
         map("n", "<leader>fm", function()
             require("conform").format({ lsp_fallback = true })
         end, { desc = "general format file" })
-
-        -- markdown oxide
-        require('lspconfig').markdown_oxide.setup({
-            capabilities = vim.tbl_deep_extend(
-                'force',
-                capabilities,
-                {
-                    workspace = {
-                        didChangeWatchedFiles = {
-                            dynamicRegistration = true,
-                        }
-                    }
-                }
-            )
-        })
     end
 }

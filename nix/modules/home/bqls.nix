@@ -14,11 +14,17 @@ let
   };
   bqls = pkgs.runCommand "bqls-${version}" { 
         src = asset; 
-        nativeBuildInputs = [ pkgs.unzip ];
+        nativeBuildInputs = [ pkgs.unzip pkgs.patchelf ];
+        buildInputs = [ pkgs.glibc pkgs.gcc ];
     } ''
         mkdir -p $out/bin
         unzip $src -d tmp
         cp tmp/bqls $out/bin
+
+        patchelf \
+            --set-interpreter ${pkgs.glibc.out}/lib/ld-linux-x86-64.so.2 \
+            --set-rpath       ${pkgs.glibc.out}/lib:${pkgs.gcc.out}/lib \
+            $out/bin/bqls
         chmod +x $out/bin/bqls
     '';
   # raw = pkgs.buildGoModule {

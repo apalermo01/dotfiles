@@ -75,11 +75,13 @@
     in
     {
       nixosConfigurations = {
-        vm = mkSystem pkgs "x86_64-linux" "vm";
-        laptop = mkSystem pkgs "x86_64-linux" "laptop";
+        headless = mkSystem pkgs "x86_64-linux" "headless";
+        desktop = mkSystem pkgs "x86_64-linux" "desktop";
       };
       homeConfigurations = {
         wsl = mkHome system "wsl";
+        hmHeadless = mkHome system "hmHeadless";
+        hmDesktop = mkHome system "hmDesktop";
       };
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [

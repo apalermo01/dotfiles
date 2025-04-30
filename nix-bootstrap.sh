@@ -1,85 +1,106 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+confirm() { read -r -p "$1 [y/n]: " ans; [[ $ans =~ ^[Yy]$ ]]; }
+
+install_nix() {
+    local init_system install_multi
+
+    init_system=$(ps --no-headers -o comm 1)
+
+
+    if [[ $init_system == "systemd" ]]; then
+        read -r -p "Install nix for single user [s] or multi-user [m]? " install_multi
+    else
+        echo "Systemd not detected, defaulting to a single user install"
+        install_multi=s
+    fi
+
+    if [[ "$install_multi" == "s" ]]; then
+        sh <(curl -L https://nixos.org/nix/install) --no-daemon
+    elif [[ "$install_multi" == "m" ]]; then
+        sh <(curl -L https://nixos.org/nix/install) --daemon
+    else
+        echo "invalid option $install_multi"
+        exit 1
+    fi
+}
 
 clone_dotfiles() {
-    mkdir -p ~/Documents/git
-    cd ~/Documents/git
-    echo "cloning dotfiles repo"
-    nix-shell -p git --command "
-        git clone git@github.com:apalermo01/dotfiles
-    "
-    cd dotfiles
-    nix-shell -p git --command "
-        git submodule update --init
-    "
+    git_root="$HOME/Documents/git"
+    mkdir -p "$git_root"
+    
+    if command -v nix-shell >/dev/null 2>&1; then
+        nix-shell -p git --command "
+            cd $git_root/dotfiles && git clone git@github.com:apalermo01/dotfiles $git_root/dotfiles && git submodule update --init
+        "
+    else
+        ( git clone git@github.com:apalermo01/dotfiles "$git_root/dotfiles"
+          cd "$git_root/dotfiles" && git submodule update --init )
+    fi
+
     echo "Dotfiles repo has been cloned and installed."
 
 }
 
 init_system() {
-    echo "available hosts:"
-    ls -1 nix/hosts
-    read -p "Select host: " hostname
-    if [[ ! -d $HOME/Documents/git/dotfiles/nix/hosts/$hostname ]]; then 
-        echo "Host $hostname does not exist. Exiting..."
-        exit 1
-    fi
-    
-    if grep -qi microsoft /proc/version; then
-        echo "Setting up Home Manager for wsl..."
-        nix --extra-experimental-features nix-command \
-            --extra-experimental-features flakes \
-            --show-trace \
-            run .#homeConfigurations.wsl.activationPackage 
-    else
-        echo "Installing hardware configuration..."
-        sudo cp /etc/nixos/hardware-configuration.nix ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
-        echo "copied hardware configuration to hosts directory. nix/hosts/${hostname} = "
-        cat ~/Documents/git/dotfiles/nix/hosts/$hostname/hardware-configuration.nix
+    local hostname os_id profile
 
-        echo "✅ Hardware config validated. Press any key to continue install"
-        read -p "..." _
-        echo "Installing system..."
-        sudo nixos-rebuild switch --flake .#$hostname
+    os_id=$(grep -E '^ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
+    
+    if [[ "$os_id" == nixos ]]; then
+        echo "🖥  NixOS detected."
+        echo "Available NixOS hosts:  headless  desktop"
+        read -r -p "Select host to switch to: " hostname
+
+        if [[ ! -d "$HOME/Documents/git/dotfiles/nix/hosts/$hostname" ]]; then
+            echo "Host '$hostname' does not exist.  Aborting."; exit 1
+        fi
+
+        echo "Copying current hardware-configuration.nix into repo…"
+        sudo cp /etc/nixos/hardware-configuration.nix \
+            "$HOME/Documents/git/dotfiles/nix/hosts/$hostname/"
+
+        echo "Rebuilding system for '$hostname'…"
+        sudo nixos-rebuild switch --flake ".#$hostname"
+        return
     fi
+
+    # auto-detect WSL
+    if grep -qi microsoft /proc/version; then
+        profile=wsl
+        echo "🐧  WSL environment detected – using homeConfigurations.$profile"
+    else
+        echo "Available Home-Manager profiles:  hmHeadless  hmDesktop"
+        read -r -p "Select profile: " hm_profile
+        profile=$hm_profile
+    fi
+
+    if [[ ! -d "$HOME/Documents/git/dotfiles/nix/hosts/$profile" ]]; then
+        echo "Profile '$profile' does not exist.  Aborting."; exit 1
+    fi
+
+    echo "Activating Home-Manager profile '$profile'…"
+    nix --extra-experimental-features nix-command \
+        --extra-experimental-features flakes \
+        run ".#homeConfigurations.${profile}.activationPackage"
 }
 
-read -p "This script expects an ssh key for git to be established. Continue (y/n)?" choice
-case "$choice" in 
-    y|Y) echo "Continuing..." ;;
-    *) echo "exiting" 
-       exit;;
-esac
-
-if [[ ! -d ~/Documents/git/dotfiles ]]; then
-    clone_dotfiles
+if ! command -v nix >/dev/null >2&1; then
+    if confirm "Nix not found. Install?"; then install_nix; fi
 fi
 
-read -p "Init system (y/n)?" choice
-case "$choice" in 
-    y|Y) init_system ;;
-    *) echo "continuing";;
-esac
+confirm "Is the SSH key for github set up and agent loaded?" || exit 0
 
-read -p "Install restic backup system (y/n)?" choice
-case "$choice" in 
-    y|Y) bash ./scripts/install_backup.sh ;;
-    *) echo "continuing";;
-esac
+[[ -d $HOME/Documents/git/dotfiles ]] || clone_dotfiles
 
-read -p "Install theme builder (y/n)?" choice
-case "$choice" in 
-    y|Y) bash ./scripts/install_theme_builder.sh ;;
-    *) echo "continuing";;
-esac
-
-read -p "Build themes (y/n)?" choice
-case "$choice" in 
-    y|Y) 
-        nix-shell --command "cd theme-builder && bash migrate_theme_to_dotfiles.sh all"
-        cd ~/Documents/git/dotfiles/
-        git checkout main
-        git merge dev;;
-    *) echo "continuing";;
-esac
+confirm "Run host initialization? (this is for both home manager and nixos)" && init_system
+confirm "Install restic backup?" && bash ./scripts/install_backup.sh
+confirm "Install theme builder?" && bash ./scripts/install_theme_builder.sh
+if confirm "Build themes now?"; then
+    ( cd "$HOME/Documents/git/dotfiles/theme-builder" && \
+        nix-shell --command "bash migrate_theme_to_dotfiles.sh all" )
+fi
 
 echo "System fully initialized"

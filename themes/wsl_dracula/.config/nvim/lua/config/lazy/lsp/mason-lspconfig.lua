@@ -32,7 +32,7 @@ return {
 
 		handlers = {
 			function(server_name)
-				require("default_configs.nvim.lua.config.lazy.lsp.lsp-base")[server_name].setup({
+				require("lspconfig")[server_name].setup({
 					capabilities = capabilities,
 				})
 			end,

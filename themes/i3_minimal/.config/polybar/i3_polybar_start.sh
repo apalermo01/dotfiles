@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/env sh
 polybar-msg cmd quit
 killall -q polybar 
 

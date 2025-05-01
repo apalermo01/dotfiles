@@ -13,7 +13,7 @@ return {
 		heading = {
 			enabled = true,
 			width = "block",
-			border = false,
+			border = true,
 		},
 		checkbox = {
 			custom = {

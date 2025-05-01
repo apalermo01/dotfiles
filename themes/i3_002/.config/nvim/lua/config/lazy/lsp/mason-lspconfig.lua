@@ -32,20 +32,20 @@ return {
 
 		handlers = {
 			function(server_name)
-				require("default_configs.nvim.lua.config.lazy.lsp.lsp-base")[server_name].setup({
+				require("lspconfig")[server_name].setup({
 					capabilities = capabilities,
 				})
 			end,
 
 			["lua_ls"] = function()
-				require("default_configs.nvim.lua.config.lazy.lsp.lsp-base").lua_ls.setup({
+				require("lspconfig").lua_ls.setup({
 					cmd = nixos and { "lua-language-server" } or nil,
 					capabilities = capabilities,
 				})
 			end,
 
 			["markdown_oxide"] = function()
-				require("default_configs.nvim.lua.config.lazy.lsp.lsp-base").markdown_oxide.setup({
+				require("lspconfig").markdown_oxide.setup({
 					cmd = nixos and { "markdown-oxide" } or nil,
 					capabilities = vim.tbl_deep_extend("force", capabilities, {
 						workspace = {
@@ -54,11 +54,26 @@ return {
 							},
 						},
 					}),
+	                root_dir = function(fname)
+	                    local paths = {
+	                    	"0-technical-notes",
+	                    	"1-notes",
+	                    }
+	                    for _, sub in ipairs(paths) do
+	                    	local full = OBSIDIAN_NOTES_DIR .. "/" .. sub
+	                    	if fname:find(full, 1, true) then
+	                    		return full
+	                    	end
+	                    end
+	                    return vim.fn.getcwd()
+
+
+	                end,
 				})
 			end,
 
 			["nil_ls"] = function()
-				require("default_configs.nvim.lua.config.lazy.lsp.lsp-base").nil_ls.setup({
+				require("lspconfig").nil_ls.setup({
 					autostart = true,
 					settings = {
 						["nil"] = {

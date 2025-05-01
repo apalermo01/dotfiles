@@ -128,7 +128,7 @@ local function get_vault_root(fname)
 	return vim.fn.getcwd()
 end
 
-require("lspconfig").markdown_oxide.setup({
+require("default_configs.nvim.lua.config.lazy.lsp.lsp-base").markdown_oxide.setup({
 	capabilities = capabilities,
 	root_dir = function(fname)
 		return get_vault_root(fname)

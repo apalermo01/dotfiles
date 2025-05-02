@@ -17,6 +17,7 @@ return {
 			"jsonls",
 			"nil_ls",
 			"bashls",
+            "yamlls",
 		} or {
 			"lua_ls",
 			"html",
@@ -28,6 +29,7 @@ return {
 			"nil_ls",
 			"markdown_oxide",
 			"bashls",
+            "yamlls",
 		},
 
 		handlers = {

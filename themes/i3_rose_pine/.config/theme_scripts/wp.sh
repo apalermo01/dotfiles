@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-fill /home/apalermo/Pictures/wallpapers/leafy.png
+feh --bg-fill /home/alex/Pictures/wallpapers/leafy.png

@@ -9,6 +9,7 @@
       ./git.nix
       ./direnv.nix
       ./zoxide.nix
+      ./datagrip.nix
     ];
 
 }

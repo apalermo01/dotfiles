@@ -6,7 +6,7 @@
         ../../modules/home/default.nix
     ];
     
-    config = {
+    # config = {
         programs.direnv.enable = true;
         programs.direnv.nix-direnv.enable = true;
 
@@ -20,9 +20,10 @@
             git.enable = true;
             direnv.enable = true;
             zoxide.enable = true;
+            datagrip.enable = true;
 
         };
     
-    };
+    # };
 
 }

@@ -30,6 +30,7 @@
             builtins.elem (lib.getName pkg) [
               "obsidian"
               "zoom"
+              "datagrip"
             ];
         };
       };

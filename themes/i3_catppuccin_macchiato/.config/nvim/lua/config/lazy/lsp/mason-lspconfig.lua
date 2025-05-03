@@ -37,12 +37,12 @@ return {
 				})
 			end,
 
-			-- ["lua_ls"] = function()
-			-- 	require("lspconfig").lua_ls.setup({
-			-- 		cmd = nixos and { "lua-language-server" } or nil,
-			-- 		capabilities = capabilities,
-			-- 	})
-			-- end,
+			["lua_ls"] = function()
+				require("lspconfig").lua_ls.setup({
+					cmd = nixos and { "lua-language-server" } or nil,
+					capabilities = capabilities,
+				})
+			end,
 
 			["markdown_oxide"] = function()
 				require("lspconfig").markdown_oxide.setup({

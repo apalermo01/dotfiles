@@ -8,7 +8,7 @@ return {
 
 		automatic_installation = not nixos,
 		ensure_installed = nixos and {
-			"lua_ls",
+			-- "lua_ls",
 			"html",
 			"cssls",
 			"clangd",
@@ -18,7 +18,7 @@ return {
 			"nil_ls",
 			"bashls",
 		} or {
-			"lua_ls",
+			-- "lua_ls",
 			"html",
 			"cssls",
 			"clangd",
@@ -37,12 +37,12 @@ return {
 				})
 			end,
 
-			["lua_ls"] = function()
-				require("lspconfig").lua_ls.setup({
-					cmd = nixos and { "lua-language-server" } or nil,
-					capabilities = capabilities,
-				})
-			end,
+			-- ["lua_ls"] = function()
+			-- 	require("lspconfig").lua_ls.setup({
+			-- 		cmd = nixos and { "lua-language-server" } or nil,
+			-- 		capabilities = capabilities,
+			-- 	})
+			-- end,
 
 			["markdown_oxide"] = function()
 				require("lspconfig").markdown_oxide.setup({

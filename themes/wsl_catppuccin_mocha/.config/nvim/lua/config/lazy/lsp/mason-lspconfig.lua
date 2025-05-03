@@ -8,7 +8,7 @@ return {
 
 		automatic_installation = not nixos,
 		ensure_installed = nixos and {
-			"lua_ls",
+			-- "lua_ls",
 			"html",
 			"cssls",
 			"clangd",
@@ -18,7 +18,7 @@ return {
 			"nil_ls",
 			"bashls",
 		} or {
-			"lua_ls",
+			-- "lua_ls",
 			"html",
 			"cssls",
 			"clangd",

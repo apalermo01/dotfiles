@@ -41,6 +41,7 @@
     seahorse
     zinit
     lua
+    lua-language-server
     luajitPackages.luarocks_bootstrap
   ];
 

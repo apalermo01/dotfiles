@@ -1,3 +1,3 @@
 return {
-    -- "windwp/nvim-projectconfig",
+    "windwp/nvim-projectconfig",
 }

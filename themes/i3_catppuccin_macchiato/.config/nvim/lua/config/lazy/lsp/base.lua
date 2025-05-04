@@ -16,7 +16,7 @@ autocmd('LspAttach', {
         map("n", "<leader>lws", function() vim.lsp.buf.workspace_symbol() end,
             { buffer = buf, desc = "lsp: show workspace symbols" })
         -- map("n", "<leader>ld", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
-        map("n", "<leader>lof", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
+        -- map("n", "<leader>lof", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
         map("n", "<leader>lca", function() vim.lsp.buf.code_action() end, opts)
         map("n", "<leader>lrr", function() vim.lsp.buf.references() end, opts)
         map("n", "<leader>lrn", function() vim.lsp.buf.rename() end, opts)

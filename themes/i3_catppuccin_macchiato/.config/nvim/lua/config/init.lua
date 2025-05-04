@@ -41,7 +41,7 @@ autocmd("LspAttach", {
 
 		-- map("n", "<leader>ld", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
 		-- map("n", "<leader>lof", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
-		--
+        --
 		map("n", "<leader>lca", function()
 			vim.lsp.buf.code_action()
 		end, opts)
@@ -114,6 +114,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		end
 	end,
 })
+
 
 -- trouble: only open when there's something that will crash the program
 vim.api.nvim_create_autocmd("DiagnosticChanged", {

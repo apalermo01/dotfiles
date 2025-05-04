@@ -40,8 +40,8 @@ autocmd("LspAttach", {
 		end, { buffer = buf, desc = "lsp: show workspace symbols" })
 
 		-- map("n", "<leader>ld", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
-		-- map("n", "<leader>lof", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
-        --
+		map("n", "<leader>lof", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
+
 		map("n", "<leader>lca", function()
 			vim.lsp.buf.code_action()
 		end, opts)
@@ -52,8 +52,7 @@ autocmd("LspAttach", {
 			vim.lsp.buf.rename()
 		end, opts)
 
-		if client.supports_method("textDocument/signatureHelp") then
-			map("n", "<C-s>", function()
+		if client:supports_method('textDocument/signatureHelp', e.buf) then map("n", "<C-s>", function()
 				vim.lsp.buf.signature_help()
 			end, opts)
 		end
@@ -118,7 +117,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("DiagnosticChanged", {
 	callback = function(args)
 		local bufnr = args.buf
-		local error = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.ERROR })
+		local errors = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.ERROR })
 		if errors ~= nil and #errors > 0 then
 			require("trouble").open({
 				mode = "diagnostics",

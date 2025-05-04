@@ -3,7 +3,7 @@
 return {
     "j-hui/fidget.nvim",
     opts = {
-        notifications = {
+        notification = {
             override_vim_notify = true
         }
     }

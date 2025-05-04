@@ -133,7 +133,7 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
 })
 
 -- trouble: close when closing buffer
-vim.api.nvim_create_autocmd("BufWipeout", {
+vim.api.nvim_create_autocmd("BufDelete", {
 	callback = function(args)
 		local trouble = require("trouble")
 		if trouble.is_open() then

@@ -84,7 +84,7 @@ autocmd("LspAttach", {
 			end, opts)
 		end
 
-        require("fidget").notify("lsp attached: " .. e.event)
+		require("fidget").notify(client.name .. " attached to buffer")
 	end,
 })
 

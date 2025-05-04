@@ -1,5 +1,6 @@
 -- UI
 
 return {
-    "j-hui/fidget.nvim"
+    "j-hui/fidget.nvim",
+    lazy = false
 }

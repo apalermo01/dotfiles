@@ -1,6 +1,12 @@
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
-{  
+{
 
   # system packages
   environment.systemPackages = with pkgs; [
@@ -52,25 +58,28 @@
   programs.dconf.enable = true;
 
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc.lib
-    zlib
-  ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      zlib
+    ];
+  };
 
   programs.gnupg.agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-qt;
     enableSSHSupport = true;
   };
-  
+
   # fixes command-not-found error
   programs.command-not-found.enable = false;
   programs.nix-index = {
-        enable = true;
-        enableFishIntegration = true;
-        enableBashIntegration = true;
-        enableZshIntegration = true;
-    };
+    enable = true;
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
 
   # bootloader
   boot.loader.systemd-boot.enable = true;
@@ -96,20 +105,20 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # default KDE environment. Can use as a fallback 
+  # default KDE environment. Can use as a fallback
   # if something happens to i3 or hyprland
   services.desktopManager.plasma6.enable = true;
 
   # x-server. Can disable if only using wayland
   services.displayManager.defaultSession = "none+i3";
   services.xserver = {
-        enable = true;
-        windowManager.i3.enable = true;
-        displayManager.sddm.enable = true;
-    };
+    enable = true;
+    windowManager.i3.enable = true;
+    displayManager.sddm.enable = true;
+  };
 
   # enable gnome keyring
-  # without this, we're getting prompted for the wifi password every time 
+  # without this, we're getting prompted for the wifi password every time
   # we reboot into i3
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
@@ -127,7 +136,7 @@
   ### sound
   # Enable sound with pipewire.
   # services.pulseaudio.enable = false;
-  
+
   # Enable sound with alsa
   # sound.enable = false;
 
@@ -145,8 +154,6 @@
     jack.enable = true;
   };
 
-
-
   # fonts
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
@@ -156,26 +163,27 @@
   # default users
   users.users.alex = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     shell = pkgs.zsh;
   };
-    
 
   nix = {
     settings.auto-optimise-store = true;
     settings.allowed-users = [ "alex" ];
     gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
     };
     extraOptions = ''
-        experimental-features = nix-command flakes
-        keep-outputs = true
-        keep-derivations = true
+      experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
     '';
   };
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

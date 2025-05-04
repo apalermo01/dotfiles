@@ -49,6 +49,7 @@
     lua
     lua-language-server
     luajitPackages.luarocks_bootstrap
+    libsForQt5.xp-pen-deco-01-v2-driver
   ];
 
   programs.fish.enable = true;

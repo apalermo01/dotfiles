@@ -31,6 +31,7 @@
               "obsidian"
               "zoom"
               "datagrip"
+              "xp-pen-deco-01-v2-driver"
             ];
         };
       };

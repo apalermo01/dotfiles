@@ -52,7 +52,7 @@ autocmd("LspAttach", {
 			vim.lsp.buf.rename()
 		end, opts)
 
-		if client.supports_method("textDocument/signatureHelp") then
+		if client:supports_method("textDocument/signatureHelp") then
 			map("n", "<C-s>", function()
 				vim.lsp.buf.signature_help()
 			end, opts)
@@ -83,6 +83,8 @@ autocmd("LspAttach", {
 				vim.lsp.buf.references()
 			end, opts)
 		end
+
+        require("fidget").notify("lsp attached", vim.log.levels.INFO)
 	end,
 })
 
@@ -118,7 +120,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("DiagnosticChanged", {
 	callback = function(args)
 		local bufnr = args.buf
-		local error = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.ERROR })
+		local errors = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.ERROR })
 		if errors ~= nil and #errors > 0 then
 			require("trouble").open({
 				mode = "diagnostics",

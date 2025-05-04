@@ -84,7 +84,7 @@ autocmd("LspAttach", {
 			end, opts)
 		end
 
-        require("fidget").notify("lsp attached", vim.log.levels.INFO)
+        require("fidget").notify("lsp attached: " .. e.event)
 	end,
 })
 

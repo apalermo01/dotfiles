@@ -8,6 +8,7 @@ return {
 
 		automatic_installation = not IS_NIXOS,
 		ensure_installed = IS_NIXOS and {
+            "markdown_oxide",
 			"html",
 			"cssls",
 			"clangd",
@@ -38,14 +39,14 @@ return {
 
 			["lua_ls"] = function()
 				require("lspconfig").lua_ls.setup({
-					cmd = nixos and { "lua-language-server" } or nil,
+					cmd = IS_NIXOS and { "lua-language-server" } or nil,
 					capabilities = capabilities,
 				})
 			end,
 
 			["markdown_oxide"] = function()
 				require("lspconfig").markdown_oxide.setup({
-					cmd = nixos and { "markdown-oxide" } or nil,
+					cmd = IS_NIXOS and { "markdown-oxide" } or nil,
 					capabilities = vim.tbl_deep_extend("force", capabilities, {
 						workspace = {
 							didChangeWatchedFiles = {
@@ -55,11 +56,11 @@ return {
 					}),
 	                root_dir = function(fname)
 	                    local paths = {
-	                    	"0-technical-notes",
-	                    	"1-notes",
+	                    	"0-notes",
+	                    	"1-private",
 	                    }
 	                    for _, sub in ipairs(paths) do
-	                    	local full = OBSIDIAN_NOTES_DIR .. "/" .. sub
+	                    	local full = OBSIDIAN_NOTES_DIR .. "/0-notes/" .. sub
 	                    	if fname:find(full, 1, true) then
 	                    		return full
 	                    	end

@@ -94,6 +94,7 @@ new_personal_note() {
     nvim "0-notes/1-private/0-inbox/$formatted_file_name"
 }
 
+
 move_note_on_type() { 
     vaults=("0-notes" "1-private")
 

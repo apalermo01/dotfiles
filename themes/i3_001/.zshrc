@@ -185,7 +185,7 @@ fi
 
 
 fastfetch
-wal -n -e -i /home/alex/Pictures/wallpapers/001.png > /dev/null 
+wal -n -e -i /home/apalermo/Pictures/wallpapers/001.png > /dev/null 
 
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"

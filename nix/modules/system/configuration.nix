@@ -50,11 +50,11 @@
     lua-language-server
     luajitPackages.luarocks_bootstrap
     libsForQt5.xp-pen-deco-01-v2-driver
+    # xremap-flake.nixosModules.default
   ];
 
   programs.fish.enable = true;
   programs.zsh.enable = true;
-  # programs.zsh.ohMyZsh.enable = true;
   programs.kdeconnect.enable = true;
   programs.dconf.enable = true;
 
@@ -131,6 +131,14 @@
     variant = "";
   };
 
+  # enable remaps
+  # services.xremap = {
+  #       enable = true;
+  #       serviceMode = "system";
+  #       withX11 = true;
+  #       config = ./configs/xremap.yml;
+  #
+  # };
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

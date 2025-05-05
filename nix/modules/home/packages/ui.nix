@@ -33,11 +33,7 @@
         obsidian
         # magick
         imagemagick
+        dconf-editor
       ];
-      # nixpkgs.config.allowUnfreePredicate = pkg:
-      #       builtins.elem (pkgs.lib.getName pkg) [
-      #           "obsidian"
-      #           "zoom-us"
-      #       ];
     };
 }

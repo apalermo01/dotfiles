@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    # xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs =
@@ -17,8 +19,10 @@
       home-manager,
       nixpkgs,
       zen-browser,
+      # xremap-flake,
       ...
     }@inputs:
+
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -65,10 +69,10 @@
           modules = [
             ./nix/hosts/${hostname}/user.nix
             {
-                home = {
-                    username = "apalermo";
-                    homeDirectory = "/home/apalermo";
-                };
+              home = {
+                username = "apalermo";
+                homeDirectory = "/home/apalermo";
+              };
             }
           ];
           extraSpecialArgs = { inherit inputs; };

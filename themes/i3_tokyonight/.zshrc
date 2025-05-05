@@ -94,28 +94,29 @@ new_personal_note() {
     nvim "0-notes/1-private/0-inbox/$formatted_file_name"
 }
 
+
 move_note_on_type() { 
-    vaults=("0-notes", "1-private")
+    vaults=("0-notes" "1-private")
 
     for vault_name in ${vaults[@]}; do
-        find "$NOTES_PATH/0-notes/$vault_name/5-zettelkasten/" \
-            -type f -name '*.md' -not -path "*tags*" | \
-            while read -l file;
-            
-            tag=$(awk -F': ' '/^type:/{print $2; exit}' "$file" | sed -e 's/^ *//;s/ *$//')
-            if [ ! -z "$tag" ]; then
-                target_dir="$NOTES_PATH/0-notes/$vault_name/5-zettelkasten/$tag"
+        find "$NOTES_PATH/0-notes/$vault_name/1-zettelkasten/" \
+            -type f -name '*.md' -not -path "*tags*" -print0 | \
+            while IFS= read -r -d '' filename; do
+                fname="${filename:t}"
+                tag=$(awk -F': ' '/^type:/{print $2; exit}' "$filename" | sed -e 's/^ *//;s/ *$//')
+                if [ ! -z "$tag" ]; then
+                    target_dir="$NOTES_PATH/0-notes/$vault_name/1-zettelkasten/$tag"
+                    if [[ $file != "$target_dir/$fname" ]]; then
+                        echo "processing tag $tag in file ${fname}"
+                        mkdir -p $target_dir
+                        mv $filename "$target_dir/"
+                        echo "$filename -> \n\t$target_dir/$filename"
+                    fi
 
-                if [ $file != "$target_dir/(path basename $file)" ]; then
-                    echo "Processihng (path basename $file)"
-                    echo "Found tag $tag"
-                    mkdir -p $target_dir
-                    mv $file "$target_dir/"
-                    echo "Moved $file to $target_dir"
+                else
+                    echo "no type tag found for $filename"
                 fi
-            else
-                echo "No type tag found for (path basename $file)"
-            fi
+            done
     done
 
     echo "vault restructure complete"
@@ -165,6 +166,13 @@ fi
 
 
 
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fastfetch
 
 eval "$(direnv hook zsh)"

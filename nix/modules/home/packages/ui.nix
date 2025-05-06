@@ -34,6 +34,7 @@
         # magick
         imagemagick
         dconf-editor
+        themechanger
       ];
     };
 }

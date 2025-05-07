@@ -52,6 +52,7 @@
     libsForQt5.xp-pen-deco-01-v2-driver
     # xremap-flake.nixosModules.default
     kdePackages.kde-cli-tools
+    libsForQt5.qt5ct
   ];
 
   programs.fish.enable = true;

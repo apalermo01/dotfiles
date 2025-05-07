@@ -1,5 +1,5 @@
 {
-  config,
+
   pkgs,
   inputs,
   lib,
@@ -51,6 +51,7 @@
     luajitPackages.luarocks_bootstrap
     libsForQt5.xp-pen-deco-01-v2-driver
     # xremap-flake.nixosModules.default
+    kdePackages.kde-cli-tools
   ];
 
   programs.fish.enable = true;

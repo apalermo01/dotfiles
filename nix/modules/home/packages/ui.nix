@@ -35,6 +35,7 @@
         imagemagick
         dconf-editor
         themechanger
+        kdePackages.kconfig
       ];
     };
 }

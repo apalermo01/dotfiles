@@ -114,7 +114,8 @@
   services.desktopManager.plasma6.enable = true;
 
   # x-server. Can disable if only using wayland
-  services.displayManager.defaultSession = "none+i3";
+  # services.displayManager.defaultSession = "none+i3";
+  services.displayManager.defaultSession = "plasmax11";
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;

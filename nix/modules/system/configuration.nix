@@ -53,6 +53,7 @@
     # xremap-flake.nixosModules.default
     kdePackages.kde-cli-tools
     libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum
   ];
 
   programs.fish.enable = true;

@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+feh --bg-fill /home/alex/Pictures/wallpapers/od_autumn.jpg
 ###!/usr/bin/env fish
 # kitty +kitten themes --reload-in=all catppuccin-macchiato
 # fisher install rkbk60/onedark-fish

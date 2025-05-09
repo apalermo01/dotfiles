@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+plasma-apply-colorscheme Gruvbox
 feh --bg-fill /home/alex/Pictures/wallpapers/gruvtux.png
 ###!/usr/bin/env fish
 # kitty +kitten themes --reload-in=all catppuccin-macchiato

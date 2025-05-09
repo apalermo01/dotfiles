@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+feh --bg-fill /home/alex/Pictures/wallpapers/wallhaven-zy3l5o.jpg
 ###!/usr/bin/env fish
 # fish_config prompt save acidhub
 # fish_config theme save cyberdream

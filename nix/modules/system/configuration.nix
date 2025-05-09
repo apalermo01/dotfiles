@@ -49,11 +49,10 @@
     lua
     lua-language-server
     luajitPackages.luarocks_bootstrap
-    libsForQt5.xp-pen-deco-01-v2-driver
-    # xremap-flake.nixosModules.default
-    kdePackages.kde-cli-tools
-    libsForQt5.qt5ct
-    libsForQt5.qtstyleplugin-kvantum
+    # libsForQt5.xp-pen-deco-01-v2-driver
+    # kdePackages.kde-cli-tools
+    # libsForQt5.qt5ct
+    # libsForQt5.qtstyleplugin-kvantum
   ];
 
   programs.fish.enable = true;

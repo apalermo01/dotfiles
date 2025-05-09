@@ -36,6 +36,10 @@
         dconf-editor
         themechanger
         kdePackages.kconfig
+        libsForQt5.xp-pen-deco-01-v2-driver
+        kdePackages.kde-cli-tools
+        libsForQt5.qt5ct
+        libsForQt5.qtstyleplugin-kvantum
       ];
     };
 }

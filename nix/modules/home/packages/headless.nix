@@ -32,6 +32,7 @@
         nil
         lua-language-server
         markdown-oxide
+        sqls
 
         # formatters
         stylua

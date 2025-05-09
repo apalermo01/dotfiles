@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+feh --bg-fill /home/alex/Pictures/wallpapers/leafy.png
 # fisher install rose-pine/fish
 # fish_config prompt save acidhub
 # fish_config theme choose "Rosé Pine"

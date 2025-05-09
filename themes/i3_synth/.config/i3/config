@@ -317,7 +317,3 @@ exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
 exec_always feh --bg-fill /home/alex/Pictures/wallpapers/synth.jpg
-
-# experimental
-# exec --no-startup-id kbuildsyscoca5 --noincremental
-# exec --no-startup-id kded5

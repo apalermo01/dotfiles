@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+feh --bg-fill /home/alex/Pictures/wallpapers/gruvtux.png
 ###!/usr/bin/env fish
 # kitty +kitten themes --reload-in=all catppuccin-macchiato
 # fisher install jomik/fish-gruvbox

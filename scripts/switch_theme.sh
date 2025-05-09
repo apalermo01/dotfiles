@@ -43,6 +43,9 @@ if [ -d ./themes/$1/.config/theme_scripts/ ]; then
             echo "Skipping $script: not executable"
         fi
     done
+elif [ -f ./themes/$1/.config/install_theme.sh ]; then
+    echo "Executing install script"
+    bash "./themes/$1/.config/install_theme.sh"
 else
     echo "no theme install scripts detected"
 fi

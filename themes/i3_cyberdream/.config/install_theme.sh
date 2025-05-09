@@ -5,18 +5,18 @@ feh --bg-fill /home/alex/Pictures/wallpapers/wallhaven-zy3l5o.jpg
 # fish_config prompt save acidhub
 # fish_config theme save cyberdream
 
-if test  ! -d ~/.config/tmux/plugins/catppuccin
+if [ ! -d ~/.config/tmux/plugins/catppuccin ]; then
     mkdir -p ~/.config/tmux/plugins/catppuccin
     git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
-end
+fi
 
-if test -e ~/cyberdream.conf
-    mv ~/cyberdream.conf ~/.config/tmux/plugins/catppuccin/tmux/themes/catppuccin_cyberdream_tmux.conf
+# if test -e ~/cyberdream.conf
+#     mv ~/cyberdream.conf ~/.config/tmux/plugins/catppuccin/tmux/themes/catppuccin_cyberdream_tmux.conf
+# end
 
-end
 kitten themes --reload-in=all cyberdream
 
-if test -e ~/.config/polybar/i3_polybar_start.sh
+if [ -f ~/.config/polybar/i3_polybar_start.sh ]; then
     bash ~/.config/polybar/i3_polybar_start.sh
-end
+fi
 

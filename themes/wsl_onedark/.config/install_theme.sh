@@ -1,4 +1,5 @@
-#!/bin/fish
+#!/usr/bin/env bash
+
 # fisher install rkbk60/onedark-fish
 # fish_config prompt save acidhub
 

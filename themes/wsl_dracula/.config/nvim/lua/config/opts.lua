@@ -5,9 +5,9 @@ local group = augroup('config', {})
 
 -- functions
 function NixSettings()
-    set.tabstop = 2
-    set.shiftwidth = 2
-    set.softtabstop = 2
+    set.opt_local.tabstop = 2
+    set.opt_local.shiftwidth = 2
+    set.opt_local.softtabstop = 2
 end
 
 -- General

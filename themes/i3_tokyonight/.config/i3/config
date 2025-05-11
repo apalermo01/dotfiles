@@ -304,7 +304,7 @@ $mod+Ctrl+h:  tile horizontally\n\
 $mod+Shift+v: tile vertically\n\
 $mod+q:       toggle split method\n\
 $mod+Shift+s: screenshot\n\
-$mod+
+$mod+\
 \\""
 #                        border           background    text         indicator      child bdr
 client.focused	         #2ac3de     #24283b    #414868  #2ac3de	#2ac3de

@@ -41,6 +41,8 @@
         libsForQt5.qt5ct
         libsForQt5.qtstyleplugin-kvantum
         flameshot
+        xdg-desktop-portal
+        xdg-desktop-portal-gtk
       ];
     };
 }

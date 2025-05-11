@@ -163,10 +163,14 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+g mode "$mode_gaps"; exec "notify-send \\"gaps mode\\" \\"(Esc to go back to normal, i=inner, o=outer)\\""
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym o      mode "$mode_gaps_outer"; exec "notify-send \\"gaps-outer\\" \
+            \\"+: inc cur, -: dec cur, 0: set cur 0\n\
+               S++: inc all, S+-: dec all, S+0: set all 0\\""
+        bindsym i      mode "$mode_gaps_inner"; exec "notify-send \\"gaps-inner\\" \
+            \\"+: inc cur, -: dec cur, 0: set cur 0\n\
+               S++: inc all, S+-: dec all, S+0: set all 0\\""
+        bindsym Return mode "default"; exec notify-send "back to default mode"
+        bindsym Escape mode "default"; exec notify-send "back to default mode"
 }
 
 mode "$mode_gaps_inner" {
@@ -178,8 +182,8 @@ mode "$mode_gaps_inner" {
         bindsym Shift+minus gaps inner all minus 5
         bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode "default"; exec notify-send "back to default mode"
+        bindsym Escape mode "default"; exec notify-send "back to default mode"
 }
 mode "$mode_gaps_outer" {
         bindsym plus  gaps outer current plus 5
@@ -190,8 +194,8 @@ mode "$mode_gaps_outer" {
         bindsym Shift+minus gaps outer all minus 5
         bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym Return mode "default"; exec notify-send "back to default mode"
+        bindsym Escape mode "default"; exec notify-send "back to default mode"
 }
 
 bindsym $mod+u border none
@@ -295,7 +299,10 @@ bindsym $mod+Ctrl+l exec "i3lock"
 exec "xautolock -detectsleep -time 3 -locker \"i3lock\""
 
 bindsym $mod+Ctrl+Shift+h exec "notify-send \\"keybindings:\\" \\"\
-test \
+$mod+shfit+b: workspace back and forth\
+$mod+Ctrl+h: tile horizontally\
+$mod+Shift+v: tile vertically\
+$mod+q: toggle split method\
 \\""
 #                        border           background    text         indicator      child bdr
 client.focused	         #2ac3de     #24283b    #414868  #2ac3de	#2ac3de

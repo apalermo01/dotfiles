@@ -40,6 +40,7 @@
         kdePackages.kde-cli-tools
         libsForQt5.qt5ct
         libsForQt5.qtstyleplugin-kvantum
+        flameshot
       ];
     };
 }

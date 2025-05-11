@@ -174,6 +174,7 @@ alias gl="git log --all --graph --pretty=\
 alias gp='git push'
 alias gpu='git pull'
 alias gcm="git add . && git commit -m $(date +%D)"
+alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
@@ -186,6 +187,7 @@ fi
 
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
+alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 
 
 

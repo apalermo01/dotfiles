@@ -1,9 +1,13 @@
 [Desktop Entry]
-FullScreen = false
+FullScreen=false
 
 [General]
-LockSidebar = true
-ShowSidebar = true
+LockSidebar=true
+ShowSidebar=true
+
+[Recent Files]
+File1[$e]=$HOME/Documents/git/notes/6-assets/exercises-tutoring/physics-1/Deriving the kinematic equations.pdf
+Name1[$e]=Deriving the kinematic equations.pdf
 
 [UiSettings]
-ColorScheme = Dracula
+ColorScheme=Dracula

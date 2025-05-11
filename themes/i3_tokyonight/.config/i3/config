@@ -289,7 +289,7 @@ for_window [urgent=latest] focus
 # '
 exec --no-startup-id nm-applet
 exec_always --no-startup-id $HOME/.config/polybar/i3_polybar_start.sh
-exec_always --no-startup-id $HOME/shift_monitor.sh
+exec_always --no-startup-id "bash $HOME/shift_monitor.sh"
 exec --no-startup-id dunst
 
 # i3 lock
@@ -299,10 +299,10 @@ bindsym $mod+Ctrl+l exec "i3lock"
 exec "xautolock -detectsleep -time 3 -locker \"i3lock\""
 
 bindsym $mod+Ctrl+Shift+h exec "notify-send \\"keybindings:\\" \\"\
-$mod+shfit+b: workspace back and forth\
-$mod+Ctrl+h: tile horizontally\
-$mod+Shift+v: tile vertically\
-$mod+q: toggle split method\
+$mod+shfit+b: workspace back and forth\n\
+$mod+Ctrl+h: tile horizontally\n\
+$mod+Shift+v: tile vertically\n\
+$mod+q: toggle split method\n\
 \\""
 #                        border           background    text         indicator      child bdr
 client.focused	         #2ac3de     #24283b    #414868  #2ac3de	#2ac3de

@@ -80,14 +80,16 @@ local sep = is_windows and "\\" or "/"
 local delim = is_windows and ";" or ":"
 vim.env.PATH = table.concat({ vim.fn.stdpath("data"), "mason", "bin" }, sep) .. delim .. vim.env.PATH
 
+local ft_group = augroup('ftgroup', {})
+
 autocmd('FileType', {
-    group = group,
+    group = ft_group,
     pattern = { "nix" },
     callback = NixSettings
 })
 
 autocmd('FileType', {
-    group = group,
+    group = ft_group,
     pattern = { 'nix',
                 'lua',
                 'python',

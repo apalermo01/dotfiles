@@ -43,6 +43,8 @@
         flameshot
         xdg-desktop-portal
         xdg-desktop-portal-gtk
+        kdePackages.kscreenlocker
+        xss-lock
       ];
     };
 }

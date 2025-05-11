@@ -45,6 +45,7 @@
         xdg-desktop-portal-gtk
         kdePackages.kscreenlocker
         xss-lock
+        kdePackages.plasma-workspace
       ];
     };
 }

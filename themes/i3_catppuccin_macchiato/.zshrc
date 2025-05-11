@@ -174,6 +174,7 @@ alias gl="git log --all --graph --pretty=\
 alias gp='git push'
 alias gpu='git pull'
 alias gcm="git add . && git commit -m $(date +%D)"
+alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
@@ -187,11 +188,10 @@ fi
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-
-
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 fastfetch
 
 eval "$(direnv hook zsh)"

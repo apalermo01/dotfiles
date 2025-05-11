@@ -3,6 +3,13 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local group = augroup('config', {})
 
+-- functions
+function NixSettings()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
+end
+
 -- General
 set.guicursor = "n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
 
@@ -34,11 +41,13 @@ set.colorcolumn = "80"
 set.showcmd = true
 set.showmode = true
 set.compatible = false
+set.syntax = "on"
 set.wildmenu = true
 set.termguicolors = true
 
 vim.cmd([[set path+=**]])
 vim.cmd([[set complete+=k]])
+vim.cmd([[filetype plugin on]])
 vim.cmd([[set spell spelllang=en_us]])
 vim.cmd([[set spellfile=~/.config/en.utf-8.add]])
 vim.cmd([[set guifont=JetBrainsMono\ Nerd\ Font\ Mono]])
@@ -71,23 +80,15 @@ local sep = is_windows and "\\" or "/"
 local delim = is_windows and ";" or ":"
 vim.env.PATH = table.concat({ vim.fn.stdpath("data"), "mason", "bin" }, sep) .. delim .. vim.env.PATH
 
--- functions
-function NixSettings()
-    vim.notify("running NixSettings", vim.log.levels.WARN)
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.softtabstop = 2
-end
-
 local ft_group = augroup('ftgroup', {})
 
-autocmd({'BufRead', 'BufNewFile', 'FileType'}, {
+autocmd('FileType', {
     group = ft_group,
     pattern = { "nix" },
     callback = NixSettings
 })
 
-autocmd({'BufRead', 'BufNewFile', 'FileType'}, {
+autocmd('FileType', {
     group = ft_group,
     pattern = { 'nix',
                 'lua',
@@ -98,4 +99,3 @@ autocmd({'BufRead', 'BufNewFile', 'FileType'}, {
         vim.opt_local.spell = false
     end
 })
-

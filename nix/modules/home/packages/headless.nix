@@ -9,6 +9,7 @@
         ps.black
         ps.isort
         ps.sqlfmt
+        ps.ipython
     ]);
   in {
     options.modules.packages.headless = { enable = mkEnableOption "Headless Packages"; };

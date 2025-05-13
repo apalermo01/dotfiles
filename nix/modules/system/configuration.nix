@@ -78,6 +78,8 @@
     enableSSHSupport = true;
   };
 
+  hardware.keyboard.qmk.enable = true;
+
   # fixes command-not-found error
   programs.command-not-found.enable = false;
   programs.nix-index = {

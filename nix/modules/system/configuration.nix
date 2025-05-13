@@ -56,6 +56,7 @@
     kdePackages.kscreenlocker
     xss-lock
     kdePackages.plasma-workspace
+    via
   ];
 
   programs.fish.enable = true;
@@ -79,6 +80,7 @@
   };
 
   hardware.keyboard.qmk.enable = true;
+  services.udev.packages = [ pkgs.via ];
 
   # fixes command-not-found error
   programs.command-not-found.enable = false;

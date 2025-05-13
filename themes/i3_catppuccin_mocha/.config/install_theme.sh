@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-feh --bg-fill /home/alex/Pictures/wallpapers/darker_unicat.png
+feh --bg-fill /home/apalermo/Pictures/wallpapers/darker_unicat.png
 ###!/usr/bin/env fish
 kitty +kitten themes --reload-in=all catppuccin-macchiato
 # fisher install catppuccin/fish

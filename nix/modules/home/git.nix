@@ -47,10 +47,10 @@ in {
                         remoteBranch    = "magenta";
                     };
                 };
-                interactive = {
-                    diffFilter = "diff-so-fancy --patch";
-                    singlekey = true;
-                };
+                # interactive = {
+                #     diffFilter = "diff-so-fancy --patch";
+                #     singlekey = true;
+                # };
                 push = {
                     autoSetupRemote = true;
                     default = "current";

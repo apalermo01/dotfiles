@@ -132,6 +132,25 @@
   security.pam.services.login.enableGnomeKeyring = true;
   security.pam.services.i3lock.enable = true;
 
+  # services.xserver.xautolock = {
+  #   enable = true;
+  #   time = 5;
+  #   notifier = "${pkgs.libnotify}/bin/notify-send -u critical -t 5000 'Locking in 30 seconds'";
+  #   notify = 30;
+  #   locker = "${pkgs.i3lock}/bin/i3lock -c 000000";
+  # }
+  
+  programs.xss-lock = {
+    enable = true;
+    lockerCommand = "${pkgs.i3lock}/bin/i3lock -c 250000";
+    extraOptions = [ "--transfer-sleep-lock" ];
+  };
+
+  services.xserver.displayManager.sessionCommands = ''
+    xset s 600 600
+    xset dpms 0 0 900
+  '';
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";

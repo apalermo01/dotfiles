@@ -44,6 +44,7 @@
         xdg-desktop-portal
         xdg-desktop-portal-gtk
         i3lock
+        brave
       ];
     };
 }

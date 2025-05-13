@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 plasma-apply-colorscheme RosePineMoon
-feh --bg-fill /home/apalermo/Pictures/wallpapers/leafy.png
+feh --bg-fill /home/alex/Pictures/wallpapers/leafy.png
 # fisher install rose-pine/fish
 # fish_config prompt save acidhub
 # fish_config theme choose "Rosé Pine"

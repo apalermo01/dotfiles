@@ -41,10 +41,18 @@
     displayManager.sddm.enable = true;
   };
 
-  programs.xss-lock = {
+  # programs.xss-lock = {
+  #   enable = true;
+  #   lockerCommand = "${pkgs.i3lock}/bin/i3lock -c 250000";
+  #   extraOptions = [ "--transfer-sleep-lock" ];
+  # };
+
+  services.xserver.xautolock = {
     enable = true;
-    lockerCommand = "${pkgs.i3lock}/bin/i3lock -c 250000";
-    extraOptions = [ "--transfer-sleep-lock" ];
+    time = 1;
+    notifier = "${pkgs.libnotify}/bin/notify-send -u critical -t 5000 'Locking in 30 seconds'";
+    notify = 30;
+    locker = "${pkgs.i3lock}/bin/i3lock -c 250000";
   };
 
   services.xserver.displayManager.sessionCommands = ''

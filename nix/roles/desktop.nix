@@ -52,7 +52,8 @@
     time = 1;
     notifier = "${pkgs.libnotify}/bin/notify-send -u critical -t 5000 'Locking in 30 seconds'";
     notify = 30;
-    locker = "${pkgs.i3lock}/bin/i3lock -c 250000";
+    # locker = "${pkgs.i3lock}/bin/i3lock -c 250000";
+    locker = "${pkgs.i3lock}/bin/i3lock";
   };
 
   services.xserver.displayManager.sessionCommands = ''

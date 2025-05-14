@@ -101,16 +101,6 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
   security.pam.services.login.enableGnomeKeyring = true;
-  security.pam.services.i3lock.enable = true;
-
-  # services.xserver.xautolock = {
-  #   enable = true;
-  #   time = 5;
-  #   notifier = "${pkgs.libnotify}/bin/notify-send -u critical -t 5000 'Locking in 30 seconds'";
-  #   notify = 30;
-  #   locker = "${pkgs.i3lock}/bin/i3lock -c 000000";
-  # }
-
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -118,14 +108,6 @@
     variant = "";
   };
 
-  # enable remaps
-  # services.xremap = {
-  #       enable = true;
-  #       serviceMode = "system";
-  #       withX11 = true;
-  #       config = ./configs/xremap.yml;
-  #
-  # };
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.avahi = {
@@ -133,6 +115,7 @@
     nssmdns4 = true;
     openFirewall = true;
   };
+
   ### sound
   # Enable sound with pipewire.
   # services.pulseaudio.enable = false;

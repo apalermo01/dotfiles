@@ -333,3 +333,5 @@ exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
 exec_always feh --bg-fill /home/alex/Pictures/wallpapers/darker_unicat.png
+
+exec --no-startup-id systemctl start --user i3-session.service

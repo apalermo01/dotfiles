@@ -13,7 +13,7 @@
     pamixer
     kdePackages.kscreenlocker
     xss-lock
-    kdePackages.plasma-workspace
+    # kdePackages.plasma-workspace
     via
   ];
 

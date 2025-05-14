@@ -23,8 +23,8 @@
         (polybar.override { pulseSupport = true; })
         picom
         kitty
-	    firefox
-        inputs.zen-browser.packages."${system}".default
+   	    firefox
+        # inputs.zen-browser.packages."${system}".default
         nemo-with-extensions
         libnotify
         dunst

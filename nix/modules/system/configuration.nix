@@ -6,6 +6,8 @@
   ...
 }:
 
+# This is the configuration that is common for ALL systems. More platform
+# specific setups are in ./nix/roles
 {
 
   # system packages
@@ -30,38 +32,22 @@
     pywal
     restic
     gnupg1
-    pinentry-qt
     ripgrep
     fuse
     dbus
-    libnotify
-    dunst
     networkmanagerapplet
     shutter
     any-nix-shell
-    pavucontrol
-    alsa-utils
-    alsa-plugins
-    pamixer
     gnome-keyring
     seahorse
     zinit
     lua
     lua-language-server
     luajitPackages.luarocks_bootstrap
-    # libsForQt5.xp-pen-deco-01-v2-driver
-    # kdePackages.kde-cli-tools
-    # libsForQt5.qt5ct
-    # libsForQt5.qtstyleplugin-kvantum
-    kdePackages.kscreenlocker
-    xss-lock
-    kdePackages.plasma-workspace
-    via
   ];
 
   programs.fish.enable = true;
   programs.zsh.enable = true;
-  programs.kdeconnect.enable = true;
   programs.dconf.enable = true;
 
   # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
@@ -73,14 +59,7 @@
     ];
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-qt;
-    enableSSHSupport = true;
-  };
 
-  hardware.keyboard.qmk.enable = true;
-  services.udev.packages = [ pkgs.via ];
 
   # fixes command-not-found error
   programs.command-not-found.enable = false;
@@ -115,18 +94,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # default KDE environment. Can use as a fallback
-  # if something happens to i3 or hyprland
-  services.desktopManager.plasma6.enable = true;
-
-  # x-server. Can disable if only using wayland
-  # services.displayManager.defaultSession = "none+i3";
-  services.displayManager.defaultSession = "plasmax11";
-  services.xserver = {
-    enable = true;
-    windowManager.i3.enable = true;
-    displayManager.sddm.enable = true;
-  };
 
   # enable gnome keyring
   # without this, we're getting prompted for the wifi password every time
@@ -143,17 +110,7 @@
   #   notify = 30;
   #   locker = "${pkgs.i3lock}/bin/i3lock -c 000000";
   # }
-  
-  programs.xss-lock = {
-    enable = true;
-    lockerCommand = "${pkgs.i3lock}/bin/i3lock -c 250000";
-    extraOptions = [ "--transfer-sleep-lock" ];
-  };
 
-  services.xserver.displayManager.sessionCommands = ''
-    xset s 600 600
-    xset dpms 0 0 900
-  '';
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -188,14 +145,6 @@
 
   security.rtkit.enable = true;
 
-  services.pipewire = {
-    enable = true;
-    audio.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
 
   # fonts
   fonts.packages = with pkgs; [

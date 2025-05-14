@@ -11,7 +11,6 @@
     };
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
-    # xremap-flake.url = "github:xremap/nix-flake";
   };
 
   outputs =
@@ -19,7 +18,6 @@
       home-manager,
       nixpkgs,
       zen-browser,
-      # xremap-flake,
       ...
     }@inputs:
 
@@ -39,16 +37,25 @@
             ];
         };
       };
+      role = {
+        "headless" = ./nix/roles/headless.nix;
+        "desktop" = ./nix/roles/desktop.nix;
+        "wsl" = ./nix/roles/headless.nix;
+        "hmDesktop" = ./nix/roles/desktop.nix;
+        "hmHeadless" = ./nix/roles/headless.nix;
+      };
 
       mkSystem =
         pkgs: system: hostname:
         lib.nixosSystem {
           pkgs = pkgs;
           system = system;
+
           modules = [
             { networking.hostName = hostname; }
             ./nix/modules/system/configuration.nix
             ./nix/hosts/${hostname}/hardware-configuration.nix
+            role.${hostname}
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

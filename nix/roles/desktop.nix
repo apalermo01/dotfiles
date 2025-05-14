@@ -33,13 +33,13 @@
   services.desktopManager.plasma6.enable = true;
 
   # x-server. Can disable if only using wayland
-  # services.displayManager.defaultSession = "none+i3";
-  services.displayManager.defaultSession = "plasmax11";
+  # services.displayManager.defaultSession = "plasmax11";
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
     displayManager.sddm.enable = true;
   };
+  services.displayManager.defaultSession = "none+i3";
 
   # programs.xss-lock = {
   #   enable = true;
@@ -50,10 +50,11 @@
   services.xserver.xautolock = {
     enable = true;
     time = 1;
+    enableNotifier = true;
     notifier = "${pkgs.libnotify}/bin/notify-send -u critical -t 5000 'Locking in 30 seconds'";
     notify = 30;
-    # locker = "${pkgs.i3lock}/bin/i3lock -c 250000";
-    locker = "${pkgs.i3lock}/bin/i3lock";
+    locker = "${pkgs.i3lock}/bin/i3lock -c 250000";
+    # locker = "${pkgs.i3lock}/bin/i3lock";
   };
 
   services.xserver.displayManager.sessionCommands = ''

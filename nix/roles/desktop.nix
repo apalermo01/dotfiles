@@ -48,9 +48,12 @@
   };
 
   services.xserver.displayManager.sessionCommands = ''
-    xset s 600 600
+    # xset s 600 600
+    xset s 60 60
     xset dpms 0 0 900
   '';
+
+  security.pam.services.i3lock.enable = true;
 
   services.pipewire = {
     enable = true;
@@ -60,4 +63,5 @@
     pulse.enable = true;
     jack.enable = true;
   };
+
 }

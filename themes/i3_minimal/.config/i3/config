@@ -307,6 +307,9 @@ $mod+q:       toggle split method\n\
 $mod+Shift+s: screenshot\n\
 $mod+\
 \\""
+
+
+exec --no-startup-id xautolock -time 1 -locker 'i3lock' -notify 30 -notifier 'notify-send -u critical -t 5000 "locking in 30 seconds"'
 #                        border    background     text      indicator     child bdr
 client.focused	         #68913B	  #2a4166	 #c8d3e6   	#68913B	    #68913B
 client.focused_inactive	 #2a4166	  #2a4166 #c8d3e6	    #2a4166	    #2a4166

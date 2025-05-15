@@ -308,6 +308,9 @@ $mod+Shift+s: screenshot\n\
 $mod+\
 \\""
 
+
+exec --no-startup-id xautolock -time 1 -locker 'i3lock' -notify 30 -notifier 'notify-send -u critical -t 5000 "locking in 30 seconds"'
+
 #                        border             background          text            indicator       child bdr
 client.focused	         #c6a0f6        #f5a97f         #1e2030      #c6a0f6	    #c6a0f6
 client.focused_inactive	 #363a4f     #f5a97f         #1e2030	    #363a4f	    #363a4f

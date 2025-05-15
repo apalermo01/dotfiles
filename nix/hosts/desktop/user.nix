@@ -17,7 +17,10 @@
     git.enable = true;
     direnv.enable = true;
     zoxide.enable = true;
-    services.xautolock-i3 = {
+  };
+
+  config.services = {
+    xss-lock-i3 = {
       enable = true;
     };
   };

@@ -10,7 +10,8 @@
       ./direnv.nix
       ./zoxide.nix
       ./datagrip.nix
-      ./xautolock-i3.nix
+      # ./xautolock-i3.nix
+      ./xss-lock-i3.nix
     ];
 
 }

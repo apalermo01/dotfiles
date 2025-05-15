@@ -47,23 +47,20 @@
   #   extraOptions = [ "--transfer-sleep-lock" ];
   # };
 
-  services.xserver.xautolock = {
-    enable = true;
-    time = 1;
-    enableNotifier = true;
-    notifier = "${pkgs.libnotify}/bin/notify-send -u critical -t 5000 'Locking in 30 seconds'";
-    notify = 30;
-    locker = "${pkgs.i3lock}/bin/i3lock -c 250000";
-    # locker = "${pkgs.i3lock}/bin/i3lock";
-  };
+  # services.xserver.xautolock = {
+  #   enable = true;
+  #   time = 1;
+  #   enableNotifier = true;
+  #   notifier = "${pkgs.libnotify}/bin/notify-send -u critical -t 5000 'Locking in 30 seconds'";
+  #   notify = 30;
+  #   locker = "${pkgs.i3lock}/bin/i3lock -c 250000";
+  #   # locker = "${pkgs.i3lock}/bin/i3lock";
+  # };
 
-  services.xserver.displayManager.sessionCommands = ''
-    xset s 600 600
-    # xset s 60 60
-    xset dpms 0 0 900
-  '';
-
-  security.pam.services.i3lock.enable = true;
+  # services.xserver.displayManager.sessionCommands = ''
+  #   xset s 600 600
+  #   xset dpms 0 0 900
+  # '';
 
   services.pipewire = {
     enable = true;
@@ -74,4 +71,13 @@
     jack.enable = true;
   };
 
+  security.pam.services.i3lock.enable = true;
+  
+
+  
+  services.logind = {
+    lidSwitch = "lock";
+    lidSwitchExternalPower = "lock";
+    lidSwitchDocked = "ignore";
+  };
 }

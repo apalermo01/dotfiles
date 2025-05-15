@@ -59,7 +59,7 @@ in
       xdg-desktop-portal-gtk
       i3lock
       brave
-      xautolockWrapper
+      # xautolockWrapper
     ];
 
     # systemd.user.services.xautolock = {

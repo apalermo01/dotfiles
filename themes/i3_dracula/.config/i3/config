@@ -332,3 +332,5 @@ exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
 exec_always feh --bg-fill /home/alex/Pictures/wallpapers/dracula_tree.png
+
+exec --no-startup-id xautolock -time 1 -locker 'i3lock' -notify 30 -notifier 'notify-send -u critical -t 5000 "locking in 30 seconds"'

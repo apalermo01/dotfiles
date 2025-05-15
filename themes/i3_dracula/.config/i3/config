@@ -312,7 +312,6 @@ $mod+\
 # exec --no-startup-id xautolock -time 1 -locker 'i3lock' -notify 30 -notifier 'notify-send -u critical -t 5000 "locking in 30 seconds"'
 exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
 exec_always systemctl --user start xss-lock-i3
-
 #                        border             background          text            indicator       child bdr
 client.focused	         #50FA7B        #282A36    #6272a4  #50FA7B	    #50FA7B
 client.focused_inactive	 #BD93F9       #282A36    #6272a4  #BD93F9	    #BD93F9

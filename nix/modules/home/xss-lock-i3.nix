@@ -16,7 +16,7 @@ let
     ${pkgs.xorg.xset}/bin/xset s ${toString saverTimeout} ${toString saverCycle}
 
     exec ${pkgs.xss-lock}/bin/xss-lock \
-      --notifier '${cfg.notifierCmd}' \
+      --notifier "${cfg.notifierCmd}" \
       --transfer-sleep-lock \
       -- ${cfg.lockerCmd}
   '';
@@ -48,8 +48,10 @@ in
     home.packages = [ xssWrapper ];
 
     systemd.user.services.xss-lock-i3 = {
-      Unit.PartOf = [ "graphical-session.target" ];
-      Unit.description = "xss-lock for i3";
+      Unit = {
+        PartOf = [ "graphical-session.target" ];
+        Description = "xss-lock for i3";
+      };
       Service = {
         ExecStart = "${xssWrapper}/bin/xss-lock-i3";
         Restart = "on-failure";

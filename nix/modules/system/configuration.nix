@@ -41,9 +41,12 @@
     gnome-keyring
     seahorse
     zinit
-    lua
     lua-language-server
     luajitPackages.luarocks_bootstrap
+
+    # programming languages
+    lua
+    go
   ];
 
   programs.fish.enable = true;

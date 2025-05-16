@@ -41,10 +41,12 @@
         # formatters
         stylua
         nixfmt-rfc-style
-        python
         shfmt
         mdformat
         yamlfix
+        
+        # programming languages
+        python
         
       ];
     };

@@ -9,6 +9,10 @@
         ps.black
         ps.isort
         ps.sqlfmt
+        ps.ipython
+        ps.pandas
+        ps.numpy
+        ps.matplotlib
     ]);
   in {
     options.modules.packages.headless = { enable = mkEnableOption "Headless Packages"; };

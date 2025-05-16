@@ -2,6 +2,7 @@ require("config.remap")
 require("config.opts")
 require("config.lazy_init")
 require("config.cmds")
+require("config.test_lsp")
 
 local augroup = vim.api.nvim_create_augroup
 

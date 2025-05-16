@@ -13,7 +13,7 @@ autocmd("LspAttach", {
 		map("n", "<leader>ld", function()
 			vim.lsp.buf.definition()
 		end, { buffer = buf, desc = "lsp: go to definition" })
-        
+
 		map("n", "gd", function()
 			vim.lsp.buf.definition()
 		end, { buffer = buf, desc = "lsp: go to definition" })
@@ -26,9 +26,9 @@ autocmd("LspAttach", {
 			vim.lsp.buf.hover()
 		end, { buffer = buf, desc = "lsp: hover" })
 
-        map("n", "<leader>lk", function()
-            vim.diagnostic.open_float()
-        end, {buffer = buf, desc = "show error"})
+		map("n", "<leader>lk", function()
+			vim.diagnostic.open_float()
+		end, { buffer = buf, desc = "show error" })
 
 		map("n", "<leader>lws", function()
 			vim.lsp.buf.workspace_symbol()
@@ -37,7 +37,7 @@ autocmd("LspAttach", {
 		--
 		map("n", "<leader>la", function()
 			vim.lsp.buf.code_action()
-		end, { buffer = buf, desc = "lsp: show code actions"})
+		end, { buffer = buf, desc = "lsp: show code actions" })
 
 		map("n", "<leader>lrr", function()
 			vim.lsp.buf.references()
@@ -55,11 +55,11 @@ autocmd("LspAttach", {
 
 		map("n", "<leader>ln", function()
 			vim.lsp.buf.goto_next()
-		end, { buffer=buf, desc="lsp: go to next diagnostic"})
+		end, { buffer = buf, desc = "lsp: go to next diagnostic" })
 
 		map("n", "<leader>lp", function()
 			vim.lsp.buf.goto_prev()
-		end, { buffer = buf, desc="lsp: go to previous diagnostic"})
+		end, { buffer = buf, desc = "lsp: go to previous diagnostic" })
 
 		if client.name == "markdown_oxide" then
 			map("n", "<leader>lrn", function()
@@ -83,9 +83,8 @@ autocmd("LspAttach", {
 
 		-- map("n", "<leader>ld", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
 		-- map("n", "<leader>lof", function() vim.lsp.buf.open_float() end, { buffer = buf, desc = "lsp: open float" })
-        --
-        vim.notify(client.name .. " attached to buffer")
-
+		--
+		vim.notify(client.name .. " attached to buffer")
 	end,
 })
 
@@ -186,11 +185,12 @@ vim.api.nvim_create_autocmd("QuitPre", {
 local _orig_open = vim.ui.open
 
 vim.ui.open = function(input, opts)
-    local target = input or vim.fn.expand("<cfile>")
+	local target = input or vim.fn.expand("<cfile>")
 
-    if target:match("^[%a][%w+,-]*://") then
-        vim.fn.jobstart({ "firefox", target }, { detach = true })
-    else
-        return _orig_open(input, opts)
-    end
+	if target:match("^[%a][%w+,-]*://") then
+		vim.fn.jobstart({ "firefox", target }, { detach = true })
+	else
+		return _orig_open(input, opts)
+	end
 end
+

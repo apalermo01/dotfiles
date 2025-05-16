@@ -94,7 +94,12 @@ autocmd('FileType', {
                 'lua',
                 'python',
                 'i3config',
-                'man' },
+                'man',
+                'go',
+                'gomod',
+                'checkhealth',
+                'gitcommit',
+    },
     callback = function()
         vim.opt_local.spell = false
     end

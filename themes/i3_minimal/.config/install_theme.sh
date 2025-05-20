@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-feh --bg-fill /home/apalermo/Pictures/wallpapers/black_background.jpg
+feh --bg-fill /home/alex/Pictures/wallpapers/black_background.jpg

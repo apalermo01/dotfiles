@@ -1,8 +1,9 @@
 self: super: let
   version = "0.6.1";
   binary = super.fetchurl {
-    url = "https://github.com/supabase-community/postgres-language-server/releases/download/${version}/postgrestools_aarch64-unknown-linux-gnu";
-    sha256 = "1pg8xc6vb1hg9qg6yiqqs19dks3w7qbmmkkxavxy8f21rw2395hr";
+    # url = "https://github.com/supabase-community/postgres-language-server/releases/download/${version}/postgrestools_x86_64-unknown-linux-gnu";
+    url = "https://github.com/supabase-community/postgres-language-server/releases/download/${version}/postgrestools_x86_64-unknown-linux-gnu";
+    sha256 = "0w350wgvlxn1sv7002i3vy4r4li1bfhsf3zjm2kmjgv0nawflixq";
   };
 
 in {

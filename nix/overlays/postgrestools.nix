@@ -14,6 +14,7 @@ in {
     installPhase = ''
       mkdir -p $out/bin
       cp $src $out/bin/postgrestools
+      chmod +x $out/bin/postgrestools
     '';
     meta = with super.lib; {
       description = "Supabase Postgres LSP (pgtools)";

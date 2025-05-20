@@ -54,6 +54,7 @@ function problems() {
 ###########
 
 export MANPAGER="nvim +Man!"
+export EDITOR="nvim"
 
 function quick_commit() {
     today=$(date "+%Y-%m-%d")
@@ -186,6 +187,13 @@ alias gpu='git pull'
 alias gcm="git add . && git commit -m $(date +%D)"
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 
+alias lf="yazi"
+alias l="yazi"
+alias y="yazi"
+alias ya="yazi"
+
+alias cat="bat"
+alias ls="eza"
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
 fi

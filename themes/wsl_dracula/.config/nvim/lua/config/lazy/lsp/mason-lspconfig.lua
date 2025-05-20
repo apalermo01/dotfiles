@@ -118,4 +118,22 @@ return {
             -- end,
 		},
 	},
+    config = function(_, opts)
+        require("mason-lspconfig").setup(opts)
+        local lspconfig = require("lspconfig")
+        local util = require("lspconfig.util")
+        local caps      = vim.tbl_deep_extend(
+          "force", {},
+          vim.lsp.protocol.make_client_capabilities(),
+          require("cmp_nvim_lsp").default_capabilities()
+        )
+
+        lspconfig.postgres_lsp.setup({
+          cmd                 = { "postgrestools", "lsp-proxy" },             -- correct binary name
+          filetypes           = { "sql" },
+          root_dir            = util.root_pattern("sqitch.plan", ".git", "postgrestools.jsonc"),
+          single_file_support = true,
+          capabilities        = caps,
+        })
+    end
 }

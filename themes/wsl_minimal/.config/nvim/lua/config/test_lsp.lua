@@ -11,6 +11,6 @@ end
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	callback = function()
-		vim.lsp.buf_attach_cleint(0, client)
+		vim.lsp.buf_attach_client(0, client)
 	end,
 })

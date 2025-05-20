@@ -186,6 +186,11 @@ alias gpu='git pull'
 alias gcm="git add . && git commit -m $(date +%D)"
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 
+alias lf="yazi"
+alias l="yazi"
+alias y="yazi"
+alias ya="yazi"
+
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
 fi
@@ -197,7 +202,7 @@ fi
 
 
 fastfetch
-wal -n -e -i /home/alex/Pictures/wallpapers/002.png > /dev/null 
+wal -n -e -i /home/apalermo/Pictures/wallpapers/002.png > /dev/null 
 
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"

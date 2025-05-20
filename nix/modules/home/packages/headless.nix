@@ -26,10 +26,13 @@
         neovim
         sioyek
         stow
-        fastfetch
-        cbonsai
         diff-so-fancy
         fzf
+        
+        # terminal stuff
+        yazi
+        cbonsai
+        fastfetch
 
         # lsp s
         pyright

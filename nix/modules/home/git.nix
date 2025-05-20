@@ -34,11 +34,13 @@ in {
                 };
                 color = {
                     diff = {
-                        meta        = "black bold";
+                        # meta        = "black bold";
+                        meta        = "yellow bold";
                         frag        = "magenta";
                         context     = "white";
                         whitespace  = "yellow reverse";
                         old         = "red";
+                        commit      = "yellow bold";
                     };
                     decorate = {
                         HEAD            = "red";
@@ -47,10 +49,10 @@ in {
                         remoteBranch    = "magenta";
                     };
                 };
-                # interactive = {
-                #     diffFilter = "diff-so-fancy --patch";
-                #     singlekey = true;
-                # };
+                interactive = {
+                    diffFilter = "diff-so-fancy --patch";
+                    singlekey = true;
+                };
                 push = {
                     autoSetupRemote = true;
                     default = "current";

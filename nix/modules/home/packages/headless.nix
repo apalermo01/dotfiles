@@ -33,6 +33,9 @@
         yazi
         cbonsai
         fastfetch
+        bat
+        eza
+        gitui
 
         # lsp s
         pyright

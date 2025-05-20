@@ -38,6 +38,16 @@ function start_tutoring() {
     ./scripts/tutoring.sh
 }
 
+function problems() {
+    if [[ ! -d "${HOME}/Documents/git/notes" ]]; then
+        echo "notes folder not found"
+        return
+    fi
+
+    cd "${HOME}/Documents/git/notes/"
+    ./problems.sh
+
+}
 
 ###########
 # General #
@@ -187,7 +197,7 @@ fi
 
 
 fastfetch
-wal -n -e -i /home/apalermo/Pictures/wallpapers/000.png > /dev/null 
+wal -n -e -i /home/alex/Pictures/wallpapers/000.png > /dev/null 
 
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"

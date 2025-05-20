@@ -1,0 +1,17 @@
+[Desktop Entry]
+FullScreen=false
+
+[General]
+LockSidebar=true
+ShowSidebar=true
+
+[Recent Files]
+File1[$e]=$HOME/Documents/git/notes/7-library/Textbooks/statistical_learning_for_ML.pdf
+File2[$e]=$HOME/Documents/git/notes/7-library/Textbooks/Gilbert Strang - Calculus.pdf
+File3[$e]=$HOME/Documents/git/notes/7-library/Textbooks/Griffiths Electrodynamics.pdf
+Name1[$e]=statistical_learning_for_ML.pdf
+Name2[$e]=Gilbert Strang - Calculus.pdf
+Name3[$e]=Griffiths Electrodynamics.pdf
+
+[UiSettings]
+ColorScheme=Dracula

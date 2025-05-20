@@ -25,6 +25,9 @@
       system = "x86_64-linux";
       lib = nixpkgs.lib;
       pkgs = import inputs.nixpkgs {
+        overlays = [
+          (import ./nix/overlays/postgrestools.nix)
+        ];
         system = system;
         config = {
           allowUnfreePredicate =

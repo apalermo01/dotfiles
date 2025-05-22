@@ -18,7 +18,7 @@ return {
 	    	map('n', '<leader>fj', builtin.jumplist, { desc = 'jumplist' })
 	    	map('n', '<leader>fl', builtin.live_grep, { desc = 'live grep' })
 	    	map('n', '<leader>fg', builtin.git_files, { desc = 'git file search' })
-	    	map('n', '<leader>fbu', builtin.buffers, { desc = 'buffer search' })
+	    	map('n', '<leader>fb', builtin.buffers, { desc = 'git file search' })
 	    	map('n', '<leader>fo', builtin.oldfiles, { desc = 'search old files' })
 	    	map('n', '<leader>fs', builtin.spell_suggest, { desc = 'spell suggest' })
 	    	map('n', '<leader>fw', function()
@@ -31,7 +31,7 @@ return {
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
         config = function(_, opts)
-            map("n", "<leader>fbr", "<cmd>Telescope file_browser<CR>", { desc = "file browser" })
+            map("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", { desc = "file browser" })
         end
 	},
 }

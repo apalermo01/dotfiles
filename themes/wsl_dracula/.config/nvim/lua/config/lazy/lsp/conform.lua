@@ -11,7 +11,7 @@ return {
 			lua = { "stylua" },
 			python = { "isort", "black" },
 			nix = { "nixfmt" },
-			sql = { "sqlfmt" },
+			sql = { "sqls" },
 			bash = { "shfmt" },
 			zsh = { "shfmt" },
 			sh = { "shfmt" },
@@ -20,5 +20,21 @@ return {
 			yaml = { "yamlfix" },
 			yml = { "yamlfix" },
 		},
+
+        -- formatters = {
+        --     pg_format = {
+        --         args = {
+        --             "--function-case=1",
+        --             "--keyword-case=1",
+        --             "--type-case=1",
+        --             "--keep-newline",
+        --             "--nogrouping",
+        --             -- "--wrap-limit=80",
+        --             "--wrap-after=1",
+        --
+        --
+        --         }
+        --     }
+        -- }
 	},
 }

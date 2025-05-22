@@ -17,9 +17,6 @@ return {
 			"nil_ls",
 			"bashls",
             "yamlls",
-            -- "sqls",
-            -- "efm",
-            "postgres_lsp",
 		} or {
             "lua_ls",
 			"html",
@@ -33,8 +30,8 @@ return {
 			"bashls",
             "yamlls",
             "sqls",
-            "efm",
-            "postgres_lsp",
+            -- "sqlls",
+            -- "sqlfluff"
 		},
 
 		handlers = {
@@ -93,18 +90,27 @@ return {
 				})
 			end,
 
-            -- ["sqls"] = function()
-            --     require("lspconfig").sqls.setup({
-            --         cmd = { "sqls" },
-            --         filetypes = { "sql", "psql" },
-            --         root_dir = function(fname)
-            --             return require("lspconfig.util").root_pattern(".sqitch.conf", "sqitch.plan", ".git")(fname)
-            --                 or require("lspconfig.util").path.dirname(fname)
-            --         end,
-            --         settings = {},
-            --     })
-            -- end,
-            --
+            ["sqls"] = function()
+                require("lspconfig").sqls.setup({
+                    cmd = { "sqls" },
+                    filetypes = { "sql", "psql" },
+                    root_dir = function(fname)
+                        return require("lspconfig.util").root_pattern(".sqitch.conf", "sqitch.plan", ".git")(fname)
+                            or require("lspconfig.util").path.dirname(fname)
+                    end,
+                    settings = {
+                        sqls = {
+                            connections = {
+                                {
+                                    driver = 'postgresql',
+                                    dataSourceName = "host=127.0.0.1 port=5001 user=sqitch password=pass dbname=postgres sslmode=disable",
+                                }
+                            }
+                        }
+                    },
+                })
+            end,
+
             -- ["efm"] = function()
             --     init_options = {documentFormatting = false},
             --     root_dir = function(fname)

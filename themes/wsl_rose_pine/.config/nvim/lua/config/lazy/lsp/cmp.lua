@@ -1,6 +1,7 @@
 -- auto complete
 
 local lspkind = require("lspkind")
+
 -- `/` cmdline setup.
 local cmp = require("cmp")
 cmp.setup.cmdline("/", {
@@ -78,4 +79,3 @@ return {
 		})
 	end,
 }
-

@@ -17,9 +17,6 @@ return {
 			"nil_ls",
 			"bashls",
             "yamlls",
-            -- "sqls",
-            -- "efm",
-            "postgres_lsp",
 		} or {
             "lua_ls",
 			"html",
@@ -32,9 +29,6 @@ return {
 			"markdown_oxide",
 			"bashls",
             "yamlls",
-            "sqls",
-            "efm",
-            "postgres_lsp",
 		},
 
 		handlers = {

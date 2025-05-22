@@ -1,5 +1,6 @@
 -- auto complete
 
+local lspkind = require("lspkind")
 -- `/` cmdline setup.
 local cmp = require("cmp")
 cmp.setup.cmdline("/", {
@@ -36,6 +37,22 @@ return {
 				end,
 			},
 
+			formatting = {
+				format = lspkind.cmp_format({
+					mode = "symbol",
+					maxwidth = {
+						menu = 50,
+						abbr = 50,
+					},
+					ellipsis_char = "...",
+					show_labelDetails = true,
+					before = function(entry, vim_item)
+						vim_item.menu = entry.source.name
+						return vim_item
+					end,
+				}),
+			},
+
 			mapping = cmp.mapping.preset.insert({
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
@@ -61,3 +78,4 @@ return {
 		})
 	end,
 }
+

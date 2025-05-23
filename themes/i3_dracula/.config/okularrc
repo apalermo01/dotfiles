@@ -1,17 +1,9 @@
 [Desktop Entry]
-FullScreen=false
+FullScreen = false
 
 [General]
-LockSidebar=true
-ShowSidebar=false
-
-[Recent Files]
-File1[$e]=$HOME/Documents/git/notes/7-library/Textbooks/Gilbert Strang - Calculus.pdf
-File2[$e]=$HOME/Documents/git/notes/7-library/Textbooks/introduction-to-quantum-mechanics-david-j-darrell--annas-archive--libgenrs-nf-2695391.pdf
-File3[$e]=$HOME/Documents/git/notes/7-library/Textbooks/Stats Text.pdf
-Name1[$e]=Gilbert Strang - Calculus.pdf
-Name2[$e]=introduction-to-quantum-mechanics-david-j-darrell--annas-archive--libgenrs-nf-2695391.pdf
-Name3[$e]=Stats Text.pdf
+LockSidebar = true
+ShowSidebar = true
 
 [UiSettings]
-ColorScheme=Dracula
+ColorScheme = Dracula

@@ -1,6 +1,6 @@
 -- auto complete
 
-local lspkind = require("lspkind")
+-- local lspkind = require("lsp.lspkind")
 
 -- `/` cmdline setup.
 local cmp = require("cmp")
@@ -28,6 +28,9 @@ cmp.setup.cmdline(":", {
 
 return {
 	"hrsh7th/nvim-cmp",
+	-- dependencies = {
+	--     "onsails/lspkind.nvim"
+	-- },
 	config = function()
 		local cmp = require("cmp")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -39,19 +42,23 @@ return {
 			},
 
 			formatting = {
-				format = lspkind.cmp_format({
-					mode = "symbol",
-					maxwidth = {
-						menu = 50,
-						abbr = 50,
-					},
-					ellipsis_char = "...",
-					show_labelDetails = true,
-					before = function(entry, vim_item)
-						vim_item.menu = entry.source.name
-						return vim_item
-					end,
-				}),
+				format = function(entry, vim_item)
+					vim_item.menu = entry.source.name
+					return vim_item
+				end,
+				-- format = lspkind.cmp_format({
+				-- 	mode = "symbol",
+				-- 	maxwidth = {
+				-- 		menu = 50,
+				-- 		abbr = 50,
+				-- 	},
+				-- 	ellipsis_char = "...",
+				-- 	show_labelDetails = true,
+				-- 	before = function(entry, vim_item)
+				-- 		vim_item.menu = entry.source.name
+				-- 		return vim_item
+				-- 	end,
+				-- }),
 			},
 
 			mapping = cmp.mapping.preset.insert({

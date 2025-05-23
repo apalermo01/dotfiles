@@ -337,4 +337,4 @@ floating_modifier $mod
 exec --no-startup-id mate-power-manager
 
 focus_follows_mouse no
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/black_background.jpg
+exec_always feh --bg-fill /home/apalermo/Pictures/wallpapers/black_background.jpg

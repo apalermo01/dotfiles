@@ -8,7 +8,7 @@
     python = pkgs.python311.withPackages (ps: [
         ps.black
         ps.isort
-        ps.sqlfmt
+        # ps.sqlfmt
         ps.ipython
         ps.pandas
         ps.numpy
@@ -43,6 +43,7 @@
         lua-language-server
         markdown-oxide
         sqls
+        postgrestools
 
         # formatters
         stylua
@@ -50,7 +51,12 @@
         shfmt
         mdformat
         yamlfix
-        
+        # sqls
+        # sql-formatter
+        # sleek
+        pgformatter
+        # sqlfluff
+
         # programming languages
         python
         

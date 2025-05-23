@@ -192,8 +192,11 @@ alias l="yazi"
 alias y="yazi"
 alias ya="yazi"
 
+<<<<<<< HEAD
 alias cat="bat"
 alias ls="eza"
+=======
+>>>>>>> 80c0dc99961d6167ac378093510df2fa9a921f7c
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
 fi
@@ -205,7 +208,7 @@ fi
 
 
 fastfetch
-wal -n -e -i /home/alex/Pictures/wallpapers/002.png > /dev/null 
+wal -n -e -i /home/apalermo/Pictures/wallpapers/002.png > /dev/null 
 
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"

@@ -192,8 +192,11 @@ alias l="yazi"
 alias y="yazi"
 alias ya="yazi"
 
+<<<<<<< HEAD
 alias cat="bat"
 alias ls="eza"
+=======
+>>>>>>> 80c0dc99961d6167ac378093510df2fa9a921f7c
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
 fi
@@ -211,7 +214,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-wal -n -e -i /home/alex/Pictures/wallpapers/trees.jpg > /dev/null 
+wal -n -e -i /home/apalermo/Pictures/wallpapers/trees.jpg > /dev/null 
 
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"

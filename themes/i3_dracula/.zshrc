@@ -215,5 +215,3 @@ fastfetch
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-export EDITOR="nvim"

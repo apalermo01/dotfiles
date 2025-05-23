@@ -24,7 +24,7 @@ in
     enable = mkEnableOption "xautolock for i3 sessions";
     time = mkOption {
       type = types.int;
-      default = 1;
+      default = 5;
       description = "Minutes of idle before lock";
     };
     notify = mkOption {

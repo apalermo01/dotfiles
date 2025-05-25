@@ -43,6 +43,7 @@
     zinit
     lua-language-server
     luajitPackages.luarocks_bootstrap
+    pandoc
 
     # programming languages
     lua

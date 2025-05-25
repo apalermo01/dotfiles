@@ -36,8 +36,8 @@ bindsym $mod+q split toggle; exec notify-send 'toggled splt method'
 bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+s layout stacking; exec notify-send 'stack layout. $mod+w to tab'
+bindsym $mod+w layout tabbed; exec notify-send 'tabbed layout. $mod+s to stack
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -305,7 +305,8 @@ $mod+Ctrl+h:  tile horizontally\n\
 $mod+Shift+v: tile vertically\n\
 $mod+q:       toggle split method\n\
 $mod+Shift+s: screenshot\n\
-$mod+\
+$mod+s:       stacked layout\n\
+$mod+w:       tabbed layout\n\
 \\""
 
 

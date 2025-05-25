@@ -37,8 +37,8 @@
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
-    displayManager.sddm.enable = true;
   };
+  services.displayManager.sddm.enable = true;
   services.displayManager.defaultSession = "none+i3";
 
   # programs.xss-lock = {

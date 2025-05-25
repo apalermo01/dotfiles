@@ -44,6 +44,7 @@
     lua-language-server
     luajitPackages.luarocks_bootstrap
     pandoc
+    libreoffice-qt6-fresh
 
     # programming languages
     lua
@@ -127,7 +128,7 @@
   # Enable sound with alsa
   # sound.enable = false;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   # hardware.alsa.enable = true;
 
   security.rtkit.enable = true;

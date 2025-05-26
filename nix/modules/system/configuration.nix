@@ -14,7 +14,6 @@
   environment.systemPackages = with pkgs; [
     neovim
     nodejs
-    unzip
     nix-index
     git
     wget
@@ -43,8 +42,12 @@
     zinit
     lua-language-server
     luajitPackages.luarocks_bootstrap
-    pandoc
     libreoffice-qt6-fresh
+
+    # cli utilities
+    file
+    pandoc
+    unzip
 
     # programming languages
     lua
@@ -63,8 +66,6 @@
       zlib
     ];
   };
-
-
 
   # fixes command-not-found error
   programs.command-not-found.enable = false;
@@ -104,7 +105,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-
   # enable gnome keyring
   # without this, we're getting prompted for the wifi password every time
   # we reboot into i3
@@ -137,7 +137,6 @@
   # hardware.alsa.enable = true;
 
   security.rtkit.enable = true;
-
 
   # fonts
   fonts.packages = with pkgs; [

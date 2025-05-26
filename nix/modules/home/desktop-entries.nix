@@ -15,11 +15,23 @@ in
     enable = mkEnableOption "desktop-entries";
   };
   config = mkIf cfg.enable {
+    xdg.enable = true;
+    xdg.mime = {
+      enable = true;
+    };
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "x-scheme-handler/obsidian" = "obsidian.desktop";
+        "text/markdown" = "obsidian.desktop";
+      };
+    };
     # configure obsidian
     xdg.desktopEntries.obsidian = {
       name = "Obsidian";
-      exec = "/etc/profiles/per-user/alex/bin/obsidian %u";
+      exec = "${pkgs.obsidian}/bin/obsidian %u";
       type = "Application";
+      terminal = false;
       mimeType = [
         "x-scheme-handler/obsidian"
         "text/markdown"

@@ -10,6 +10,7 @@
     ../../modules/home/default.nix
   ];
 
+
   # define what will be installed by home manager here
   config.modules = {
     packages.headless.enable = true;

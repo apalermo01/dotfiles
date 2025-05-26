@@ -48,6 +48,7 @@
     file
     pandoc
     unzip
+    xsel
 
     # programming languages
     lua
@@ -75,11 +76,8 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
-
-  # mime filetypes
-  xdg.mime.addedAssociations = {
-    "ASCII text" = "obsidian";
-  };
+  environment.etc."xdg/menus/plasma-applications.menu".source =
+    "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   # bootloader
   boot.loader.systemd-boot.enable = true;

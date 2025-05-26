@@ -12,15 +12,6 @@ with lib;
 let
   cfg = config.modules.packages.ui;
 
-  # ### Desktop scripts ###
-  # xautolockWrapper = pkgs.writeShellScriptBin "xautolock-i3" ''
-  #   exec ${pkgs.xautolock}/bin/xautolock \
-  #        -time 1 \
-  #        -locker "${pkgs.i3lock}/bin/i3lock -c 250000" \
-  #        -notify 30 \
-  #        -notifier "${pkgs.libnotify}/bin/notify-send -u critical -t 5000 'Locking in 30 seconds'"
-  #
-  # '';
 in
 {
   options.modules.packages.ui = {
@@ -38,14 +29,12 @@ in
       picom
       kitty
       firefox
-      # inputs.zen-browser.packages."${system}".default
       nemo-with-extensions
       libnotify
       dunst
       mailutils
       zoom-us
       obsidian
-      # magick
       imagemagick
       dconf-editor
       themechanger
@@ -59,21 +48,7 @@ in
       xdg-desktop-portal-gtk
       i3lock
       brave
-      # xautolockWrapper
     ];
-
-    # systemd.user.services.xautolock = {
-    #   Unit = {
-    #   Description = "xautolock (i3)";
-    #   PartOf = [ "graphical-session.target" ];
-    #
-    # };
-    #   Service = {
-    #     ExecStart = "${xautolockWrapper}/bin/xautolock-i3";
-    #     restart = "on-failure";
-    #   };
-    #
-    #   Install.WantedBy = [ "graphical-session.target" ];
-    # };
   };
+
 }

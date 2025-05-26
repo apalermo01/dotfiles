@@ -17,6 +17,7 @@
     git.enable = true;
     direnv.enable = true;
     zoxide.enable = true;
+    desktop-entries.enable = true;
   };
 
   config.services = {

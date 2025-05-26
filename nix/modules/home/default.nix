@@ -12,6 +12,7 @@
       ./datagrip.nix
       # ./xautolock-i3.nix
       ./xss-lock-i3.nix
+      ./desktop-entries.nix
     ];
 
 }

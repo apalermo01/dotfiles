@@ -75,6 +75,11 @@
     enableZshIntegration = true;
   };
 
+  # mime filetypes
+  xdg.mime.addedAssociations = {
+    "markdown" = "obsidian";
+  };
+
   # bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

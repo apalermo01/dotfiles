@@ -78,7 +78,7 @@
 
   # mime filetypes
   xdg.mime.addedAssociations = {
-    "markdown" = "obsidian";
+    "ASCII text" = "obsidian";
   };
 
   # bootloader

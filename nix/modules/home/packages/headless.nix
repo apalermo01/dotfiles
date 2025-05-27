@@ -26,7 +26,6 @@
         neovim
         sioyek
         stow
-        diff-so-fancy
         fzf
         
         # terminal stuff
@@ -36,6 +35,8 @@
         bat
         eza
         gitui
+        diff-so-fancy
+        oh-my-posh
 
         # lsp s
         pyright
@@ -51,11 +52,7 @@
         shfmt
         mdformat
         yamlfix
-        # sqls
-        # sql-formatter
-        # sleek
         pgformatter
-        # sqlfluff
 
         # programming languages
         python

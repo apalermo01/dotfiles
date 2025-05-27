@@ -342,4 +342,4 @@ focus_follows_mouse no
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/trees.jpg
+exec_always feh --bg-fill /home/apalermo/Pictures/wallpapers/trees.jpg

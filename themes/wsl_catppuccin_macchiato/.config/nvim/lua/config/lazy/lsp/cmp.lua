@@ -1,6 +1,5 @@
 -- auto complete
 
-
 -- `/` cmdline setup.
 local cmp = require("cmp")
 cmp.setup.cmdline("/", {
@@ -28,7 +27,7 @@ cmp.setup.cmdline(":", {
 return {
 	"hrsh7th/nvim-cmp",
 	dependencies = {
-        "onsails/lspkind.nvim",
+		"onsails/lspkind.nvim",
 		"stevearc/conform.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -45,8 +44,22 @@ return {
 	},
 	config = function()
 		local cmp = require("cmp")
-        local lspkind = require("lspkind")
+		local lspkind = require("lspkind")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+		local wk = require("which-key")
+		wk.register({
+			["<C-p>"] = { "<Cmd>lua require('cmp').mapping.select_prev_item()<CR>", "CMP prev" },
+			["<C-n>"] = { "<Cmd>lua require('cmp').mapping.select_next_item()<CR>", "CMP next" },
+			["<C-k>"] = { "<Cmd>lua require('cmp').mapping.scroll_docs(-4)<CR>", "Docs up" },
+			["<C-j>"] = { "<Cmd>lua require('cmp').mapping.scroll_docs(4)<CR>", "Docs down" },
+			["<C-space>"] = { "<Cmd>lua require('cmp').mapping.complete()<CR>", "Complete" },
+			["<C-y>"] = { "<Cmd>lua require('cmp').mapping.confirm({ select = true })<CR>", "Confirm" },
+			["<C-e>"] = { "<Cmd>lua require('cmp').mapping.abort()<CR>", "Abort" },
+		}, {
+			mode = "i",
+			prefix = "",
+			event = "CmpEnter",
+		})
 		cmp.setup({
 			snippet = {
 				expand = function(args)
@@ -54,7 +67,7 @@ return {
 				end,
 			},
 
-            preselect = 'None',
+			preselect = "None",
 
 			formatting = {
 				format = lspkind.cmp_format({
@@ -77,9 +90,9 @@ return {
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 				["<C-k>"] = cmp.mapping.scroll_docs(-4),
 				["<C-j>"] = cmp.mapping.scroll_docs(4),
-                ["<C-e>"] = cmp.mapping.abort(),
-                ["<CR>"] = cmp.mapping.abort(),
-                ["<C-o>"] = cmp.mapping.open_docs(),
+				["<C-e>"] = cmp.mapping.abort(),
+				["<CR>"] = cmp.mapping.abort(),
+				["<C-o>"] = cmp.mapping.open_docs(),
 				["<TAB>"] = cmp.mapping.select_next_item(cmp_select),
 				["<S-TAB>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
@@ -93,7 +106,7 @@ return {
 				{ name = "buffer" },
 				{ name = "render-markdown" },
 				{ name = "obsidian" },
-				-- { name = 'spell' },
+				{ name = "spell" },
 				-- { name = 'gitmoji' },
 				{ name = "path" },
 			}),

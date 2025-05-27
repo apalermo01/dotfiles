@@ -141,6 +141,7 @@ return {
                     -- row = row - (#help_lines + 1),
                     row = row,
                     col = col,
+                    relative = 'editor'
                 })
             end)
         end)

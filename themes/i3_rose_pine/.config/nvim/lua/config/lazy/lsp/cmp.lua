@@ -122,14 +122,18 @@ return {
             vim.schedule(function()
                 if help_win and api.nvim_win_is_valid(help_win) then return end
                 local width = 0
+                local height = #help_lines
                 for _, l in ipairs(help_lines) do width = math.max(width, #l) end
-                local row, col = unpack(api.nvim_win_get_cursor(0))
+                -- local row, col = unpack(api.nvim_win_get_cursor(0))
+                local row = vim.o.lines - height - vim.o.cmdheight
+                local col = vim.o.columns - width
                 -- open the window
                 help_win = lsp_util.open_floating_preview(help_lines, "plaintext", {
                     border = 'rounded',
                     width = width,
-                    height = #help_lines,
-                    row = row - (#help_lines + 1),
+                    height = height,
+                    -- row = row - (#help_lines + 1),
+                    row = row,
                     col = col,
                 })
             end)

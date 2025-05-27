@@ -46,24 +46,6 @@ return {
 		local cmp = require("cmp")
 		local lspkind = require("lspkind")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		local wk = require("which-key")
-		-- build a simple map of cmp keys → action + description
-		local cmp_keys = {
-			["<C-e>"] = { "<Cmd>lua require('cmp').mapping.abort()<CR>", "Abort" },
-			["<C-j>"] = { "<Cmd>lua require('cmp').mapping.scroll_docs(4)<CR>", "Docs ↓" },
-			["<C-k>"] = { "<Cmd>lua require('cmp').mapping.scroll_docs(-4)<CR>", "Docs ↑" },
-			["<C-n>"] = { "<Cmd>lua require('cmp').mapping.select_next_item()<CR>", "Next" },
-			["<C-p>"] = { "<Cmd>lua require('cmp').mapping.select_prev_item()<CR>", "Prev" },
-			["<C-space>"] = { "<Cmd>lua require('cmp').mapping.complete()<CR>", "Complete" },
-			["<C-y>"] = { "<Cmd>lua require('cmp').mapping.confirm({ select = true })<CR>", "Confirm" },
-		}
-
-		-- register them *only* when the cmp menu opens
-		wk.register(cmp_keys, {
-			mode = "i", -- insert mode
-			prefix = "", -- no leader or other prefix
-			event = "CmpEnter", -- which-key will register these mappings when cmp opens
-		})
 
 		cmp.setup({
 			snippet = {
@@ -116,5 +98,49 @@ return {
 				{ name = "path" },
 			}),
 		})
+
+        local api = vim.api
+        local lsp_util = vim.lsp.util
+
+        local help_lines = {
+            "Cmp mappings:",
+            "<C-p> • prev item",
+            "<C-n> • next item",
+            "<C-k>/<C-j> • scroll docs",
+            "<C-space> • trigger complete",
+            "<C-y> • confirm ",
+            "<C-e> • abort   ",
+            "<C-o> • open docs",
+        }
+
+        local help_buf = api.nvim_create_buf(false, true)
+        api.nvim_buf_set_option(help_buf, "bufhidden", "wipe")
+        api.nvim_buf_set_lines(help_buf, 0, -1, false, help_lines)
+
+        local help_win
+
+        cmp.event:on("menu_opened", function()
+            vim.schedule(function()
+                if help_win and api.nvim_win_is_valid(help_win) then return end
+                local width = 0
+                for _, l in ipairs(help_lines) do width = math.max(width, #1) end
+                local row, col = unpack(api.nvim_win_get_cursor(0))
+                -- open the window
+                help_win = lsp_util.open_floating_preview(help_lines, "plaintext", {
+                    border = 'rounded',
+                    width = width,
+                    height = #help_lines,
+                    row = row - (#help_lines + 1),
+                    col = col,
+                })
+            end)
+        end)
+
+        cmp.event:on("menu_closed", function()
+            if help_win and api.nvim_win_is_valid(help_win) then
+                api.nvim_win_close(help_win, true)
+                help_win = nil
+            end
+        end)
 	end,
 }

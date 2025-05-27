@@ -48,7 +48,6 @@ return {
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 		local wk = require("which-key")
 		wk.register({
-			{
 				mode = { "i" },
 				{ "<C-e>", "<Cmd>lua require('cmp').mapping.abort()<CR>", desc = "Abort" },
 				{ "<C-j>", "<Cmd>lua require('cmp').mapping.scroll_docs(4)<CR>", desc = "Docs down" },
@@ -58,7 +57,6 @@ return {
 				{ "<C-space>", "<Cmd>lua require('cmp').mapping.complete()<CR>", desc = "Complete" },
 				{ "<C-y>", "<Cmd>lua require('cmp').mapping.confirm({ select = true })<CR>", desc = "Confirm" },
 				{ "event", desc = "CmpEnter" },
-			},
 		})
 
 		cmp.setup({

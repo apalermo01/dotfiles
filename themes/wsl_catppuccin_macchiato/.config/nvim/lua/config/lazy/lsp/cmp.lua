@@ -123,7 +123,7 @@ return {
             vim.schedule(function()
                 if help_win and api.nvim_win_is_valid(help_win) then return end
                 local width = 0
-                for _, l in ipairs(help_lines) do width = math.max(width, #1) end
+                for _, l in ipairs(help_lines) do width = math.max(width, #l) end
                 local row, col = unpack(api.nvim_win_get_cursor(0))
                 -- open the window
                 help_win = lsp_util.open_floating_preview(help_lines, "plaintext", {

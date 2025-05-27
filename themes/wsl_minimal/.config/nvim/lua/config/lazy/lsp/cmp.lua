@@ -82,6 +82,11 @@ return {
 				["<TAB>"] = cmp.mapping.select_next_item(cmp_select),
 				["<S-TAB>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+
+                -- fn1+h/j/k/l mapped to arrow keys
+                -- fn1+y is mapped to >
+                -- also map > to confirm so I don't have to move to ctrl
+				[">"] = cmp.mapping.confirm({ select = true }),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-space>"] = cmp.mapping.complete(),
 			}),
@@ -119,11 +124,12 @@ return {
         local help_win
 
         cmp.event:on("menu_opened", function()
+            vim.notify("making cmp window", vim.log.levels.WARN)
             vim.schedule(function()
                 if help_win and api.nvim_win_is_valid(help_win) then return end
                 local width = 0
-                local height = #help_lines
                 for _, l in ipairs(help_lines) do width = math.max(width, #l) end
+                local height = #help_lines
                 -- local row, col = unpack(api.nvim_win_get_cursor(0))
                 local row = vim.o.lines - height - vim.o.cmdheight
                 local col = vim.o.columns - width

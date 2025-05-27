@@ -47,16 +47,22 @@ return {
 		local lspkind = require("lspkind")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 		local wk = require("which-key")
-		wk.register({
-				mode = { "i" },
-				{ "<C-e>", "<Cmd>lua require('cmp').mapping.abort()<CR>", desc = "Abort" },
-				{ "<C-j>", "<Cmd>lua require('cmp').mapping.scroll_docs(4)<CR>", desc = "Docs down" },
-				{ "<C-k>", "<Cmd>lua require('cmp').mapping.scroll_docs(-4)<CR>", desc = "Docs up" },
-				{ "<C-n>", "<Cmd>lua require('cmp').mapping.select_next_item()<CR>", desc = "CMP next" },
-				{ "<C-p>", "<Cmd>lua require('cmp').mapping.select_prev_item()<CR>", desc = "CMP prev" },
-				{ "<C-space>", "<Cmd>lua require('cmp').mapping.complete()<CR>", desc = "Complete" },
-				{ "<C-y>", "<Cmd>lua require('cmp').mapping.confirm({ select = true })<CR>", desc = "Confirm" },
-				{ "event", desc = "CmpEnter" },
+		-- build a simple map of cmp keys → action + description
+		local cmp_keys = {
+			["<C-e>"] = { "<Cmd>lua require('cmp').mapping.abort()<CR>", "Abort" },
+			["<C-j>"] = { "<Cmd>lua require('cmp').mapping.scroll_docs(4)<CR>", "Docs ↓" },
+			["<C-k>"] = { "<Cmd>lua require('cmp').mapping.scroll_docs(-4)<CR>", "Docs ↑" },
+			["<C-n>"] = { "<Cmd>lua require('cmp').mapping.select_next_item()<CR>", "Next" },
+			["<C-p>"] = { "<Cmd>lua require('cmp').mapping.select_prev_item()<CR>", "Prev" },
+			["<C-space>"] = { "<Cmd>lua require('cmp').mapping.complete()<CR>", "Complete" },
+			["<C-y>"] = { "<Cmd>lua require('cmp').mapping.confirm({ select = true })<CR>", "Confirm" },
+		}
+
+		-- register them *only* when the cmp menu opens
+		wk.register(cmp_keys, {
+			mode = "i", -- insert mode
+			prefix = "", -- no leader or other prefix
+			event = "CmpEnter", -- which-key will register these mappings when cmp opens
 		})
 
 		cmp.setup({

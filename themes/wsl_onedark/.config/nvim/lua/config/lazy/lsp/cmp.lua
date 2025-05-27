@@ -177,7 +177,7 @@ return {
 						api.nvim_win_close(help_win, true)
 						help_win = nil
 					end
-				end, 2000)
+				end, 10000)
 			end
 		end)
 	end,

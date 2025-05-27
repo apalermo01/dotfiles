@@ -338,4 +338,4 @@ focus_follows_mouse no
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/spookyjs_upscayl_realesrgan-x4plus_x2.png
+exec_always feh --bg-fill /home/apalermo/Pictures/wallpapers/spookyjs_upscayl_realesrgan-x4plus_x2.png

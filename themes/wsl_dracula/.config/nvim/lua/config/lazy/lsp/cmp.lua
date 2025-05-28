@@ -74,7 +74,9 @@ return {
 
 			mapping = cmp.mapping.preset.insert({
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+				["$"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+				["+"] = cmp.mapping.select_next_item(cmp_select),
 				["<C-k>"] = cmp.mapping.scroll_docs(-4),
 				["<C-j>"] = cmp.mapping.scroll_docs(4),
 				["<C-e>"] = cmp.mapping.abort(),
@@ -118,7 +120,7 @@ return {
 		}
 
 		local help_buf = api.nvim_create_buf(false, true)
-		api.nvim_buf_set_option(help_buf, "bufhidden", "wipe")
+		api.nvim_buf_set_option(help_buf, "bufhidden", "hide")
 		api.nvim_buf_set_lines(help_buf, 0, -1, false, help_lines)
 
 		local help_win
@@ -147,15 +149,24 @@ return {
 
 				vim.notify("making cmp window. row = " .. row .. " col = " .. col, vim.log.levels.WARN)
 				-- open the window
-				help_win = lsp_util.open_floating_preview(help_lines, "plaintext", {
-					relative = "editor",
-					row = row,
-					col = col,
-					width = width,
-					height = height,
-					style = "minimal",
-					border = "rounded",
-				})
+                help_win = api.nvim_open_win(help_buf, false, {
+                    relative = 'editor',
+                    row = row,
+                    col = col,
+                    width = width,
+                    height = height,
+                    style = 'minimal',
+                    border = 'rounded',
+                })
+				-- help_win = lsp_util.open_floating_preview(help_lines, "plaintext", {
+				-- 	relative = "editor",
+				-- 	row = row,
+				-- 	col = col,
+				-- 	width = width,
+				-- 	height = height,
+				-- 	style = "minimal",
+				-- 	border = "rounded",
+				-- })
 			end)
 		end)
 
@@ -166,7 +177,7 @@ return {
 						api.nvim_win_close(help_win, true)
 						help_win = nil
 					end
-				end, 2000)
+				end, 10000)
 			end
 		end)
 	end,

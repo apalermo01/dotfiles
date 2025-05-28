@@ -35,7 +35,8 @@
         bat
         eza
         gitui
-        diff-so-fancy
+        # diff-so-fancy
+        delta
         oh-my-posh
 
         # lsp s

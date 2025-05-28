@@ -41,27 +41,10 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.defaultSession = "none+i3";
 
-  # programs.xss-lock = {
-  #   enable = true;
-  #   lockerCommand = "${pkgs.i3lock}/bin/i3lock -c 250000";
-  #   extraOptions = [ "--transfer-sleep-lock" ];
-  # };
 
-  # services.xserver.xautolock = {
-  #   enable = true;
-  #   time = 1;
-  #   enableNotifier = true;
-  #   notifier = "${pkgs.libnotify}/bin/notify-send -u critical -t 5000 'Locking in 30 seconds'";
-  #   notify = 30;
-  #   locker = "${pkgs.i3lock}/bin/i3lock -c 250000";
-  #   # locker = "${pkgs.i3lock}/bin/i3lock";
-  # };
-
-  # services.xserver.displayManager.sessionCommands = ''
-  #   xset s 600 600
-  #   xset dpms 0 0 900
-  # '';
-
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
   services.pipewire = {
     enable = true;
     audio.enable = true;

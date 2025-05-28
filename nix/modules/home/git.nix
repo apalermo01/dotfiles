@@ -39,14 +39,6 @@ in
           renames = "copies";
           interHunkContext = 10;
         };
-        # pager = {
-        #   diff = "diff-so-fancy | $PAGER";
-        #   branch = false;
-        #   tag = false;
-        # };
-        # "diff-so-fancy" = {
-        #   markEmptyLines = false;
-        # };
         color = {
           diff = {
             meta = "yellow bold";

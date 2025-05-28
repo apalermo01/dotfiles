@@ -120,7 +120,7 @@ return {
 		}
 
 		local help_buf = api.nvim_create_buf(false, true)
-		api.nvim_buf_set_option(help_buf, "bufhidden", "wipe")
+		api.nvim_buf_set_option(help_buf, "bufhidden", "hide")
 		api.nvim_buf_set_lines(help_buf, 0, -1, false, help_lines)
 
 		local help_win
@@ -177,7 +177,7 @@ return {
 						api.nvim_win_close(help_win, true)
 						help_win = nil
 					end
-				end, 2000)
+				end, 10000)
 			end
 		end)
 	end,

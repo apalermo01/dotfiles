@@ -125,14 +125,10 @@
   };
 
   ### sound
-  # Enable sound with pipewire.
-  # services.pulseaudio.enable = false;
-
-  # Enable sound with alsa
-  # sound.enable = false;
-
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   services.pulseaudio.enable = false;
-  # hardware.alsa.enable = true;
+  services.blueman.enable = true;
 
   security.rtkit.enable = true;
 
@@ -140,6 +136,7 @@
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
   ];
 
   # default users

@@ -207,14 +207,13 @@ if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
 fi
 
-
 ba () {
     echo "bootstrapping aliases"
     if [ -f aliases.sh ]; then
         echo "aliases.sh found, sourcing..."
         source aliases.sh
     else
-        read "mk_alias?aliases.sh not found. Make one? [y/n]: "
+        read -q "?aliases.sh not found. Make one? [y/n]: " mk_alias
         if [[ ! $mk_alias =~ ^[Yy]$ ]]; then
             echo "exiting..."
             exit
@@ -231,19 +230,6 @@ ba () {
 EOF
     fi
 }
-#######################
-# Additional settings #
-#######################
-
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-fastfetch
-
-eval "$(direnv hook zsh)"
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
 
 function _maybe_source_aliases() {
     if [[ -f aliases.sh ]]; then
@@ -256,3 +242,19 @@ function _maybe_source_aliases() {
 
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _maybe_source_aliases
+#######################
+# Additional settings #
+#######################
+
+
+
+
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fastfetch
+
+eval "$(direnv hook zsh)"
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"

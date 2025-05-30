@@ -21,7 +21,7 @@
             direnv.enable = true;
             zoxide.enable = true;
             datagrip.enable = true;
-
+            pip.enable = true;
         };
     
     # };

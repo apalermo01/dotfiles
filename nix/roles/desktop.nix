@@ -15,6 +15,7 @@
     xss-lock
     # kdePackages.plasma-workspace
     via
+    element-desktop
   ];
 
   programs.kdeconnect.enable = true;

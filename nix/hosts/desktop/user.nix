@@ -19,7 +19,7 @@
     direnv.enable = true;
     zoxide.enable = true;
     desktop-entries.enable = true;
-    element.enable = true;
+    # element.enable = true;
   };
 
   config.services = {

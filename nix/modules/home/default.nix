@@ -18,7 +18,6 @@
     ./xss-lock-i3.nix
     ./desktop-entries.nix
     ./obs.nix
-    ./element.nix
   ];
 
 }

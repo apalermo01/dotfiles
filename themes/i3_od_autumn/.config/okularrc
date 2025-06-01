@@ -1,9 +1,13 @@
 [Desktop Entry]
-FullScreen = false
+FullScreen=false
 
 [General]
-LockSidebar = true
-ShowSidebar = true
+LockSidebar=true
+ShowSidebar=true
+
+[Recent Files]
+File1[$e]=$HOME/Documents/git/notes/7-library/Capital Volume I - Capital-Volume-I.pdf
+Name1[$e]=Capital Volume I - Capital-Volume-I.pdf
 
 [UiSettings]
-ColorScheme = OneDarkRed
+ColorScheme=OneDarkRed

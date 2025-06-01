@@ -26,6 +26,8 @@ in
       extraConfig = {
         delta = {
           navigate = true;
+          dark = true;
+          side-by-side = true;
         };
         init = {
           defaultBranch = "main";
@@ -33,6 +35,9 @@ in
         core = {
           editor = "nvim";
           pager = "delta";
+        };
+        merge = {
+          conflictstyle = "zdiff3";
         };
         diff = {
           context = 3;
@@ -58,6 +63,9 @@ in
         interactive = {
           diffFilter = "delta --color-only";
           singlekey = true;
+        };
+        add.interactive = {
+          useBuiltin = false;
         };
         push = {
           autoSetupRemote = true;

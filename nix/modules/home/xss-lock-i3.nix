@@ -31,7 +31,7 @@ in
     };
     notify = mkOption {
       type = types.int;
-      default = 30;
+      default = (5*60) - 30;
       description = "Seconds before lock when notifier runs";
     };
     lockerCmd = mkOption {

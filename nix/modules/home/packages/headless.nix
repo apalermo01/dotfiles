@@ -35,9 +35,9 @@
         bat
         eza
         gitui
-        # diff-so-fancy
         delta
         oh-my-posh
+        tealdeer
 
         # lsp s
         pyright

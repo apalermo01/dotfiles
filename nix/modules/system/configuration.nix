@@ -49,6 +49,7 @@
     pandoc
     unzip
     xsel
+    wikiman
 
     # programming languages
     lua

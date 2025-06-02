@@ -24,5 +24,5 @@ if [ -f ~/.config/polybar/i3_polybar_start.sh ]; then
     bash ~/.config/polybar/i3_polybar_start.sh
 fi
 
-
+source ~/.tmux.od_autumn.tmux
 

@@ -64,10 +64,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.alex = import (./nix/hosts + "/${hostname}/user.nix");
+              home-manager.backupFileExtension = "hm-bak";
               home-manager.extraSpecialArgs = {
                 inherit inputs;
               };
-              home-manager.backupFileExtension = "hm-bak";
             }
           ];
           specialArgs = { inherit inputs; };
@@ -81,8 +81,8 @@
             ./nix/hosts/${hostname}/user.nix
             {
               home = {
-                username = "apalermo";
-                homeDirectory = "/home/apalermo";
+                username = "alex";
+                homeDirectory = "/home/alex";
               };
             }
           ];

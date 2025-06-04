@@ -6,4 +6,4 @@ LockSidebar = true
 ShowSidebar = true
 
 [UiSettings]
-ColorScheme = tokyonight
+ColorScheme = TokyoNight

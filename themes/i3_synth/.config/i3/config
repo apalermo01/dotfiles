@@ -305,13 +305,13 @@ $mod+w:       tabbed layout\n\
 exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
 exec_always systemctl --user start xss-lock-i3
 #                        border             background          text            indicator       child bdr
-client.focused	         #54986D       #0B1F20    #A8CE89  #54986D	    #54986D
-client.focused_inactive	 #427655       #0B1F20    #A8CE89  #427655	    #427655
-client.unfocused	     #427655       #0B1F20    #A8CE89  #427655	    #427655
-client.urgent	         #7AB286       #0B1F20    #A8CE89  #7AB286         #7AB286
-client.placeholder	     #427655       #0B1F20    #A8CE89  #427655	    #427655
+client.focused	         #A3589B       #051103    #54A9C3  #A3589B	    #A3589B
+client.focused_inactive	 #474E8F       #051103    #54A9C3  #474E8F	    #474E8F
+client.unfocused	     #474E8F       #051103    #54A9C3  #474E8F	    #474E8F
+client.urgent	         #E46DA2       #051103    #54A9C3  #E46DA2         #E46DA2
+client.placeholder	     #474E8F       #051103    #54A9C3  #474E8F	    #474E8F
 
-client.background	#0B1F20
+client.background	#051103
 
 # Gaps
 gaps inner 10

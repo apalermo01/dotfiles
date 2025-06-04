@@ -33,4 +33,4 @@ require("config")
 -- local log = require('cmp.utils.debug').log
 -- log.enable('DEBUG')  
 vim.cmd.colorscheme("vaporwave")
-vim.cmd([[set guifont=Maple\ Mono]])
+vim.cmd([[set guifont=Iosevka\ Nerd\ Font\ Mono]])

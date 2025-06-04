@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+plasma-apply-colorscheme tokyonight
 feh --bg-fill /home/alex/Pictures/wallpapers/spookyjs_upscayl_realesrgan-x4plus_x2.png
 ###!/usr/bin/env fish
 feh --bg-fill $HOME/Pictures/wallappers/spookyjs_upscayl_realesrgan-x4plus_x2.png

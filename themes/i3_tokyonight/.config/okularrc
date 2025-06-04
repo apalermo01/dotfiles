@@ -1,9 +1,9 @@
 [Desktop Entry]
-FullScreen = false
+FullScreen=false
 
 [General]
-LockSidebar = true
-ShowSidebar = true
+LockSidebar=true
+ShowSidebar=true
 
 [UiSettings]
-ColorScheme = TokyoNight
+ColorScheme=Tokyo Night

@@ -147,7 +147,7 @@ return {
 		-- 		local row = 0
 		-- 		local col = vim.o.columns - width
 		--
-		-- 		-- vim.notify("making cmp window. row = " .. row .. " col = " .. col, vim.log.levels.WARN)
+		-- 		vim.notify("making cmp window. row = " .. row .. " col = " .. col, vim.log.levels.WARN)
 		-- 		-- open the window
 		--               help_win = api.nvim_open_win(help_buf, false, {
 		--                   relative = 'editor',

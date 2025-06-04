@@ -1,0 +1,3 @@
+export QT_QPA_PLATFORMTHEME='kde'
+export KDE_SESSION_VERSION=5
+export KDE_FULL_SESSION=true

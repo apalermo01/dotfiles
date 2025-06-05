@@ -39,7 +39,7 @@ end
 -----------------------------------------------------------------
 
 -- netrw
-map("n", "<leader>ex", vim.cmd.Ex)
+-- map("n", "<leader>ex", vim.cmd.Ex)
 
 -- Newlines above and below without leaving normal mode
 map("n", "oo", "o<Esc>k")

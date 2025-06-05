@@ -53,4 +53,4 @@ fi
 echo $1 > current_theme
 
 echo "copying user scripts"
-cp ./theme-builder/scripts/* ~
+stow . -d user_scripts/ -t ~/Scripts

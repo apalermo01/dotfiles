@@ -156,7 +156,7 @@ move_note_on_type() {
     echo "vault restructure complete"
 }
 
-bt() { ~/bluetooth.sh }
+bt() { ~/Scripts/bluetooth.sh }
 
 ###########
 # Aliases #

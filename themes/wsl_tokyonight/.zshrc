@@ -188,8 +188,7 @@ alias ga='git add -p'
 alias gc='git commit'
 alias gb='git branch'
 alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
-alias gl="git log --all --graph --pretty=\
-    format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
+alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
 alias gp='git push'
 alias gpu='git pull'
 alias gcm="git add . && git commit -m $(date +%D)"

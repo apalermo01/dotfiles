@@ -32,4 +32,4 @@ require("config")
 
 -- local log = require('cmp.utils.debug').log
 -- log.enable('DEBUG')  
-vim.cmd([[set guifont=JetBrains\ NF\ Mono]])
+vim.cmd([[set guifont=Iosevka\ Nerd\ Font\ Mono]])

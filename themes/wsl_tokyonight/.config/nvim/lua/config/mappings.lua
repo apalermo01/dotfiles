@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 -- tab operations:     <leader>t
 --          exception: toggle trouble: <leader>tt
 -- terminal operations: <leader><leader>t
--- lsp operations:     <leader>l
+-- lsp operations:     <leader>v
 -- debug operatiosn:   <leader>d
 -- telescope / picker: <leader>p
 --          excepction: paste from clipboard: <leader>pc
@@ -444,7 +444,7 @@ end, { desc = "Telescope: search for a string" })
 
 
 --------------------------------------------------------------------------------
--- LSP MAPS (<leader>l prefix)
+-- LSP MAPS (<leader>v prefix)
 --------------------------------------------------------------------------------
 -- Create an augroup for LSP keymaps
 local lsp_group = vim.api.nvim_create_augroup("UserLspKeymaps", { clear = true })
@@ -455,8 +455,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local client = assert(vim.lsp.get_client_by_id(e.data.client_id))
 		local opts = { buffer = buf }
 
-		-- Go to definition (normal and <leader>ld)
-		map("n", "<leader>ld", function()
+		-- Go to definition (normal and <leader>vd)
+		map("n", "<leader>vd", function()
 			vim.lsp.buf.definition()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: go to definition" }))
 
@@ -466,27 +466,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
 
 		-- Show diagnostic in floating
-		map("n", "<leader>lk", function()
+		map("n", "<leader>vk", function()
 			vim.diagnostic.open_float()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: show diagnostic" }))
 
 		-- Workspace symbols
-		map("n", "<leader>lws", function()
+		map("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: workspace symbols" }))
 
 		-- Code actions
-		map("n", "<leader>la", function()
+		map("n", "<leader>va", function()
 			vim.lsp.buf.code_action()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: code actions" }))
 
 		-- References
-		map("n", "<leader>lrr", function()
+		map("n", "<leader>vrr", function()
 			vim.lsp.buf.references()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: references" }))
 
 		-- Rename
-		map("n", "<leader>lrn", function()
+		map("n", "<leader>vrn", function()
 			vim.lsp.buf.rename()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: rename" }))
 
@@ -498,14 +498,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		-- Go to next/prev diagnostic
-		map("n", "<leader>ln", function()
+		map("n", "<leader>vn", function()
 			vim.lsp.buf.goto_next()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: next diagnostic" }))
 		map("n", "]l", function()
 			vim.lsp.buf.goto_next()
 		end, { buffer = buf, desc = "LSP: next diagnostic" })
 
-		map("n", "<leader>lp", function()
+		map("n", "<leader>vp", function()
 			vim.lsp.buf.goto_prev()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: previous diagnostic" }))
 		map("n", "[l", function()
@@ -519,7 +519,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Special markdown_oxide handling (Obsidian)
 		if client.name == "markdown_oxide" then
-			map("n", "<leader>lrn", function()
+			map("n", "<leader>vrn", function()
 				local file = vim.api.nvim_buf_get_name(0)
 				local vault = os.getenv("OBSIDIAN_NOTES_DIR") or "~/notes"
 				if not file:find(vault, 1, true) then

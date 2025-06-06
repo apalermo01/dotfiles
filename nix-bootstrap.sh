@@ -100,6 +100,7 @@ if [[ ! -d $HOME/Documents/git/dotfiles ]]; then
 fi
 
 cd $HOME/Documents/git/dotfiles/
+echo "current dir = $(pwd)"
 
 confirm "Run host initialization? (this is for both home manager and nixos)" && init_system
 confirm "Install restic backup?" && bash ./scripts/install_backup.sh

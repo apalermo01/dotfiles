@@ -7,7 +7,7 @@ in {
     
     options.modules.pip = { enable = mkEnableOption "pip"; };
     config = mkIf cfg.enable {
-        programs.python311Packages.pip = {
+        programs.python312Packages.pip = {
             enable = true;
         };
     };

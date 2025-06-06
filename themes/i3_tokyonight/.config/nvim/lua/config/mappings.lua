@@ -105,7 +105,7 @@ map("n", "<leader>ol", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", function()
     local rootFolder = vim.fn.fnamemodify(vim.loop.cwd(), ":p:h:t")
-    local conf = require('project-config').project_dir .. rootFolder .. "." .. "lua"
+    local conf = require('nvim-projectconfig').project_dir .. rootFolder .. "." .. "lua"
     vim.notify("root folder = " .. rootFolder)
     vim.notify("conf = " .. conf)
 end)

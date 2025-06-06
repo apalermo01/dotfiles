@@ -97,7 +97,7 @@
       };
       homeConfigurations = {
         wsl = mkHome system "wsl" "apalermo";
-        gc-workstation = mkHome system "hmHeadless" "user";
+        gc-workstation = mkHome system "gc-workstation" "user";
         # hmDesktop = mkHome system "hmDesktop" "no-user";
       };
       devShells.${system}.default = pkgs.mkShell {

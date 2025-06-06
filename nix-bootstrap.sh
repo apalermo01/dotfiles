@@ -87,7 +87,7 @@ init_system() {
         run ".#homeConfigurations.${profile}.activationPackage"
 }
 
-if ! command -v nix >/dev/null >2&1; then
+if ! command -v nix >/dev/null; then
     if confirm "Nix not found. Install?"; then install_nix; fi
 fi
 

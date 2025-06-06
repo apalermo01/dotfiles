@@ -74,15 +74,15 @@
         };
 
       mkHome =
-        system: hostname:
+        system: hostname: username:
         home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
           modules = [
             ./nix/hosts/${hostname}/user.nix
             {
               home = {
-                username = "alex";
-                homeDirectory = "/home/alex";
+                username = "${username}";
+                homeDirectory = "/home/${username}";
               };
             }
           ];
@@ -92,13 +92,13 @@
     in
     {
       nixosConfigurations = {
-        headless = mkSystem pkgs "x86_64-linux" "headless";
-        desktop = mkSystem pkgs "x86_64-linux" "desktop";
+        # headless = mkSystem pkgs "x86_64-linux" "headless" "no-user";
+        desktop = mkSystem pkgs "x86_64-linux" "desktop" "no-user";
       };
       homeConfigurations = {
-        wsl = mkHome system "wsl";
-        hmHeadless = mkHome system "hmHeadless";
-        hmDesktop = mkHome system "hmDesktop";
+        wsl = mkHome system "wsl" "apalermo";
+        gc-workstation = mkHome system "hmHeadless" "user";
+        # hmDesktop = mkHome system "hmDesktop" "no-user";
       };
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [

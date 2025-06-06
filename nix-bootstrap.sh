@@ -31,9 +31,9 @@ clone_dotfiles() {
     git_root="$HOME/Documents/git"
     mkdir -p "$git_root"
     
-    if command -v nix-shell >/dev/null 2>&1; then
+    if command -v nix-shell >/dev/null; then
         nix-shell -p git --command "
-            cd $git_root/dotfiles && git clone git@github.com:apalermo01/dotfiles $git_root/dotfiles && git submodule update --init
+            cd $git_root && git clone git@github.com:apalermo01/dotfiles && cd $git_root/dotfiles && git submodule update --init
         "
     else
         ( git clone git@github.com:apalermo01/dotfiles "$git_root/dotfiles"
@@ -72,7 +72,7 @@ init_system() {
         profile=wsl
         echo "🐧  WSL environment detected – using homeConfigurations.$profile"
     else
-        echo "Available Home-Manager profiles:  hmHeadless  hmDesktop"
+        echo "Available Home-Manager profiles:  gc-workstation"
         read -r -p "Select profile: " hm_profile
         profile=$hm_profile
     fi
@@ -93,7 +93,9 @@ fi
 
 confirm "Is the SSH key for github set up and agent loaded?" || exit 0
 
-[[ -d $HOME/Documents/git/dotfiles ]] || clone_dotfiles
+if [[ ! -d $HOME/Documents/git/dotfiles ]]; then 
+    clone_dotfiles
+fi
 
 confirm "Run host initialization? (this is for both home manager and nixos)" && init_system
 confirm "Install restic backup?" && bash ./scripts/install_backup.sh

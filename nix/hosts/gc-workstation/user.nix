@@ -20,7 +20,6 @@
             git.enable = true;
             direnv.enable = true;
             zoxide.enable = true;
-
         };
     
     };

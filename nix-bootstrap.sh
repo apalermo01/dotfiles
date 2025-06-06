@@ -101,13 +101,14 @@ fi
 
 cd $HOME/Documents/git/dotfiles/
 echo "current dir = $(pwd)"
-
 confirm "Run host initialization? (this is for both home manager and nixos)" && init_system
-confirm "Install restic backup?" && nix-shell --command "bash ./scripts/install_backup.sh"
-confirm "Install theme builder?" && nix-shell --command "bash ./scripts/install_theme_builder.sh"
+
+confirm "Install restic backup?" && nix develop --command "bash ./scripts/install_backup.sh"
+
+confirm "Install theme builder?" && nix develop --command "bash ./scripts/install_theme_builder.sh"
 if confirm "Build themes now?"; then
     ( cd "$HOME/Documents/git/dotfiles/theme-builder" && \
-        nix-shell --command "bash migrate_theme_to_dotfiles.sh all" )
+        nix develop --command "bash migrate_theme_to_dotfiles.sh all" )
 fi
 
 echo "System fully initialized"

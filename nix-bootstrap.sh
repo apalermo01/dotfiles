@@ -39,6 +39,8 @@ clone_dotfiles() {
         ( git clone git@github.com:apalermo01/dotfiles "$git_root/dotfiles"
           cd "$git_root/dotfiles" && git submodule update --init )
     fi
+    
+    cd $git_root/dotfiles
 
     echo "Dotfiles repo has been cloned and installed."
 
@@ -96,6 +98,8 @@ confirm "Is the SSH key for github set up and agent loaded?" || exit 0
 if [[ ! -d $HOME/Documents/git/dotfiles ]]; then 
     clone_dotfiles
 fi
+
+cd $HOME/Documents/git/dotfiles/
 
 confirm "Run host initialization? (this is for both home manager and nixos)" && init_system
 confirm "Install restic backup?" && bash ./scripts/install_backup.sh

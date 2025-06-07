@@ -304,7 +304,7 @@ $mod+w:       tabbed layout\n\
 \\""
 
 # open a note
-bindsym $mod+shift+n exec ~/Scripts/dmenu_notes.sh
+bindsym $mod+shift+n exec bash ~/Scripts/dmenu_notes.sh
 
 exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
 exec_always systemctl --user start xss-lock-i3

@@ -270,7 +270,7 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 cbonsai -p
-wal -n -e -i /home/apalermo/Pictures/wallpapers/trees.jpg > /dev/null 
+wal -n -e -i /home/alex/Pictures/wallpapers/trees.jpg > /dev/null 
 
 eval "$(direnv hook zsh)"
 eval "$(fzf --zsh)"

@@ -1,14 +1,28 @@
 #!/usr/bin/env bash
 
-export DMENU_SCRIPT_BASEDIR="${HOME}/Documents/git/notes/0-notes"
+BASEDIR="${HOME}/Documents/git/notes/0-notes/"
 
-find ~/Documents/git/notes/0-notes/ \
+#     rofi -dmenu -i -p "select a note: ")
+
+choice=$(find ~/Documents/git/notes/0-notes/ \
     -name 3-tags -prune -o \
     -name '*.md' -type f -print0 |
 while IFS= read -r -d '' file; do
-    filename=$(basename "$file")
-    basedir=$(dirname "$file" | sed "s|$DMENU_SCRIPT_BASEDIR||")
-    printf "%-70s %-60s\n" "$filename" "$basedir"
-done | 
-dmenu -l 5 -i -p "select a note: "
+    name=$(echo $file | sed "s|$BASEDIR||")
+    printf "%s\n" $name
+done |
+    rofi -dmenu -i -p "select a note: ")
+
+case $choice in 
+    *.md) 
+        if tmux list-clients &>/dev/null; then
+            notify-send "opening $choice in new tmux pane"
+            pane_id=$(tmux new-window -n notes -P -F "#{pane_id}")
+            tmux send-keys -t $pane_id "cd ${BASEDIR}" C-m
+            tmux send-keys -t $pane_id "nvim ${BASEDIR}/${choice}" C-m
+        else
+            notify-send "opening $choice"
+            setsid -f kitty --hold -e nvim "$BASEDIR$choice" &
+        fi;;
+esac
 

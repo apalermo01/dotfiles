@@ -5,7 +5,7 @@
 
   let 
     cfg = config.modules.packages.headless;
-    python = pkgs.python311.withPackages (ps: [
+    python = pkgs.python312.withPackages (ps: [
         ps.black
         ps.isort
         # ps.sqlfmt
@@ -13,6 +13,7 @@
         ps.pandas
         ps.numpy
         ps.matplotlib
+        ps.pip
     ]);
   in {
     options.modules.packages.headless = { enable = mkEnableOption "Headless Packages"; };

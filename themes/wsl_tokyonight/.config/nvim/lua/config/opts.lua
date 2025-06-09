@@ -72,7 +72,6 @@ local border = {
 
 vim.cmd([[let g:markdown_folding=1]])
 vim.cmd([[set nofoldenable]])
-vim.notify = require('notify')
 -- folding behavior
 
 -- add binaries installed by mason.nvim to path

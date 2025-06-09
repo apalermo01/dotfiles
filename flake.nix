@@ -94,7 +94,7 @@
     {
       nixosConfigurations = {
         # headless = mkSystem pkgs "x86_64-linux" "headless" "no-user";
-        desktop = mkSystem pkgs "x86_64-linux" "desktop" "no-user";
+        desktop = mkSystem pkgs "x86_64-linux" "desktop";
       };
       homeConfigurations = {
         wsl = mkHome system "wsl" "apalermo";

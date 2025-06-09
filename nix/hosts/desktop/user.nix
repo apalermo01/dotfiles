@@ -19,6 +19,7 @@
     direnv.enable = true;
     zoxide.enable = true;
     desktop-entries.enable = true;
+    discord.enable = true;
     # element.enable = true;
   };
 

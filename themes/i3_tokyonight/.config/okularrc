@@ -1,9 +1,13 @@
 [Desktop Entry]
-FullScreen = false
+FullScreen=false
 
 [General]
-LockSidebar = true
-ShowSidebar = true
+LockSidebar=true
+ShowSidebar=false
+
+[Recent Files]
+File1[$e]=$HOME/.cache/kioexec/krun/7355_0/I Am Your Sister-Audrey Lorde.pdf
+Name1[$e]=I Am Your Sister-Audrey Lorde.pdf
 
 [UiSettings]
-ColorScheme = TokyoNight
+ColorScheme=TokyoNight

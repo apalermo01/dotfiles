@@ -13,15 +13,15 @@ return {
 			------------------------------------------------------------------
 			-- <space> …  (leader in the helix preset)
 			------------------------------------------------------------------
-			{ "b", group = "Buffers" }, -- <space>b
-			{ "t", group = "Tabs" }, -- <space>t
-			{ "v", group = "LSP" }, -- <space>v
-			{ "d", group = "Debug" }, -- <space>d
-			{ "p", group = "Pickers" }, -- <space>p
-			{ "c", group = "Code" }, -- <space>c
-			{ "g", group = "Git" }, -- <space>g
-			{ "h", group = "Harpoon" }, -- <space>h
-			{ "o", group = "Obsidian" }, -- <space>o
+			{ "<leader>b", group = "Buffers" }, -- <space>b
+			{ "<leader>t", group = "Tabs" }, -- <space>t
+			{ "<leader>v", group = "LSP" }, -- <space>v
+			{ "<leader>d", group = "Debug" }, -- <space>d
+			{ "<leader>p", group = "Pickers" }, -- <space>p
+			{ "<leader>c", group = "Code" }, -- <space>c
+			{ "<leader>g", group = "Git" }, -- <space>g
+			{ "<leader>h", group = "Harpoon" }, -- <space>h
+			{ "<leader>o", group = "Obsidian" }, -- <space>o
 
 			------------------------------------------------------------------
 			-- <space><space>… (double-leader)

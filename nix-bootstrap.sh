@@ -19,6 +19,7 @@ install_nix() {
 
     if [[ "$install_multi" == "s" ]]; then
         sh <(curl -L https://nixos.org/nix/install) --no-daemon
+        . /home/user/.nix-profile/etc/profile.d/nix.sh
     elif [[ "$install_multi" == "m" ]]; then
         sh <(curl -L https://nixos.org/nix/install) --daemon
     else

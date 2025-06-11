@@ -110,7 +110,7 @@ confirm "Install theme builder?" && nix develop --command "./scripts/remove_targ
 if confirm "Build themes now?"; then
   cd "$HOME/Documents/git/dotfiles"
   nix --extra-experimental-features 'nix-command flakes' develop .#default \
-    --command bash -c "cd theme-builder && bash migrate_theme_to_dotfiles.sh all"
+    --command bash -c 'cd theme-builder && bash migrate_theme_to_dotfiles.sh all'
 fi
 
 echo "System fully initialized"

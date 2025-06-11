@@ -29,4 +29,7 @@ cp ./theme-builder/scripts/i3_polybar_start.sh ~/.config/polybar/i3_polybar_star
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
 # tpm
+if [[ -d $HOME/.tmux/plugins ]]; then
+    rm -r $HOME/.tmux/plugins
+fi
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

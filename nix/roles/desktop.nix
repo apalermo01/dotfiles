@@ -17,7 +17,7 @@
     via
     element-desktop
   ];
-
+  programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;
 
   programs.gnupg.agent = {

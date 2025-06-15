@@ -19,6 +19,7 @@
     ./desktop-entries.nix
     ./obs.nix
     ./discord.nix
+    ./vlc.nix
   ];
 
 }

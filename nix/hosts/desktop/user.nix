@@ -20,6 +20,8 @@
     zoxide.enable = true;
     desktop-entries.enable = true;
     discord.enable = true;
+    obs.enable = true;
+    vlc.enable = true;
     # element.enable = true;
   };
 

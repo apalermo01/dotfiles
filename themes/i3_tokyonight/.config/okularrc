@@ -7,7 +7,9 @@ ShowSidebar=false
 
 [Recent Files]
 File1[$e]=$HOME/.cache/kioexec/krun/7355_0/I Am Your Sister-Audrey Lorde.pdf
+File2[$e]=$HOME/Documents/git/notes/7-library/A revolutionary strategy for gay liberation.pdf
 Name1[$e]=I Am Your Sister-Audrey Lorde.pdf
+Name2[$e]=A revolutionary strategy for gay liberation.pdf
 
 [UiSettings]
-ColorScheme=TokyoNight
+ColorScheme=Tokyo Night

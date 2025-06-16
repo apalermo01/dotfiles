@@ -1,14 +1,20 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 with lib;
-let cfg = config.modules.vlc;
+let
+  cfg = config.modules.vlc;
+in
+{
 
-in {
-    
-    options.modules.vlc = { enable = mkEnableOption "vlc"; };
-    config = mkIf cfg.enable {
-        programs.vlc = {
-            enable = true;
-        };
-    };
+  options.modules.vlc = {
+    enable = mkEnableOption "vlc";
+  };
+  config = mkIf cfg.enable {
+    home.packages = [ pkgs.vlc ];
+  };
 }

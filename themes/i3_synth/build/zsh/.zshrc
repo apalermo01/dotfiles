@@ -273,3 +273,4 @@ fortune | cowsay -r
 wal -n -e -i /home/alex/Pictures/wallpapers/synth.jpg > /dev/null 
 alias cd="z"
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"

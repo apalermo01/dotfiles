@@ -1,4 +1,4 @@
 @theme "default"
-configuration {
+ configuration {
    modes: [drun, filebrowser];
  }

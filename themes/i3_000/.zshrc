@@ -262,10 +262,4 @@ add-zsh-hook chpwd _maybe_source_aliases
 
 
 
-fastfetch
-wal -n -e -i /home/alex/Pictures/wallpapers/000.png > /dev/null 
-
-eval "$(direnv hook zsh)"
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-eval "$(oh-my-posh init zsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/nordtron.omp.json)"
+eval "$(zoxide init zsh)"

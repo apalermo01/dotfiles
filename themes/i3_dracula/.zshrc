@@ -271,7 +271,5 @@ alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fastfetch
-
-eval "$(direnv hook zsh)"
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+alias cd="z"
+eval "$(zoxide init zsh)"

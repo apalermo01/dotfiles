@@ -1,0 +1,63 @@
+wallpaper: 
+  method: feh
+  file: darker_unicat.png
+
+colors:
+  method: manual
+
+font_family: Maple Mono
+
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+   
+polybar: 
+  bars: [left, center, right, tray]
+  template_path: $THIS_THEME
+  
+nvim: 
+  
+  colorscheme: catppuccin
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+    # - src: edulsp.lua
+    #   dst: nvim/lua/edulsp.lua
+
+tmux: 
+  append: 
+    - src: tmux.conf
+      dst: tmux/.tmux.conf
+
+rofi: 
+  template_path: ./themes/i3_catppuccin_mocha/rofi/
+
+zsh: 
+  feats: 
+    - fastfetch
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+
+kitty:
+  append:
+    - src: kitty.conf
+      dst: kitty/kitty.conf
+
+picom: 
+  template_path: ./themes/i3_catppuccin_mocha/picom/
+
+theme_scripts: 
+  path: ./themes/i3_catppuccin_mocha/scripts/
+
+fastfetch: 
+  overwrite: 
+    - src: config.jsonc
+      dst: fastfetch/config.jsonc
+
+
+

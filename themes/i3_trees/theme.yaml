@@ -1,0 +1,47 @@
+---
+font_family: JetBrainsMono NFM medium
+colors:
+  method: pywal
+i3:
+  append:
+    - src: config
+      dst: i3/config
+polybar:
+  bars: [main]
+  template_path: $THIS_THEME
+wallpaper:
+  method: feh
+  file: trees.jpg
+nvim:
+  
+  colorscheme: everforest
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+tmux:
+  append:
+    - src: tmux.conf
+      dst: tmux/.tmux.conf
+rofi:
+  template_path: themes/i3_trees/rofi
+zsh:
+  feats: [run_pywal, cbonsai]
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+kitty: {}
+picom:
+  template_path: themes/i3_trees/picom/
+apps:
+  name: Everforest
+  provides:
+    qt: [colorscheme]
+  requires:
+    qt.colorscheme: plasma-apply-colorscheme
+okular: {}
+yazi:
+  dark: everforest-medium
+  light: everforest-medium

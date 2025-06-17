@@ -1,0 +1,51 @@
+colors:
+  method: pywal
+
+wallpaper:
+  method: feh
+  file: synth.jpg
+
+font_family: JetBrains NF Mono
+
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+
+polybar: 
+  bars: [left, center, right, tray]
+  template_path: $THIS_THEME
+
+nvim:
+  
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+ 
+tmux: 
+  append: 
+    - src: tmux.conf
+      dst: tmux/.tmux.conf
+
+rofi: 
+  template_path: $THIS_THEME
+
+zsh:
+  feats:
+    - cowsay_fortune
+    - run_pywal
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+
+kitty: {}
+
+picom: 
+  template_path: $THIS_THEME
+
+theme_scripts: 
+  path: ./themes/i3_synth/scripts/
+

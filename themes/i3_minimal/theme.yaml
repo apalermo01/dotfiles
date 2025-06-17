@@ -1,0 +1,32 @@
+font_family: JetBrainsMono NFM medium
+
+colors: 
+  method: manual
+
+i3:
+  append:
+      - src: config
+        dst: i3/config
+
+
+polybar:
+  template_path: $THIS_THEME
+
+wallpaper: 
+  method: feh
+  file: black_background.jpg
+
+nvim:
+  
+  colorscheme: default
+  copy:
+    - src: theme.lua
+      dst: nvim/lua/theme.lua
+
+tmux: {}
+
+rofi: {}
+
+kitty: {}
+
+zsh: {}

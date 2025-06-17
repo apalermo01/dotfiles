@@ -1,0 +1,33 @@
+font_family: JetBrainsMono NFM medium
+
+colors: 
+  method: manual
+
+i3: 
+  append:
+      - src: config
+        dst: i3/config
+
+polybar:
+  template_path: $THIS_THEME
+
+wallpaper: 
+  method: feh
+  file: 001.png
+
+nvim: 
+  colorscheme: melange
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+
+tmux: {}
+
+rofi: {}
+
+zsh: 
+  feats: ["run_pywal", "neofetch"]
+
+kitty: {}
+
+picom: {}

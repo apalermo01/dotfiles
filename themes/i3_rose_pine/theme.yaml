@@ -1,0 +1,67 @@
+colors:
+  method: manual
+
+font_family: JetBrains NF Mono
+
+wallpaper:
+  method: feh
+  file: leafy.png
+
+
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+
+polybar: 
+  bars: [left, center, right, tray]
+  template_path: $THIS_THEME
+
+nvim:
+  
+  colorscheme: rose-pine
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+ 
+tmux: 
+  append: 
+    - src: tmux.conf
+      dst: tmux/.tmux.conf
+
+rofi: 
+  template_path: ./themes/i3_rose_pine/rofi/
+
+zsh:
+  feats:
+    - fastfetch
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+
+fastfetch: 
+  overwrite: 
+    - src: config.jsonc
+      dst: fastfetch/config.jsonc
+
+kitty: {}
+
+picom: 
+  template_path: ./themes/i3_rose_pine/picom/
+
+theme_scripts: 
+  path: ./themes/i3_rose_pine/scripts/
+
+apps:
+  name: RosePineMoon
+  provides:
+    qt: 
+      - colorscheme
+
+  requires:
+    qt.colorscheme: plasma-apply-colorscheme 
+
+okular: {}

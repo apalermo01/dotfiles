@@ -1,0 +1,65 @@
+colors:
+  method: manual
+
+font_family: JetBrains NF Mono
+
+wallpaper:
+  method: feh
+  file: wallhaven-zy3l5o.jpg
+
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+
+polybar: 
+  bars: [left, center, right, tray]
+  template_path: $THIS_THEME
+
+nvim:
+  
+  colorscheme: cyberdream
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+ 
+tmux: 
+  append: 
+    - src: tmux.conf
+      dst: tmux/.tmux.conf
+  overwrite:
+    - src: cyberdream.conf
+      dst: tmux/cyberdream.conf
+
+rofi: 
+  template_path: ./themes/i3_cyberdream/rofi/
+
+zsh:
+  feats:
+    - fastfetch
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+
+fastfetch: 
+  overwrite: 
+    - src: config.jsonc
+      dst: fastfetch/config.jsonc
+
+kitty:
+  overwrite:
+    - src: cyberdream.conf
+      dst: kitty/themes/cyberdream.conf
+  append:
+    - src: kitty.conf
+      dst: kitty/kitty.conf
+
+picom: 
+  template_path: ./themes/i3_cyberdream/picom/
+
+theme_scripts: 
+  path: ./themes/i3_cyberdream/scripts/
+

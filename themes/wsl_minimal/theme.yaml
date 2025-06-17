@@ -1,0 +1,14 @@
+nvim:
+  
+  colorscheme: default
+  overwrite:
+    - src: ./snippets/wsl_obsidian.lua
+      dst: nvim/lua/config/lazy/obsidian.lua
+
+
+tmux: {}
+
+zsh: {}
+  # append:
+  #   - src: .zshrc
+  #     dst: zsh/.zshrc

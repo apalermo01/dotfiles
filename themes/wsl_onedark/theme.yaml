@@ -1,0 +1,34 @@
+colors:
+  method: manual
+
+font_family: JetBrains NF Mono
+
+font_family: Maple Mono
+
+nvim:
+  
+  colorscheme: vaporwave
+  overwrite:
+    - src: ./snippets/wsl_obsidian.lua
+      dst: nvim/lua/config/lazy/obsidian.lua
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+ 
+tmux: 
+  append: 
+    - src: tmux.conf
+      dst: tmux/.tmux.conf
+
+zsh: 
+  feats: 
+    - fastfetch
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+
+theme_scripts: 
+  path: ./themes/wsl_onedark/scripts/
+

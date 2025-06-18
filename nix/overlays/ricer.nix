@@ -9,11 +9,11 @@ in
     format = "pyproject";
     version = "0.1";
 
-    src = super.fetchFromGithub {
+    src = super.fetchFromGitHub {
       owner = "apalermo01";
       repo = "ricer";
-      rev = "v0.1";
-      sha256 = "1ck3yy1hzf5zw1rqgkv1xrh1nv48sm0ncll7z41gq4xz207ar61s";
+      rev = "161859746298d35150698ed9bd6c8ebd5caf674e";
+      sha256 = "ymQ9lIWQPz1e0VGaDBShe2TaNj1qzeZOhBZqNOz67x4=";
     };
 
     propagatedBuildInputs = with py.pkgs; [

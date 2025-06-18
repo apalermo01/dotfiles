@@ -27,6 +27,7 @@
       pkgs = import inputs.nixpkgs {
         overlays = [
           (import ./nix/overlays/postgrestools.nix)
+          (import ./nix/overlays/ricer.nix)
         ];
         system = system;
         config = {

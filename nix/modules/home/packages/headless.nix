@@ -58,7 +58,8 @@
 
         # programming languages
         python
-        
+       
+        ricer
       ];
     };
 }

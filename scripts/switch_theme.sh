@@ -23,6 +23,7 @@ fi
 
 echo "stowing new theme: $1"
 stow . -d built_themes/$1 -t ~/ --dotfiles
+ln --symbolic -i templates/global.yml ~/.config/ricer/ricer-global.yml 
 
 if [ $? -ne 0 ]; then
     echo "stow failed, exiting"

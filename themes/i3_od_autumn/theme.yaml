@@ -32,7 +32,7 @@ tmux:
   #     dst: tmux/.tmux.od_autumn.tmux
 
 rofi: 
-  template_path: ./themes/i3_od_autumn/rofi/
+  template_path: $THIS_THEME
 
 zsh:
   feats:
@@ -53,10 +53,7 @@ kitty:
       dst: kitty/kitty.conf
 
 picom: 
-  template_path: ./themes/i3_od_autumn/picom/
-
-theme_scripts: 
-  path: ./themes/i3_od_autumn/scripts/
+  template_path: $THIS_THEME
 
 apps:
   name: OneDarkRed

@@ -269,7 +269,6 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 fastfetch
-
+alias cd="z"
+eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"

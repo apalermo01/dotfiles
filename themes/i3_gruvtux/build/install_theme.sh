@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
+
+
+bash ~/.config/polybar/i3_polybar_start.sh
+
+
 plasma-apply-colorscheme Gruvbox
-feh --bg-fill /home/alex/Pictures/wallpapers/gruvtux.png

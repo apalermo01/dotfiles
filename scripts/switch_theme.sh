@@ -4,6 +4,8 @@ echo "====================================="
 echo "==== Running switch theme script ===="
 echo "====================================="
 
+cd ~/Documents/git/dotfiles/
+
 if [ ! -d ./built_themes/$1 ]; then 
 	echo "theme $1 does not exist"
 	exit
@@ -44,7 +46,7 @@ if [ -d ./built_themes/$1/.config/theme_scripts/ ]; then
             echo "Skipping $script: not executable"
         fi
     done
-elif [ -f ./themes/$1/.config/install_theme.sh ]; then
+elif [ -f ./built_themes/$1/.config/install_theme.sh ]; then
     echo "Executing install script"
     bash "./built_themes/$1/.config/install_theme.sh"
 else

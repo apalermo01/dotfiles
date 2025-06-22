@@ -224,7 +224,7 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font Iosevka Nerd Font Mono 11
+font JetBrains NF Mono 11
 bindsym $mod+f exec firefox
 
 # pretty sure this is for ubuntu
@@ -309,7 +309,7 @@ bindsym $mod+shift+n exec bash ~/Scripts/dmenu_notes.sh
 exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
 exec_always systemctl --user start xss-lock-i3
 #                        border             background          text            indicator       child bdr
-client.focused	         #98971A        #282828    #7C6F64  #98971A	        #98971A
+client.focused	         #CC241D        #282828    #7C6F64  #CC241D	        #CC241D
 client.focused_inactive	 #7C6F64  #282828    #7C6F64  #7C6F64	#7C6F64
 client.unfocused	     #7C6F64  #282828    #7C6F64  #7C6F64	#7C6F64
 client.urgent	         #CC241D          #282828    #7C6F64  #CC241D            #CC241D

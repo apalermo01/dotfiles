@@ -273,3 +273,4 @@ alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 fastfetch
 alias cd="z"
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"

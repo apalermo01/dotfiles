@@ -23,7 +23,7 @@ tmux:
     - src: tmux.conf
       dst: tmux/.tmux.conf
 rofi:
-  template_path: themes/i3_trees/rofi
+  template_path: $THIS_THEME
 zsh:
   feats: [run_pywal, cbonsai]
   append:
@@ -34,7 +34,7 @@ zsh:
       dst: zsh/.p10k.zsh
 kitty: {}
 picom:
-  template_path: themes/i3_trees/picom/
+  template_path: $THIS_THEME
 apps:
   name: Everforest
   provides:

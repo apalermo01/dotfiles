@@ -29,7 +29,7 @@ tmux:
       dst: tmux/.tmux.conf
 
 rofi: 
-  template_path: ./themes/i3_gruvtux/rofi/
+  template_path: $THIS_THEME
 
 zsh: 
   feats: 
@@ -47,10 +47,10 @@ kitty:
       dst: kitty/kitty.conf
 
 picom: 
-  template_path: ./themes/i3_gruvtux/picom/
+  template_path: $THIS_THEME
 
-theme_scripts: 
-  path: ./themes/i3_gruvtux/scripts/
+# theme_scripts: 
+#   path: ./themes/i3_gruvtux/scripts/
 
 fastfetch: 
   overwrite: 

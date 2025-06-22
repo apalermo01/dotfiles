@@ -1,4 +1,4 @@
-font_family: JetBrainsMono NFM medium
+font: JetBrainsMono NFM medium
 polybar:
   template_path: $THIS_THEME
 

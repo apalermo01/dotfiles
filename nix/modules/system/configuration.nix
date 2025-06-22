@@ -12,6 +12,7 @@
 
   # system packages
   environment.systemPackages = with pkgs; [
+    tree
     neovim
     nodejs
     nix-index

@@ -32,7 +32,7 @@ tmux:
       dst: tmux/cyberdream.conf
 
 rofi: 
-  template_path: ./themes/i3_cyberdream/rofi/
+  template_path: $THIS_THEME
 
 zsh:
   feats:
@@ -58,7 +58,7 @@ kitty:
       dst: kitty/kitty.conf
 
 picom: 
-  template_path: ./themes/i3_cyberdream/picom/
+  template_path: $THIS_THEME
 
 theme_scripts: 
   path: ./themes/i3_cyberdream/scripts/

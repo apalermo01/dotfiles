@@ -262,4 +262,8 @@ add-zsh-hook chpwd _maybe_source_aliases
 
 
 
+fastfetch
+wal -n -e -i /home/alex/Pictures/wallpapers/000.png > /dev/null 
+alias cd="z"
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"

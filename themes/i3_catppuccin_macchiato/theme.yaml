@@ -29,7 +29,7 @@ tmux:
       dst: tmux/.tmux.conf
 
 rofi: 
-  template_path: ./themes/i3_catppuccin_macchiato/rofi/
+  template_path: $THIS_THEME
 
 zsh: 
   feats: 
@@ -48,7 +48,7 @@ kitty:
       dst: kitty/kitty.conf
 
 picom: 
-  template_path: ./themes/i3_catppuccin_macchiato/picom/
+  template_path: $THIS_THEME
 
 theme_scripts: 
   path: ./themes/i3_catppuccin_macchiato/scripts/

@@ -13,7 +13,7 @@ in
       owner = "apalermo01";
       repo = "ricer";
       rev = "d08dfe33e46de606912091bc4b88977d9640f6bc";
-      sha256 = "i94Rw44nwY0N2PUCZD9+eRmlvDkZBqRY2gCLU5+fpE0=";
+      sha256 = "joUtCYE0PuAHPAZAb82cMmtC7sihjLs/DHTQ+T96lFk=";
     };
 
     propagatedBuildInputs = with py.pkgs; [

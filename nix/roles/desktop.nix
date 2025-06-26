@@ -16,6 +16,7 @@
     # kdePackages.plasma-workspace
     via
     element-desktop
+    ollama
   ];
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;

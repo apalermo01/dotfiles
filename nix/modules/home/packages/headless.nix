@@ -39,6 +39,7 @@
         delta
         oh-my-posh
         tealdeer
+        starship
 
         # lsp s
         pyright

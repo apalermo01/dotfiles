@@ -23,6 +23,7 @@
             fortune
             cowsay
             pywal
+            stow
             
             # language utils
             nixfmt-rfc-style

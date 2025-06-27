@@ -32,3 +32,4 @@ require("config")
 
 -- local log = require('cmp.utils.debug').log
 -- log.enable('DEBUG')  
+vim.cmd.colorscheme("rose-pine")

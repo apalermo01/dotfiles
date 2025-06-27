@@ -7,8 +7,6 @@ nvim:
   
   colorscheme: rose-pine
   overwrite:
-    - src: ./snippets/wsl_obsidian.lua
-      dst: nvim/lua/config/lazy/obsidian.lua
     - src: theme.lua
       dst: nvim/lua/config/theme.lua
  

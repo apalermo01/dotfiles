@@ -2,7 +2,7 @@ nvim:
   
   colorscheme: default
   overwrite:
-    - src: ./snippets/wsl_obsidian.lua
+    - src: obsidian.lua
       dst: nvim/lua/config/lazy/obsidian.lua
 
 

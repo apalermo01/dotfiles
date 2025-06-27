@@ -8,6 +8,8 @@ nvim:
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua
+    - src: obsidian.lua
+      dst: nvim/lua/config/lazy/obsidian.lua
 tmux:
   append:
     - src: tmux.conf

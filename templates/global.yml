@@ -2,4 +2,4 @@ zsh:
   zoxide: True
   direnv: True
 
-hook_path: "/home/alex/Documents/git/dotfiles/scripts/switch_theme.sh"
+hook_path: "/home/apalermo/Documents/git/dotfiles/scripts/switch_theme.sh"

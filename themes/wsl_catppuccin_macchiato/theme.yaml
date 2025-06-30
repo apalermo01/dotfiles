@@ -21,6 +21,9 @@ fastfetch:
 zsh: 
   feats: 
     - fastfetch
+  env:
+    NOTES_PATH: "/mnt/c/Users/apalermo/github/notes"
+
   append:
     - src: additions.zsh
       dst: zsh/.zshrc

@@ -16,7 +16,7 @@ return {
         },
         workspaces = {
             {
-                name = "technical notes",
+                name = "notes",
                 path = OBSIDIAN_NOTES_DIR,
                 overrides = {
                     notes_subdir = "0-notes/unsorted"
@@ -44,59 +44,4 @@ return {
         end,
     },
 
-    keys = {
-        { "<leader>oo",  ":cd " .. OBSIDIAN_NOTES_DIR .. "<CR>", "n", desc = "jump to notes directory" },
-        {
-            "<leader>on",
-            function()
-                local current_file = vim.fn.expand("%:p")
-                if string.find(current_file, OBSIDIAN_NOTES_DIR, 1, true) then
-                    vim.cmd("ObsidianTemplate note")
-                else
-                    print("Cannot format file- not in notes directory")
-                end
-            end,
-            "n",
-            desc = "format current file as a note",
-        },
-
-        { "<leader>obl", "<cmd>ObsidianBacklinks<CR>",           "n", desc = "show backlinks in telescope" },
-
-        {
-            "<leader>okt",
-            ":!mv '%:p' " .. OBSIDIAN_NOTES_DIR .. "/0-notes/0-notes/1-zettelkasten<cr>:bd<CR>",
-            "n",
-            desc = "move to craft notes",
-        },
-        {
-            "<leader>ost",
-            ":!mv '%:p' " .. OBSIDIAN_NOTES_DIR .. "/0-notes/0-notes/2-source-material<cr>:bd<CR>",
-            "n",
-            desc = "move to source material",
-        },
-        {
-            "<leader>odd",
-            ":!rm '%:p'<CR>:bd<CR>",
-            "n",
-            desc = "delete note",
-        },
-        {
-            "<leader>ont",
-            function()
-                local input = vim.fn.input("new note name: ")
-                if input == "" then
-                    print("Expected an argument!")
-                    return
-                end
-
-                local formatted_name = os.date("%Y-%m-%d") .. "_" .. input:gsub(" ", "-") .. ".md"
-                local notes_path = os.getenv("NOTES_PATH") or "~/notes"
-                local full_path = notes_path .. "/0-notes/0-notes/0-inbox/" .. formatted_name
-                vim.cmd("edit " .. full_path)
-            end,
-            -- ":!mv '%:p' " .. OBSIDIAN_NOTES_DIR .. "/1-notes/2-source-material<cr>:bd<CR>",
-            "n",
-            desc = "New technical note",
-        },
-    },
 }

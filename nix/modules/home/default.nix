@@ -20,6 +20,7 @@
     ./obs.nix
     ./discord.nix
     ./vlc.nix
+    ./pandoc.nix
     # ./ollama.nix
   ];
 

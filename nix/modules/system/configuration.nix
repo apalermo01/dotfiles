@@ -50,7 +50,7 @@
     pandoc
     unzip
     xsel
-    wikiman
+    wikiman 
 
     # programming languages
     lua

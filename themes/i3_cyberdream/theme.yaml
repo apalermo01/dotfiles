@@ -1,3 +1,4 @@
+yaml-language-server: $schema=https://raw.githubusercontent.com/apalermo01/ricer/refs/heads/main/ricer_schema.json
 colors:
   method: manual
 

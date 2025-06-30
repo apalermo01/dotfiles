@@ -45,6 +45,18 @@ return {
 				})
 			end,
 
+			["yamlls"] = function()
+				require("lspconfig").yaml_langauge_server.setup({
+                    settings = {
+                        yaml = {
+                            schemas = {
+                                ["https://raw.githubusercontent.com/apalermo01/ricer/refs/heads/main/ricer_schema.json"] = "/theme.yml"
+                            } 
+                        }
+                    }
+				})
+			end,
+
 			["markdown_oxide"] = function()
 				require("lspconfig").markdown_oxide.setup({
 					cmd = nixos and { "markdown-oxide" } or nil,

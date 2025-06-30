@@ -23,6 +23,7 @@
     obs.enable = true;
     vlc.enable = true;
     # element.enable = true;
+    # ollama.enable = true;
   };
 
   config.services = {

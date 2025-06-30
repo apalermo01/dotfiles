@@ -274,6 +274,3 @@ wal -n -e -i /home/alex/Pictures/wallpapers/synth.jpg > /dev/null
 alias cd="z"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
-
-# Created by `pipx` on 2025-06-18 03:01:16
-export PATH="$PATH:/home/alex/.local/bin"

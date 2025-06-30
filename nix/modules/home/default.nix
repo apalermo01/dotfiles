@@ -20,6 +20,7 @@
     ./obs.nix
     ./discord.nix
     ./vlc.nix
+    # ./ollama.nix
   ];
 
 }

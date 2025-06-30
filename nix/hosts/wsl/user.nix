@@ -42,5 +42,6 @@
     direnv.enable = true;
     zoxide.enable = true;
     datagrip.enable = true;
+    pandoc.enable = true;
   };
 }

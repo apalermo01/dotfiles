@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }:
 
@@ -11,8 +12,23 @@
   ];
 
 
+  home.packages = with pkgs.nerd-fonts; [
+    terminess-ttf
+    jetbrains-mono
+    iosevka
+    iosevka-term
+    iosevka-term-slab
+    hack
+    fira-code
+    fira-mono
+    zed-mono
+    comic-shanns-mono
+    blex-mono
+  ];
+
   # define what will be installed by home manager here
-  config.modules = {
+  fonts.fontconfig.enable = true; 
+  modules = {
     packages.headless.enable = true;
     packages.ui.enable = true;
     git.enable = true;
@@ -26,7 +42,7 @@
     # ollama.enable = true;
   };
 
-  config.services = {
+  services = {
     xss-lock-i3 = {
       enable = true;
     };

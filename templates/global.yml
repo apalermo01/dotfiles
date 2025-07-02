@@ -2,4 +2,11 @@ zsh:
   zoxide: True
   direnv: True
 
-hook_path: "/home/apalermo/Documents/git/dotfiles/scripts/switch_theme.sh"
+hook_path: "/home/alex/Documents/git/dotfiles/scripts/switch_theme.sh"
+
+font: Iosveska Nerd Font Mono
+# font: JetBrainsMono Nerd Font Mono
+# font: FiraCode Nerd Font Mono
+# font: Hack Nerd Font Mono
+# font: ZedMono Nerd Font
+# font: Terminess Nerd Font Mono

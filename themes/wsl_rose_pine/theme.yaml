@@ -6,6 +6,9 @@ font_family: Maple Mono
 nvim:
   
   colorscheme: rose-pine
+  append:
+    - src: copilot.nvim
+      dst: nvim/lua/config/lazy/copilot.nvim
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua

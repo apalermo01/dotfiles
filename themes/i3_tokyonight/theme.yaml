@@ -23,7 +23,7 @@ tmux:
     - src: tmux.conf
       dst: tmux/.tmux.conf
 rofi:
-  template_path: ./themes/i3_tokyonight/rofi/
+  template_path: $THIS_THEME
 zsh:
   feats: [fastfetch]
   append:
@@ -44,7 +44,7 @@ kitty:
     - src: kitty.conf
       dst: kitty/kitty.conf
 picom:
-  template_path: ./themes/i3_tokyonight/picom/
+  template_path: $THIS_THEME
 theme_scripts:
   path: ./themes/i3_tokyonight/scripts/
 okular: {}

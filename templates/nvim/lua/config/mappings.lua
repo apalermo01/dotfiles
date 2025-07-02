@@ -254,6 +254,12 @@ end, { desc = "DAP: Eval" })
 -----------------------------------------------------------------
 -- obsidian
 -----------------------------------------------------------------
+-- Show backlinks via Telescope
+map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
+
+-- template note
+map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template"})
+
 -- Jump to Obsidian notes directory
 -- map(
 -- 	"n",
@@ -273,8 +279,6 @@ end, { desc = "DAP: Eval" })
 -- 	vim.cmd("ObsidianTemplate note")
 -- end, { desc = "format current file as a note" })
 
--- Show backlinks via Telescope
-map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- Move current note to technical inbox
 -- map(

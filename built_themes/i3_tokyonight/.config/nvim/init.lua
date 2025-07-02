@@ -1,10 +1,10 @@
 -- Globals
 OBSIDIAN_NOTES_DIR = os.getenv("NOTES_PATH") or "/home/alex/Documents/git/notes"
-OBSIDIAN_NOTES_SUBDIR = os.getenv("OBSIDIAN_NOTES_SUBDIR") or "0-inbox"
-OBSIDIAN_TEMPLATE_FOLDER = os.getenv("OBSIDIAN_TEMPLATE_FOLDER") or "5-templates"
+OBSIDIAN_NOTES_SUBDIR = os.getenv("OBSIDIAN_NOTES_SUBDIR") or "0-Inbox"
+OBSIDIAN_TEMPLATE_FOLDER = os.getenv("OBSIDIAN_TEMPLATE_FOLDER") or "5-Templates"
 
 map = vim.keymap.set
-
+vim.g.mapleader = " "
 -- boolean flag to check if we're running nix
 function is_nixos()
 	local os_release = vim.fn.readfile("/etc/os-release")
@@ -33,4 +33,4 @@ require("config")
 -- local log = require('cmp.utils.debug').log
 -- log.enable('DEBUG')  
 vim.cmd.colorscheme("tokyonight")
-vim.cmd([[set guifont=Iosevka\ Nerd\ Font\ Mono]])
+vim.cmd([[set guifont=Iosveska\ Nerd\ Font\ Mono]])

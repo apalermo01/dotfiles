@@ -1,10 +1,12 @@
----
 colors:
   method: manual
 font_family: JetBrains NF Mono
 nvim:
   
   colorscheme: tokyonight
+  append:
+    - src: copilot.nvim
+      dst: nvim/lua/config/lazy/copilot.nvim
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua

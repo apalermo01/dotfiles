@@ -1,6 +1,9 @@
 nvim:
   
   colorscheme: default
+  append:
+    - src: copilot.nvim
+      dst: nvim/lua/config/lazy/copilot.nvim
   overwrite:
     - src: obsidian.lua
       dst: nvim/lua/config/lazy/obsidian.lua

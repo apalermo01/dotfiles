@@ -2,6 +2,9 @@
 nvim:
   
   colorscheme: dracula
+  append:
+    - src: copilot.nvim
+      dst: nvim/lua/config/lazy/copilot.nvim
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua

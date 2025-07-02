@@ -72,6 +72,7 @@ return {
 		end,
 	},
 	{ "nvim-neotest/nvim-nio" },
+	{ "mfussenegger/nvim-dap-python" },
 	{
 		"jay-babu/mason-nvim-dap.nvim",
 		dependencies = "mason.nvim",

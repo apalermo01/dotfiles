@@ -18,10 +18,11 @@
     element-desktop
     ollama
     alpaca
-    betterlockscreen
+    # betterlockscreen
   ];
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;
+  # programs.betterlockscreen.enable = true;
 
   programs.gnupg.agent = {
     enable = true;
@@ -58,11 +59,11 @@
     jack.enable = true;
   };
 
-  # security.pam.services.i3lock.enable = true;
-  security.pam.services.betterlockscreen = {
-    enable = true;
-
-  };
+  security.pam.services.i3lock.enable = true;
+  # security.pam.services.betterlockscreen = {
+  #   enable = true;
+  #
+  # };
   
 
   

@@ -18,6 +18,7 @@
     element-desktop
     ollama
     alpaca
+    betterlockscreen
   ];
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;
@@ -57,7 +58,11 @@
     jack.enable = true;
   };
 
-  security.pam.services.i3lock.enable = true;
+  # security.pam.services.i3lock.enable = true;
+  security.pam.services.betterlockscreen = {
+    enable = true;
+
+  };
   
 
   

@@ -19,7 +19,7 @@ return {
                 name = "notes",
                 path = OBSIDIAN_NOTES_DIR,
                 overrides = {
-                    notes_subdir = "0-notes/unsorted"
+                    notes_subdir = "0-Inbox"
                 },
             },
         },

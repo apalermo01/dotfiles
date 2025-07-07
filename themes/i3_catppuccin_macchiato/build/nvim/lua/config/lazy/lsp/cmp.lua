@@ -88,7 +88,7 @@ return {
 				-- fn1+h/j/k/l mapped to arrow keys
 				-- fn1+y is mapped to >
 				-- also map > to confirm so I don't have to move to ctrl
-				[">"] = cmp.mapping.confirm({ select = true }),
+				-- [">"] = cmp.mapping.confirm({ select = true }),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-space>"] = cmp.mapping.complete(),
 			}),

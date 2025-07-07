@@ -50,6 +50,18 @@
         "hmHeadless" = ./nix/roles/headless.nix;
       };
 
+      extraModuleList = {
+        "desktop" = [
+        ];
+
+        "wsl" = [
+        ];
+
+        "gc-workstation" = [
+
+        ];
+      };
+
       mkSystem =
         pkgs: system: hostname:
         lib.nixosSystem {
@@ -58,9 +70,17 @@
 
           modules = [
             { networking.hostName = hostname; }
+
+            # main configuration file
             ./nix/modules/system/configuration.nix
+
+            # hardware configuration
             ./nix/hosts/${hostname}/hardware-configuration.nix
+
+            # role specific configs
             role.${hostname}
+
+            # home manager
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -71,7 +91,8 @@
                 inherit inputs;
               };
             }
-          ];
+
+          ] ++ (extraModuleList.${hostname} );
           specialArgs = { inherit inputs; };
         };
 

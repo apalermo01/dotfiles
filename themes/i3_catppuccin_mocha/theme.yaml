@@ -48,8 +48,8 @@ kitty:
     - src: kitty.conf
       dst: kitty/kitty.conf
 
-picom: 
-  template_path: $THEME_PATH
+# picom: 
+#   template_path: $THEME_PATH
 
 theme_scripts: 
   path: ./themes/i3_catppuccin_mocha/scripts/

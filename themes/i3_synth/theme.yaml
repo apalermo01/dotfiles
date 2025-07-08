@@ -43,8 +43,8 @@ zsh:
 
 kitty: {}
 
-picom: 
-  template_path: $THIS_THEME
+# picom: 
+#   template_path: $THIS_THEME
 
 theme_scripts: 
   path: ./themes/i3_synth/scripts/

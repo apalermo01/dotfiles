@@ -51,7 +51,7 @@
     unzip
     xsel
     wikiman 
-
+    ctags
     # programming languages
     lua
     go
@@ -67,6 +67,16 @@
     libraries = with pkgs; [
       stdenv.cc.cc.lib
       zlib
+      xorg.libX11
+      xorg.libXext
+      xorg.libXi
+      xorg.libXcursor
+      xorg.libXrandr
+      xorg.libxcb
+      xorg.libXinerama
+      xorg.libXrender
+      libGL
+      libGLU
     ];
   };
 

@@ -43,8 +43,8 @@ kitty:
   append:
     - src: kitty.conf
       dst: kitty/kitty.conf
-picom:
-  template_path: $THIS_THEME
+# picom:
+#   template_path: $THIS_THEME
 theme_scripts:
   path: ./themes/i3_tokyonight/scripts/
 okular: {}

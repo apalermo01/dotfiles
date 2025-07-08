@@ -46,7 +46,7 @@ return {
 			end,
 
 			["yamlls"] = function()
-				require("lspconfig").yaml_langauge_server.setup({
+				require("lspconfig").yamlls.setup({
                     settings = {
                         yaml = {
                             schemas = {

@@ -33,8 +33,8 @@ zsh:
     - src: p10k.zsh
       dst: zsh/.p10k.zsh
 kitty: {}
-picom:
-  template_path: $THIS_THEME
+# picom:
+#   template_path: $THIS_THEME
 apps:
   name: Everforest
   provides:

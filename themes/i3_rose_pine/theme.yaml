@@ -49,8 +49,8 @@ fastfetch:
 
 kitty: {}
 
-picom: 
-  template_path: ./themes/i3_rose_pine/picom/
+# picom: 
+#   template_path: ./themes/i3_rose_pine/picom/
 
 theme_scripts: 
   path: ./themes/i3_rose_pine/scripts/

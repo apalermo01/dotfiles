@@ -52,8 +52,8 @@ kitty:
     - src: kitty.conf
       dst: kitty/kitty.conf
 
-picom: 
-  template_path: $THIS_THEME
+# picom: 
+#   template_path: $THIS_THEME
 
 apps:
   name: OneDarkRed

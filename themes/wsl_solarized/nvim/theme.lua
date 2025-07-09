@@ -1,23 +1,23 @@
-local lsp_config = require("lspconfig")
-lsp_config.lua_ls.setup({
-	settings = {
-		Lua = {
-			hint = {
-				enable = true,
-			},
-			runtime = {
-				version = "LuaJIT",
-			},
-			workspace = {
-				checkThirdParty = true,
-				library = {
-					vim.env.VIMRUNTIME,
-					"~/.local/share/nvim/lazy/solarized.nvim",
-				},
-			},
-		},
-	},
-})
+-- local lsp_config = require("lspconfig")
+-- lsp_config.lua_ls.setup({
+-- 	settings = {
+-- 		Lua = {
+-- 			hint = {
+-- 				enable = true,
+-- 			},
+-- 			runtime = {
+-- 				version = "LuaJIT",
+-- 			},
+-- 			workspace = {
+-- 				checkThirdParty = true,
+-- 				library = {
+-- 					vim.env.VIMRUNTIME,
+-- 					"~/.local/share/nvim/lazy/solarized.nvim",
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 return {
 	{

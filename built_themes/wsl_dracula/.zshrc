@@ -262,11 +262,18 @@ add-zsh-hook chpwd _maybe_source_aliases
 
 
 
+export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fastfetch
 alias cd="z"
+# Set the default language and encoding to UTF-8
+export LANG=en_US.UTF-8
+
+# Share the LANG setting with Windows via WSLENV
+export WSLENV=$WSLENV:LANG
+
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"

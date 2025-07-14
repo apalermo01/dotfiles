@@ -25,7 +25,13 @@ fi
 
 echo "stowing new theme: $1"
 stow . -d built_themes/$1 -t ~/ --dotfiles
-ln -sf -i "$(realpath ./templates/global.yml)" ~/.config/ricer/ricer-global.yml
+
+if [[ $1 == *"wsl"* ]]; then
+    ln -sf -i "$(realpath ./templates/global-wsl.yml)" ~/.config/ricer/ricer-global.yml
+else
+    ln -sf -i "$(realpath ./templates/global.yml)" ~/.config/ricer/ricer-global.yml
+fi
+
 if [ $? -ne 0 ]; then
     echo "stow failed, exiting"
     exit

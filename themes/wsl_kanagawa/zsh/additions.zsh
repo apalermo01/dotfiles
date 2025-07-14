@@ -3,3 +3,12 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Set the default language and encoding to UTF-8
+export LANG=en_US.UTF-8
+
+# Share the LANG setting with Windows via WSLENV
+export WSLENV=$WSLENV:LANG
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8

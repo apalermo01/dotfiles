@@ -1,8 +1,8 @@
 nvim:
   colorscheme: kanagawa
   append:
-    - src: copilot.nvim
-      dst: nvim/lua/config/lazy/copilot.nvim
+    - src: copilot.lua
+      dst: nvim/lua/config/lazy/copilot.lua
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua

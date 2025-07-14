@@ -55,6 +55,8 @@
     # programming languages
     lua
     go
+
+    evtest
   ];
 
   programs.fish.enable = true;

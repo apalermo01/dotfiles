@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 connect() {
-    bluetoothctl connect B4:84:D5:C0:05:03 
+    bluetoothctl connect F0:A9:68:8A:80:20
     exit 0
 }
 # info exits 1 if nothing is connected

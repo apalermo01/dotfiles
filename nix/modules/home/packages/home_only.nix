@@ -37,6 +37,8 @@
             nodejs
             go
 
+            glibcLocales
+
       ];
     };
 }

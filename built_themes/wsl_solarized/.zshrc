@@ -268,10 +268,43 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
 # Set the default language and encoding to UTF-8
-export LANG=en_US.UTF-8
+export LOCALE_ARCHIVE="/usr/share/i18n/locales/"
 export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+
+mkpretty() { 
+    local target_dir="/mnt/c/Users/apalermo/Downloads"
+
+    local files=(${(f)"$(find "$target_dir" -maxdepth 1 -type f -name "*.json" ! -name "pretty_*.json")"})
+    if [[ ${#files[@]} -eq 0 ]]; then
+        echo "No .json files to prettify in $target_dir"
+        return 1
+    fi
+    local i=1
+    for file in "${files[@]}"; do
+        printf "[%d] %s\n" "$i" "$(basename "$file")"
+        ((i++))
+    done
+    echo -n "Enter the number of the file to prettify: "
+    read -r num
+    if ! [[ "$num" =~ ^[0-9]+$ ]] || (( num < 1 || num > ${#files[@]} )); then
+        echo "Invalid selection. Please enter a number between 1 and ${#files[@]}."
+        return 1
+    fi
+    echo "You selected: $num"
+    local selected_file=${files[$num]}
+    echo "Selected file: $selected_file"
+    # local base_name
+    #
+    # base_name=$(basename "$selected_file")
+    #
+    # echo "Prettifying $base_name..."
+    # local output_file="${target_dir}/pretty_${base_name}"
+    # echo "Output will be saved to: $output_file"
+    # python3 -m json.tool "$selected_file" > "$output_file"
+    # echo "Done."
+}
 
 # Share the LANG setting with Windows via WSLENV
 export WSLENV=$WSLENV:LANG

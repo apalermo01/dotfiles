@@ -35,8 +35,8 @@ rofi:
   template_path: $THIS_THEME
 
 zsh:
-  feats:
-    - fastfetch
+  # feats:
+  #   - fastfetch
   append:
     - src: additions.zsh
       dst: zsh/.zshrc

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-BASEDIR="${HOME}/Documents/git/notes/0-notes/"
+BASEDIR="${HOME}/Documents/git/notes/"
 
 #     rofi -dmenu -i -p "select a note: ")
 
-choice=$(find ~/Documents/git/notes/0-notes/ \
+choice=$(find ~/Documents/git/notes/ \
     -name 3-tags -prune -o \
     -name '*.md' -type f -print0 |
 while IFS= read -r -d '' file; do

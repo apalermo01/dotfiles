@@ -224,7 +224,7 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font xft:URWGothic-Book 11
+font Iosveska Nerd Font Mono 11
 bindsym $mod+f exec firefox
 
 # pretty sure this is for ubuntu
@@ -232,52 +232,47 @@ bindsym $mod+f exec firefox
 # arch
 bindsym $mod+b exec brave
 bindsym $mod+Ctrl+f exec ~/.config/i3/bin/rofifinder.sh
+bindsym $mod+Ctrl+o exec obsidian
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="Calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lightdm-gtk-greeter-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Thus"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
+# for_window [title="alsamixer"] floating enable border pixel 1
+# for_window [class="Calamares"] floating enable border normal
+# for_window [class="Clipgrab"] floating enable
+# for_window [title="File Transfer*"] floating enable
+# for_window [class="Galculator"] floating enable border pixel 1
+# for_window [class="GParted"] floating enable border normal
+# for_window [title="i3_help"] floating enable sticky enable border normal
+# for_window [class="Lightdm-gtk-greeter-settings"] floating enable
+# for_window [class="Lxappearance"] floating enable sticky enable border normal
+# for_window [class="Manjaro-hello"] floating enable
+# for_window [class="Manjaro Settings Manager"] floating enable border normal
+# for_window [title="MuseScore: Play Panel"] floating enable
+# for_window [class="Nitrogen"] floating enable sticky enable border normal
+# for_window [class="Oblogout"] fullscreen enable
+# for_window [class="octopi"] floating enable
+# for_window [title="About Pale Moon"] floating enable
+# for_window [class="Pamac-manager"] floating enable
+# for_window [class="Pavucontrol"] floating enable
+# for_window [class="qt5ct"] floating enable sticky enable border normal
+# for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+# for_window [class="Simple-scan"] floating enable border normal
+# for_window [class="(?i)System-config-printer.py"] floating enable border normal
+# for_window [class="Skype"] floating enable border normal
+# for_window [class="Thus"] floating enable border normal
+# for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="firefox"] border pixel 5
+for_window [class="obsidian"] border pixel 5
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
 # Autostart applications
-# exec_always --no-startup-id sh -c '
-#   if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
-#     eval $(dbus-launch --sh-syntax --exit-with-session)
-#   fi
-#   eval $(/run/wrappers/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
-#   export SSH_AUTH_SOCK
-# '
 exec --no-startup-id nm-applet
 exec_always --no-startup-id $HOME/.config/polybar/i3_polybar_start.sh
 exec_always --no-startup-id "bash $HOME/shift_monitor.sh"
@@ -286,9 +281,6 @@ exec --no-startup-id dunst
 # i3 lock
 bindsym $mod+Ctrl+l exec "i3lock"
 
-# auto lock
-# exec "xautolock -detectsleep -time 3 -locker \"i3lock\""
-# exec xss-lock 
 
 # other fancy scripts / tools
 
@@ -329,8 +321,4 @@ floating_modifier $mod
 exec --no-startup-id mate-power-manager
 
 focus_follows_mouse no
-
-exec killall picom
-
-exec_always picom --backend glx --config ~/.config/picom/picom.conf
 exec_always feh --bg-fill /home/alex/Pictures/wallpapers/od_autumn.jpg

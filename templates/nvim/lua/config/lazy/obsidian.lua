@@ -3,7 +3,7 @@
 --
 return {
     "epwalsh/obsidian.nvim",
-    ft = ["md", "markdown"],
+    ft = {"md", "markdown"},
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",

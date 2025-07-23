@@ -19,6 +19,7 @@
     ollama
     alpaca
     # betterlockscreen
+    brightnessctl
   ];
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;

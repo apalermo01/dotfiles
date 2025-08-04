@@ -57,8 +57,7 @@
         ];
 
         "wsl" = [
-          "code-cursor"
-          "code-cursor-fhs"
+          ./nix/roles/ai_tools.nix
         ];
 
         "gc-workstation" = [

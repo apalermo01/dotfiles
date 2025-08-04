@@ -39,6 +39,8 @@
               "datagrip"
               "xp-pen-deco-01-v2-driver"
               "discord"
+              "code-cursor"
+              "code-cursor-fhs"
             ];
         };
       };
@@ -55,10 +57,11 @@
         ];
 
         "wsl" = [
+          "code-cursor"
+          "code-cursor-fhs"
         ];
 
         "gc-workstation" = [
-
         ];
       };
 

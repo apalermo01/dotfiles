@@ -103,6 +103,13 @@ map("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 map("n", "<leader>ol", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project config" })
+
+-- navigate by { }
+map("n", "[[", "?{<CR>w99[{")
+map("n", "][", "/}<CR>b99]}")
+map("n", "]]", "j0[[%/{<CR>")
+map("n", "[]", "k$][%?}<CR>")
+
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
@@ -254,6 +261,12 @@ end, { desc = "DAP: Eval" })
 -----------------------------------------------------------------
 -- obsidian
 -----------------------------------------------------------------
+-- Show backlinks via Telescope
+map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
+
+-- template note
+map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template"})
+
 -- Jump to Obsidian notes directory
 -- map(
 -- 	"n",
@@ -273,8 +286,6 @@ end, { desc = "DAP: Eval" })
 -- 	vim.cmd("ObsidianTemplate note")
 -- end, { desc = "format current file as a note" })
 
--- Show backlinks via Telescope
-map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- Move current note to technical inbox
 -- map(

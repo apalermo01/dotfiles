@@ -1,3 +1,19 @@
-[UiSettings]
-ColorScheme = Dracula
+[Desktop Entry]
+FullScreen=false
 
+[General]
+LockSidebar=true
+ShowSidebar=true
+
+[Recent Files]
+File1[$e]=$HOME/Downloads/Palermo - Pre-Rental Application for 61 S Skyward Dr, Newark DE, 19713.pdf
+File2[$e]=$HOME/Downloads/Gabriel (Alex) Palermo - paystub 1.pdf
+File3[$e]=$HOME/Downloads/Rental Application - Gabriel Palermo.pdf
+File4[$e]=$HOME/Downloads/paystub-Level-Interactive,-Inc--20250526-20250610-2.pdf
+Name1[$e]=Palermo - Pre-Rental Application for 61 S Skyward Dr, Newark DE, 19713.pdf
+Name2[$e]=Gabriel (Alex) Palermo - paystub 1.pdf
+Name3[$e]=Rental Application - Gabriel Palermo.pdf
+Name4[$e]=paystub-Level-Interactive,-Inc--20250526-20250610-2.pdf
+
+[UiSettings]
+ColorScheme=Breeze Classic

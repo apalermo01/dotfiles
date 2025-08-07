@@ -103,6 +103,13 @@ map("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 map("n", "<leader>ol", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project config" })
+
+-- navigate by { }
+map("n", "[[", "?{<CR>w99[{")
+map("n", "][", "/}<CR>b99]}")
+map("n", "]]", "j0[[%/{<CR>")
+map("n", "[]", "k$][%?}<CR>")
+
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
@@ -254,121 +261,125 @@ end, { desc = "DAP: Eval" })
 -----------------------------------------------------------------
 -- obsidian
 -----------------------------------------------------------------
--- Jump to Obsidian notes directory
-map(
-	"n",
-	"<leader>ond",
-	":cd " .. (OBSIDIAN_NOTES_DIR) .. "<CR>",
-	{ desc = "jump to notes directory" }
-)
-
--- Format current file as Obsidian note (only if inside vault)
-map("n", "<leader>onf", function()
-	local current_file = vim.fn.expand("%:p")
-	local vault = OBSIDIAN_NOTES_DIR
-	if not current_file:find(vault, 1, true) then
-		print("Cannot format file— not in notes directory")
-		return
-	end
-	vim.cmd("ObsidianTemplate note")
-end, { desc = "format current file as a note" })
-
 -- Show backlinks via Telescope
 map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
+-- template note
+map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template"})
+
+-- Jump to Obsidian notes directory
+-- map(
+-- 	"n",
+-- 	"<leader>ond",
+-- 	":cd " .. (OBSIDIAN_NOTES_DIR) .. "<CR>",
+-- 	{ desc = "jump to notes directory" }
+-- )
+
+-- Format current file as Obsidian note (only if inside vault)
+-- map("n", "<leader>onf", function()
+-- 	local current_file = vim.fn.expand("%:p")
+-- 	local vault = OBSIDIAN_NOTES_DIR
+-- 	if not current_file:find(vault, 1, true) then
+-- 		print("Cannot format file— not in notes directory")
+-- 		return
+-- 	end
+-- 	vim.cmd("ObsidianTemplate note")
+-- end, { desc = "format current file as a note" })
+
+
 -- Move current note to technical inbox
-map(
-	"n",
-	"<leader>okt",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/1-zettelkasten<CR>:bd<CR>",
-	{ desc = "move to technical notes" }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>okt",
+-- 	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/1-zettelkasten<CR>:bd<CR>",
+-- 	{ desc = "move to technical notes" }
+-- )
 
 -- Move current note to personal inbox
-map(
-	"n",
-	"<leader>okp",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/1-zettelkasten<CR>:bd<CR>",
-	{ desc = "move to personal notes" }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>okp",
+-- 	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/1-zettelkasten<CR>:bd<CR>",
+-- 	{ desc = "move to personal notes" }
+-- )
 
 -- Move to source material (technical)
-map(
-	"n",
-	"<leader>ost",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/2-source-material<CR>:bd<CR>",
-	{ desc = "move to source material (technical)" }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>ost",
+-- 	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/2-source-material<CR>:bd<CR>",
+-- 	{ desc = "move to source material (technical)" }
+-- )
 
 -- Move to source material (private)
-map(
-	"n",
-	"<leader>osp",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/2-source-material<CR>:bd<CR>",
-	{ desc = "move to source material (private)" }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>osp",
+-- 	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/2-source-material<CR>:bd<CR>",
+-- 	{ desc = "move to source material (private)" }
+-- )
 
 -- Move to tags (normal)
-map(
-	"n",
-	"<leader>ott",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/3-tags<CR>:bd<CR>",
-	{ desc = "move to tags (normal)" }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>ott",
+-- 	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/3-tags<CR>:bd<CR>",
+-- 	{ desc = "move to tags (normal)" }
+-- )
 
 -- Move to tags (private)
-map(
-	"n",
-	"<leader>otp",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/3-tags<CR>:bd<CR>",
-	{ desc = "move to tags (private)" }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>otp",
+-- 	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/3-tags<CR>:bd<CR>",
+-- 	{ desc = "move to tags (private)" }
+-- )
 
 -- Move to rough notes (normal)
-map(
-	"n",
-	"<leader>ort",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/4-rough-notes<CR>:bd<CR>",
-	{ desc = "move to rough notes (normal)" }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>ort",
+-- 	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/4-rough-notes<CR>:bd<CR>",
+-- 	{ desc = "move to rough notes (normal)" }
+-- )
 
 -- Move to rough notes (private)
-map(
-	"n",
-	"<leader>orp",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/4-rough-notes<CR>:bd<CR>",
-	{ desc = "move to rough notes (private)" }
-)
+-- map(
+-- 	"n",
+-- 	"<leader>orp",
+-- 	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/4-rough-notes<CR>:bd<CR>",
+-- 	{ desc = "move to rough notes (private)" }
+-- )
 
 -- Delete current note
 map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
 
 -- Create a new note in the technical inbox
-map("n", "<leader>ont", function()
-	local input = vim.fn.input("new note name: ")
-	if input == "" then
-		print("Expected an argument!")
-		return
-	end
-	local formatted_name = os.date("%Y-%m-%d") .. "_" .. input:gsub(" ", "-") .. ".md"
-	local notes_path = OBSIDIAN_NOTES_DIR
-	local full_path = notes_path .. "/0-notes/0-notes/0-inbox/" .. formatted_name
-	vim.cmd("edit " .. full_path)
-end, { desc = "New note in normal folder" })
+-- map("n", "<leader>ont", function()
+-- 	local input = vim.fn.input("new note name: ")
+-- 	if input == "" then
+-- 		print("Expected an argument!")
+-- 		return
+-- 	end
+-- 	local formatted_name = os.date("%Y-%m-%d") .. "_" .. input:gsub(" ", "-") .. ".md"
+-- 	local notes_path = OBSIDIAN_NOTES_DIR
+-- 	local full_path = notes_path .. "/0-notes/0-notes/0-inbox/" .. formatted_name
+-- 	vim.cmd("edit " .. full_path)
+-- end, { desc = "New note in normal folder" })
 
 -- Create a new note in the private inbox
-map("n", "<leader>onp", function()
-	local input = vim.fn.input("new note name: ")
-	if input == "" then
-		print("Expected an argument!")
-		return
-	end
-	local formatted_name = os.date("%Y-%m-%d") .. "_" .. input:gsub(" ", "-") .. ".md"
-	local notes_path = OBSIDIAN_NOTES_DIR
-	local full_path = notes_path .. "/0-notes/1-private/0-inbox/" .. formatted_name
-	vim.cmd("edit " .. full_path)
-end, { desc = "New note in private folder" })
-
+-- map("n", "<leader>onp", function()
+-- 	local input = vim.fn.input("new note name: ")
+-- 	if input == "" then
+-- 		print("Expected an argument!")
+-- 		return
+-- 	end
+-- 	local formatted_name = os.date("%Y-%m-%d") .. "_" .. input:gsub(" ", "-") .. ".md"
+-- 	local notes_path = OBSIDIAN_NOTES_DIR
+-- 	local full_path = notes_path .. "/0-notes/1-private/0-inbox/" .. formatted_name
+-- 	vim.cmd("edit " .. full_path)
+-- end, { desc = "New note in private folder" })
+--
 -- Open current file in the Obsidian app (requires `obsidian` CLI in PATH)
 map("n", "<leader>oo", function()
 	local vault_root = OBSIDIAN_NOTES_DIR

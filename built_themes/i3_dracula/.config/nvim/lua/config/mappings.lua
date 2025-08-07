@@ -104,6 +104,12 @@ map("n", "<leader>ol", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project config" })
 
+-- navigate by { }
+map("n", "[[", "?{<CR>w99[{")
+map("n", "][", "/}<CR>b99]}")
+map("n", "]]", "j0[[%/{<CR>")
+map("n", "[]", "k$][%?}<CR>")
+
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------

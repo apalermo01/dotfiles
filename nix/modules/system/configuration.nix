@@ -57,6 +57,7 @@
     go
 
     evtest
+    nvimpager
   ];
 
   programs.fish.enable = true;

@@ -63,6 +63,7 @@ function y() {
 
 export MANPAGER="nvim +Man!"
 export EDITOR="nvim"
+export PAGER="nvimpager"
 
 function quick_commit() {
     today=$(date "+%Y-%m-%d")

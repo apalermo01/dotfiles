@@ -259,6 +259,6 @@ add-zsh-hook chpwd _maybe_source_aliases
 # Additional settings #
 #######################
 
-
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 

@@ -22,6 +22,7 @@
     ./vlc.nix
     ./pandoc.nix
     # ./ollama.nix
+    ./cursor.nix
   ];
 
 }

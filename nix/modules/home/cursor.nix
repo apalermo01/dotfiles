@@ -14,6 +14,8 @@ in
     enable = mkEnableOption "cursor";
   };
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.code-cursor pkgs.code-cursor-fhs pkgs.cmatrix ];
+    home.packages = [ pkgs.code-cursor 
+                      # pkgs.code-cursor-fhs 
+                      pkgs.cmatrix ];
   };
 }

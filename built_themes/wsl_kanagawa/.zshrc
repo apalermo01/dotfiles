@@ -214,7 +214,7 @@ alias ya="y"
 alias yazi="y"
 
 alias cat="bat --no-pager"
-alias ls="eza"
+# alias ls="eza"
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
 fi
@@ -297,15 +297,11 @@ mkpretty() {
     python3 -m json.tool "$selected_file" > "$output_file"
     echo "Done."
 }
-# Set the default language and encoding to UTF-8
-export LANG=en_US.UTF-8
 
-# Share the LANG setting with Windows via WSLENV
-export WSLENV=$WSLENV:LANG
-
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 fastfetch
 alias cd="z"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
+
+# Created by `pipx` on 2025-08-04 20:12:16
+export PATH="$PATH:/home/apalermo/.local/bin"

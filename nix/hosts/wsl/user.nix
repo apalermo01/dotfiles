@@ -43,5 +43,6 @@
     zoxide.enable = true;
     datagrip.enable = true;
     pandoc.enable = true;
+    cursor.enable = true;
   };
 }

@@ -4,3 +4,4 @@
 --         require('FTerm').setup(opts)
 --     end
 -- }
+return {}

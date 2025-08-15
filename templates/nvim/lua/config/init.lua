@@ -3,7 +3,6 @@ require("config.lazy_init")
 require("config.cmds")
 -- require("config.test_lsp")
 require("config.mappings")
-require("config.colemak")
 local augroup = vim.api.nvim_create_augroup
 
 -- Declare a global function to retrieve the current directory

@@ -259,7 +259,7 @@ add-zsh-hook chpwd _maybe_source_aliases
 # Additional settings #
 #######################
 
-
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k

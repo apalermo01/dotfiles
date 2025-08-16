@@ -3,6 +3,8 @@ return {
     opts = {
         fast_wrap = {},
         disable_filetype = { "TelescopePrompt", "vim" },
+        enable_check_bracket_line = false,
+        ignored_next_char = "[%w%.]",
     },
     config = function(_, opts)
         require("nvim-autopairs").setup(opts)

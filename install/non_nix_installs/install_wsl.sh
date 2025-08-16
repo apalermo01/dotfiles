@@ -169,5 +169,5 @@ cargo_install_if_missing git-delta
 install_datagrip 
 
 # oh-my-posh
-bash -s scripts/non_nix_installs/install_oh_my_posh.sh
+# bash -s scripts/non_nix_installs/install_oh_my_posh.sh
 

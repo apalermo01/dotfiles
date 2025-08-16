@@ -1,4 +1,3 @@
-
 -- top-level keys:
 -- buffer operations:  <leader>b
 -- tab operations:     <leader>t
@@ -36,33 +35,33 @@ end
 -----------------------------------------------------------------
 -- remappings for colemak
 -----------------------------------------------------------------
-map({"n", "v", "o"}, "n", "j", { desc = 'move down'})
-map({"n", "v", "o"}, "e", "k", { desc = 'move up'})
-map({"n", "v", "o"}, "i", "l", { desc = 'move right'})
+map({ "n", "v", "o" }, "n", "j", { desc = "move down" })
+map({ "n", "v", "o" }, "e", "k", { desc = "move up" })
+map({ "n", "v", "o" }, "i", "l", { desc = "move right" })
 
-map({"n"}, "k", "i", {desc = 'enter insert mode'})
-map({"n"}, "K", "I", {desc = 'capital I'})
+map({ "n" }, "k", "i", { desc = "enter insert mode" })
+map({ "n" }, "K", "I", { desc = "capital I" })
 
-map({"n"}, "j", "n", {desc = 'next item in search'})
-map({"n"}, "J", "N", {desc = 'previous item in search'})
+map({ "n" }, "j", "n", { desc = "next item in search" })
+map({ "n" }, "J", "N", { desc = "previous item in search" })
 
-map({"n", "v", "o"}, "l", "e", { desc = 'end of word'})
+map({ "n", "v", "o" }, "l", "e", { desc = "end of word" })
 
 -----------------------------------------------------------------
 -- misc
 -----------------------------------------------------------------
 
 -- Newlines above and below without leaving normal mode
-map("n", "oo", "o<Esc>k", { desc = 'newline below without leaving normal mode'})
-map("n", "OO", "O<Esc>j", { desc = 'new line above witnout leaving normal mode'})
+map("n", "oo", "o<Esc>k", { desc = "newline below without leaving normal mode" })
+map("n", "OO", "O<Esc>j", { desc = "new line above witnout leaving normal mode" })
 
 -- use escape to clear highlights and close floating windowns
 map("i", "<C-c>", "<Esc>")
 map("n", "<Esc>", CloseFloatingOrClearHighlight, { noremap = true, silent = true })
 
 -- movement
-map("n", "<C-d>", "<C-d>zz", {desc = 'half page down'})
-map("n", "<C-u>", "<C-u>zz", {desc = 'half page up'})
+map("n", "<C-d>", "<C-d>zz", { desc = "half page down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "half page up" })
 map("n", "<C-f>", "<C-f>zz")
 map("n", "<C-b>", "<C-b>zz")
 
@@ -74,8 +73,8 @@ map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>")
 
 -- https://www.youtube.com/watch?v=w7i4amO_zaE
 -- move selected lines up/down in visualmode
-map("v", "N", ":m '>+1<CR>gv=gv", {desc = 'move selected line down'})
-map("v", "E", ":m '<-2<CR>gv=gv", {desc = 'move selected line up'})
+map("v", "N", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
+map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 
 -- join lines without moving cursor
 -- map("n", "N", "mzJ`z")
@@ -280,8 +279,7 @@ end, { desc = "trouble: previous diagnostic" })
 map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- template note
-map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template"})
-
+map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
 
 -- Delete current note
 map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
@@ -311,16 +309,21 @@ end, { desc = "open current file in Obsidian" })
 --------------------------------------------------------------------------------
 -- TELESCOPE (pickers) (<leader>p prefix)
 --------------------------------------------------------------------------------
-local telescope = require('telescope')
-local actions = require('telescope.actions')
-telescope.mappings = {
-    n = {
-        ["j"] = false,
-        ["k"] = false,
-        ["n"] = actions.move_selection_next,
-        ["e"] = actions.move_selection_previous,
-    }
-}
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+telescope.setup({
+	defaults = {
+		mappings = {
+			n = {
+
+				["j"] = false,
+				["k"] = false,
+				["n"] = actions.move_selection_next,
+				["e"] = actions.move_selection_previous,
+			},
+		},
+	},
+})
 local builtin = require("telescope.builtin")
 
 -- Find all files (hidden + no ignore)

@@ -13,13 +13,12 @@
     pamixer
     kdePackages.kscreenlocker
     xss-lock
-    # kdePackages.plasma-workspace
     via
     element-desktop
     ollama
     alpaca
-    # betterlockscreen
     brightnessctl
+    lm_sensors
   ];
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;

@@ -45,9 +45,19 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local lspkind = require("lspkind")
+		local luasnip = require("luasnip")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
+		-- helper: is there text before the cursor?
+		local has_words_before = function()
+			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+			if col == 0 then
+				return false
+			end
+			local prev = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col)
+			return not prev:match("%s")
+		end
 		cmp.setup({
+
 			snippet = {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body)
@@ -73,24 +83,38 @@ return {
 			},
 
 			mapping = cmp.mapping.preset.insert({
-				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-				["$"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 				["+"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-k>"] = cmp.mapping.scroll_docs(-4),
-				["<C-j>"] = cmp.mapping.scroll_docs(4),
-				["<C-e>"] = cmp.mapping.abort(),
+				["<C-e>"] = cmp.mapping.select_prev_item(cmp_select),
+				["$"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-d>"] = cmp.mapping.scroll_docs(-4),
+				["<C-u>"] = cmp.mapping.scroll_docs(4),
+				["<C-a>"] = cmp.mapping.abort(),
 				["<C-o>"] = cmp.mapping.open_docs(),
-				["<TAB>"] = cmp.mapping.select_next_item(cmp_select),
-				["<S-TAB>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-y>"] = cmp.mapping.confirm(),
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["]"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
+                ["<C-y>"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
+				["<Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item(cmp_select)
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
+					elseif has_words_before() then
+						cmp.complete()
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 
-				-- fn1+h/j/k/l mapped to arrow keys
-				-- fn1+y is mapped to >
-				-- also map > to confirm so I don't have to move to ctrl
-				-- [">"] = cmp.mapping.confirm({ select = true }),
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				["<C-space>"] = cmp.mapping.complete(),
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item(cmp_select)
+					elseif luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 			}),
 
 			sources = cmp.config.sources({

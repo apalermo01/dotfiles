@@ -17,6 +17,7 @@ return {
 			"nil_ls",
 			"bashls",
             "yamlls",
+            "gopls",
 		} or {
             "lua_ls",
 			"html",
@@ -29,6 +30,7 @@ return {
 			"markdown_oxide",
 			"bashls",
             "yamlls",
+            "gopls",
 		},
 
 		handlers = {
@@ -67,21 +69,7 @@ return {
 							},
 						},
 					}),
-	                root_dir = function(fname)
-	                    local paths = {
-	                    	"0-technical-notes",
-	                    	"1-notes",
-	                    }
-	                    for _, sub in ipairs(paths) do
-	                    	local full = OBSIDIAN_NOTES_DIR .. "/" .. sub
-	                    	if fname:find(full, 1, true) then
-	                    		return full
-	                    	end
-	                    end
-	                    return vim.fn.getcwd()
-
-
-	                end,
+	                root_dir = OBSIDIAN_NOTES_DIR
 				})
 			end,
 

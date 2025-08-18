@@ -99,12 +99,21 @@ vim.api.nvim_create_autocmd("QuitPre", {
 local _orig_open = vim.ui.open
 
 vim.ui.open = function(input, opts)
-    local target = input or vim.fn.expand("<cfile>")
+	local target = input or vim.fn.expand("<cfile>")
 
-    if target:match("^[%a][%w+,-]*://") then
-        vim.fn.jobstart({ "firefox", target }, { detach = true })
-        vim.notify('opening ' .. target .. ' in firefox')
-    else
-        return _orig_open(input, opts)
-    end
+	if target:match("^[%a][%w+,-]*://") then
+		vim.fn.jobstart({ "firefox", target }, { detach = true })
+		vim.notify("opening " .. target .. " in firefox")
+	else
+		return _orig_open(input, opts)
+	end
 end
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = { "*" },
+	callback = function()
+		if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+			vim.api.nvim_exec("normal! g'\"", false)
+		end
+	end,
+})

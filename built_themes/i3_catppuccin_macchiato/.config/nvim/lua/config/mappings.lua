@@ -35,9 +35,9 @@ end
 -----------------------------------------------------------------
 -- remappings for colemak
 -----------------------------------------------------------------
-map({ "n", "v", "o" }, "n", "j", { desc = "move down" })
-map({ "n", "v", "o" }, "e", "k", { desc = "move up" })
-map({ "n", "v", "o" }, "i", "l", { desc = "move right" })
+map({ "n", "v", }, "n", "j", { desc = "move down"})
+map({ "n", "v", }, "e", "k", { desc = "move up" })
+map({ "n", }, "i", "l", { desc = "move right" })
 
 map({ "n" }, "k", "i", { desc = "enter insert mode" })
 map({ "n" }, "K", "I", { desc = "capital I" })
@@ -45,7 +45,7 @@ map({ "n" }, "K", "I", { desc = "capital I" })
 map({ "n" }, "j", "n", { desc = "next item in search" })
 map({ "n" }, "J", "N", { desc = "previous item in search" })
 
-map({ "n", "v", "o" }, "l", "e", { desc = "end of word" })
+map({ "n", "v", }, "l", "e", { desc = "end of word" })
 
 -----------------------------------------------------------------
 -- misc
@@ -392,7 +392,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, vim.tbl_extend("force", opts, { desc = "LSP: go to definition" }))
 
 		-- Hover
-		map("n", "K", function()
+		map("n", "<leader>K", function()
 			vim.lsp.buf.hover()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
 

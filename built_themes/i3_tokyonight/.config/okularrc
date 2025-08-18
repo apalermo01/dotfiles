@@ -1,13 +1,3 @@
-[Desktop Entry]
-FullScreen=false
-
-[General]
-LockSidebar=true
-ShowSidebar=true
-
-[Recent Files]
-File1[$e]=$HOME/Documents/git/notes/3-Resources/Articles/what-is-socialist-feminism-Barbara-Ehrenreich-1976.pdf
-Name1[$e]=what-is-socialist-feminism-Barbara-Ehrenreich-1976.pdf
-
 [UiSettings]
-ColorScheme=TokyoNight
+ColorScheme = TokyoNight
+

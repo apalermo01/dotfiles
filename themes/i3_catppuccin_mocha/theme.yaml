@@ -22,8 +22,6 @@ nvim:
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua
-    # - src: edulsp.lua
-    #   dst: nvim/lua/edulsp.lua
 
 tmux: 
   append: 
@@ -31,7 +29,7 @@ tmux:
       dst: tmux/.tmux.conf
 
 rofi: 
-  template_path: $THEME_PATH
+  template_path: $THIS_THEME
 
 zsh: 
   feats: 

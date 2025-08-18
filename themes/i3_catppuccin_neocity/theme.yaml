@@ -1,0 +1,56 @@
+wallpaper: 
+  method: feh
+  file: neocity.png
+
+colors:
+  method: manual
+
+font_family: FiraCode Nerd Font
+
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+   
+polybar: 
+  template_path: $THIS_THEME
+  
+nvim: 
+  colorscheme: catppuccin
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+
+tmux: 
+  append: 
+    - src: tmux.conf
+      dst: tmux/.tmux.conf
+
+rofi: 
+  template_path: $THIS_THEME
+
+zsh: 
+  feats: 
+    - fastfetch
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+
+kitty:
+  append:
+    - src: kitty.conf
+      dst: kitty/kitty.conf
+
+picom: 
+  template_path: $THIS_THEME
+
+fastfetch: 
+  overwrite: 
+    - src: config.jsonc
+      dst: fastfetch/config.jsonc
+
+
+

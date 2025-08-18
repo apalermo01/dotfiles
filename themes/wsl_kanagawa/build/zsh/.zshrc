@@ -213,7 +213,7 @@ alias y="yazi"
 alias ya="y"
 alias yazi="y"
 
-alias cat="bat --no-pager"
+alias cat="batcat --no-pager"
 alias ls="eza"
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
@@ -259,7 +259,7 @@ add-zsh-hook chpwd _maybe_source_aliases
 # Additional settings #
 #######################
 
-
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"

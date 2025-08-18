@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+sudo apt install software-properties-common
 add_apt_repo_if_missing() {
     local repo="$1"
     local list_file="/etc/apt/sources.list.d/${2}.list"

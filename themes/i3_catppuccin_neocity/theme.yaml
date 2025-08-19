@@ -43,6 +43,8 @@ kitty:
   append:
     - src: kitty.conf
       dst: kitty/kitty.conf
+    - src: current-theme.conf
+      dst: kitty/current-theme.conf
 
 picom: 
   template_path: $THIS_THEME

@@ -52,6 +52,7 @@
     xsel
     wikiman 
     ctags
+    fnm
     # programming languages
     lua
     go

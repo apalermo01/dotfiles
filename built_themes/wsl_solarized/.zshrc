@@ -213,7 +213,7 @@ alias y="yazi"
 alias ya="y"
 alias yazi="y"
 
-alias cat="bat --no-pager"
+alias cat="batcat --no-pager"
 alias ls="eza"
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
@@ -259,7 +259,7 @@ add-zsh-hook chpwd _maybe_source_aliases
 # Additional settings #
 #######################
 
-
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
@@ -267,11 +267,6 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# Set the default language and encoding to UTF-8
-export LOCALE_ARCHIVE="/usr/share/i18n/locales/"
-export LC_CTYPE=en_US.UTF-8
 
 mkpretty() { 
     local target_dir="/mnt/c/Users/apalermo/Downloads"
@@ -292,23 +287,27 @@ mkpretty() {
         echo "Invalid selection. Please enter a number between 1 and ${#files[@]}."
         return 1
     fi
-    echo "You selected: $num"
     local selected_file=${files[$num]}
-    echo "Selected file: $selected_file"
-    # local base_name
-    #
-    # base_name=$(basename "$selected_file")
-    #
-    # echo "Prettifying $base_name..."
-    # local output_file="${target_dir}/pretty_${base_name}"
-    # echo "Output will be saved to: $output_file"
-    # python3 -m json.tool "$selected_file" > "$output_file"
-    # echo "Done."
+
+    local base_name
+
+    base_name=$(basename "$selected_file")
+
+    local output_file="${target_dir}/pretty_${base_name}"
+    python3 -m json.tool "$selected_file" > "$output_file"
+    echo "Done."
 }
+# Set the default language and encoding to UTF-8
+export LANG=en_US.UTF-8
 
 # Share the LANG setting with Windows via WSLENV
 export WSLENV=$WSLENV:LANG
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 fastfetch
 alias cd="z"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
+
+if [ -e /home/user/.nix-profile/etc/profile.d/nix.sh ]; then . /home/user/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

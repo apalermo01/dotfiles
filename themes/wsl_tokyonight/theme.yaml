@@ -10,8 +10,6 @@ nvim:
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua
-    - src: obsidian.lua
-      dst: nvim/lua/config/lazy/obsidian.lua
 tmux:
   append:
     - src: tmux.conf
@@ -26,7 +24,3 @@ zsh:
   overwrite:
     - src: p10k.zsh
       dst: zsh/.p10k.zsh
-fastfetch:
-  overwrite:
-    - src: config.jsonc
-      dst: fastfetch/config.jsonc

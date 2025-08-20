@@ -12,7 +12,7 @@ in
     src = super.fetchFromGitHub {
       owner = "apalermo01";
       repo = "ricer";
-      rev = "406d7719d3ca3f622fa9e2cd85d6c3a169836962";
+      rev = "3303369563973eb1d863dc37f642c121de03d503";
       sha256 = "joUtCYE0PuAHPAZAb82cMmtC7sihjLs/DHTQ+T96lFk=";
     };
 

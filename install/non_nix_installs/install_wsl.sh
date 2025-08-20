@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# install script for wsl systems
+
 set -euo pipefail
 
 sudo apt install software-properties-common

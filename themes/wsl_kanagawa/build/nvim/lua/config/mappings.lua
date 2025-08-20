@@ -1,4 +1,3 @@
-
 -- top-level keys:
 -- buffer operations:  <leader>b
 -- tab operations:     <leader>t
@@ -36,53 +35,57 @@ end
 -----------------------------------------------------------------
 -- remappings for colemak
 -----------------------------------------------------------------
-map({"n", "v", "o"}, "n", "j", { desc = 'move down'})
-map({"n", "v", "o"}, "e", "k", { desc = 'move up'})
-map({"n", "v", "o"}, "i", "l", { desc = 'move right'})
+-- motions
+map({ "n", "v" }, "n", "j", { desc = "move down" })
+map({ "n", "v" }, "e", "k", { desc = "move up" })
+map({ "n", "v" }, "i", "l", { desc = "move right" })
 
-map({"n"}, "k", "i", {desc = 'enter insert mode'})
-map({"n"}, "K", "I", {desc = 'capital I'})
+map({ "n" }, "k", "i", { desc = "enter insert mode" })
+map({ "n" }, "K", "I", { desc = "capital I" })
 
-map({"n"}, "j", "n", {desc = 'next item in search'})
-map({"n"}, "J", "N", {desc = 'previous item in search'})
+map({ "n" }, "j", "nzz", { desc = "next item in search" })
+map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
 
-map({"n", "v", "o"}, "l", "e", { desc = 'end of word'})
+map({ "n", "v" }, "l", "e", { desc = "end of word" })
+
+-- window motions
+map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
+map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
+map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
+map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
+
+-- tmux
+map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
+map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
+map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
+map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
 
 -----------------------------------------------------------------
 -- misc
 -----------------------------------------------------------------
 
 -- Newlines above and below without leaving normal mode
-map("n", "oo", "o<Esc>k", { desc = 'newline below without leaving normal mode'})
-map("n", "OO", "O<Esc>j", { desc = 'new line above witnout leaving normal mode'})
+map("n", "oo", "o<Esc>k", { desc = "newline below without leaving normal mode" })
+map("n", "OO", "O<Esc>j", { desc = "new line above witnout leaving normal mode" })
 
 -- use escape to clear highlights and close floating windowns
 map("i", "<C-c>", "<Esc>")
 map("n", "<Esc>", CloseFloatingOrClearHighlight, { noremap = true, silent = true })
 
 -- movement
-map("n", "<C-d>", "<C-d>zz", {desc = 'half page down'})
-map("n", "<C-u>", "<C-u>zz", {desc = 'half page up'})
+map("n", "<C-d>", "<C-d>zz", { desc = "half page down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "half page up" })
 map("n", "<C-f>", "<C-f>zz")
 map("n", "<C-b>", "<C-b>zz")
 
--- tmux
-map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
-map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>")
-map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
-map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>")
-
 -- https://www.youtube.com/watch?v=w7i4amO_zaE
 -- move selected lines up/down in visualmode
-map("v", "N", ":m '>+1<CR>gv=gv", {desc = 'move selected line down'})
-map("v", "E", ":m '<-2<CR>gv=gv", {desc = 'move selected line up'})
+map("v", "N", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
+map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 
 -- join lines without moving cursor
 -- map("n", "N", "mzJ`z")
 
--- keep search matches centered
-map("n", "j", "nzzzv")
-map("n", "J", "Nzzzv")
 
 -- paste over visual selection wihout yanking it
 map("x", "<leader>p", '"_dP')
@@ -280,8 +283,7 @@ end, { desc = "trouble: previous diagnostic" })
 map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- template note
-map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template"})
-
+map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
 
 -- Delete current note
 map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
@@ -311,16 +313,21 @@ end, { desc = "open current file in Obsidian" })
 --------------------------------------------------------------------------------
 -- TELESCOPE (pickers) (<leader>p prefix)
 --------------------------------------------------------------------------------
-local telescope = require('telescope')
-local actions = require('telescope.actions')
-telescope.mappings = {
-    n = {
-        ["j"] = false,
-        ["k"] = false,
-        ["n"] = actions.move_selection_next,
-        ["e"] = actions.move_selection_previous,
-    }
-}
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+telescope.setup({
+	defaults = {
+		mappings = {
+			n = {
+
+				["j"] = false,
+				["k"] = false,
+				["n"] = actions.move_selection_next,
+				["e"] = actions.move_selection_previous,
+			},
+		},
+	},
+})
 local builtin = require("telescope.builtin")
 
 -- Find all files (hidden + no ignore)
@@ -389,7 +396,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, vim.tbl_extend("force", opts, { desc = "LSP: go to definition" }))
 
 		-- Hover
-		map("n", "K", function()
+		map("n", "<leader>K", function()
 			vim.lsp.buf.hover()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
 

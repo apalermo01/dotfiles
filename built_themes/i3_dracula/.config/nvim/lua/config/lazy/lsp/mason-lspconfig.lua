@@ -17,6 +17,7 @@ return {
 			"nil_ls",
 			"bashls",
             "yamlls",
+            "gopls",
 		} or {
             "lua_ls",
 			"html",
@@ -29,6 +30,7 @@ return {
 			"markdown_oxide",
 			"bashls",
             "yamlls",
+            "gopls",
 		},
 
 		handlers = {

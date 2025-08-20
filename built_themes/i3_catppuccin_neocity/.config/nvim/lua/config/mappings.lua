@@ -35,6 +35,7 @@ end
 -----------------------------------------------------------------
 -- remappings for colemak
 -----------------------------------------------------------------
+-- motions
 map({ "n", "v" }, "n", "j", { desc = "move down" })
 map({ "n", "v" }, "e", "k", { desc = "move up" })
 map({ "n", "v" }, "i", "l", { desc = "move right" })
@@ -46,6 +47,18 @@ map({ "n" }, "j", "n", { desc = "next item in search" })
 map({ "n" }, "J", "N", { desc = "previous item in search" })
 
 map({ "n", "v" }, "l", "e", { desc = "end of word" })
+
+-- window motions
+map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
+map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
+map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
+map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
+
+-- tmux
+map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
+map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
+map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
+map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
 
 -----------------------------------------------------------------
 -- misc
@@ -64,12 +77,6 @@ map("n", "<C-d>", "<C-d>zz", { desc = "half page down" })
 map("n", "<C-u>", "<C-u>zz", { desc = "half page up" })
 map("n", "<C-f>", "<C-f>zz")
 map("n", "<C-b>", "<C-b>zz")
-
--- tmux
-map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
-map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>")
-map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
-map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>")
 
 -- https://www.youtube.com/watch?v=w7i4amO_zaE
 -- move selected lines up/down in visualmode

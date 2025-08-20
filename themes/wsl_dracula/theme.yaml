@@ -2,14 +2,9 @@
 nvim:
   
   colorscheme: dracula
-  append:
-    - src: copilot.lua
-      dst: nvim/lua/config/lazy/copilot.lua
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua
-    - src: obsidian.lua
-      dst: nvim/lua/config/lazy/obsidian.lua
 
 tmux:
   append:
@@ -25,6 +20,8 @@ fastfetch:
 zsh: 
   feats: 
     - fastfetch
+  env:
+    NOTES_PATH: "/mnt/c/Users/apalermo/github/notes/"
   append:
     - src: additions.zsh
       dst: zsh/.zshrc

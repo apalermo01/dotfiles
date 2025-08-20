@@ -1,9 +1,6 @@
 nvim:
   
   colorscheme: default
-  append:
-    - src: copilot.lua
-      dst: nvim/lua/config/lazy/copilot.lua
   overwrite:
     - src: obsidian.lua
       dst: nvim/lua/config/lazy/obsidian.lua
@@ -11,7 +8,10 @@ nvim:
 
 tmux: {}
 
-zsh: {}
+zsh:
+
+  env:
+    NOTES_PATH: "/mnt/c/Users/apalermo/github/notes/"
   # append:
   #   - src: .zshrc
   #     dst: zsh/.zshrc

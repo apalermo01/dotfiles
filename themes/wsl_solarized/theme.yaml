@@ -1,8 +1,5 @@
 nvim:
   colorscheme: solarized
-  append:
-    - src: copilot.lua
-      dst: nvim/lua/config/lazy/copilot.lua
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua

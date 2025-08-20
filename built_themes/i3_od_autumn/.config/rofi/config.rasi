@@ -51,8 +51,7 @@ inputbar {
 }
 
 prompt {
-  /* text-color: @blue; */
-    text-color: @red;
+  text-color: @blue;
 }
 
 textbox-prompt-colon {

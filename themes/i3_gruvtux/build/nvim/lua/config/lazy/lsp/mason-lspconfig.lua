@@ -17,6 +17,7 @@ return {
 			"nil_ls",
 			"bashls",
             "yamlls",
+            "gopls",
 		} or {
             "lua_ls",
 			"html",
@@ -29,6 +30,7 @@ return {
 			"markdown_oxide",
 			"bashls",
             "yamlls",
+            "gopls",
 		},
 
 		handlers = {
@@ -46,7 +48,7 @@ return {
 			end,
 
 			["yamlls"] = function()
-				require("lspconfig").lua_ls.setup({
+				require("lspconfig").yamlls.setup({
                     settings = {
                         yaml = {
                             schemas = {

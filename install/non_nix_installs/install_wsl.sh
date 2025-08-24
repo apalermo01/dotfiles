@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# install script for wsl systems
+
 set -euo pipefail
 
 sudo apt install software-properties-common
@@ -36,39 +38,6 @@ cargo_install_if_missing() {
     fi
 }
 
-install_cursor() {
-
-    # Step 1: Define install location and download URL
-    APPIMAGE_URL="https://www.cursor.com/download/stable/linux-x64"
-    INSTALL_DIR="/opt"
-    BIN_NAME="cursor.appimage"
-    SYMLINK_PATH="/usr/local/bin/cursor"
-    
-    # Step 2: Download AppImage
-    echo "Downloading Cursor..."
-    sudo curl -L "$APPIMAGE_URL" -o "$INSTALL_DIR/$BIN_NAME"
-    
-    # Step 3: Make it executable
-    sudo chmod +x "$INSTALL_DIR/$BIN_NAME"
-    
-    # Step 4: Create symlink in PATH
-    echo "Linking to $SYMLINK_PATH..."
-    sudo ln -sf "$INSTALL_DIR/$BIN_NAME" "$SYMLINK_PATH"
-    
-    # Step 5: Ensure libfuse2 is installed (needed for many AppImages)
-    if ! ldconfig -p | grep -q libfuse.so.2; then
-      echo "Installing libfuse2..."
-      sudo apt update
-      sudo apt install -y libfuse2
-    fi
-    
-    # Step 6: Confirm installation
-    if command -v cursor &> /dev/null; then
-      echo "✅ Cursor installed successfully and is available as 'cursor'."
-    else
-      echo "⚠️ Cursor installed but not found in PATH."
-    fi
-}
 
 install_datagrip() {
   local install_dir="/opt/datagrip"
@@ -90,6 +59,13 @@ install_datagrip() {
   sudo ln -sf "$install_dir/bin/datagrip.sh" "$symlink_path"
   rm "$tmp_tar"
   echo "DataGrip installed. Use: datagrip"
+}
+
+install_go() {
+    sudo add-apt-repository ppa:longsleep/golang-backports
+    sudo apt update
+    sudo apt install golang-1.24
+    sudo ln -s /usr/lib/go-1.24/bin/go /usr/local/bin/go
 }
 
 # Rust tools repo
@@ -129,7 +105,6 @@ for font in "${FONT_LIST[@]}"; do
   fi
 done
 
-cursor -v || install_cursor
 
 # Install core APT packages
 echo "📦 Installing APT packages..."
@@ -150,6 +125,7 @@ APT_PACKAGES=(
   python3-pip
   fonts-firacode
   cmake
+  pipx
 )
 
 for pkg in "${APT_PACKAGES[@]}"; do
@@ -167,8 +143,10 @@ cargo_install_if_missing ripgrep
 cargo_install_if_missing fnm
 cargo_install_if_missing git-delta
 
-install_datagrip 
+command -v datagrip || install_datagrip 
 
 # oh-my-posh
 # bash -s scripts/non_nix_installs/install_oh_my_posh.sh
 
+pipx ensurepath 
+pipx install git+http://github.com/apalermo01/ricer.git

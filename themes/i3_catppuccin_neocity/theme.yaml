@@ -11,10 +11,10 @@ i3:
   append: 
     - src: config
       dst: i3/config
-   
+
 polybar: 
   template_path: $THIS_THEME
-  
+
 nvim: 
   colorscheme: catppuccin
   overwrite:
@@ -54,5 +54,8 @@ fastfetch:
     - src: config.jsonc
       dst: fastfetch/config.jsonc
 
-
+custom: 
+  - conky: 
+      name: conky
+      cfg_folder: conky
 

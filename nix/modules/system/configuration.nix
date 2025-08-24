@@ -59,6 +59,7 @@
 
     evtest
     nvimpager
+    conky
   ];
 
   programs.fish.enable = true;

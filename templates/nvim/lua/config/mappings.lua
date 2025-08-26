@@ -127,17 +127,21 @@ map("n", "[]", "k$][%?}<CR>")
 -- diffview
 map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
 
+-- automatically go back into visual mode after indenting
+map("v", ">", ">gv")
+map("v", "<", "<gv")
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
 map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
-map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
-map(
-	"t",
-	"<leader><leader>tt",
-	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
-	{ desc = "toggle floating terminal" }
-)
+map("t", "<ESC>", "<C-\\><C-n>")
+-- map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
+-- map(
+-- 	"t",
+-- 	"<leader><leader>tt",
+-- 	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
+-- 	{ desc = "toggle floating terminal" }
+-- )
 
 -----------------------------------------------------------------
 -- tabs

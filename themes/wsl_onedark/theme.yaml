@@ -28,5 +28,5 @@ zsh:
       dst: zsh/.p10k.zsh
 
 theme_scripts: 
-  path: ./themes/wsl_onedark/scripts/
+  path: /home/apalermo/Documents/git/dotfiles/themes/wsl_onedark/scripts/
 

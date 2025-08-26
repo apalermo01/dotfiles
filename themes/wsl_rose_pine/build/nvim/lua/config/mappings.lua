@@ -43,8 +43,8 @@ map({ "n", "v" }, "i", "l", { desc = "move right" })
 map({ "n" }, "k", "i", { desc = "enter insert mode" })
 map({ "n" }, "K", "I", { desc = "capital I" })
 
-map({ "n" }, "j", "n", { desc = "next item in search" })
-map({ "n" }, "J", "N", { desc = "previous item in search" })
+map({ "n" }, "j", "nzz", { desc = "next item in search" })
+map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
 
 map({ "n", "v" }, "l", "e", { desc = "end of word" })
 
@@ -86,9 +86,6 @@ map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 -- join lines without moving cursor
 -- map("n", "N", "mzJ`z")
 
--- keep search matches centered
-map("n", "j", "nzzzv")
-map("n", "J", "Nzzzv")
 
 -- paste over visual selection wihout yanking it
 map("x", "<leader>p", '"_dP')

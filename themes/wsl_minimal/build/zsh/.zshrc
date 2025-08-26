@@ -100,62 +100,32 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 export NOTES_PATH="/home/alex/Documents/git/notes"
 
-new_tech_note() {
+new_note() {
     if [[ "$#" -ne 1 ]]; then
-        echo "ont: generate a new note in tech notes inbox"
-        echo "usage: ont name-of-note"
-        exit 1
-    fi
+        echo "on: generate a new note"
+        echo "usage: on name-of-note"
+        exit 1 
+    fi 
 
     file_name=$(echo $1 | tr ' ' '-')
-    formatted_file_name=$(date "+%Y-%m-%d")_$file_name.md
     cd $NOTES_PATH
-    touch "0-notes/0-notes/0-inbox/$formatted_file_name"
-    nvim "0-notes/0-notes/0-inbox/$formatted_file_name"
+    touch "0-Inbox/$file_name.md"
+    nvim "0-Inbox/$file_name.md"
 }
 
 new_personal_note() {
     if [[ "$#" -ne 1 ]]; then
-        echo "onp: generate a new note in tech notes inbox"
+        echo "onp: generate a new private note"
         echo "usage: onp name-of-note"
-        exit 1
-    fi
+        exit 1 
+    fi 
 
     file_name=$(echo $1 | tr ' ' '-')
-    formatted_file_name=$(date "+%Y-%m-%d")_$file_name.md
+    formatted_file_name=priv_$file_name.md
     cd $NOTES_PATH
-    touch "0-notes/1-private/0-inbox/$formatted_file_name"
-    nvim "0-notes/1-private/0-inbox/$formatted_file_name"
+    touch "0-Inbox/$formatted_file_name"
+    nvim "0-Inbox/$formatted_file_name"
 }
-
-
-move_note_on_type() { 
-    vaults=("0-notes" "1-private")
-
-    for vault_name in ${vaults[@]}; do
-        find "$NOTES_PATH/0-notes/$vault_name/1-zettelkasten/" \
-            -type f -name '*.md' -not -path "*tags*" -print0 | \
-            while IFS= read -r -d '' filename; do
-                fname="${filename:t}"
-                tag=$(awk -F': ' '/^type:/{print $2; exit}' "$filename" | sed -e 's/^ *//;s/ *$//')
-                if [ ! -z "$tag" ]; then
-                    target_dir="$NOTES_PATH/0-notes/$vault_name/1-zettelkasten/$tag"
-                    if [[ $file != "$target_dir/$fname" ]]; then
-                        echo "processing tag $tag in file ${fname}"
-                        mkdir -p $target_dir
-                        mv $filename "$target_dir/"
-                        echo "$filename -> \n\t$target_dir/$filename"
-                    fi
-
-                else
-                    echo "no type tag found for $filename"
-                fi
-            done
-    done
-
-    echo "vault restructure complete"
-}
-
 bt() { ~/Scripts/bluetooth.sh }
 
 ###########
@@ -163,9 +133,8 @@ bt() { ~/Scripts/bluetooth.sh }
 ###########
 
 # Obsidian
-alias ont='new_tech_note'
+alias on='new_note'
 alias onp='new_personal_note'
-alias og='move_note_on_type'
 
 # other
 alias personal='bash ~/Scripts/personal_docs.sh'
@@ -213,7 +182,7 @@ alias y="yazi"
 alias ya="y"
 alias yazi="y"
 
-alias cat="bat --no-pager"
+alias cat="batcat --no-pager"
 alias ls="eza"
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
@@ -252,6 +221,45 @@ function _maybe_source_aliases() {
     fi
 }
 
+function cat_all() {
+
+    local -a viewer_cmd
+
+    if command -v bat &>/dev/null; then
+        viewer_cmd=("bat" "--paging=never" "--style=plain")
+    elif command -v batcat &>/dev/null; then
+        viewer_cmd=("batcat" "--paging=never" "--style=plain")
+    else
+        viewer_cmd=("cat")
+    fi
+    find . -type f \
+        -not -path "./.git/*" \
+        -not -path "*/__pycache__/*" \
+        -not -path "./.venv/*" \
+        -not -path "./venv/*" \
+        -not -path "./env/*" \
+        -not -path "./build/*" \
+        -not -path "./dist/*" \
+        -not -path "*.egg-info/*" \
+        -not -path "./.pytest_cache/*" \
+        -not -path "./.mypy_cache/*" \
+        -not -path "./.ruff_cache/*" \
+        -not -path "./.idea/*" \
+        -not -path "./.vscode/*" \
+        -not -name ".env" \
+        -not -name "*.pyc" \
+        -not -name ".coverage" \
+        -not -name ".DS_Store" \
+        -not -name "*.db" \
+        -not -name "*.sqlite3" \
+        -print0 | while IFS= read -r -d '' f; do
+        printf '==> %s <==\n' "$f"
+        "${viewer_cmd[@]}" -- "$f"
+        printf '\n'
+    done
+        
+}
+
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _maybe_source_aliases
 
@@ -259,10 +267,9 @@ add-zsh-hook chpwd _maybe_source_aliases
 # Additional settings #
 #######################
 
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 
-
-
+alias cd="z"
+eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
-eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"

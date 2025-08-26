@@ -182,7 +182,7 @@ alias y="yazi"
 alias ya="y"
 alias yazi="y"
 
-alias cat="bat --no-pager"
+alias cat="batcat --no-pager"
 alias ls="eza"
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
@@ -219,6 +219,45 @@ function _maybe_source_aliases() {
             source aliases.sh
         fi
     fi
+}
+
+function cat_all() {
+
+    local -a viewer_cmd
+
+    if command -v bat &>/dev/null; then
+        viewer_cmd=("bat" "--paging=never" "--style=plain")
+    elif command -v batcat &>/dev/null; then
+        viewer_cmd=("batcat" "--paging=never" "--style=plain")
+    else
+        viewer_cmd=("cat")
+    fi
+    find . -type f \
+        -not -path "./.git/*" \
+        -not -path "*/__pycache__/*" \
+        -not -path "./.venv/*" \
+        -not -path "./venv/*" \
+        -not -path "./env/*" \
+        -not -path "./build/*" \
+        -not -path "./dist/*" \
+        -not -path "*.egg-info/*" \
+        -not -path "./.pytest_cache/*" \
+        -not -path "./.mypy_cache/*" \
+        -not -path "./.ruff_cache/*" \
+        -not -path "./.idea/*" \
+        -not -path "./.vscode/*" \
+        -not -name ".env" \
+        -not -name "*.pyc" \
+        -not -name ".coverage" \
+        -not -name ".DS_Store" \
+        -not -name "*.db" \
+        -not -name "*.sqlite3" \
+        -print0 | while IFS= read -r -d '' f; do
+        printf '==> %s <==\n' "$f"
+        "${viewer_cmd[@]}" -- "$f"
+        printf '\n'
+    done
+        
 }
 
 autoload -U add-zsh-hook

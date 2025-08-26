@@ -130,14 +130,19 @@ map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
-map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
-map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
-map(
-	"t",
-	"<leader><leader>tt",
-	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
-	{ desc = "toggle floating terminal" }
-)
+-- map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
+-- map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
+-- map(
+-- 	"t",
+-- 	"<leader><leader>tt",
+-- 	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
+-- 	{ desc = "toggle floating terminal" }
+-- )
+
+-- map("t", "<A-h>", "<C-/><C-N><C-w>h")
+-- map("t", "<A-n>", "<C-/><C-N><C-w>j")
+-- map("t", "<A-e>", "<C-/><C-N><C-w>k")
+-- map("t", "<A-i>", "<C-/><C-N><C-w>l")
 
 -----------------------------------------------------------------
 -- tabs

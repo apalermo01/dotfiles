@@ -134,13 +134,14 @@ map("v", "<", "<gv")
 -- terminal
 -----------------------------------------------------------------
 map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
-map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
-map(
-	"t",
-	"<leader><leader>tt",
-	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
-	{ desc = "toggle floating terminal" }
-)
+map("t", "<ESC>", "<C-\\><C-n>")
+-- map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
+-- map(
+-- 	"t",
+-- 	"<leader><leader>tt",
+-- 	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
+-- 	{ desc = "toggle floating terminal" }
+-- )
 
 -----------------------------------------------------------------
 -- tabs

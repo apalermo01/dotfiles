@@ -63,3 +63,7 @@ echo $1 > current_theme
 
 echo "copying user scripts"
 stow . -d user_scripts/ -t ~/Scripts
+
+if [[ "$1" =~ ^i3 ]]; then
+    i3 restart
+fi

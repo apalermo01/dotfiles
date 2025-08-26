@@ -43,8 +43,8 @@ map({ "n", "v" }, "i", "l", { desc = "move right" })
 map({ "n" }, "k", "i", { desc = "enter insert mode" })
 map({ "n" }, "K", "I", { desc = "capital I" })
 
-map({ "n" }, "j", "n", { desc = "next item in search" })
-map({ "n" }, "J", "N", { desc = "previous item in search" })
+map({ "n" }, "j", "nzz", { desc = "next item in search" })
+map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
 
 map({ "n", "v" }, "l", "e", { desc = "end of word" })
 
@@ -86,9 +86,6 @@ map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 -- join lines without moving cursor
 -- map("n", "N", "mzJ`z")
 
--- keep search matches centered
-map("n", "j", "nzzzv")
-map("n", "J", "Nzzzv")
 
 -- paste over visual selection wihout yanking it
 map("x", "<leader>p", '"_dP')
@@ -110,7 +107,7 @@ map({ "v", "n" }, "<leader>pc", '"+p')
 -- map("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 -- spellcheck
-map("n", "<leader>s", function()
+map("n", "<leader><leader>s", function()
 	vim.wo.spell = not vim.wo.spell
 end, { desc = "toggle spellcheck" })
 
@@ -283,16 +280,16 @@ end, { desc = "trouble: previous diagnostic" })
 -- obsidian
 -----------------------------------------------------------------
 -- Show backlinks via Telescope
-map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
+map("n", "<leader>sbl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- template note
-map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
+map("n", "<leader>st", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
 
 -- Delete current note
-map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
+map("n", "<leader>sdd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
 
 -- Open current file in the Obsidian app (requires `obsidian` CLI in PATH)
-map("n", "<leader>oo", function()
+map("n", "<leader>so", function()
 	local vault_root = OBSIDIAN_NOTES_DIR
 	local vault_name = vim.fn.fnamemodify(vault_root, ":t")
 	local function urlencode(str)
@@ -492,59 +489,59 @@ map("n", "<leader>gh", builtin.git_bcommits, { desc = "Telescope: commit history
 --------------------------------------------------------------------------------
 -- harpoon
 --------------------------------------------------------------------------------
--- local harpoon = require("harpoon")
--- map("n", "<leader>e", function()
--- 	harpoon.ui:toggle_quick_menu(harpoon:list())
--- end, { desc = "show harpoon list" })
+local harpoon = require("harpoon")
+map("n", "<leader>a", function()
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "show harpoon list" })
 -- map("n", "<leader>a", function()
 -- 	harpoon:list():add()
 -- end, { desc = "harpoon add" })
---
--- map("n", "<leader>h", function()
--- 	harpoon:list():select(1)
--- end, { desc = "harpoon(1)" })
--- map("n", "<leader>j", function()
--- 	harpoon:list():select(2)
--- end, { desc = "harpoon(2)" })
--- map("n", "<leader>k", function()
--- 	harpoon:list():select(3)
--- end, { desc = "harpoon(3)" })
--- map("n", "<leader>l", function()
--- 	harpoon:list():select(4)
--- end, { desc = "harpoon(4)" })
--- map("n", "<leader>;", function()
--- 	harpoon:list():select(5)
--- end, { desc = "harpoon(5)" })
--- map("n", "<leader>'", function()
--- 	harpoon:list():select(5)
--- end, { desc = "harpoon(5)" })
---
--- map("n", "<leader><leader>h", function()
--- 	harpoon:list():replace_at(1)
--- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 1")
--- end, { desc = "set current buffer to harpoon(1)" })
---
--- map("n", "<leader><leader>j", function()
--- 	harpoon:list():replace_at(2)
--- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 2")
--- end, { desc = "set current buffer to harpoon(2)" })
---
--- map("n", "<leader><leader>k", function()
--- 	harpoon:list():replace_at(3)
--- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 3")
--- end, { desc = "set current buffer to harpoon(3)" })
---
--- map("n", "<leader><leader>l", function()
--- 	harpoon:list():replace_at(4)
--- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 4")
--- end, { desc = "set current buffer to harpoon(4)" })
---
--- map("n", "<leader><leader>;", function()
--- 	harpoon:list():replace_at(5)
--- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 5")
--- end, { desc = "set current buffer to harpoon(5)" })
---
--- map("n", "<leader><leader>'", function()
--- 	harpoon:list():replace_at(6)
--- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
--- end, { desc = "set current buffer to harpoon(6)" })
+
+map("n", "<leader>h", function()
+	harpoon:list():select(1)
+end, { desc = "harpoon(1)" })
+map("n", "<leader>n", function()
+	harpoon:list():select(2)
+end, { desc = "harpoon(2)" })
+map("n", "<leader>e", function()
+	harpoon:list():select(3)
+end, { desc = "harpoon(3)" })
+map("n", "<leader>i", function()
+	harpoon:list():select(4)
+end, { desc = "harpoon(4)" })
+map("n", "<leader>o", function()
+	harpoon:list():select(5)
+end, { desc = "harpoon(5)" })
+map("n", "<leader>'", function()
+	harpoon:list():select(6)
+end, { desc = "harpoon(6)" })
+
+map("n", "<leader><leader>h", function()
+	harpoon:list():replace_at(1)
+	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 1")
+end, { desc = "set current buffer to harpoon(1)" })
+
+map("n", "<leader><leader>n", function()
+	harpoon:list():replace_at(2)
+	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 2")
+end, { desc = "set current buffer to harpoon(2)" })
+
+map("n", "<leader><leader>e", function()
+	harpoon:list():replace_at(3)
+	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 3")
+end, { desc = "set current buffer to harpoon(3)" })
+
+map("n", "<leader><leader>i", function()
+	harpoon:list():replace_at(4)
+	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 4")
+end, { desc = "set current buffer to harpoon(4)" })
+
+map("n", "<leader><leader>o", function()
+	harpoon:list():replace_at(5)
+	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 5")
+end, { desc = "set current buffer to harpoon(5)" })
+
+map("n", "<leader><leader>'", function()
+	harpoon:list():replace_at(6)
+	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
+end, { desc = "set current buffer to harpoon(6)" })

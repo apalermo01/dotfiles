@@ -209,7 +209,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 'apps'"
 
 # default terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec gnome-terminal
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 0.02+
 bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume        @DEFAULT_AUDIO_SINK@ 0.02-
@@ -277,13 +277,13 @@ exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORI
 exec_always systemctl --user start xss-lock-i3
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #b4befe     #b4befe      #1e1e2e      #b4befe	#b4befe
-client.focused_inactive	 #45475a     #1e1e2e          #cdd6f4	    #45475a	#45475a
-client.unfocused	     #45475a     #1e1e2e          #cdd6f4	    #45475a	#45475a
-client.urgent	         #fab387        #1e1e2e         #fab387	    #6c7086  #fab387
-client.placeholder	     #6c7086     #1e1e2e         #cdd6f4	    #6c7086	#6c7086
+client.focused	         {{ lavender }}     {{ lavender }}      {{ base }}      {{ lavender }}	{{ lavender }}
+client.focused_inactive	 {{ surface1 }}     {{ base }}          {{ text }}	    {{ surface1 }}	{{ surface1 }}
+client.unfocused	     {{ surface1 }}     {{ base }}          {{ text }}	    {{ surface1 }}	{{ surface1 }}
+client.urgent	         {{ peach }}        {{ base }}         {{ peach }}	    {{ overlay0 }}  {{ peach }}
+client.placeholder	     {{ overlay0 }}     {{ base }}         {{ text }}	    {{ overlay0 }}	{{ overlay0 }}
 
-client.background	#1e1e2e
+client.background	{{ base }}
 
 # Gaps
 gaps inner 20
@@ -298,8 +298,4 @@ floating_modifier $mod
 exec --no-startup-id mate-power-manager
 
 focus_follows_mouse no
-
-exec killall picom
-
-exec_always picom --backend glx --config ~/.config/picom/picom.conf
 exec_always feh --bg-fill /home/alex/Pictures/wallpapers/neocity.png

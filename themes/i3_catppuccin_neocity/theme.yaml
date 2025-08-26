@@ -54,8 +54,4 @@ fastfetch:
     - src: config.jsonc
       dst: fastfetch/config.jsonc
 
-custom: 
-  - conky: 
-      name: conky
-      cfg_folder: conky
 

@@ -106,11 +106,11 @@ confirm "Run host initialization? (this is for both home manager and nixos)" && 
 
 confirm "Install restic backup?" && nix develop --command "./scripts/install_backup.sh"
 
-confirm "Install theme builder?" && nix develop --command "./scripts/remove_targets.sh" && nix develop --command "./scripts/install_theme_builder.sh"
-if confirm "Build themes now?"; then
-  cd "$HOME/Documents/git/dotfiles"
-  nix --extra-experimental-features 'nix-command flakes' develop .#default \
-    --command bash -c 'cd theme-builder && source master_font.sh && bash migrate_theme_to_dotfiles.sh all'
-fi
+# confirm "Install theme builder?" && nix develop --command "./scripts/remove_targets.sh" && nix develop --command "./scripts/install_theme_builder.sh"
+# if confirm "Build themes now?"; then
+#   cd "$HOME/Documents/git/dotfiles"
+#   nix --extra-experimental-features 'nix-command flakes' develop .#default \
+#     --command bash -c 'cd theme-builder && source master_font.sh && bash migrate_theme_to_dotfiles.sh all'
+# fi
 
 echo "System fully initialized"

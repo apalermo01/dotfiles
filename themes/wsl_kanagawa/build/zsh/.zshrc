@@ -305,14 +305,6 @@ mkpretty() {
     python3 -m json.tool "$selected_file" > "$output_file"
     echo "Done."
 }
-# Set the default language and encoding to UTF-8
-export LANG=en_US.UTF-8
-
-# Share the LANG setting with Windows via WSLENV
-export WSLENV=$WSLENV:LANG
-
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 fastfetch
 alias cd="z"
 eval "$(zoxide init zsh)"

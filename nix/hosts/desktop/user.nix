@@ -38,7 +38,6 @@
     discord.enable = true;
     obs.enable = true;
     vlc.enable = true;
-    kvantum.enable = true;
     # element.enable = true;
     # ollama.enable = true;
   };

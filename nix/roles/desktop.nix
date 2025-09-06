@@ -19,6 +19,7 @@
     alpaca
     brightnessctl
     lm_sensors
+    libsForQt5.qtstyleplugin-kvantum
   ];
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;
@@ -46,7 +47,6 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.defaultSession = "none+i3";
 
-
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
@@ -64,9 +64,7 @@
   #   enable = true;
   #
   # };
-  
 
-  
   services.logind = {
     lidSwitch = "lock";
     lidSwitchExternalPower = "lock";

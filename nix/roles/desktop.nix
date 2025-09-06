@@ -35,7 +35,7 @@
 
   # default KDE environment. Can use as a fallback
   # if something happens to i3 or hyprland
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = false;
 
   # x-server. Can disable if only using wayland
   # services.displayManager.defaultSession = "plasmax11";

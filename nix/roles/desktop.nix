@@ -19,7 +19,8 @@
     alpaca
     brightnessctl
     lm_sensors
-    libsForQt5.qtstyleplugin-kvantum
+    # libsForQt5.qtstyleplugin-kvantum
+    pywalfox-native
   ];
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;

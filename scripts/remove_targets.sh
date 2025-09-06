@@ -11,6 +11,6 @@ rm -r ~/.config/rofi
 rm -r ~/.config/theme_scripts
 rm -r ~/.tmux.conf
 rm ~/.p10k.zsh
-rm ~/.profile
+# rm ~/.profile
 rm ~/.zshrc
-rm ~/profile
+# rm ~/profile

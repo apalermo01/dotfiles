@@ -29,7 +29,12 @@ rofi: {}
 zsh: 
   feats: ["run_pywal", "fastfetch"]
   ohmyposh: https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/refs/heads/main/themes/nordtron.omp.json
-
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
 
 fastfetch: 
   overwrite: 

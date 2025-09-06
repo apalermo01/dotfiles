@@ -31,7 +31,7 @@ install_nix() {
 clone_dotfiles() {
     git_root="$HOME/Documents/git"
     mkdir -p "$git_root"
-    
+
     if command -v nix-shell >/dev/null; then
         nix-shell -p git --command "
             cd $git_root && git clone git@github.com:apalermo01/dotfiles && cd $git_root/dotfiles && git submodule update --init
@@ -40,7 +40,7 @@ clone_dotfiles() {
         ( git clone git@github.com:apalermo01/dotfiles "$git_root/dotfiles"
           cd "$git_root/dotfiles" && git submodule update --init )
     fi
-    
+
     cd $git_root/dotfiles
 
     echo "Dotfiles repo has been cloned and installed."

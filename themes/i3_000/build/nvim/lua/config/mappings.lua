@@ -127,6 +127,9 @@ map("n", "[]", "k$][%?}<CR>")
 -- diffview
 map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
 
+-- automatically go back into visual mode after indenting
+map("v", ">", ">gv")
+map("v", "<", "<gv")
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
@@ -549,4 +552,4 @@ end, { desc = "set current buffer to harpoon(6)" })
 --- No neck pain --------------
 -------------------------------
 
-map("n", "<leader>ck", "<cmd>NoNeckPain")
+map("n", "<leader>ck", "<cmd>NoNeckPain<CR>")

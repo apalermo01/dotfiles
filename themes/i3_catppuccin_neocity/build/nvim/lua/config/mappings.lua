@@ -86,7 +86,6 @@ map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 -- join lines without moving cursor
 -- map("n", "N", "mzJ`z")
 
-
 -- paste over visual selection wihout yanking it
 map("x", "<leader>p", '"_dP')
 
@@ -128,6 +127,9 @@ map("n", "[]", "k$][%?}<CR>")
 -- diffview
 map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
 
+-- automatically go back into visual mode after indenting
+map("v", ">", ">gv")
+map("v", "<", "<gv")
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
@@ -545,3 +547,9 @@ map("n", "<leader><leader>'", function()
 	harpoon:list():replace_at(6)
 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
 end, { desc = "set current buffer to harpoon(6)" })
+
+-------------------------------
+--- No neck pain --------------
+-------------------------------
+
+map("n", "<leader>ck", "<cmd>NoNeckPain<CR>")

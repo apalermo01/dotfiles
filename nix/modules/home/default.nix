@@ -13,6 +13,7 @@
     ./packages/home_only.nix
     ./git.nix
     ./direnv.nix
+    ./kvantum.nix
     ./zoxide.nix
     ./datagrip.nix
     ./xss-lock-i3.nix

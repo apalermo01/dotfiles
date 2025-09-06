@@ -48,6 +48,8 @@ in
       xdg-desktop-portal-gtk
       i3lock
       brave
+      glib
+      xdg-utils
     ];
   };
 

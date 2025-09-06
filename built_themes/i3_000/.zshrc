@@ -270,6 +270,9 @@ add-zsh-hook chpwd _maybe_source_aliases
 eval "$(fnm env --use-on-cd --shell zsh)"
 
 
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 fastfetch
 wal -n -e -i /home/alex/Pictures/wallpapers/000.png > /dev/null 
 alias cd="z"

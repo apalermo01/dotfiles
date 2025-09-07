@@ -1,3 +1,7 @@
 # export QT_QPA_PLATFORMTHEME='kde'
 # export KDE_SESSION_VERSION=5
 # export KDE_FULL_SESSION=true
+export XDG_UTILS_DESKTOP_ENV="generic"
+export XDG_CURRENT_DESKTOP="i3"
+export XDG_SESSION_DESKTOP="i3"
+export DESKTOP_SESSION="i3"

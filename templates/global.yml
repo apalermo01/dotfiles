@@ -4,7 +4,12 @@ zsh:
 
 hook_path: "~/Documents/git/dotfiles/scripts/switch_theme.sh"
 
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
 font: Iosveska Nerd Font Mono
+
 # font: JetBrainsMono Nerd Font Mono
 # font: FiraCode Nerd Font Mono
 # font: Hack Nerd Font Mono

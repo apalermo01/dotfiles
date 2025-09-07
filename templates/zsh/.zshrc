@@ -182,7 +182,7 @@ alias y="yazi"
 alias ya="y"
 alias yazi="y"
 
-alias cat="batcat --no-pager"
+alias cat="bat --no-pager"
 alias ls="eza"
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh

@@ -5,5 +5,5 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 # include ~/.cache/wal/colors-kitty.conf
-(\cat ~/.cache/wal/sequences &) >/dev/null
+(\cat ~/.cache/wal/sequences &)
 

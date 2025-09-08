@@ -24,6 +24,11 @@
     devcontainer
     docker
   ];
+
+  virtualisation.docker = {
+    enable = true;
+  };
+
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;
   # programs.betterlockscreen.enable = true;
@@ -73,4 +78,6 @@
     lidSwitchExternalPower = "lock";
     lidSwitchDocked = "ignore";
   };
+
+  users.users.alex.extraGroups = [ "docker" ];
 }

@@ -273,5 +273,3 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 alias cd="z"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
-
-if [ -e /home/user/.nix-profile/etc/profile.d/nix.sh ]; then . /home/user/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

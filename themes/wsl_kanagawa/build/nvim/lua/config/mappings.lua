@@ -127,6 +127,9 @@ map("n", "[]", "k$][%?}<CR>")
 -- diffview
 map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
 
+-- automatically go back into visual mode after indenting
+map("v", ">", ">gv")
+map("v", "<", "<gv")
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------

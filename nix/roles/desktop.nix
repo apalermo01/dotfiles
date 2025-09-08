@@ -22,6 +22,7 @@
     # libsForQt5.qtstyleplugin-kvantum
     pywalfox-native
     devcontainer
+    docker
   ];
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;

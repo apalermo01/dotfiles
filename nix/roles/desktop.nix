@@ -21,6 +21,7 @@
     lm_sensors
     # libsForQt5.qtstyleplugin-kvantum
     pywalfox-native
+    devcontainer
   ];
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;

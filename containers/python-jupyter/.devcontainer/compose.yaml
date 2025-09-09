@@ -8,11 +8,10 @@ services:
     environment:
       PYTHONPATH: /workspace
       JUPYTER_TOKEN: dev
-      JUPYTER_CONFIG_DIR: /workspace/.jupyter
     volumes:
       - ..:/workspace
       - pip-cache:/home/vscode/.cache/pip
-      - ./.devcontainer/jupyter_server_config.py:/etc/jupyter/jupyter_server_config.py:ro
+      - ./jupyter_server_config.py:/etc/jupyter/jupyter_server_config.py:ro
     ports:
       - 8888:8888
     command: sleep infinity

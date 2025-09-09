@@ -12,8 +12,8 @@ in
     src = super.fetchFromGitHub {
       owner = "apalermo01";
       repo = "ricer";
-      rev = "ecc9e96a6c42b0c65921136823024dadaab93ccb";
-      sha256 = "Jkfdm+9k30IoWAeJB9GCmvUqzk8M6iacPkoMF5o/dy8=";
+      rev = "6dbbeccb3c641deee7ed0aa477a814e1cce8e476";
+      "sha256" = "pbHUeSSOHBIMpy5LqUibmwQnOK7BFAPpzVhFOHN3VRA=";
     };
 
     propagatedBuildInputs = with py.pkgs; [

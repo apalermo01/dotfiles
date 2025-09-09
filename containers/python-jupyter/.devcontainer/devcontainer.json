@@ -1,0 +1,22 @@
+{
+    "name": "python environment",
+    "dockerComposeFile": "compose.yaml",
+    "shutdownAction": "stopCompose",
+    "service": "jupyter",
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/duduribeiro/devcontainer-features/neovim:1": {},
+        "ghcr.io/nils-geistmann/devcontainers-features/zsh:0": {},
+        "ghcr.io/devcontainers/features/rust:1": {}
+    },
+    "forwardPorts": [
+        8888
+    ],
+    "postCreateCommand": "python -m pip install --upgrade pip && pip install -r /workspace/requirements.txt",
+    "mounts": [
+        "source=${localEnv:HOME}/.config/nvim,target=/home/vscode/.config/nvim,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.zshrc,target=/home/vscode/.zshrc,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.p10k.zsh,target=/home/vscode/.p10k.zsh,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.cache/wal,target=/home/vscode/.cache/wal,type=bind,consistency=cached"
+    ]
+}

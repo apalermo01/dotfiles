@@ -283,3 +283,17 @@ fastfetch
 alias cd="z"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
+
+# fnm
+FNM_PATH="/home/vscode/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+
+# fnm
+FNM_PATH="/home/vscode/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi

@@ -56,7 +56,6 @@
     # programming languages
     lua
     go
-
     evtest
     nvimpager
     conky

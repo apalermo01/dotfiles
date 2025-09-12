@@ -247,14 +247,17 @@ function _maybe_source_aliases() {
 
 function _devcontainers() {
     if [[ -d .devcontainer ]]; then
+        CONTAINERID="test-container=$(pwd | xargs basename)"
         echo "Devcontainer found."   
-        echo "d   = devcontainer exec --workspace-folder . zsh"
-        echo "du  = devcontainer up --workspace-folder ."
-        echo "dur = devcontainer up --workspace-folder . --remove-existing-container"
+        echo "d   = devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        echo "du  = devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        echo "dur = devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        echo 'dd  = docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
 
-        alias d="devcontainer exec --workspace-folder . zsh"
-        alias du="devcontainer up --workspace-folder ."
-        alias dur="devcontainer up --workspace-folder . --remove-existing-container"
+        alias d="devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        alias du="devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        alias dur="devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        alias dd='docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
     fi
 }
 

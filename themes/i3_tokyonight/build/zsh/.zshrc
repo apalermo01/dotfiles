@@ -247,12 +247,17 @@ function _maybe_source_aliases() {
 
 function _devcontainers() {
     if [[ -d .devcontainer ]]; then
+        CONTAINERID="test-container=$(pwd | xargs basename)"
         echo "Devcontainer found."   
-        echo "d  = devcontainer exec --workspace-folder . zsh"
-        echo "du = devcontainer up --workspace-folder . --remove-existing-container"
+        echo "d   = devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        echo "du  = devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        echo "dur = devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        echo 'dd  = docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
 
-        alias d="devcontainer exec --workspace-folder . zsh"
-        alias du="devcontainer up --workspace-folder . --remove-existing-container"
+        alias d="devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        alias du="devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        alias dur="devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        alias dd='docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
     fi
 }
 
@@ -309,22 +314,22 @@ fi
 ###########
 # HELPERS #
 ###########
-echo "***************************** ALIASES *****************************"
-echo "tutoring                  = cd into tutoring dir and init a session"
-echo "quick_commit / qc / gcm   = git commit with current date as message"
-echo "cat_all                   = cat all files in cwd (recursive)"
-echo "on <name>                 = generate new note"
-echo "onp <name>                = generate new personal note"
-echo "n                         = cd into notes folder"
-echo "o                         = start obsidian"
-echo "ga                        = git add -p"
-echo "gc                        = git commit"
-echo "gb                        = git branch"
-echo "gd                        = git diff" 
-echo "gl                        = git log (pretty)"
-echo "gp                        = git push"
-echo "gpu                       = git pull"
-echo "*******************************************************************"
+echo "******************************** ALIASES *******************************"
+echo "* tutoring                  = cd into tutoring dir and init a session  *"
+echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
+echo "* cat_all                   = cat all files in cwd (recursive)         *"
+echo "* on <name>                 = generate new note                        *"
+echo "* onp <name>                = generate new personal note               *"
+echo "* n                         = cd into notes folder                     *"
+echo "* o                         = start obsidian                           *"
+echo "* ga                        = git add -p                               *"
+echo "* gc                        = git commit                               *"
+echo "* gb                        = git branch                               *"
+echo "* gd                        = git diff                                 *" 
+echo "* gl                        = git log (pretty)                         *"
+echo "* gp                        = git push                                 *"
+echo "* gpu                       = git pull                                 *"
+echo "************************************************************************"
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 

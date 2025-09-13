@@ -261,6 +261,13 @@ function _devcontainers() {
     fi
 }
 
+function _alias_jupyter() {
+    if command -v jupyter; then
+        alias j="jupyter lab"
+        echo "aliased j to jupyter lab"
+    fi
+}
+
 function cat_all() {
 
     local -a viewer_cmd
@@ -303,6 +310,7 @@ function cat_all() {
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _maybe_source_aliases
 add-zsh-hook chpwd _devcontainers
+add-zsh-hook chpwd _alias_jupyter
 
 #######################
 # Additional settings #
@@ -329,5 +337,6 @@ echo "* gd                        = git diff                                 *"
 echo "* gl                        = git log (pretty)                         *"
 echo "* gp                        = git push                                 *"
 echo "* gpu                       = git pull                                 *"
+echo "* j                         = open jupyter lab (if available)          *"
 echo "************************************************************************"
 

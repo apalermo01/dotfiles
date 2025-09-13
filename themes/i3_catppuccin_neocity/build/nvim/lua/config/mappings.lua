@@ -33,34 +33,6 @@ function CloseFloatingOrClearHighlight()
 end
 
 -----------------------------------------------------------------
--- remappings for colemak
------------------------------------------------------------------
--- motions
-map({ "n", "v" }, "n", "j", { desc = "move down" })
-map({ "n", "v" }, "e", "k", { desc = "move up" })
-map({ "n", "v" }, "i", "l", { desc = "move right" })
-
-map({ "n" }, "k", "i", { desc = "enter insert mode" })
-map({ "n" }, "K", "I", { desc = "capital I" })
-
-map({ "n" }, "j", "nzz", { desc = "next item in search" })
-map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
-
-map({ "n", "v" }, "l", "e", { desc = "end of word" })
-
--- window motions
-map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
-map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
-map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
-map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-
--- tmux
-map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
-map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
-map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
-map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
-
------------------------------------------------------------------
 -- misc
 -----------------------------------------------------------------
 

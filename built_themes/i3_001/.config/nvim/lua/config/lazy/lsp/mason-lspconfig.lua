@@ -17,6 +17,7 @@ return {
 			"nil_ls",
 			"bashls",
             "yamlls",
+            "gopls",
 		} or {
             "lua_ls",
 			"html",
@@ -29,6 +30,7 @@ return {
 			"markdown_oxide",
 			"bashls",
             "yamlls",
+            "gopls",
 		},
 
 		handlers = {
@@ -42,6 +44,18 @@ return {
 				require("lspconfig").lua_ls.setup({
 					cmd = nixos and { "lua-language-server" } or nil,
 					capabilities = capabilities,
+				})
+			end,
+
+			["yamlls"] = function()
+				require("lspconfig").yamlls.setup({
+                    settings = {
+                        yaml = {
+                            schemas = {
+                                ["https://raw.githubusercontent.com/apalermo01/ricer/refs/heads/main/ricer_schema.json"] = "/theme.yml"
+                            } 
+                        }
+                    }
 				})
 			end,
 

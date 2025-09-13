@@ -277,13 +277,13 @@ exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORI
 exec_always systemctl --user start xss-lock-i3
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #cba6f7        #fab387         #181825      #cba6f7	    #cba6f7
-client.focused_inactive	 #313244     #fab387         #181825	    #313244	    #313244
-client.unfocused	     #313244     #fab387           #181825	    #313244	    #313244
-client.urgent	         #f38ba8          #f38ba8         #181825	    #f38ba8       #f38ba8
-client.placeholder	     #313244     #fab387         #181825	    #cba6f7	    #cba6f7
+client.focused	         {{ mauve }}        {{ peach }}         {{ mantle }}      {{ mauve }}	    {{ mauve }}
+client.focused_inactive	 {{ surface0 }}     {{ peach }}         {{ mantle }}	    {{ surface0 }}	    {{ surface0 }}
+client.unfocused	     {{ surface0 }}     {{ peach }}           {{ mantle }}	    {{ surface0 }}	    {{ surface0 }}
+client.urgent	         {{ red }}          {{ red }}         {{ mantle }}	    {{ red }}       {{ red }}
+client.placeholder	     {{ surface0 }}     {{ peach }}         {{ mantle }}	    {{ mauve }}	    {{ mauve }}
 
-client.background	#11111b
+client.background	{{ crust }}
 
 # Gaps
 gaps inner 10

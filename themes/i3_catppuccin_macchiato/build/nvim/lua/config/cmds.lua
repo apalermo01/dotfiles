@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*.md",
 	callback = function()
 		local path = vim.api.nvim_buf_get_name(0)
-		if not string.find(path, "templates/note.md") then
+		if not string.find(path, "5-Templates") then
 			local current_date = os.date("%Y-%m-%d")
 			local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
 

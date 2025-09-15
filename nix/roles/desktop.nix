@@ -23,6 +23,7 @@
     pywalfox-native
     devcontainer
     docker
+    qmk
   ];
 
   virtualisation.docker = {

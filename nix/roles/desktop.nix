@@ -24,6 +24,7 @@
     devcontainer
     docker
     qmk
+    keymapviz
   ];
 
   virtualisation.docker = {

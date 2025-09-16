@@ -25,6 +25,7 @@
     docker
     qmk
     keymapviz
+    xfce.thunar
   ];
 
   virtualisation.docker = {

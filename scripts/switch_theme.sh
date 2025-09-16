@@ -27,9 +27,9 @@ echo "stowing new theme: $1"
 stow . -d built_themes/$1 -t ~/ --dotfiles
 
 if [[ $1 == *"wsl"* ]]; then
-    ln -sf -i "$(realpath ./templates/global-wsl.yml)" ~/.config/ricer/ricer-global.yml
+    ln -sf "$(realpath ./templates/global-wsl.yml)" ~/.config/ricer/ricer-global.yml
 else
-    ln -sf -i "$(realpath ./templates/global.yml)" ~/.config/ricer/ricer-global.yml
+    ln -sf "$(realpath ./templates/global.yml)" ~/.config/ricer/ricer-global.yml
 fi
 
 if [ $? -ne 0 ]; then

@@ -10,7 +10,7 @@ i3:
   append: 
     - src: config
       dst: i3/config
-font: Iosveska Nerd Font Mono
+font: Iosevka Nerd Font Mono
 
 # font: JetBrainsMono Nerd Font Mono
 # font: FiraCode Nerd Font Mono

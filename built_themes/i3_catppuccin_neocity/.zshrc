@@ -156,18 +156,6 @@ alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
 
-# chi3() {
-#     cwd=$(pwd)
-#     cd ${HOME}/Documents/git/dotfiles 
-#     bash scripts/random_i3_theme.sh
-#     cd $(cwd)
-# }
-# chwsl() {
-#     cwd=$(pwd)
-#     cd ${HOME}/Documents/git/dotfiles 
-#     bash scripts/random_wsl_theme.sh
-#     cd $(cwd)
-# }
 
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
@@ -236,6 +224,11 @@ EOF
     fi
 }
 
+
+
+############
+# cd hooks #
+############
 function _maybe_source_aliases() {
     if [[ -f aliases.sh ]]; then
         read -q "?aliases.sh found - would you like to source it? [Y/n]: " src
@@ -261,6 +254,21 @@ function _devcontainers() {
     fi
 }
 
+function _alias_jupyter() {
+    if command -v jupyter; then
+        alias j="jupyter lab"
+        echo "aliased j to jupyter lab"
+    fi
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _maybe_source_aliases
+add-zsh-hook chpwd _devcontainers
+add-zsh-hook chpwd _alias_jupyter
+
+###################
+# other functions #
+###################
 function cat_all() {
 
     local -a viewer_cmd
@@ -300,10 +308,9 @@ function cat_all() {
         
 }
 
-autoload -U add-zsh-hook
-add-zsh-hook chpwd _maybe_source_aliases
-add-zsh-hook chpwd _devcontainers
-
+switch_kb() {
+    bash ~/Scripts/switch_kb_layout_via_term.sh
+}
 #######################
 # Additional settings #
 #######################
@@ -329,6 +336,9 @@ echo "* gd                        = git diff                                 *"
 echo "* gl                        = git log (pretty)                         *"
 echo "* gp                        = git push                                 *"
 echo "* gpu                       = git pull                                 *"
+echo "* j                         = open jupyter lab (if available)          *"
+echo "* cat_all                   = cat all files in directory               *"
+echo "* switch_kb                 = change kb layout                         *"
 echo "************************************************************************"
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k

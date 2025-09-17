@@ -100,7 +100,14 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # networking
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
+  networking = {
+    networkmanager = {
+      enable = true;
+    };
+
+    nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8"];
+  };
 
   # timezone / locale
   time.timeZone = "America/New_York";

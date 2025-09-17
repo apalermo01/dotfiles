@@ -27,6 +27,7 @@
     keymapviz
     xfce.thunar
     libsForQt5.okular
+    calibre
   ];
 
   virtualisation.docker = {

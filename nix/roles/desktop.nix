@@ -28,6 +28,7 @@
     xfce.thunar
     xfce.thunar-volman
     libsForQt5.okular
+    libsForQt5.dolphin
     calibre
   ];
 

@@ -26,6 +26,7 @@
     qmk
     keymapviz
     xfce.thunar
+    xfce.thunar-volman
     libsForQt5.okular
     calibre
   ];

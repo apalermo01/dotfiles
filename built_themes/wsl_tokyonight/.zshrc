@@ -247,14 +247,24 @@ function _maybe_source_aliases() {
 
 function _devcontainers() {
     if [[ -d .devcontainer ]]; then
+        CONTAINERID="test-container=$(pwd | xargs basename)"
         echo "Devcontainer found."   
-        echo "d   = devcontainer exec --workspace-folder . zsh"
-        echo "du  = devcontainer up --workspace-folder ."
-        echo "dur = devcontainer up --workspace-folder . --remove-existing-container"
+        echo "d   = devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        echo "du  = devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        echo "dur = devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        echo 'dd  = docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
 
-        alias d="devcontainer exec --workspace-folder . zsh"
-        alias du="devcontainer up --workspace-folder ."
-        alias dur="devcontainer up --workspace-folder . --remove-existing-container"
+        alias d="devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        alias du="devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        alias dur="devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        alias dd='docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
+    fi
+}
+
+function _alias_jupyter() {
+    if command -v jupyter; then
+        alias j="jupyter lab"
+        echo "aliased j to jupyter lab"
     fi
 }
 
@@ -300,6 +310,7 @@ function cat_all() {
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _maybe_source_aliases
 add-zsh-hook chpwd _devcontainers
+add-zsh-hook chpwd _alias_jupyter
 
 #######################
 # Additional settings #
@@ -326,6 +337,7 @@ echo "* gd                        = git diff                                 *"
 echo "* gl                        = git log (pretty)                         *"
 echo "* gp                        = git push                                 *"
 echo "* gpu                       = git pull                                 *"
+echo "* j                         = open jupyter lab (if available)          *"
 echo "************************************************************************"
 
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"

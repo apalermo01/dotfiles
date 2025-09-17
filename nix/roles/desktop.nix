@@ -26,6 +26,7 @@
     qmk
     keymapviz
     xfce.thunar
+    libsForQt5.okular
   ];
 
   virtualisation.docker = {

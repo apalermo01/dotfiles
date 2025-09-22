@@ -30,6 +30,7 @@
     libsForQt5.okular
     kdePackages.dolphin
     calibre
+    libimobiledevice
   ];
 
   virtualisation.docker = {

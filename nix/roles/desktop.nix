@@ -31,8 +31,11 @@
     kdePackages.dolphin
     calibre
     libimobiledevice
+    yt-dlp
   ];
 
+
+  services.usbmuxd.enable = true;
   virtualisation.docker = {
     enable = true;
   };

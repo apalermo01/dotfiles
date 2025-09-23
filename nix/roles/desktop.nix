@@ -31,6 +31,8 @@
     kdePackages.dolphin
     calibre
     libimobiledevice
+    usbmuxd
+    ifuse
     yt-dlp
   ];
 

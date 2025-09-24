@@ -32,6 +32,7 @@
     libimobiledevice
     usbmuxd
     ifuse
+    jellyfin-ffmpeg
   ];
 
 

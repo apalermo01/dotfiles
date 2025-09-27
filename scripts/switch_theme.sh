@@ -80,4 +80,4 @@ stow . -d user_scripts/ -t ~/Scripts
 if command -v i3 >/dev/null 2>&1; then
     i3 restart
 fi
-chmod +x "$HOME/Documents/git/dotfiles/scripts/switch_theme.sh"'
+chmod +x "$HOME/Documents/git/dotfiles/scripts/switch_theme.sh"

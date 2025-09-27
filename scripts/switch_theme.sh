@@ -77,7 +77,7 @@ if [ ! -d $HOME/Scripts ]; then
 fi
 stow . -d user_scripts/ -t ~/Scripts
 
-if [[ "$1" =~ ^i3 ]]; then
+if command -v i3 >/dev/null 2>&1; then
     i3 restart
 fi
 EOF

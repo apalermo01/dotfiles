@@ -272,7 +272,7 @@ function _devcontainers() {
 "$DOTPATH" pull --ff-only; fi; \
                   sudo apt-get update -y && sudo apt-get install -y stow; \
                   cd "$DOTPATH"; \
-                  theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
+                  theme=$(cat current_theme 2>/dev/null || echo wsl_catppuccin_mocha); \
                   bash ./scripts/switch_theme.sh "$theme"'
             }
         dur() {
@@ -291,7 +291,7 @@ function _devcontainers() {
 "$DOTPATH" pull --ff-only; fi; \
                   sudo apt-get update -y && sudo apt-get install -y stow; \
                   cd "$DOTPATH"; \
-                  theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
+                  theme=$(cat current_theme 2>/dev/null || echo wsl_catppuccin_mocha); \
                   bash ./scripts/switch_theme.sh "$theme"'
             }
         dd()  { docker rm -f $(docker container ls -f "label=test-container=$(basename "$PWD")" -q); }

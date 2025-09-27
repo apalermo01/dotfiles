@@ -259,37 +259,41 @@ function _devcontainers() {
         }
 
         du() {
-          local label="test-container=$(basename "$PWD")"
-          devcontainer up --id-label "$label" \
-              --workspace-folder .
-          # After container is up, clone/apply dotfiles inside it
-          devcontainer exec --id-label "$label" --workspace-folder . \
-            bash -lc 'set -euo pipefail; \
-              DOTPATH="$HOME/dotfiles"; \
-              if [ ! -d "$DOTPATH/.git" ]; then git clone https://github.com/apalermo01/dotfiles "$DOTPATH"; fi; \
-              sudo apt-get update -y && sudo apt-get install -y stow; \
-              cd "$DOTPATH"; \
-              theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
-              bash ./scripts/switch_theme.sh "$theme"'
-        }
-
+              local label="test-container=$(basename "$PWD")"
+              devcontainer up --id-label "$label" \
+                  --workspace-folder .
+              # After container is up, clone/apply dotfiles inside it
+              devcontainer exec --id-label "$label" --workspace-folder . \
+                bash -lc 'set -euo pipefail; \
+                  if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
+                  DOTPATH="$HOME/Documents/git/dotfiles"; \
+                  mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
+                  if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
+"$DOTPATH" pull --ff-only; fi; \
+                  sudo apt-get update -y && sudo apt-get install -y stow; \
+                  cd "$DOTPATH"; \
+                  theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
+                  bash ./scripts/switch_theme.sh "$theme"'
+            }
         dur() {
-          local label="test-container=$(basename "$PWD")"
-          echo "replacing devcontainer with label $label"
-          devcontainer up --id-label "$label" \
-              --workspace-folder . \
-              --remove-existing-container
-          # After container is up, clone/apply dotfiles inside it
-          devcontainer exec --id-label "$label" --workspace-folder . \
-            bash -lc 'set -euo pipefail; \
-              DOTPATH="$HOME/dotfiles"; \
-              if [ ! -d "$DOTPATH/.git" ]; then git clone https://github.com/apalermo01/dotfiles "$DOTPATH"; fi; \
-              sudo apt-get update -y && sudo apt-get install -y stow; \
-              cd "$DOTPATH"; \
-              theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
-              bash ./scripts/switch_theme.sh "$theme"'
-        }
-
+              local label="test-container=$(basename "$PWD")"
+              echo "replacing devcontainer with label $label"
+              devcontainer up --id-label "$label" \
+                  --workspace-folder . \
+                  --remove-existing-container
+              # After container is up, clone/apply dotfiles inside it
+              devcontainer exec --id-label "$label" --workspace-folder . \
+                bash -lc 'set -euo pipefail; \
+                  if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
+                  DOTPATH="$HOME/Documents/git/dotfiles"; \
+                  mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
+                  if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
+"$DOTPATH" pull --ff-only; fi; \
+                  sudo apt-get update -y && sudo apt-get install -y stow; \
+                  cd "$DOTPATH"; \
+                  theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
+                  bash ./scripts/switch_theme.sh "$theme"'
+            }
         dd()  { docker rm -f $(docker container ls -f "label=test-container=$(basename "$PWD")" -q); }
     fi
 }

@@ -72,6 +72,9 @@ fi
 echo $1 > current_theme
 
 echo "copying user scripts"
+if [ ! -d $HOME/Scripts ]; then 
+    mkdir $HOME/Scripts/ 
+fi
 stow . -d user_scripts/ -t ~/Scripts
 
 if [[ "$1" =~ ^i3 ]]; then

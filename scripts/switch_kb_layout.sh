@@ -22,11 +22,13 @@ tmux_keys=(
 )
 
 colemak_i3() {
-    for k in "${i3_keys[@]}"; do
-        colemak_key=$(echo "${k}" | cut -d '|' -f 1)
-        qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
-        sed -i "s/${qwerty_key}/${colemak_key}/" ~/.config/i3/config
-    done
+    if [ -d ~/.config/i3 ]; then 
+        for k in "${i3_keys[@]}"; do
+            colemak_key=$(echo "${k}" | cut -d '|' -f 1)
+            qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
+            sed -i "s/${qwerty_key}/${colemak_key}/" ~/.config/i3/config
+        done
+    fi
 
 }
 
@@ -44,11 +46,13 @@ colemak_tmux() {
 }
 
 qwerty_i3() {
-    for k in "${i3_keys[@]}"; do
-        colemak_key=$(echo "${k}" | cut -d '|' -f 1)
-        qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
-        sed -i "s/${colemak_key}/${qwerty_key}/" ~/.config/i3/config
-    done
+    if [ -d ~/.config/i3 ]; then
+        for k in "${i3_keys[@]}"; do
+            colemak_key=$(echo "${k}" | cut -d '|' -f 1)
+            qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
+            sed -i "s/${colemak_key}/${qwerty_key}/" ~/.config/i3/config
+        done
+    fi
 }
 
 qwerty_nvim() {

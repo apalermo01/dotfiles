@@ -2,32 +2,41 @@
 -- remappings for colemak
 -----------------------------------------------------------------
 -- motions
-map({ "n", "v" }, "n", "j", { desc = "move down" })
-map({ "n", "v" }, "e", "k", { desc = "move up" })
-map({ "n" }, "i", "l", { desc = "move right", noremap = true })
+map({ "n", "v", "o" }, "n", "j", { desc = "move down" })
+map({ "n", "v", "o" }, "e", "k", { desc = "move up" })
+map({ "n", "o" }, "i", "l", { desc = "move right", noremap = true })
 
-map({ "n" }, "k", "i", { desc = "enter insert mode", noremap = true })
-map({ "n" }, "K", "I", { desc = "capital I", noremap = true })
+map({ "n", "o" }, "k", "i", { desc = "enter insert mode", noremap = true })
+map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })
 
 map({ "n" }, "j", "nzz", { desc = "next item in search" })
 map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
 
-map({ "n", "v" }, "l", "e", { desc = "end of word" })
+map({ "n", "v", "o" }, "l", "e", { desc = "end of word" })
+map({ "n", "v", "o" }, "L", "E", { desc = "end of WORD"})
 
 -- window motions
 map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
 map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
 map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
 map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-
+map("n", "<C-h>", "<C-w>h", {desc="win left"})
+map("n", "<C-n>", "<C-w>j", {desc="win down"})
+map("n", "<C-e>", "<C-w>k", {desc="win up"})
+map("n", "<C-i>", "<C-w>l", {desc="win right"})
 -- tmux
-map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
-map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
-map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
-map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
-
+-- map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
+-- map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
+-- map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
+-- map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
+vim.g.tmux_navigator_no_mappings = 1
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
+map("n", "<C-n>", "<cmd>TmuxNavigateDown<CR>")
+map("n", "<C-e>", "<cmd>TmuxNavigateUp<CR>")
+map("n", "<C-i>", "<cmd>TmuxNavigateRight<CR>")
 map({ "n", "x" }, "gn", "gj", { desc = "screen down" })
 map({ "n", "x" }, "ge", "gk", { desc = "screen up (Colemak)" })
+
 
 require("hardtime").setup({
 	-- keep your usual global switches as you like
@@ -41,14 +50,15 @@ require("hardtime").setup({
 	-- 1) Colemak: treat h n e i as the four directional motions
 	------------------------------------------------------------------
 	restricted_keys = {
-		["h"] = { "n", "x" }, -- left
-		["n"] = { "n", "x" }, -- down (you map n->j)
-		["e"] = { "n", "x" }, -- up   (you map e->k)
-		["i"] = { "n", "x" }, -- right (you map i->l)
+		["h"] = { "n", "x", "o" }, -- left
+		["n"] = { "n", "x", "o" }, -- down (you map n->j)
+		["e"] = { "n", "x", "o" }, -- up   (you map e->k)
+		["i"] = { "n", "x", "o" }, -- right (you map i->l)
         ["k"] = false,
+        ["l"] = false,
 		["+"] = { "n", "x" },
-		["gn"] = { "n", "x" }, -- screen-down (gj)
-		["ge"] = { "n", "x" }, -- screen-up   (gk)  ⚠ see note below
+		["gn"] = { "n", "x", "o" }, -- screen-down (gj)
+		["ge"] = { "n", "x", "o" }, -- screen-up   (gk)  ⚠ see note below
 		["<C-M>"] = { "n", "x" },
 		["<C-N>"] = { "n", "x" },
 		["<C-P>"] = { "n", "x" },

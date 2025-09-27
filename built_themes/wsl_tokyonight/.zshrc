@@ -156,18 +156,6 @@ alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
 
-# chi3() {
-#     cwd=$(pwd)
-#     cd ${HOME}/Documents/git/dotfiles 
-#     bash scripts/random_i3_theme.sh
-#     cd $(cwd)
-# }
-# chwsl() {
-#     cwd=$(pwd)
-#     cd ${HOME}/Documents/git/dotfiles 
-#     bash scripts/random_wsl_theme.sh
-#     cd $(cwd)
-# }
 
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
@@ -236,6 +224,11 @@ EOF
     fi
 }
 
+
+
+############
+# cd hooks #
+############
 function _maybe_source_aliases() {
     if [[ -f aliases.sh ]]; then
         read -q "?aliases.sh found - would you like to source it? [Y/n]: " src
@@ -245,22 +238,61 @@ function _maybe_source_aliases() {
     fi
 }
 
+
 function _devcontainers() {
     if [[ -d .devcontainer ]]; then
-        CONTAINERID="test-container=$(pwd | xargs basename)"
+        local base=$(basename "$(pwd)")
+        local CONTAINER_LABEL_KEY="test-container"
+        local CONTAINER_LABEL_VAL="${base}"
+        local CONTAINERID="${CONTAINER_LABEL_KEY}=${CONTAINER_LABEL_VAL}"
+
         echo "Devcontainer found."   
         echo "d   = devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
         echo "du  = devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
         echo "dur = devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
-        echo 'dd  = docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
+        echo 'dd  = docker rm -f $(docker container ls -f "label='"${CONTAINERID}"'" -q)'
 
-        alias d="devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
-        alias du="devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
-        alias dur="devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
-        alias dd='docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
+        d() {
+          local label="test-container=$(basename "$PWD")"
+          devcontainer exec --id-label "$label" \
+              --workspace-folder . zsh
+        }
+
+        du() {
+          local label="test-container=$(basename "$PWD")"
+          devcontainer up --id-label "$label" \
+              --workspace-folder .
+          # After container is up, clone/apply dotfiles inside it
+          devcontainer exec --id-label "$label" --workspace-folder . \
+            bash -lc 'set -euo pipefail; \
+              DOTPATH="$HOME/dotfiles"; \
+              if [ ! -d "$DOTPATH/.git" ]; then git clone https://github.com/apalermo01/dotfiles "$DOTPATH"; fi; \
+              sudo apt-get update -y && sudo apt-get install -y stow; \
+              cd "$DOTPATH"; \
+              theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
+              bash ./scripts/switch_theme.sh "$theme"'
+        }
+
+        dur() {
+          local label="test-container=$(basename "$PWD")"
+          echo "replacing devcontainer with label $label"
+          devcontainer up --id-label "$label" \
+              --workspace-folder . \
+              --remove-existing-container
+          # After container is up, clone/apply dotfiles inside it
+          devcontainer exec --id-label "$label" --workspace-folder . \
+            bash -lc 'set -euo pipefail; \
+              DOTPATH="$HOME/dotfiles"; \
+              if [ ! -d "$DOTPATH/.git" ]; then git clone https://github.com/apalermo01/dotfiles "$DOTPATH"; fi; \
+              sudo apt-get update -y && sudo apt-get install -y stow; \
+              cd "$DOTPATH"; \
+              theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
+              bash ./scripts/switch_theme.sh "$theme"'
+        }
+
+        dd()  { docker rm -f $(docker container ls -f "label=test-container=$(basename "$PWD")" -q); }
     fi
 }
-
 function _alias_jupyter() {
     if command -v jupyter; then
         alias j="jupyter lab"
@@ -268,6 +300,14 @@ function _alias_jupyter() {
     fi
 }
 
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _maybe_source_aliases
+add-zsh-hook chpwd _devcontainers
+add-zsh-hook chpwd _alias_jupyter
+
+###################
+# other functions #
+###################
 function cat_all() {
 
     local -a viewer_cmd
@@ -307,11 +347,9 @@ function cat_all() {
         
 }
 
-autoload -U add-zsh-hook
-add-zsh-hook chpwd _maybe_source_aliases
-add-zsh-hook chpwd _devcontainers
-add-zsh-hook chpwd _alias_jupyter
-
+switch_kb() {
+    bash ~/Scripts/switch_kb_layout_via_term.sh
+}
 #######################
 # Additional settings #
 #######################
@@ -338,8 +376,9 @@ echo "* gl                        = git log (pretty)                         *"
 echo "* gp                        = git push                                 *"
 echo "* gpu                       = git pull                                 *"
 echo "* j                         = open jupyter lab (if available)          *"
+echo "* cat_all                   = cat all files in directory               *"
+echo "* switch_kb                 = change kb layout                         *"
 echo "************************************************************************"
-
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -388,4 +427,3 @@ fi
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
 fi
-source .devcontainer/envs.sh

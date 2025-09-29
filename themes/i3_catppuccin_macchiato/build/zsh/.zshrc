@@ -69,6 +69,8 @@ function quick_commit() {
     git add . && git commit -m "$today"
 }
 
+alias qc="quick_commit"
+
 # history
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -92,7 +94,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+if command -v z >/dev/null 2>&1
+then
+    zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+fi
 
 ######################
 # Obsidian Functions #
@@ -150,40 +156,58 @@ alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
 
-chi3() {
-    cwd=$(pwd)
-    cd ${HOME}/Documents/git/dotfiles 
-    bash scripts/random_i3_theme.sh
-    cd $(cwd)
-}
-chwsl() {
-    cwd=$(pwd)
-    cd ${HOME}/Documents/git/dotfiles 
-    bash scripts/random_wsl_theme.sh
-    cd $(cwd)
-}
+# chi3() {
+#     cwd=$(pwd)
+#     cd ${HOME}/Documents/git/dotfiles 
+#     bash scripts/random_i3_theme.sh
+#     cd $(cwd)
+# }
+# chwsl() {
+#     cwd=$(pwd)
+#     cd ${HOME}/Documents/git/dotfiles 
+#     bash scripts/random_wsl_theme.sh
+#     cd $(cwd)
+# }
 
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
-alias g='git'
-alias ga='git add -p'
-alias gc='git commit'
-alias gb='git branch'
-alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gp='git push'
-alias gpu='git pull'
-alias gcm="git add . && git commit -m $(date +%D)"
+
+if command -v git >/dev/null 2>&1
+then
+    alias g='git'
+    alias ga='git add -p'
+    alias gc='git commit'
+    alias gb='git branch'
+    alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
+    alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+    alias gp='git push'
+    alias gpu='git pull'
+    alias gcm="git add . && git commit -m $(date +%D)"
+fi
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 
-alias lf="y"
-alias l="y"
-alias y="yazi"
-alias ya="y"
-alias yazi="y"
+if command -v yazi >/dev/null 2>&1
+then
+    alias lf="y"
+    alias l="y"
+    alias y="yazi"
+    alias ya="y"
+    alias yazi="y"
+fi
 
-alias cat="bat --no-pager"
-alias ls="eza"
+if command -v bat >/dev/null 2>&1
+then
+    alias cat="bat --no-pager"
+elif command -v batcat >/dev/null 2>&1
+then
+    alias cat="batcat --no-pager"
+fi
+
+if command -v eza >/dev/null 2>&1
+then
+    alias ls="eza"
+fi
+
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
 fi
@@ -221,15 +245,91 @@ function _maybe_source_aliases() {
     fi
 }
 
+function _devcontainers() {
+    if [[ -d .devcontainer ]]; then
+        CONTAINERID="test-container=$(pwd | xargs basename)"
+        echo "Devcontainer found."   
+        echo "d   = devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        echo "du  = devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        echo "dur = devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        echo 'dd  = docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
+
+        alias d="devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        alias du="devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        alias dur="devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        alias dd='docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
+    fi
+}
+
+function cat_all() {
+
+    local -a viewer_cmd
+
+    if command -v bat &>/dev/null; then
+        viewer_cmd=("bat" "--paging=never" "--style=plain")
+    elif command -v batcat &>/dev/null; then
+        viewer_cmd=("batcat" "--paging=never" "--style=plain")
+    else
+        viewer_cmd=("cat")
+    fi
+    find . -type f \
+        -not -path "./.git/*" \
+        -not -path "*/__pycache__/*" \
+        -not -path "./.venv/*" \
+        -not -path "./venv/*" \
+        -not -path "./env/*" \
+        -not -path "./build/*" \
+        -not -path "./dist/*" \
+        -not -path "*.egg-info/*" \
+        -not -path "./.pytest_cache/*" \
+        -not -path "./.mypy_cache/*" \
+        -not -path "./.ruff_cache/*" \
+        -not -path "./.idea/*" \
+        -not -path "./.vscode/*" \
+        -not -name ".env" \
+        -not -name "*.pyc" \
+        -not -name ".coverage" \
+        -not -name ".DS_Store" \
+        -not -name "*.db" \
+        -not -name "*.sqlite3" \
+        -print0 | while IFS= read -r -d '' f; do
+        printf '==> %s <==\n' "$f"
+        "${viewer_cmd[@]}" -- "$f"
+        printf '\n'
+    done
+        
+}
+
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _maybe_source_aliases
+add-zsh-hook chpwd _devcontainers
 
 #######################
 # Additional settings #
 #######################
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
 
-eval "$(fnm env --use-on-cd --shell zsh)"
-
+###########
+# HELPERS #
+###########
+echo "******************************** ALIASES *******************************"
+echo "* tutoring                  = cd into tutoring dir and init a session  *"
+echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
+echo "* cat_all                   = cat all files in cwd (recursive)         *"
+echo "* on <name>                 = generate new note                        *"
+echo "* onp <name>                = generate new personal note               *"
+echo "* n                         = cd into notes folder                     *"
+echo "* o                         = start obsidian                           *"
+echo "* ga                        = git add -p                               *"
+echo "* gc                        = git commit                               *"
+echo "* gb                        = git branch                               *"
+echo "* gd                        = git diff                                 *" 
+echo "* gl                        = git log (pretty)                         *"
+echo "* gp                        = git push                                 *"
+echo "* gpu                       = git pull                                 *"
+echo "************************************************************************"
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -237,7 +337,16 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
-fastfetch
-alias cd="z"
-eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
+if command -v fastfetch >/dev/null 2>&1
+then
+	fastfetch
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+    alias cd="z" 
+fi
+
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi

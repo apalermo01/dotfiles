@@ -33,34 +33,6 @@ function CloseFloatingOrClearHighlight()
 end
 
 -----------------------------------------------------------------
--- remappings for colemak
------------------------------------------------------------------
--- motions
-map({ "n", "v" }, "n", "j", { desc = "move down" })
-map({ "n", "v" }, "e", "k", { desc = "move up" })
-map({ "n", "v" }, "i", "l", { desc = "move right" })
-
-map({ "n" }, "k", "i", { desc = "enter insert mode" })
-map({ "n" }, "K", "I", { desc = "capital I" })
-
-map({ "n" }, "j", "nzz", { desc = "next item in search" })
-map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
-
-map({ "n", "v" }, "l", "e", { desc = "end of word" })
-
--- window motions
-map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
-map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
-map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
-map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-
--- tmux
-map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
-map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
-map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
-map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
-
------------------------------------------------------------------
 -- misc
 -----------------------------------------------------------------
 
@@ -127,22 +99,20 @@ map("n", "[]", "k$][%?}<CR>")
 -- diffview
 map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
 
+-- automatically go back into visual mode after indenting
+map("v", ">", ">gv")
+map("v", "<", "<gv")
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
 map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
--- map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
--- map(
--- 	"t",
--- 	"<leader><leader>tt",
--- 	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
--- 	{ desc = "toggle floating terminal" }
--- )
-
-map("t", "<A-h>", "<C-/><C-N><C-w>h")
-map("t", "<A-n>", "<C-/><C-N><C-w>j")
-map("t", "<A-e>", "<C-/><C-N><C-w>k")
-map("t", "<A-i>", "<C-/><C-N><C-w>l")
+map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
+map(
+	"t",
+	"<leader><leader>tt",
+	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
+	{ desc = "toggle floating terminal" }
+)
 
 -----------------------------------------------------------------
 -- tabs

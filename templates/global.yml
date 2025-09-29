@@ -2,13 +2,19 @@ zsh:
   zoxide: True
   direnv: True
 
-hook_path: "~/Documents/git/dotfiles/scripts/switch_theme.sh"
+hook_path:
+  - "~/Documents/git/dotfiles/scripts/switch_theme.sh $THEME_NAME"
+  - "~/Documents/git/dotfiles/scripts/switch_kb_layout.sh c"
 
 i3: 
   append: 
     - src: config
       dst: i3/config
-font: Iosveska Nerd Font Mono
+
+# Iosevkafont
+font: Iosevka Nerd Font Mono
+kitty:
+  font_size: 15
 
 # font: JetBrainsMono Nerd Font Mono
 # font: FiraCode Nerd Font Mono

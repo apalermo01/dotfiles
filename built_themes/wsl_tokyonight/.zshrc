@@ -69,6 +69,8 @@ function quick_commit() {
     git add . && git commit -m "$today"
 }
 
+alias qc="quick_commit"
+
 # history
 HISTSIZE=5000
 HISTFILE=~/.zsh_history
@@ -92,7 +94,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+if command -v z >/dev/null 2>&1
+then
+    zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+fi
 
 ######################
 # Obsidian Functions #
@@ -150,40 +156,46 @@ alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
 
-chi3() {
-    cwd=$(pwd)
-    cd ${HOME}/Documents/git/dotfiles 
-    bash scripts/random_i3_theme.sh
-    cd $(cwd)
-}
-chwsl() {
-    cwd=$(pwd)
-    cd ${HOME}/Documents/git/dotfiles 
-    bash scripts/random_wsl_theme.sh
-    cd $(cwd)
-}
 
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
-alias g='git'
-alias ga='git add -p'
-alias gc='git commit'
-alias gb='git branch'
-alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gp='git push'
-alias gpu='git pull'
-alias gcm="git add . && git commit -m $(date +%D)"
+
+if command -v git >/dev/null 2>&1
+then
+    alias g='git'
+    alias ga='git add -p'
+    alias gc='git commit'
+    alias gb='git branch'
+    alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
+    alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+    alias gp='git push'
+    alias gpu='git pull'
+    alias gcm="git add . && git commit -m $(date +%D)"
+fi
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 
-alias lf="y"
-alias l="y"
-alias y="yazi"
-alias ya="y"
-alias yazi="y"
+if command -v yazi >/dev/null 2>&1
+then
+    alias lf="y"
+    alias l="y"
+    alias y="yazi"
+    alias ya="y"
+    alias yazi="y"
+fi
 
-alias cat="bat --no-pager"
-alias ls="eza"
+if command -v bat >/dev/null 2>&1
+then
+    alias cat="bat --no-pager"
+elif command -v batcat >/dev/null 2>&1
+then
+    alias cat="batcat --no-pager"
+fi
+
+if command -v eza >/dev/null 2>&1
+then
+    alias ls="eza"
+fi
+
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
 fi
@@ -212,6 +224,11 @@ EOF
     fi
 }
 
+
+
+############
+# cd hooks #
+############
 function _maybe_source_aliases() {
     if [[ -f aliases.sh ]]; then
         read -q "?aliases.sh found - would you like to source it? [Y/n]: " src
@@ -221,6 +238,78 @@ function _maybe_source_aliases() {
     fi
 }
 
+
+function _devcontainers() {
+    if [[ -d .devcontainer ]]; then
+        local base=$(basename "$(pwd)")
+        local CONTAINER_LABEL_KEY="test-container"
+        local CONTAINER_LABEL_VAL="${base}"
+        local CONTAINERID="${CONTAINER_LABEL_KEY}=${CONTAINER_LABEL_VAL}"
+
+        echo "Devcontainer found."   
+        echo "d   = devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        echo "du  = devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        echo "dur = devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        echo 'dd  = docker rm -f $(docker container ls -f "label='"${CONTAINERID}"'" -q)'
+
+        d() {
+          local label="test-container=$(basename "$PWD")"
+          devcontainer exec --id-label "$label" \
+              --workspace-folder . zsh
+        }
+
+        du() {
+              local label="test-container=$(basename "$PWD")"
+              devcontainer up --id-label "$label" \
+                  --workspace-folder .
+              # After container is up, clone/apply dotfiles inside it
+              devcontainer exec --id-label "$label" --workspace-folder . \
+                bash -lc 'set -euo pipefail; \
+                  if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
+                  DOTPATH="$HOME/Documents/git/dotfiles"; \
+                  mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
+                  if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
+"$DOTPATH" pull --ff-only; fi; \
+                  sudo apt-get update -y && sudo apt-get install -y stow; \
+                  cd "$DOTPATH"; \
+                  bash ./scripts/switch_theme.sh wsl_catppuccin_mocha'
+            }
+        dur() {
+              local label="test-container=$(basename "$PWD")"
+              echo "replacing devcontainer with label $label"
+              devcontainer up --id-label "$label" \
+                  --workspace-folder . \
+                  --remove-existing-container
+              # After container is up, clone/apply dotfiles inside it
+              devcontainer exec --id-label "$label" --workspace-folder . \
+                bash -lc 'set -euo pipefail; \
+                  if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
+                  DOTPATH="$HOME/Documents/git/dotfiles"; \
+                  mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
+                  if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
+"$DOTPATH" pull --ff-only; fi; \
+                  sudo apt-get update -y && sudo apt-get install -y stow; \
+                  cd "$DOTPATH"; \
+                  bash ./scripts/switch_theme.sh wsl_catppuccin_mocha'
+            }
+        dd()  { docker rm -f $(docker container ls -f "label=test-container=$(basename "$PWD")" -q); }
+    fi
+}
+function _alias_jupyter() {
+    if command -v jupyter; then
+        alias j="jupyter lab"
+        echo "aliased j to jupyter lab"
+    fi
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _maybe_source_aliases
+add-zsh-hook chpwd _devcontainers
+add-zsh-hook chpwd _alias_jupyter
+
+###################
+# other functions #
+###################
 function cat_all() {
 
     local -a viewer_cmd
@@ -260,16 +349,38 @@ function cat_all() {
         
 }
 
-autoload -U add-zsh-hook
-add-zsh-hook chpwd _maybe_source_aliases
-
+switch_kb() {
+    bash ~/Scripts/switch_kb_layout_via_term.sh
+}
 #######################
 # Additional settings #
 #######################
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
 
-eval "$(fnm env --use-on-cd --shell zsh)"
-
-
+###########
+# HELPERS #
+###########
+echo "******************************** ALIASES *******************************"
+echo "* tutoring                  = cd into tutoring dir and init a session  *"
+echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
+echo "* cat_all                   = cat all files in cwd (recursive)         *"
+echo "* on <name>                 = generate new note                        *"
+echo "* onp <name>                = generate new personal note               *"
+echo "* n                         = cd into notes folder                     *"
+echo "* o                         = start obsidian                           *"
+echo "* ga                        = git add -p                               *"
+echo "* gc                        = git commit                               *"
+echo "* gb                        = git branch                               *"
+echo "* gd                        = git diff                                 *" 
+echo "* gl                        = git log (pretty)                         *"
+echo "* gp                        = git push                                 *"
+echo "* gpu                       = git pull                                 *"
+echo "* j                         = open jupyter lab (if available)          *"
+echo "* cat_all                   = cat all files in directory               *"
+echo "* switch_kb                 = change kb layout                         *"
+echo "************************************************************************"
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -305,10 +416,51 @@ mkpretty() {
     python3 -m json.tool "$selected_file" > "$output_file"
     echo "Done."
 }
-fastfetch
-alias cd="z"
-eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
-bash .devcontainer/envs.sh
-source .devcontainer/envs.sh
-source .devcontainer/envs.sh
+export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+mkpretty() { 
+    local target_dir="/mnt/c/Users/apalermo/Downloads"
+
+    local files=(${(f)"$(find "$target_dir" -maxdepth 1 -type f -name "*.json" ! -name "pretty_*.json")"})
+    if [[ ${#files[@]} -eq 0 ]]; then
+        echo "No .json files to prettify in $target_dir"
+        return 1
+    fi
+    local i=1
+    for file in "${files[@]}"; do
+        printf "[%d] %s\n" "$i" "$(basename "$file")"
+        ((i++))
+    done
+    echo -n "Enter the number of the file to prettify: "
+    read -r num
+    if ! [[ "$num" =~ ^[0-9]+$ ]] || (( num < 1 || num > ${#files[@]} )); then
+        echo "Invalid selection. Please enter a number between 1 and ${#files[@]}."
+        return 1
+    fi
+    local selected_file=${files[$num]}
+
+    local base_name
+
+    base_name=$(basename "$selected_file")
+
+    local output_file="${target_dir}/pretty_${base_name}"
+    python3 -m json.tool "$selected_file" > "$output_file"
+    echo "Done."
+}
+if command -v fastfetch >/dev/null 2>&1
+then
+	fastfetch
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+    alias cd="z" 
+fi
+
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi

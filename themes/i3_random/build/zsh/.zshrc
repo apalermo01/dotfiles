@@ -156,18 +156,6 @@ alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
 
-# chi3() {
-#     cwd=$(pwd)
-#     cd ${HOME}/Documents/git/dotfiles 
-#     bash scripts/random_i3_theme.sh
-#     cd $(cwd)
-# }
-# chwsl() {
-#     cwd=$(pwd)
-#     cd ${HOME}/Documents/git/dotfiles 
-#     bash scripts/random_wsl_theme.sh
-#     cd $(cwd)
-# }
 
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
@@ -236,6 +224,11 @@ EOF
     fi
 }
 
+
+
+############
+# cd hooks #
+############
 function _maybe_source_aliases() {
     if [[ -f aliases.sh ]]; then
         read -q "?aliases.sh found - would you like to source it? [Y/n]: " src
@@ -247,15 +240,35 @@ function _maybe_source_aliases() {
 
 function _devcontainers() {
     if [[ -d .devcontainer ]]; then
+        CONTAINERID="test-container=$(pwd | xargs basename)"
         echo "Devcontainer found."   
-        echo "d  = devcontainer exec --workspace-folder . zsh"
-        echo "du = devcontainer up --workspace-folder . --remove-existing-container"
+        echo "d   = devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        echo "du  = devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        echo "dur = devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        echo 'dd  = docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
 
-        alias d="devcontainer exec --workspace-folder . zsh"
-        alias du="devcontainer up --workspace-folder . --remove-existing-container"
+        alias d="devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        alias du="devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        alias dur="devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        alias dd='docker rm -f $(docker container ls -f "label=${CONTAINERID}" -q)'
     fi
 }
 
+function _alias_jupyter() {
+    if command -v jupyter; then
+        alias j="jupyter lab"
+        echo "aliased j to jupyter lab"
+    fi
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _maybe_source_aliases
+add-zsh-hook chpwd _devcontainers
+add-zsh-hook chpwd _alias_jupyter
+
+###################
+# other functions #
+###################
 function cat_all() {
 
     local -a viewer_cmd
@@ -295,10 +308,9 @@ function cat_all() {
         
 }
 
-autoload -U add-zsh-hook
-add-zsh-hook chpwd _maybe_source_aliases
-add-zsh-hook chpwd _devcontainers
-
+switch_kb() {
+    bash ~/Scripts/switch_kb_layout_via_term.sh
+}
 #######################
 # Additional settings #
 #######################
@@ -309,21 +321,26 @@ fi
 ###########
 # HELPERS #
 ###########
-echo "****** ALIASES ******"
-echo "tutoring                 = cd into tutoring dir and init a session"
-echo "quick_commit / qc / gcm  = git commit with current date as message"
-echo "cat_all                  = cat all files in cwd (recursive)"
-echo "on <name>                = generate new note"
-echo "onp <name>               = generate new personal note"
-echo "n                        = cd into notes folder"
-echo "o                        = start obsidian"
-echo "ga                       = git add -p"
-echo "gc                       = git commit"
-echo "gb                       = git branch"
-echo "gd                       = git diff" 
-echo "gl                       = git log (pretty)"
-echo "gp                       = git push"
-echo "gpu                      = git pull"
+echo "******************************** ALIASES *******************************"
+echo "* tutoring                  = cd into tutoring dir and init a session  *"
+echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
+echo "* cat_all                   = cat all files in cwd (recursive)         *"
+echo "* on <name>                 = generate new note                        *"
+echo "* onp <name>                = generate new personal note               *"
+echo "* n                         = cd into notes folder                     *"
+echo "* o                         = start obsidian                           *"
+echo "* ga                        = git add -p                               *"
+echo "* gc                        = git commit                               *"
+echo "* gb                        = git branch                               *"
+echo "* gd                        = git diff                                 *" 
+echo "* gl                        = git log (pretty)                         *"
+echo "* gp                        = git push                                 *"
+echo "* gpu                       = git pull                                 *"
+echo "* j                         = open jupyter lab (if available)          *"
+echo "* cat_all                   = cat all files in directory               *"
+echo "* switch_kb                 = change kb layout                         *"
+echo "************************************************************************"
+
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -337,15 +354,12 @@ if command -v fastfetch >/dev/null 2>&1
 then
 	fastfetch
 fi
-if command -v z >/dev/null 2>&1
-then
-	alias cd="z"
+
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+    alias cd="z" 
 fi
-if command -v zoxide >/dev/null 2>&1
-then
-	eval "$(zoxide init zsh)"
-fi
-if command -v direnv >/dev/null 2>&1
-then
-	eval "$(direnv hook zsh)"
+
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
 fi

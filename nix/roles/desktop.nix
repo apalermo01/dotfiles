@@ -23,6 +23,13 @@
     pywalfox-native
     devcontainer
     docker
+    qmk
+    keymapviz
+    xfce.thunar
+    xfce.thunar-volman
+    libsForQt5.okular
+    kdePackages.dolphin
+    calibre
   ];
 
   virtualisation.docker = {

@@ -156,6 +156,7 @@ alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
 
+<<<<<<< HEAD
 # chi3() {
 #     cwd=$(pwd)
 #     cd ${HOME}/Documents/git/dotfiles 
@@ -168,6 +169,21 @@ alias tutoring="start_tutoring"
 #     bash scripts/random_wsl_theme.sh
 #     cd $(cwd)
 # }
+||||||| 07daf938
+chi3() {
+    cwd=$(pwd)
+    cd ${HOME}/Documents/git/dotfiles 
+    bash scripts/random_i3_theme.sh
+    cd $(cwd)
+}
+chwsl() {
+    cwd=$(pwd)
+    cd ${HOME}/Documents/git/dotfiles 
+    bash scripts/random_wsl_theme.sh
+    cd $(cwd)
+}
+=======
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
@@ -236,6 +252,11 @@ EOF
     fi
 }
 
+
+
+############
+# cd hooks #
+############
 function _maybe_source_aliases() {
     if [[ -f aliases.sh ]]; then
         read -q "?aliases.sh found - would you like to source it? [Y/n]: " src
@@ -245,6 +266,7 @@ function _maybe_source_aliases() {
     fi
 }
 
+<<<<<<< HEAD
 function _devcontainers() {
     if [[ -d .devcontainer ]]; then
         echo "Devcontainer found."   
@@ -256,6 +278,79 @@ function _devcontainers() {
     fi
 }
 
+||||||| 07daf938
+=======
+
+function _devcontainers() {
+    if [[ -d .devcontainer ]]; then
+        local base=$(basename "$(pwd)")
+        local CONTAINER_LABEL_KEY="test-container"
+        local CONTAINER_LABEL_VAL="${base}"
+        local CONTAINERID="${CONTAINER_LABEL_KEY}=${CONTAINER_LABEL_VAL}"
+
+        echo "Devcontainer found."   
+        echo "d   = devcontainer exec --id-label ${CONTAINERID} --workspace-folder . zsh"
+        echo "du  = devcontainer up --id-label ${CONTAINERID} --workspace-folder ."
+        echo "dur = devcontainer up --id-label ${CONTAINERID} --workspace-folder . --remove-existing-container"
+        echo 'dd  = docker rm -f $(docker container ls -f "label='"${CONTAINERID}"'" -q)'
+
+        d() {
+          local label="test-container=$(basename "$PWD")"
+          devcontainer exec --id-label "$label" \
+              --workspace-folder . zsh
+        }
+
+        du() {
+          local label="test-container=$(basename "$PWD")"
+          devcontainer up --id-label "$label" \
+              --workspace-folder .
+          # After container is up, clone/apply dotfiles inside it
+          devcontainer exec --id-label "$label" --workspace-folder . \
+            bash -lc 'set -euo pipefail; \
+              DOTPATH="$HOME/dotfiles"; \
+              if [ ! -d "$DOTPATH/.git" ]; then git clone https://github.com/apalermo01/dotfiles "$DOTPATH"; fi; \
+              sudo apt-get update -y && sudo apt-get install -y stow; \
+              cd "$DOTPATH"; \
+              theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
+              bash ./scripts/switch_theme.sh "$theme"'
+        }
+
+        dur() {
+          local label="test-container=$(basename "$PWD")"
+          echo "replacing devcontainer with label $label"
+          devcontainer up --id-label "$label" \
+              --workspace-folder . \
+              --remove-existing-container
+          # After container is up, clone/apply dotfiles inside it
+          devcontainer exec --id-label "$label" --workspace-folder . \
+            bash -lc 'set -euo pipefail; \
+              DOTPATH="$HOME/dotfiles"; \
+              if [ ! -d "$DOTPATH/.git" ]; then git clone https://github.com/apalermo01/dotfiles "$DOTPATH"; fi; \
+              sudo apt-get update -y && sudo apt-get install -y stow; \
+              cd "$DOTPATH"; \
+              theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
+              bash ./scripts/switch_theme.sh "$theme"'
+        }
+
+        dd()  { docker rm -f $(docker container ls -f "label=test-container=$(basename "$PWD")" -q); }
+    fi
+}
+function _alias_jupyter() {
+    if command -v jupyter; then
+        alias j="jupyter lab"
+        echo "aliased j to jupyter lab"
+    fi
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _maybe_source_aliases
+add-zsh-hook chpwd _devcontainers
+add-zsh-hook chpwd _alias_jupyter
+
+###################
+# other functions #
+###################
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 function cat_all() {
 
     local -a viewer_cmd
@@ -295,10 +390,20 @@ function cat_all() {
         
 }
 
+<<<<<<< HEAD
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _maybe_source_aliases
 add-zsh-hook chpwd _devcontainers
 
+||||||| 07daf938
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _maybe_source_aliases
+
+=======
+switch_kb() {
+    bash ~/Scripts/switch_kb_layout_via_term.sh
+}
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 #######################
 # Additional settings #
 #######################
@@ -309,6 +414,7 @@ fi
 ###########
 # HELPERS #
 ###########
+<<<<<<< HEAD
 echo "***************************** ALIASES *****************************"
 echo "tutoring                  = cd into tutoring dir and init a session"
 echo "quick_commit / qc / gcm   = git commit with current date as message"
@@ -326,6 +432,31 @@ echo "gp                        = git push"
 echo "gpu                       = git pull"
 echo "*******************************************************************"
 
+||||||| 07daf938
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+
+=======
+echo "******************************** ALIASES *******************************"
+echo "* tutoring                  = cd into tutoring dir and init a session  *"
+echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
+echo "* cat_all                   = cat all files in cwd (recursive)         *"
+echo "* on <name>                 = generate new note                        *"
+echo "* onp <name>                = generate new personal note               *"
+echo "* n                         = cd into notes folder                     *"
+echo "* o                         = start obsidian                           *"
+echo "* ga                        = git add -p                               *"
+echo "* gc                        = git commit                               *"
+echo "* gb                        = git branch                               *"
+echo "* gd                        = git diff                                 *" 
+echo "* gl                        = git log (pretty)                         *"
+echo "* gp                        = git push                                 *"
+echo "* gpu                       = git pull                                 *"
+echo "* j                         = open jupyter lab (if available)          *"
+echo "* cat_all                   = cat all files in directory               *"
+echo "* switch_kb                 = change kb layout                         *"
+echo "************************************************************************"
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -365,6 +496,7 @@ if command -v fastfetch >/dev/null 2>&1
 then
 	fastfetch
 fi
+<<<<<<< HEAD
 if command -v z >/dev/null 2>&1
 then
 	alias cd="z"
@@ -376,4 +508,19 @@ fi
 if command -v direnv >/dev/null 2>&1
 then
 	eval "$(direnv hook zsh)"
+||||||| 07daf938
+fastfetch
+alias cd="z"
+eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
+=======
+
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+    alias cd="z" 
+fi
+
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 fi

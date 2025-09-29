@@ -224,7 +224,7 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font Iosveska Nerd Font Mono 11
+font Iosevka Nerd Font Mono 11
 bindsym $mod+f exec firefox
 
 # pretty sure this is for ubuntu
@@ -277,13 +277,13 @@ exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORI
 exec_always systemctl --user start xss-lock-i3
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #924843     #0A0C12      #0A0C12      #924843	    #924843
-client.focused_inactive	 #714454     #0A0C12      #0A0C12	    #714454	    #714454
-client.unfocused	     #714454     #0A0C12      #0A0C12	    #714454	    #714454
-client.urgent	         #ff0000        #ff0000             #0A0C12	    #ff0000       #ff0000
-client.placeholder	     #714454     #0A0C12      #0A0C12	    #924843	    #924843
+client.focused	         #50476F     #120f1c      #120f1c      #50476F	    #50476F
+client.focused_inactive	 #3B4270     #120f1c      #120f1c	    #3B4270	    #3B4270
+client.unfocused	     #3B4270     #120f1c      #120f1c	    #3B4270	    #3B4270
+client.urgent	         #ff0000        #ff0000             #120f1c	    #ff0000       #ff0000
+client.placeholder	     #3B4270     #120f1c      #120f1c	    #50476F	    #50476F
 
-client.background	#0A0C12
+client.background	#120f1c
 
 # Gaps
 gaps inner 10
@@ -303,4 +303,4 @@ exec wal -R
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/sunset_city.png
+exec_always feh --bg-fill /home/alex/Pictures/wallpapers/deer-forest.jpg

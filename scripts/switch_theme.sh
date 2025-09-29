@@ -1,44 +1,54 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 echo "====================================="
 echo "==== Running switch theme script ===="
 echo "====================================="
 
-cd ~/Documents/git/dotfiles/
+DOTPATH="$HOME/Documents/git/dotfiles"
+RICER_DIR="$HOME/.config/ricer"
 
-if [ ! -d ./built_themes/$1 ]; then 
-	echo "theme $1 does not exist"
-	exit
+cd "$DOTPATH"
+
+if [ ! -d "./built_themes/$1" ]; then
+    echo "theme $1 does not exist"
+    exit 1
 fi
 
-if [ -f ./current_theme ]; then
-	current_theme=$(cat current_theme)
+# Ensure ricer config dir exists before linking
+mkdir -p "$RICER_DIR"
+
+# On first run (no current_theme), proactively back up common conflicting files
+if [ ! -f "./current_theme" ]; then
+  for f in "$HOME/.zshrc" "$HOME/.profile" "$HOME/.bashrc" "$HOME/.zshenv"; do
+    if [ -f "$f" ] && [ ! -L "$f" ]; then
+      mv -f "$f" "${f}.pre-dotfiles.bak"
+      echo "Backed up $f -> ${f}.pre-dotfiles.bak"
+    fi
+  done
+fi
+
+if [ -f "./current_theme" ]; then
+    current_theme="$(cat ./current_theme)"
     echo "un-stowing current theme: $current_theme"
-	stow --delete . -d built_themes/$current_theme -t ~/ --dotfiles
-    if [ $? -ne 0 ]; then
+    if ! stow --delete . -d "built_themes/$current_theme" -t "$HOME" --dotfiles; then
         echo "unstow failed, exiting"
-        exit
-    else    
+        exit 1
+    else
         echo "unstow successful!"
     fi
 fi
 
 echo "stowing new theme: $1"
-stow . -d built_themes/$1 -t ~/ --dotfiles
+stow . -d "built_themes/$1" -t "$HOME" --dotfiles
 
-if [[ $1 == *"wsl"* ]]; then
-    ln -sf -i "$(realpath ./templates/global-wsl.yml)" ~/.config/ricer/ricer-global.yml
+if [[ "$1" == *"wsl"* ]]; then
+    ln -sf "$(realpath ./templates/global-wsl.yml)" "$RICER_DIR/ricer-global.yml"
 else
-    ln -sf -i "$(realpath ./templates/global.yml)" ~/.config/ricer/ricer-global.yml
+    ln -sf "$(realpath ./templates/global.yml)" "$RICER_DIR/ricer-global.yml"
 fi
 
-if [ $? -ne 0 ]; then
-    echo "stow failed, exiting"
-    exit
-else 
-    echo "stow successful!"
-fi
-
+echo "stow successful!"
 
 echo "running theme install scripts"
 if [ -d ./built_themes/$1/.config/theme_scripts/ ]; then
@@ -62,8 +72,12 @@ fi
 echo $1 > current_theme
 
 echo "copying user scripts"
+if [ ! -d $HOME/Scripts ]; then 
+    mkdir $HOME/Scripts/ 
+fi
 stow . -d user_scripts/ -t ~/Scripts
 
-if [[ "$1" =~ ^i3 ]]; then
+if command -v i3 >/dev/null 2>&1; then
     i3 restart
 fi
+chmod +x "$HOME/Documents/git/dotfiles/scripts/switch_theme.sh"

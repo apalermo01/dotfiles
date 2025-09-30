@@ -1,3 +1,43 @@
+# references:
+# https://www.youtube.com/watch?v=ud7YxC33Z3w
+#########
+# zinit #
+#########
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+if [ ! -d "$ZINIT_HOME" ]; then
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+source "${ZINIT_HOME}/zinit.zsh"
+
+# global plugins
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+# load autocompletions
+autoload -U compinit && compinit
+
+zinit cdreplay -q
+
+####################
+# Helper Functions #
+####################
+
+function start_tutoring() {
+    if [[ ! -d "${HOME}/Documents/git/tutoring" ]]; then
+        echo "tutoring folder not found"
+        return
+    fi
+
+    cd "${HOME}/Documents/git/tutoring/"
+    ./scripts/tutoring.sh
+}
+
 function problems() {
     if [[ ! -d "${HOME}/Documents/git/notes" ]]; then
         echo "notes folder not found"
@@ -232,8 +272,7 @@ function _devcontainers() {
 "$DOTPATH" pull --ff-only; fi; \
                   sudo apt-get update -y && sudo apt-get install -y stow; \
                   cd "$DOTPATH"; \
-                  theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
-                  bash ./scripts/switch_theme.sh "$theme"'
+                  bash ./scripts/switch_theme.sh wsl_catppuccin_mocha'
             }
         dur() {
               local label="test-container=$(basename "$PWD")"
@@ -251,8 +290,7 @@ function _devcontainers() {
 "$DOTPATH" pull --ff-only; fi; \
                   sudo apt-get update -y && sudo apt-get install -y stow; \
                   cd "$DOTPATH"; \
-                  theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
-                  bash ./scripts/switch_theme.sh "$theme"'
+                  bash ./scripts/switch_theme.sh wsl_catppuccin_mocha'
             }
         dd()  { docker rm -f $(docker container ls -f "label=test-container=$(basename "$PWD")" -q); }
     fi
@@ -343,6 +381,41 @@ echo "* j                         = open jupyter lab (if available)          *"
 echo "* cat_all                   = cat all files in directory               *"
 echo "* switch_kb                 = change kb layout                         *"
 echo "************************************************************************"
+export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+mkpretty() { 
+    local target_dir="/mnt/c/Users/apalermo/Downloads"
+
+    local files=(${(f)"$(find "$target_dir" -maxdepth 1 -type f -name "*.json" ! -name "pretty_*.json")"})
+    if [[ ${#files[@]} -eq 0 ]]; then
+        echo "No .json files to prettify in $target_dir"
+        return 1
+    fi
+    local i=1
+    for file in "${files[@]}"; do
+        printf "[%d] %s\n" "$i" "$(basename "$file")"
+        ((i++))
+    done
+    echo -n "Enter the number of the file to prettify: "
+    read -r num
+    if ! [[ "$num" =~ ^[0-9]+$ ]] || (( num < 1 || num > ${#files[@]} )); then
+        echo "Invalid selection. Please enter a number between 1 and ${#files[@]}."
+        return 1
+    fi
+    local selected_file=${files[$num]}
+
+    local base_name
+
+    base_name=$(basename "$selected_file")
+
+    local output_file="${target_dir}/pretty_${base_name}"
+    python3 -m json.tool "$selected_file" > "$output_file"
+    echo "Done."
+}
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 

@@ -3,6 +3,7 @@ return {
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
+        lazy = false,
 		opts = {
 			flavour = "macchiato",
 		},
@@ -15,6 +16,7 @@ return {
 		"Famiu/feline.nvim",
 		after = "catppuccin",
 		config = function()
+            vim.cmd.colorscheme("catppuccin")
 			local ctp_feline = require("catppuccin.groups.integrations.feline")
 
 			ctp_feline.setup()

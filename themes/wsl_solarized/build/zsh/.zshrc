@@ -156,6 +156,34 @@ alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
 
+<<<<<<< HEAD
+# chi3() {
+#     cwd=$(pwd)
+#     cd ${HOME}/Documents/git/dotfiles 
+#     bash scripts/random_i3_theme.sh
+#     cd $(cwd)
+# }
+# chwsl() {
+#     cwd=$(pwd)
+#     cd ${HOME}/Documents/git/dotfiles 
+#     bash scripts/random_wsl_theme.sh
+#     cd $(cwd)
+# }
+||||||| 07daf938
+chi3() {
+    cwd=$(pwd)
+    cd ${HOME}/Documents/git/dotfiles 
+    bash scripts/random_i3_theme.sh
+    cd $(cwd)
+}
+chwsl() {
+    cwd=$(pwd)
+    cd ${HOME}/Documents/git/dotfiles 
+    bash scripts/random_wsl_theme.sh
+    cd $(cwd)
+}
+=======
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
@@ -238,6 +266,20 @@ function _maybe_source_aliases() {
     fi
 }
 
+<<<<<<< HEAD
+function _devcontainers() {
+    if [[ -d .devcontainer ]]; then
+        echo "Devcontainer found."   
+        echo "d  = devcontainer exec --workspace-folder . zsh"
+        echo "du = devcontainer up --workspace-folder . --remove-existing-container"
+
+        alias d="devcontainer exec --workspace-folder . zsh"
+        alias du="devcontainer up --workspace-folder . --remove-existing-container"
+    fi
+}
+
+||||||| 07daf938
+=======
 
 function _devcontainers() {
     if [[ -d .devcontainer ]]; then
@@ -308,6 +350,7 @@ add-zsh-hook chpwd _alias_jupyter
 ###################
 # other functions #
 ###################
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 function cat_all() {
 
     local -a viewer_cmd
@@ -347,9 +390,20 @@ function cat_all() {
         
 }
 
+<<<<<<< HEAD
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _maybe_source_aliases
+add-zsh-hook chpwd _devcontainers
+
+||||||| 07daf938
+autoload -U add-zsh-hook
+add-zsh-hook chpwd _maybe_source_aliases
+
+=======
 switch_kb() {
     bash ~/Scripts/switch_kb_layout_via_term.sh
 }
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 #######################
 # Additional settings #
 #######################
@@ -360,6 +414,29 @@ fi
 ###########
 # HELPERS #
 ###########
+<<<<<<< HEAD
+echo "***************************** ALIASES *****************************"
+echo "tutoring                  = cd into tutoring dir and init a session"
+echo "quick_commit / qc / gcm   = git commit with current date as message"
+echo "cat_all                   = cat all files in cwd (recursive)"
+echo "on <name>                 = generate new note"
+echo "onp <name>                = generate new personal note"
+echo "n                         = cd into notes folder"
+echo "o                         = start obsidian"
+echo "ga                        = git add -p"
+echo "gc                        = git commit"
+echo "gb                        = git branch"
+echo "gd                        = git diff" 
+echo "gl                        = git log (pretty)"
+echo "gp                        = git push"
+echo "gpu                       = git pull"
+echo "*******************************************************************"
+
+||||||| 07daf938
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+
+=======
 echo "******************************** ALIASES *******************************"
 echo "* tutoring                  = cd into tutoring dir and init a session  *"
 echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
@@ -379,6 +456,7 @@ echo "* j                         = open jupyter lab (if available)          *"
 echo "* cat_all                   = cat all files in directory               *"
 echo "* switch_kb                 = change kb layout                         *"
 echo "************************************************************************"
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -418,6 +496,24 @@ if command -v fastfetch >/dev/null 2>&1
 then
 	fastfetch
 fi
+<<<<<<< HEAD
+if command -v z >/dev/null 2>&1
+then
+	alias cd="z"
+fi
+if command -v zoxide >/dev/null 2>&1
+then
+	eval "$(zoxide init zsh)"
+fi
+if command -v direnv >/dev/null 2>&1
+then
+	eval "$(direnv hook zsh)"
+||||||| 07daf938
+fastfetch
+alias cd="z"
+eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
+=======
 
 if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init zsh)"
@@ -426,4 +522,5 @@ fi
 
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
+>>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 fi

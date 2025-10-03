@@ -4,7 +4,9 @@
 -- motions
 map({ "n", "v", "o" }, "n", "j", { desc = "move down" })
 map({ "n", "v", "o" }, "e", "k", { desc = "move up" })
-map({ "n", "o" }, "i", "l", { desc = "move right", noremap = true })
+-- Do NOT map 'i' in operator-pending (o) or visual (v) modes, since
+-- 'i' is the builtin textobject prefix (e.g. ciw, vi()
+map({ "n", "v" }, "i", "l", { desc = "move right", noremap = true })
 
 map({ "n", "o" }, "k", "i", { desc = "enter insert mode", noremap = true })
 map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })
@@ -49,11 +51,13 @@ require("hardtime").setup({
 	------------------------------------------------------------------
 	-- 1) Colemak: treat h n e i as the four directional motions
 	------------------------------------------------------------------
-	restricted_keys = {
+    restricted_keys = {
 		["h"] = { "n", "x", "o" }, -- left
 		["n"] = { "n", "x", "o" }, -- down (you map n->j)
 		["e"] = { "n", "x", "o" }, -- up   (you map e->k)
-		["i"] = { "n", "x", "o" }, -- right (you map i->l)
+        -- Do not restrict 'i' in operator-pending or visual modes, it is
+        -- needed for textobjects like ciw/viw.
+        ["i"] = { "n" }, -- right (you map i->l)
         ["k"] = false,
         ["l"] = false,
 		["+"] = { "n", "x" },

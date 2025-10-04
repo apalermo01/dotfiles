@@ -36,6 +36,7 @@
     newsboat
     networkmanagerapplet
     openvpn
+    puddletag
   ];
 
 

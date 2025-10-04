@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+
+
+if [[ $1 = '-h' ]]; then 
+    echo "Download youtube videos from the DL playlist"
+    exit 0
+fi
+
 ~/yt-dlp --yes-playlist  \
          --download-archive ~/Videos/yt-downloads/playlist \
          -P '~/Videos/yt-downloads' \

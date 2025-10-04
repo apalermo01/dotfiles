@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $1 = '-h' ]]; then 
+    echo "Switch to a random i3 theme"
+    exit 0
+fi
+
 # Find all theme directories under ./themes/ that contain 'i3' in the name
 themes=($(find ./themes -maxdepth 1 -type d -name '*i3*' -printf "%f\n"))
 

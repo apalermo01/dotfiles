@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ $1 = '-h' ]]; then 
+    echo "Connect or disconnect bluetoothe device with hardcoded mac address"
+    exit 0
+fi
+
 connect() {
     bluetoothctl connect F0:A9:68:8A:80:20
     exit 0

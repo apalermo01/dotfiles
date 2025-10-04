@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $1 = '-h' ]]; then 
+    echo "Switch to a random wsl theme"
+    exit 0
+fi
+
 # Find all theme directories under ./themes/ that contain 'wsl' in the name
 themes=($(find ./themes -maxdepth 1 -type d -name '*wsl*' -printf "%f\n"))
 

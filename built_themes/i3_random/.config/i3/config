@@ -260,15 +260,8 @@ bindsym $mod+Ctrl+l exec "i3lock"
 # other fancy scripts / tools
 
 # show help notification
-bindsym $mod+Ctrl+Shift+h exec "notify-send \\"keybindings:\\" \\"\
-$mod+shfit+b: workspace back and forth\n\
-$mod+Ctrl+h:  tile horizontally\n\
-$mod+Shift+v: tile vertically\n\
-$mod+q:       toggle split method\n\
-$mod+Shift+s: screenshot\n\
-$mod+s:       stacked layout\n\
-$mod+w:       tabbed layout\n\
-\\""
+bindsym $mod+Ctrl+Shift+h exec $HOME/Scripts/notify_help.sh
+bindsym $mod+Ctrl+s exec $HOME/Scripts/help.sh
 
 # open a note
 # bindsym $mod+shift+n exec bash ~/Scripts/dmenu_notes.sh
@@ -277,13 +270,13 @@ exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORI
 exec_always systemctl --user start xss-lock-i3
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #F3975F     #0d0d12      #0d0d12      #F3975F	    #F3975F
-client.focused_inactive	 #A96772     #0d0d12      #0d0d12	    #A96772	    #A96772
-client.unfocused	     #A96772     #0d0d12      #0d0d12	    #A96772	    #A96772
-client.urgent	         #ff0000        #ff0000             #0d0d12	    #ff0000       #ff0000
-client.placeholder	     #A96772     #0d0d12      #0d0d12	    #F3975F	    #F3975F
+client.focused	         #924843     #0A0C12      #0A0C12      #924843	    #924843
+client.focused_inactive	 #714454     #0A0C12      #0A0C12	    #714454	    #714454
+client.unfocused	     #714454     #0A0C12      #0A0C12	    #714454	    #714454
+client.urgent	         #ff0000        #ff0000             #0A0C12	    #ff0000       #ff0000
+client.placeholder	     #714454     #0A0C12      #0A0C12	    #924843	    #924843
 
-client.background	#0d0d12
+client.background	#0A0C12
 
 # Gaps
 gaps inner 10
@@ -303,4 +296,4 @@ exec wal -R
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/3squares.png
+exec_always feh --bg-fill /home/alex/Pictures/wallpapers/sunset_city.png

@@ -2,14 +2,18 @@
 
 BASEDIR="${HOME}/Documents/git/notes/"
 
-#     rofi -dmenu -i -p "select a note: ")
+if [[ $1 = '-h' ]]; then 
+    echo "Open a note in ${BASEDIR}"
+    exit 0
+fi
 
 choice=$(find ~/Documents/git/notes/ \
-    -name 3-tags -prune -o \
+    -name 5-Templates -prune -o \
     -name '*.md' -type f -print0 |
+
 while IFS= read -r -d '' file; do
-    name=$(echo $file | sed "s|$BASEDIR||")
-    printf "%s\n" $name
+    name=$(echo "${file}" | sed "s|$BASEDIR||")
+    printf "%s\n" "${name}"
 done |
     rofi -dmenu -i -p "select a note: ")
 

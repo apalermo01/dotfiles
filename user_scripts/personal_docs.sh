@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "this script is depercated"
+exit 0
+
 SESSION_NAME="personal_docs"
 
 if tmux has-session -t $SESSION_NAME 2>/dev/null; then

@@ -1,5 +1,8 @@
 #!/bin/bash 
 
+echo "this script is deprecated"
+exit 0
+
 SESSION_NAME="reading"
 
 if tmux has-session -t $SESSION_NAME 2>/dev/null; then

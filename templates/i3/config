@@ -260,15 +260,8 @@ bindsym $mod+Ctrl+l exec "i3lock"
 # other fancy scripts / tools
 
 # show help notification
-bindsym $mod+Ctrl+Shift+h exec "notify-send \\"keybindings:\\" \\"\
-$mod+shfit+b: workspace back and forth\n\
-$mod+Ctrl+h:  tile horizontally\n\
-$mod+Shift+v: tile vertically\n\
-$mod+q:       toggle split method\n\
-$mod+Shift+s: screenshot\n\
-$mod+s:       stacked layout\n\
-$mod+w:       tabbed layout\n\
-\\""
+bindsym $mod+Ctrl+Shift+h exec $HOME/Scripts/notify_help.sh
+bindsym $mod+Ctrl+s exec $HOME/Scripts/help.sh
 
 # open a note
 # bindsym $mod+shift+n exec bash ~/Scripts/dmenu_notes.sh

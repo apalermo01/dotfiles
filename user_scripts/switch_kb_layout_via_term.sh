@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ $1 = '-h' ]]; then 
+    echo "Switch keyboard layout via the terminal"
+    exit 0
+fi
+
 echo "switching kb layout"
 
 cfg_path="${HOME}/Documents/git/dotfiles/templates/global.yml"

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ $1 = '-h' ]]; then 
+    echo "Check restic backup status"
+    exit 0
+fi
+
 function get_status {
     REPO_NAME=$(cat "$HOME/.config/restic-setup/remote-name.txt")
     echo "📦 Restic backup status:"

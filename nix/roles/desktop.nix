@@ -37,6 +37,7 @@
     networkmanagerapplet
     openvpn
     puddletag
+    id3v2
   ];
 
 

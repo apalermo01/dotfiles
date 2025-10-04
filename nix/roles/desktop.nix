@@ -33,6 +33,8 @@
     usbmuxd
     ifuse
     jellyfin-ffmpeg
+    newsboat
+    networkmanagerapplet
   ];
 
 
@@ -44,6 +46,15 @@
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;
   # programs.betterlockscreen.enable = true;
+
+  # networking
+  networking = {
+    networkmanager = {
+      enable = true;
+    };
+
+    nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8"];
+  };
 
   programs.gnupg.agent = {
     enable = true;
@@ -91,5 +102,5 @@
     lidSwitchDocked = "ignore";
   };
 
-  users.users.alex.extraGroups = [ "docker" ];
+  users.users.alex.extraGroups = [ "docker" "networkManager" ];
 }

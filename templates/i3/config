@@ -36,7 +36,7 @@ bindsym $mod+q split toggle; exec notify-send 'toggled splt method'
 bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+k layout stacking; exec notify-send 'stack layout. $mod+t to tab'
+bindsym $mod+c layout stacking; exec notify-send 'stack layout. $mod+t to tab'
 bindsym $mod+t layout tabbed; exec notify-send 'tabbed layout. $mod+k to stack'
 bindsym $mod+s layout toggle split; exec notify-send 'toggle split'
 

@@ -35,6 +35,7 @@
     jellyfin-ffmpeg
     newsboat
     networkmanagerapplet
+    openvpn
   ];
 
 

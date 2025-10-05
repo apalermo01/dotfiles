@@ -21,8 +21,8 @@ cmd=$(printf "run\nview help" | rofi -dmenu -i -p "What to do with ${choice}?")
 
 case $cmd in 
     "run")
-        echo "running $choice"
-        "${BASEDIR}/${choice}";;
+        notify-send "running $choice"
+        kitty "${BASEDIR}/${choice}";;
     *) 
         msg=$("${BASEDIR}/${choice}" -h)
         notify-send "${msg}"

@@ -297,7 +297,7 @@ function _devcontainers() {
 }
 function _alias_jupyter() {
     if command -v jupyter; then
-        alias j="jupyter lab"
+        alias j="jupyter lab --allow-root"
         echo "aliased j to jupyter lab"
     fi
 }

@@ -270,13 +270,13 @@ exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORI
 exec_always systemctl --user start xss-lock-i3
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #924843     #0A0C12      #0A0C12      #924843	    #924843
-client.focused_inactive	 #714454     #0A0C12      #0A0C12	    #714454	    #714454
-client.unfocused	     #714454     #0A0C12      #0A0C12	    #714454	    #714454
-client.urgent	         #ff0000        #ff0000             #0A0C12	    #ff0000       #ff0000
-client.placeholder	     #714454     #0A0C12      #0A0C12	    #924843	    #924843
+client.focused	         #6C6D90     #12121b      #12121b      #6C6D90	    #6C6D90
+client.focused_inactive	 #726B8F     #12121b      #12121b	    #726B8F	    #726B8F
+client.unfocused	     #726B8F     #12121b      #12121b	    #726B8F	    #726B8F
+client.urgent	         #ff0000        #ff0000             #12121b	    #ff0000       #ff0000
+client.placeholder	     #726B8F     #12121b      #12121b	    #6C6D90	    #6C6D90
 
-client.background	#0A0C12
+client.background	#12121b
 
 # Gaps
 gaps inner 10
@@ -296,4 +296,4 @@ exec wal -R
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/sunset_city.png
+exec_always feh --bg-fill /home/alex/Pictures/wallpapers/color-waves.png

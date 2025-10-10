@@ -39,24 +39,6 @@
             "type": "de"
         },
         {
-            "key": "{$2}{#35} term     ",
-            "type": "terminal"
-        },
-        {
-            "key": "{$2}{#36} shell    ",
-            "type": "shell"
-        },
-        {
-            "key": "{$2}{#35}󰍛 cpu      ",
-            "type": "cpu",
-            "showPeCoreCount": true,
-            "temp": true
-        },
-        {
-            "key": "{$2}{#34}󰍛 gpu      ",
-            "type": "gpu"
-        },
-        {
             "key": "{$2}{#33}󰉉 disk     ",
             "type": "disk",
             "folders": "/"
@@ -65,17 +47,11 @@
             "key": "{$2}{#32} memory   ",
             "type": "memory"
         },
-        //{
-        //    "key": "{$2}{#31}󰩟 network  ",
-        //    "type": "localip",
-        //    "format": "{ipv4} ({ifname})"
-        //},
         {
-            "key": "{$2}{#35} archive  ",
+            "key": "{$2}{#32} VPN: ",
             "type": "command",
-            "shell": "bash",
-            "text": "systemctl is-active vboxvmservice@archiveteam-warrior-3.2.service",
-            "format": "{1}"
+            "text": "bash ./Scripts/vpn-openvpn-is-running.sh",
+            "format": "{result}"
         },
         {
             "format": "{#1}{#keys}├{$1}┤",

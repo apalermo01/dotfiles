@@ -9,7 +9,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
   };
 
@@ -17,7 +16,6 @@
     {
       home-manager,
       nixpkgs,
-      # zen-browser,
       ...
     }@inputs:
 
@@ -48,8 +46,6 @@
         "headless" = ./nix/roles/headless.nix;
         "desktop" = ./nix/roles/desktop.nix;
         "wsl" = ./nix/roles/headless.nix;
-        "hmDesktop" = ./nix/roles/desktop.nix;
-        "hmHeadless" = ./nix/roles/headless.nix;
       };
 
       extraModuleList = {
@@ -123,7 +119,6 @@
       homeConfigurations = {
         wsl = mkHome system "wsl" "apalermo";
         gc-workstation = mkHome system "gc-workstation" "user";
-        # hmDesktop = mkHome system "hmDesktop" "no-user";
       };
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [

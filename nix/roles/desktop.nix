@@ -38,6 +38,7 @@
     openvpn
     puddletag
     id3v2
+    libreoffice-qt6-fresh
   ];
 
 
@@ -45,6 +46,8 @@
   virtualisation.docker = {
     enable = true;
   };
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "alex" ];
 
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;

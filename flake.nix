@@ -5,6 +5,7 @@
   description = "Main flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -123,7 +124,7 @@
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
           pkgs.gcc
-          (pkgs.python311.withPackages (
+          (pkgs.python313.withPackages (
             ps: with ps; [
               pip
               virtualenv

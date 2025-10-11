@@ -1,6 +1,12 @@
 { lib, pkgs, ... }:
 
-# System configuration for desktop setup
+let 
+  stable = import (builtins.fetchTarball {
+    name = "nix-stable";
+    url = "https://github.com/NixOS/nixpkgs/archive/refs/tags/25.05.tar.gz";
+    sha256 = "1915r28xc4znrh2vf4rrjnxldw2imysz819gzhk9qlrkqanmfsxd";
+  }) { system = "x86_64-linux"; };
+in
 {
   environment.systemPackages = with pkgs; [
 
@@ -15,7 +21,6 @@
     xss-lock
     via
     element-desktop
-    ollama
     alpaca
     brightnessctl
     lm_sensors
@@ -46,8 +51,13 @@
   virtualisation.docker = {
     enable = true;
   };
-  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host = {
+    enable = true;
+    package = stable.virtualbox;
+  };
   users.extraGroups.vboxusers.members = [ "alex" ];
+  # virtualisation.virtualbox.guest.enable = true;
+  # virtualisation.virtualbox.guest.dragAndDrop = true;
 
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;
@@ -102,11 +112,16 @@
   #
   # };
 
-  services.logind = {
-    lidSwitch = "lock";
-    lidSwitchExternalPower = "lock";
-    lidSwitchDocked = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitchDocked = "lock";
+    HandleLidSwitchExternalPower = "lock";
+    HandleLidSwitch = "lock";
   };
+  # services.logind = {
+  #   lidSwitch = "lock";
+  #   lidSwitchExternalPower = "lock";
+  #   lidSwitchDocked = "ignore";
+  # };
 
   users.users.alex.extraGroups = [ "docker" "networkManager" ];
 }

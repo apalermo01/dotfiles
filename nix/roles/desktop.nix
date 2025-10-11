@@ -41,7 +41,6 @@ in
     newsboat
     networkmanagerapplet
     openvpn
-    networkmanager-openvpn
     puddletag
     id3v2
     libreoffice-qt6-fresh
@@ -52,24 +51,29 @@ in
   virtualisation.docker = {
     enable = true;
   };
-  virtualisation.virtualbox.host = {
-    enable = true;
-    package = stable.virtualbox;
-  };
-  users.extraGroups.vboxusers.members = [ "alex" ];
+
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = [ "alex" ];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  # virtualisation.virtualbox.host = {
+  #   enable = true;
+  #   package = stable.virtualbox;
+  # };
+  # users.extraGroups.vboxusers.members = [ "alex" ];
   # virtualisation.virtualbox.guest.enable = true;
   # virtualisation.virtualbox.guest.dragAndDrop = true;
 
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;
-  # programs.betterlockscreen.enable = true;
 
   # networking
   networking = {
     networkmanager = {
       enable = true;
+      plugins = [ pkgs.networkmanager-openvpn ];
     };
-
     nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8"];
   };
 

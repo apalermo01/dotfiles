@@ -19,46 +19,34 @@
     git
     wget
     gcc
-    cargo
     btop
     ncdu
-    rclone
-    postgresql
     devenv
     gnumake
     killall
-    fortune
-    cowsay
-    pywal
-    restic
     gnupg1
     ripgrep
     fuse
     dbus
-    networkmanagerapplet
     shutter
     any-nix-shell
     gnome-keyring
     seahorse
     zinit
-    lua-language-server
-    luajitPackages.luarocks_bootstrap
-    libreoffice-qt6-fresh
 
     # cli utilities
     file
     pandoc
     unzip
     xsel
-    wikiman 
-    ctags
     fnm
+
     # programming languages
     lua
     go
+
     evtest
     nvimpager
-    conky
   ];
 
   programs.fish.enable = true;
@@ -92,8 +80,6 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
-  environment.etc."xdg/menus/plasma-applications.menu".source =
-    "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   # bootloader
   boot.loader.systemd-boot.enable = true;
@@ -130,30 +116,7 @@
     variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
-  ### sound
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  services.pulseaudio.enable = false;
-  services.blueman.enable = true;
-
-  security.rtkit.enable = true;
-
-  # fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka
-  ];
-
-  # default users
+  # users
   users.users.alex = {
     isNormalUser = true;
     extraGroups = [

@@ -1,3 +1,4 @@
+# Configuration for desktop setup
 { lib, pkgs, ... }:
 
 let 
@@ -24,7 +25,6 @@ in
     alpaca
     brightnessctl
     lm_sensors
-    # libsForQt5.qtstyleplugin-kvantum
     pywalfox-native
     devcontainer
     docker
@@ -44,6 +44,15 @@ in
     puddletag
     id3v2
     libreoffice-qt6-fresh
+    cargo
+    rclone
+    postgresql
+    fortune
+    cowsay
+    pywal
+    restic
+    networkmanagerapplet
+    luajitPackages.luarocks_bootstrap
   ];
 
 
@@ -128,5 +137,51 @@ in
   #   lidSwitchDocked = "ignore";
   # };
 
-  users.users.alex.extraGroups = [ "docker" "networkManager" ];
+  environment.etc."xdg/menus/plasma-applications.menu".source =
+    "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+
+  security.rtkit.enable = true;
+
+  # fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+  ];
+
+  # users
+  users.users.alex = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkManager"
+      "docker"
+
+    ];
+    shell = pkgs.zsh;
+  };
+
+  nix = {
+    settings.auto-optimise-store = true;
+    settings.allowed-users = [ "alex" ];
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
+    '';
+  };
 }

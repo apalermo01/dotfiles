@@ -47,6 +47,7 @@
         "headless" = ./nix/roles/headless.nix;
         "desktop" = ./nix/roles/desktop.nix;
         "wsl" = ./nix/roles/headless.nix;
+        "server" = ./nix/roler/server.nix;
       };
 
       extraModuleList = {
@@ -58,6 +59,10 @@
         ];
 
         "gc-workstation" = [
+        ];
+
+        "server" = [
+
         ];
       };
 
@@ -114,7 +119,7 @@
     in
     {
       nixosConfigurations = {
-        # headless = mkSystem pkgs "x86_64-linux" "headless" "no-user";
+        server = mkSystem pkgs "x86_64-linux" "server" "alex-server";
         desktop = mkSystem pkgs "x86_64-linux" "desktop";
       };
       homeConfigurations = {

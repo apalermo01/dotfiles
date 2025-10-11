@@ -41,6 +41,7 @@ in
     newsboat
     networkmanagerapplet
     openvpn
+    networkmanager-openvpn
     puddletag
     id3v2
     libreoffice-qt6-fresh

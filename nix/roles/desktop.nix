@@ -18,10 +18,10 @@ in
     alsa-utils
     alsa-plugins
     pamixer
-    kdePackages.kscreenlocker
+    # kdePackages.kscreenlocker
     xss-lock
     via
-    element-desktop
+    # element-desktop
     alpaca
     brightnessctl
     lm_sensors
@@ -33,7 +33,7 @@ in
     xfce.thunar
     xfce.thunar-volman
     kdePackages.dolphin
-    calibre
+    # calibre
     libimobiledevice
     usbmuxd
     ifuse
@@ -46,14 +46,44 @@ in
     libreoffice-qt6-fresh
     cargo
     rclone
-    postgresql
+    # postgresql
     fortune
     cowsay
     pywal
     restic
     networkmanagerapplet
-    luajitPackages.luarocks_bootstrap
+    # luajitPackages.luarocks_bootstrap
     kdePackages.okular
+    tmux
+    neovim
+    sioyek
+    stow
+    fzf
+    yazi
+    cbonsai
+    fastfetch
+    bat 
+    eza
+    gitui
+    delta 
+    oh-my-posh
+    tealdeer
+    starship
+    # lsp s
+    pyright
+    nil
+    lua-language-server
+    markdown-oxide
+    sqls
+    postgrestools
+
+    # formatters
+    stylua
+    nixfmt-rfc-style
+    shfmt
+    mdformat
+    yamlfix
+    pgformatter
   ];
 
   services.usbmuxd.enable = true;
@@ -66,13 +96,9 @@ in
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
-  # virtualisation.virtualbox.host = {
-  #   enable = true;
-  #   package = stable.virtualbox;
-  # };
-  # users.extraGroups.vboxusers.members = [ "alex" ];
-  # virtualisation.virtualbox.guest.enable = true;
-  # virtualisation.virtualbox.guest.dragAndDrop = true;
+
+  programs.hyprland.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs.nix-ld.enable = true;
   programs.kdeconnect.enable = true;

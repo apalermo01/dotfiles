@@ -14,7 +14,7 @@ in
           owner = "apalermo01";
           repo = "sioyek-python-extensions";
           rev = "47cdb658bb5d81a04dca49253fa017f1eaaf1635";
-          sha256 = "sha256-1W9Xn2wuZnEnIcF0ozSCON/JGsYaomCbD+Pkh/uF3BQ=";
+          sha256 = "sha256-H4LQ1YmHYuAmWwO0vPn2EVIK4BuEculUHm8W8CPkgqE=";
         };
 
         nativeBuildInputs = with python-prev; [

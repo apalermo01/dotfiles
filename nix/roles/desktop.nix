@@ -1,7 +1,7 @@
 # Configuration for desktop setup
 { lib, pkgs, ... }:
 
-let 
+let
   stable = import (builtins.fetchTarball {
     name = "nix-stable";
     url = "https://github.com/NixOS/nixpkgs/archive/refs/tags/25.05.tar.gz";
@@ -53,8 +53,8 @@ in
     restic
     networkmanagerapplet
     luajitPackages.luarocks_bootstrap
+    kdePackages.okular
   ];
-
 
   services.usbmuxd.enable = true;
   virtualisation.docker = {
@@ -83,7 +83,11 @@ in
       enable = true;
       plugins = [ pkgs.networkmanager-openvpn ];
     };
-    nameservers = ["1.1.1.1" "1.0.0.1" "8.8.8.8"];
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+      "8.8.8.8"
+    ];
   };
 
   programs.gnupg.agent = {
@@ -147,7 +151,6 @@ in
     nssmdns4 = true;
     openFirewall = true;
   };
-
 
   security.rtkit.enable = true;
 

@@ -10,9 +10,11 @@ in
         version = "0.31.11";
         format = "pyproject";
 
-        src = prev.fetchPypi {
-          inherit pname version;
-          sha256 = "sha256-KzrwK21CU80rT2Stns3Iuly2+83w6MXPUdTLkqu9S+M=";
+        src = prev.fetchFromGitHub {
+          owner = "ahrm";
+          repo = "sioyek-python-extensions";
+          rev = "ee86154093d73201a4cff952c1c3495576d1638b";
+          sha256 = "sha256-1W9Xn2wuZnEnIcF0ozSCON/JGsYaomCbD+Pkh/uF3BQ=";
         };
 
         nativeBuildInputs = with python-prev; [

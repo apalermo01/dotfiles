@@ -8,7 +8,6 @@
     python = pkgs.python313.withPackages (ps: [
         ps.black
         ps.isort
-        # ps.sqlfmt
         ps.ipython
         ps.pandas
         ps.numpy

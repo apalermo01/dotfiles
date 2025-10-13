@@ -270,13 +270,13 @@ exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORI
 exec_always systemctl --user start xss-lock-i3
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #897565     #111313      #111313      #897565	    #897565
-client.focused_inactive	 #95662D     #111313      #111313	    #95662D	    #95662D
-client.unfocused	     #95662D     #111313      #111313	    #95662D	    #95662D
-client.urgent	         #ff0000        #ff0000             #111313	    #ff0000       #ff0000
-client.placeholder	     #95662D     #111313      #111313	    #897565	    #897565
+client.focused	         #C54854     #0d0c10      #0d0c10      #C54854	    #C54854
+client.focused_inactive	 #4F4276     #0d0c10      #0d0c10	    #4F4276	    #4F4276
+client.unfocused	     #4F4276     #0d0c10      #0d0c10	    #4F4276	    #4F4276
+client.urgent	         #ff0000        #ff0000             #0d0c10	    #ff0000       #ff0000
+client.placeholder	     #4F4276     #0d0c10      #0d0c10	    #C54854	    #C54854
 
-client.background	#111313
+client.background	#0d0c10
 
 # Gaps
 gaps inner 10
@@ -296,4 +296,4 @@ exec wal -R
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/gruvbox_forest-4.png
+exec_always feh --bg-fill /home/alex/Pictures/wallpapers/mountains.png

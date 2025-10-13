@@ -11,9 +11,9 @@ in
         format = "pyproject";
 
         src = prev.fetchFromGitHub {
-          owner = "ahrm";
+          owner = "apalermo01";
           repo = "sioyek-python-extensions";
-          rev = "ee86154093d73201a4cff952c1c3495576d1638b";
+          rev = "47cdb658bb5d81a04dca49253fa017f1eaaf1635";
           sha256 = "sha256-1W9Xn2wuZnEnIcF0ozSCON/JGsYaomCbD+Pkh/uF3BQ=";
         };
 

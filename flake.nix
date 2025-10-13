@@ -140,6 +140,7 @@
               isort
               black
               jinja2
+              sioyek
             ]
           ))
         ];

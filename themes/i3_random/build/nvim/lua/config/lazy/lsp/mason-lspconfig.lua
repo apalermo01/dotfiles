@@ -6,49 +6,49 @@ return {
 	"williamboman/mason-lspconfig.nvim",
 	opts = {
 
-		automatic_installation = not IS_NIXOS,
-		ensure_installed = IS_NIXOS and {
-			"html",
-			"cssls",
-			"clangd",
-			"pyright",
-			"ts_ls",
-			"jsonls",
-			"nil_ls",
-			"bashls",
-            "yamlls",
-            "gopls",
-		} or {
-            "lua_ls",
-			"html",
-			"cssls",
-			"clangd",
-			"pyright",
-			"ts_ls",
-			"jsonls",
-			"nil_ls",
-			"markdown_oxide",
-			"bashls",
-            "yamlls",
-            "gopls",
-		},
+		-- automatic_installation = not IS_NIXOS,
+		-- ensure_installed = IS_NIXOS and {
+		-- 	"html",
+		-- 	"cssls",
+		-- 	"clangd",
+		-- 	"pyright",
+		-- 	"ts_ls",
+		-- 	"jsonls",
+		-- 	"nil_ls",
+		-- 	"bashls",
+		--           "yamlls",
+		--           "gopls",
+		-- } or {
+		--           "lua_ls",
+		-- 	"html",
+		-- 	"cssls",
+		-- 	"clangd",
+		-- 	"pyright",
+		-- 	"ts_ls",
+		-- 	"jsonls",
+		-- 	"nil_ls",
+		-- 	"markdown_oxide",
+		-- 	"bashls",
+		--           "yamlls",
+		--           "gopls",
+		-- },
 
 		handlers = {
 			function(server_name)
-				require("lspconfig")[server_name].setup({
+				vim.lsp.config()[server_name].setup({
 					capabilities = capabilities,
 				})
 			end,
 
 			["lua_ls"] = function()
-				require("lspconfig").lua_ls.setup({
+				vim.lsp.config().lua_ls.setup({
 					cmd = nixos and { "lua-language-server" } or nil,
 					capabilities = capabilities,
 				})
 			end,
 
 			["yamlls"] = function()
-				require("lspconfig").yamlls.setup({
+				vim.lsp.config().yamlls.setup({
                     settings = {
                         yaml = {
                             schemas = {
@@ -60,7 +60,7 @@ return {
 			end,
 
 			["markdown_oxide"] = function()
-				require("lspconfig").markdown_oxide.setup({
+				vim.lsp.config().markdown_oxide.setup({
 					cmd = nixos and { "markdown-oxide" } or nil,
 					capabilities = vim.tbl_deep_extend("force", capabilities, {
 						workspace = {
@@ -88,7 +88,7 @@ return {
 			end,
 
 			["nil_ls"] = function()
-				require("lspconfig").nil_ls.setup({
+				vim.lsp.config().nil_ls.setup({
 					autostart = true,
 					settings = {
 						["nil"] = {
@@ -104,7 +104,7 @@ return {
 	},
     config = function(_, opts)
         require("mason-lspconfig").setup(opts)
-        local lspconfig = require("lspconfig")
+        local lspconfig = vim.lsp.config()
         local util = require("lspconfig.util")
         local caps      = vim.tbl_deep_extend(
           "force", {},

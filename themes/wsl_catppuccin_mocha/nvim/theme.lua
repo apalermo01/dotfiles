@@ -17,7 +17,7 @@ return {
 		after = "catppuccin",
 		config = function()
             vim.cmd.colorscheme("catppuccin")
-			local ctp_feline = require("catppuccin.groups.integrations.feline")
+            local ctp_feline = require("catppuccin.special.feline")
 
 			ctp_feline.setup()
 
@@ -33,7 +33,7 @@ return {
             local flavour = "mocha"
 			local palette = require("catppuccin.palettes").get_palette(flavour)
 			require("bufferline").setup({
-				highlights = require("catppuccin.groups.integrations.bufferline").get({
+				highlights = require("catppuccin.special.bufferline").get_theme({
 					custom = {
 						all = {
 							fill = { bg = palette.crust },

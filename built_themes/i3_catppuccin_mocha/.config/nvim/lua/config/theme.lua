@@ -15,12 +15,12 @@ return {
 		"Famiu/feline.nvim",
 		after = "catppuccin",
 		config = function()
-			local ctp_feline = require("catppuccin.groups.integrations.feline")
+            local ctp_feline = require("catppuccin.special.feline")
 
 			ctp_feline.setup()
 
 			require("feline").setup({
-				components = ctp_feline.get(),
+				components = ctp_feline.get_theme(),
 			})
 		end,
 	},
@@ -31,7 +31,7 @@ return {
             local flavour = "mocha"
 			local palette = require("catppuccin.palettes").get_palette(flavour)
 			require("bufferline").setup({
-				highlights = require("catppuccin.groups.integrations.bufferline").get({
+				highlights = require("catppuccin.special.bufferline").get_theme({
 					custom = {
 						all = {
 							fill = { bg = palette.crust },

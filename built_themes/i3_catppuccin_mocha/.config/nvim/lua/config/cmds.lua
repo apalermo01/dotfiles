@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 	end,
 })
 
--- use zen to open urls
+-- use firefox to open urls
 local _orig_open = vim.ui.open
 
 vim.ui.open = function(input, opts)
@@ -116,4 +116,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 			vim.api.nvim_exec("normal! g'\"", false)
 		end
 	end,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.cmd("NoNeckPain")
+    end,
 })

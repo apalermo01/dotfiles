@@ -77,7 +77,7 @@ return {
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
-    }
+    },
     config = function(_, opts)
         require("mason-lspconfig").setup(opts)
         local lspconfig = require("lspconfig")

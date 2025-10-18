@@ -5,50 +5,22 @@ local capabilities =
 return {
 	"williamboman/mason-lspconfig.nvim",
 	opts = {
-
-		-- automatic_installation = not IS_NIXOS,
-		-- ensure_installed = IS_NIXOS and {
-		-- 	"html",
-		-- 	"cssls",
-		-- 	"clangd",
-		-- 	"pyright",
-		-- 	"ts_ls",
-		-- 	"jsonls",
-		-- 	"nil_ls",
-		-- 	"bashls",
-		--           "yamlls",
-		--           "gopls",
-		-- } or {
-		--           "lua_ls",
-		-- 	"html",
-		-- 	"cssls",
-		-- 	"clangd",
-		-- 	"pyright",
-		-- 	"ts_ls",
-		-- 	"jsonls",
-		-- 	"nil_ls",
-		-- 	"markdown_oxide",
-		-- 	"bashls",
-		--           "yamlls",
-		--           "gopls",
-		-- },
-
 		handlers = {
 			function(server_name)
-				vim.lsp.config()[server_name].setup({
+				require("lspconfig")[server_name].setup({
 					capabilities = capabilities,
 				})
 			end,
 
 			["lua_ls"] = function()
-				vim.lsp.config().lua_ls.setup({
+				require("lspconfig").lua_ls.setup({
 					cmd = nixos and { "lua-language-server" } or nil,
 					capabilities = capabilities,
 				})
 			end,
 
 			["yamlls"] = function()
-				vim.lsp.config().yamlls.setup({
+				require("lspconfig").yamlls.setup({
                     settings = {
                         yaml = {
                             schemas = {
@@ -60,7 +32,7 @@ return {
 			end,
 
 			["markdown_oxide"] = function()
-				vim.lsp.config().markdown_oxide.setup({
+				require("lspconfig").markdown_oxide.setup({
 					cmd = nixos and { "markdown-oxide" } or nil,
 					capabilities = vim.tbl_deep_extend("force", capabilities, {
 						workspace = {
@@ -88,7 +60,7 @@ return {
 			end,
 
 			["nil_ls"] = function()
-				vim.lsp.config().nil_ls.setup({
+				require("lspconfig").nil_ls.setup({
 					autostart = true,
 					settings = {
 						["nil"] = {
@@ -102,9 +74,13 @@ return {
 			end,
 		},
 	},
+    dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+    },
     config = function(_, opts)
         require("mason-lspconfig").setup(opts)
-        local lspconfig = vim.lsp.config()
+        local lspconfig = require("lspconfig")
         local util = require("lspconfig.util")
         local caps      = vim.tbl_deep_extend(
           "force", {},

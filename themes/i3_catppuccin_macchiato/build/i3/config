@@ -36,7 +36,7 @@ bindsym $mod+q split toggle; exec notify-send 'toggled splt method'
 bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+k layout stacking; exec notify-send 'stack layout. $mod+t to tab'
+bindsym $mod+c layout stacking; exec notify-send 'stack layout. $mod+t to tab'
 bindsym $mod+t layout tabbed; exec notify-send 'tabbed layout. $mod+k to stack'
 bindsym $mod+s layout toggle split; exec notify-send 'toggle split'
 
@@ -224,7 +224,7 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font Iosveska Nerd Font Mono 11
+font Iosevka Nerd Font Mono 11
 bindsym $mod+f exec firefox
 
 # pretty sure this is for ubuntu
@@ -260,15 +260,8 @@ bindsym $mod+Ctrl+l exec "i3lock"
 # other fancy scripts / tools
 
 # show help notification
-bindsym $mod+Ctrl+Shift+h exec "notify-send \\"keybindings:\\" \\"\
-$mod+shfit+b: workspace back and forth\n\
-$mod+Ctrl+h:  tile horizontally\n\
-$mod+Shift+v: tile vertically\n\
-$mod+q:       toggle split method\n\
-$mod+Shift+s: screenshot\n\
-$mod+s:       stacked layout\n\
-$mod+w:       tabbed layout\n\
-\\""
+bindsym $mod+Ctrl+Shift+h exec $HOME/Scripts/notify_help.sh
+bindsym $mod+Ctrl+s exec $HOME/Scripts/help.sh
 
 # open a note
 # bindsym $mod+shift+n exec bash ~/Scripts/dmenu_notes.sh
@@ -277,13 +270,13 @@ exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORI
 exec_always systemctl --user start xss-lock-i3
 
 #                        border             background          text            indicator       child bdr
-client.focused	         {{ mauve }}        {{ peach }}         {{ mantle }}      {{ mauve }}	    {{ mauve }}
-client.focused_inactive	 {{ surface0 }}     {{ peach }}         {{ mantle }}	    {{ surface0 }}	    {{ surface0 }}
-client.unfocused	     {{ surface0 }}     {{ peach }}           {{ mantle }}	    {{ surface0 }}	    {{ surface0 }}
-client.urgent	         {{ red }}          {{ red }}         {{ mantle }}	    {{ red }}       {{ red }}
-client.placeholder	     {{ surface0 }}     {{ peach }}         {{ mantle }}	    {{ mauve }}	    {{ mauve }}
+client.focused	         #c6a0f6        #f5a97f         #1e2030      #c6a0f6	    #c6a0f6
+client.focused_inactive	 #363a4f     #f5a97f         #1e2030	    #363a4f	    #363a4f
+client.unfocused	     #363a4f     #f5a97f           #1e2030	    #363a4f	    #363a4f
+client.urgent	         #ed8796          #ed8796         #1e2030	    #ed8796       #ed8796
+client.placeholder	     #363a4f     #f5a97f         #1e2030	    #c6a0f6	    #c6a0f6
 
-client.background	{{ crust }}
+client.background	#181926
 
 # Gaps
 gaps inner 10

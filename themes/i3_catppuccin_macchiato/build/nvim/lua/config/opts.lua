@@ -45,6 +45,9 @@ set.syntax = "on"
 set.wildmenu = true
 set.termguicolors = true
 
+set.wrap = true 
+set.linebreak = true
+
 vim.cmd([[set path+=**]])
 vim.cmd([[set complete+=k]])
 vim.cmd([[filetype plugin on]])

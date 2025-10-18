@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*.md",
 	callback = function()
 		local path = vim.api.nvim_buf_get_name(0)
-		if not string.find(path, "templates/note.md") then
+		if not string.find(path, "5-Templates") then
 			local current_date = os.date("%Y-%m-%d")
 			local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
 
@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 	end,
 })
 
--- use zen to open urls
+-- use firefox to open urls
 local _orig_open = vim.ui.open
 
 vim.ui.open = function(input, opts)
@@ -116,4 +116,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 			vim.api.nvim_exec("normal! g'\"", false)
 		end
 	end,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.cmd("NoNeckPain")
+    end,
 })

@@ -5,34 +5,6 @@ local capabilities =
 return {
 	"williamboman/mason-lspconfig.nvim",
 	opts = {
-
-		automatic_installation = not IS_NIXOS,
-		ensure_installed = IS_NIXOS and {
-			"html",
-			"cssls",
-			"clangd",
-			"pyright",
-			"ts_ls",
-			"jsonls",
-			"nil_ls",
-			"bashls",
-            "yamlls",
-            "gopls",
-		} or {
-            "lua_ls",
-			"html",
-			"cssls",
-			"clangd",
-			"pyright",
-			"ts_ls",
-			"jsonls",
-			"nil_ls",
-			"markdown_oxide",
-			"bashls",
-            "yamlls",
-            "gopls",
-		},
-
 		handlers = {
 			function(server_name)
 				require("lspconfig")[server_name].setup({
@@ -69,7 +41,21 @@ return {
 							},
 						},
 					}),
-	                root_dir = OBSIDIAN_NOTES_DIR
+	                root_dir = function(fname)
+	                    local paths = {
+	                    	"0-technical-notes",
+	                    	"1-notes",
+	                    }
+	                    for _, sub in ipairs(paths) do
+	                    	local full = OBSIDIAN_NOTES_DIR .. "/" .. sub
+	                    	if fname:find(full, 1, true) then
+	                    		return full
+	                    	end
+	                    end
+	                    return vim.fn.getcwd()
+
+
+	                end,
 				})
 			end,
 
@@ -88,6 +74,10 @@ return {
 			end,
 		},
 	},
+    dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+    },
     config = function(_, opts)
         require("mason-lspconfig").setup(opts)
         local lspconfig = require("lspconfig")

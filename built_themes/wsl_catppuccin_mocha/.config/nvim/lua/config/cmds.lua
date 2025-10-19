@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 	end,
 })
 
--- use zen to open urls
+-- use firefox to open urls
 local _orig_open = vim.ui.open
 
 vim.ui.open = function(input, opts)

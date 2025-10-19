@@ -6,7 +6,7 @@ map({ "n", "v", "o" }, "n", "j", { desc = "move down" })
 map({ "n", "v", "o" }, "e", "k", { desc = "move up" })
 -- Do NOT map 'i' in operator-pending (o) or visual (v) modes, since
 -- 'i' is the builtin textobject prefix (e.g. ciw, vi()
-map({ "n" }, "i", "l", { desc = "move right", noremap = true })
+map({ "n", "v" }, "i", "l", { desc = "move right", noremap = true })
 
 map({ "n", "o" }, "k", "i", { desc = "enter insert mode", noremap = true })
 map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })

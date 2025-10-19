@@ -20,7 +20,7 @@ return {
 			ctp_feline.setup()
 
 			require("feline").setup({
-				components = ctp_feline.get_theme(),
+				components = ctp_feline.get_statusline(),
 			})
 		end,
 	},

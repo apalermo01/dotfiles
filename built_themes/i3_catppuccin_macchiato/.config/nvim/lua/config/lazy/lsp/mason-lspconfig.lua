@@ -88,9 +88,9 @@ return {
 		)
 
 		vim.lsp.config("postgres_lsp", {
-			cmd = { "postgrestools", "lsp-proxy" }, -- correct binary name
+			cmd = { "postgrestools", "lsp-proxy" },
 			filetypes = { "sql" },
-			root_dir = vim.lsp.util.root_pattern("sqitch.plan", ".git", "postgrestools.jsonc"),
+			root_markers = {"sqitch.plan", ".git", "postgrestools.jsonc"},
 			single_file_support = true,
 			capabilities = caps,
 		})

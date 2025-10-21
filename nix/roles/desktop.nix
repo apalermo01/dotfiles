@@ -76,6 +76,7 @@ in
     markdown-oxide
     sqls
     postgrestools
+    lsof
 
     # formatters
     stylua

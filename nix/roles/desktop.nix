@@ -77,6 +77,8 @@ in
     sqls
     postgrestools
     lsof
+    postgresql
+    sqitchPg
 
     # formatters
     stylua

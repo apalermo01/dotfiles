@@ -79,6 +79,7 @@ in
     lsof
     postgresql
     sqitchPg
+    deno
 
     # formatters
     stylua

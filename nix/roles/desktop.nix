@@ -80,6 +80,7 @@ in
     postgresql
     sqitchPg
     deno
+    nest-cli
 
     # formatters
     stylua

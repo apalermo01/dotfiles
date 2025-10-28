@@ -198,6 +198,7 @@ in
     extraGroups = [
       "wheel"
       "networkManager"
+      "networkmanager"
       "network"
       "docker"
 

@@ -123,3 +123,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
         vim.cmd("NoNeckPain")
     end,
 })
+
+-- snippets 
+require("luasnip.loaders.from_vscode").lazy_load()

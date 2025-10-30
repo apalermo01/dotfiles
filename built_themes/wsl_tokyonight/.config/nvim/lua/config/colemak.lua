@@ -9,7 +9,7 @@ map({ "n", "v", "o" }, "e", "k", { desc = "move up" })
 map({ "n", "v" }, "i", "l", { desc = "move right", noremap = true })
 
 map({ "n", "o" }, "k", "i", { desc = "enter insert mode", noremap = true })
-map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })
+-- map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })
 
 map({ "n" }, "j", "nzz", { desc = "next item in search" })
 map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
@@ -158,6 +158,23 @@ require("hardtime").setup({
 				return "Use " .. keys:sub(5, 7) .. keys:sub(2, 4) .. " instead of " .. keys
 			end,
 			length = 7,
+		},
+	},
+})
+
+-- telescore
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+telescope.setup({
+	defaults = {
+		mappings = {
+			n = {
+
+				["j"] = false,
+				["k"] = false,
+				["n"] = actions.move_selection_next,
+				["e"] = actions.move_selection_previous,
+			},
 		},
 	},
 })

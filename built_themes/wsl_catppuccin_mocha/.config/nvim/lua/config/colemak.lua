@@ -9,7 +9,7 @@ map({ "n", "v", "o" }, "e", "k", { desc = "move up" })
 map({ "n", "v" }, "i", "l", { desc = "move right", noremap = true })
 
 map({ "n", "o" }, "k", "i", { desc = "enter insert mode", noremap = true })
-map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })
+-- map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })
 
 map({ "n" }, "j", "nzz", { desc = "next item in search" })
 map({ "n" }, "J", "Nzz", { desc = "previous item in search" })

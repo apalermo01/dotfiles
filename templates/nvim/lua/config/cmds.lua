@@ -124,5 +124,15 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end,
 })
 
+-- show some reminders on startup 
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function() 
+        vim.notify("Reminders: \n"..
+                   "<leader>ck => toggle NoNeckPain\n"..
+                   "K          => LSP hover \n"..
+                   "              Then <c-w>w to focus floating window\n")
+    end,
+})
+
 -- snippets 
 require("luasnip.loaders.from_vscode").lazy_load()

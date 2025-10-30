@@ -297,7 +297,7 @@ function _devcontainers() {
 }
 function _alias_jupyter() {
     if command -v jupyter; then
-        alias j="jupyter lab"
+        alias j="jupyter lab --allow-root"
         echo "aliased j to jupyter lab"
     fi
 }
@@ -381,7 +381,7 @@ echo "* j                         = open jupyter lab (if available)          *"
 echo "* cat_all                   = cat all files in directory               *"
 echo "* switch_kb                 = change kb layout                         *"
 echo "************************************************************************"
-export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
+export NOTES_PATH="/home/alex/Documents/git/notes/"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

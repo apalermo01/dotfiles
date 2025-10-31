@@ -96,7 +96,10 @@ return {
 		vim.lsp.enable({ "postgres_lsp" })
 
         if IS_NIXOS then
-            require('lspconfig').clangd.setup({
+            vim.lsp.enable('clangd')
+            vim.lsp.config('clangd', {
+                filetypes = { 'c' },
+                autostart = true,
                 cmd = { "/run/current-system/sw/bin/clangd" }
             })
         end

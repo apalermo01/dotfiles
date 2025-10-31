@@ -17,17 +17,17 @@ return {
 		"Dynge/gitmoji.nvim",
 	},
 
-	config = function()
-		vim.diagnostic.config({
-			float = {
-				focusable = false,
-				style = "minimal",
-				border = "rounded",
-				source = "always",
-				header = "",
-				prefix = "",
-			},
-		})
+	-- config = function()
+	-- 	vim.diagnostic.config({
+	-- 		float = {
+	-- 			focusable = false,
+	-- 			style = "minimal",
+	-- 			border = "rounded",
+	-- 			source = "always",
+	-- 			header = "",
+	-- 			prefix = "",
+	-- 		},
+	-- 	})
 
 		-- bigquery
 		-- local proj_file = vim.fn.expand("$HOME/.bq_project")
@@ -41,5 +41,5 @@ return {
 		-- 		})
 		-- 	end
 		-- end
-	end,
+	-- end,
 }

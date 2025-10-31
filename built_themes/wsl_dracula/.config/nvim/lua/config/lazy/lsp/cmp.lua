@@ -85,6 +85,7 @@ return {
 				-- ["+"] = cmp.mapping.select_next_item(cmp_select),
 				-- ["<C-e>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-e>"] = cmp.mapping.select_prev_item(cmp_select),
 				-- ["$"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
@@ -95,20 +96,11 @@ return {
                 -- ["<C-y>"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
 				["<Tab>"] = cmp.mapping(function(fallback)
                     vim.notify("use <c-n> and <c-p> to scroll cmp")
-                    if luasnip.expand_or_jumpable() then 
+                    if luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
-                    else 
+                    else
                         fallback()
                     end
-					-- if cmp.visible() then
-					-- 	cmp.select_next_item(cmp_select)
-					-- elseif luasnip.expand_or_jumpable() then
-					-- 	luasnip.expand_or_jump()
-					-- elseif has_words_before() then
-					-- 	cmp.complete()
-					-- else
-					-- 	fallback()
-					-- end
 				end, { "i", "s" }),
 
 				["<S-Tab>"] = cmp.mapping(function(fallback)
@@ -134,81 +126,5 @@ return {
 				{ name = "path" },
 			}),
 		})
-
-		-- local api = vim.api
-		-- local lsp_util = vim.lsp.util
-		--
-		-- local help_lines = {
-		-- 	"Cmp mappings:",
-		-- 	"<C-p> • prev item",
-		-- 	"<C-n> • next item",
-		-- 	"<C-k>/<C-j> • scroll docs",
-		-- 	"<C-space> • trigger complete",
-		-- 	"<C-y> • confirm ",
-		-- 	"<C-e> • abort   ",
-		-- 	"<C-o> • open docs",
-		-- }
-		--
-		-- local help_buf = api.nvim_create_buf(false, true)
-		-- api.nvim_buf_set_option(help_buf, "bufhidden", "hide")
-		-- api.nvim_buf_set_lines(help_buf, 0, -1, false, help_lines)
-		--
-		-- local help_win
-		-- local close_timer
-		--
-		-- cmp.event:on("menu_opened", function()
-		-- 	vim.schedule(function()
-		-- 		if close_timer then
-		-- 			close_timer:stop()
-		-- 			close_timer = nil
-		-- 		end
-		--
-		-- 		if help_win and api.nvim_win_is_valid(help_win) then
-		-- 			return
-		-- 		end
-		--
-		-- 		local width = 0
-		-- 		local height = #help_lines
-		--
-		-- 		for _, line in ipairs(help_lines) do
-		-- 			width = math.max(width, #line)
-		-- 		end
-		--
-		-- 		local row = 0
-		-- 		local col = vim.o.columns - width
-		--
-		-- 		vim.notify("making cmp window. row = " .. row .. " col = " .. col, vim.log.levels.WARN)
-		-- 		-- open the window
-		--               help_win = api.nvim_open_win(help_buf, false, {
-		--                   relative = 'editor',
-		--                   row = row,
-		--                   col = col,
-		--                   width = width,
-		--                   height = height,
-		--                   style = 'minimal',
-		--                   border = 'rounded',
-		--               })
-		-- 		-- help_win = lsp_util.open_floating_preview(help_lines, "plaintext", {
-		-- 		-- 	relative = "editor",
-		-- 		-- 	row = row,
-		-- 		-- 	col = col,
-		-- 		-- 	width = width,
-		-- 		-- 	height = height,
-		-- 		-- 	style = "minimal",
-		-- 		-- 	border = "rounded",
-		-- 		-- })
-		-- 	end)
-		-- end)
-		--
-		-- cmp.event:on("menu_closed", function()
-		-- 	if help_win and api.nvim_win_is_valid(help_win) then
-		-- 		close_timer = vim.defer_fn(function()
-		-- 			if help_win and api.nvim_win_is_valid(help_win) then
-		-- 				api.nvim_win_close(help_win, true)
-		-- 				help_win = nil
-		-- 			end
-		-- 		end, 10000)
-		-- 	end
-		-- end)
 	end,
 }

@@ -60,6 +60,7 @@ require("hardtime").setup({
         ["i"] = { "n" }, -- right (you map i->l)
         ["k"] = false,
         ["l"] = false,
+        ["j"] = false,
 		["+"] = { "n", "x" },
 		["gn"] = { "n", "x", "o" }, -- screen-down (gj)
 		["ge"] = { "n", "x", "o" }, -- screen-up   (gk)  ⚠ see note below

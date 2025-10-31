@@ -82,26 +82,33 @@ return {
 
 			mapping = cmp.mapping.preset.insert({
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				["+"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-e>"] = cmp.mapping.select_prev_item(cmp_select),
-				["$"] = cmp.mapping.select_prev_item(cmp_select),
+				-- ["+"] = cmp.mapping.select_next_item(cmp_select),
+				-- ["<C-e>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+				-- ["$"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<C-a>"] = cmp.mapping.abort(),
 				["<C-o>"] = cmp.mapping.open_docs(),
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                ["]"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
-                ["<C-y>"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
+                -- ["]"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
+                -- ["<C-y>"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
 				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item(cmp_select)
-					elseif luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
-					elseif has_words_before() then
-						cmp.complete()
-					else
-						fallback()
-					end
+                    vim.notify("use <c-n> and <c-p> to scroll cmp")
+                    if luasnip.expand_or_jumpable() then 
+                        luasnip.expand_or_jump()
+                    else 
+                        fallback()
+                    end
+					-- if cmp.visible() then
+					-- 	cmp.select_next_item(cmp_select)
+					-- elseif luasnip.expand_or_jumpable() then
+					-- 	luasnip.expand_or_jump()
+					-- elseif has_words_before() then
+					-- 	cmp.complete()
+					-- else
+					-- 	fallback()
+					-- end
 				end, { "i", "s" }),
 
 				["<S-Tab>"] = cmp.mapping(function(fallback)

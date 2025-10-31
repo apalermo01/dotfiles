@@ -5,6 +5,7 @@ OBSIDIAN_TEMPLATE_FOLDER = os.getenv("OBSIDIAN_TEMPLATE_FOLDER") or "5-Templates
 
 map = vim.keymap.set
 vim.g.mapleader = " "
+
 -- boolean flag to check if we're running nix
 function is_nixos()
 	local os_release = vim.fn.readfile("/etc/os-release")
@@ -20,17 +21,15 @@ IS_NIXOS = is_nixos()
 
 -- return 2 variants of a function depending on whether or not we're running nix
 -- borrowed from https://github.com/NicoElbers/nixPatch-nvim/tree/main 
-switchNix = function(nonNix, nix)
-    if vim.g.nix == true then 
-        return nix
-    else
-        return nonNix
-    end 
-end
+-- switchNix = function(nonNix, nix)
+--     if vim.g.nix == true then 
+--         return nix
+--     else
+--         return nonNix
+--     end 
+-- end
 
 require("config")
 
--- local log = require('cmp.utils.debug').log
--- log.enable('DEBUG')  
 vim.cmd.colorscheme("nord")
 vim.cmd([[set guifont=Iosveska\ Nerd\ Font\ Mono]])

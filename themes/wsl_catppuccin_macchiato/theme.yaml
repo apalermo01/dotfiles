@@ -29,5 +29,3 @@ zsh:
     - src: p10k.zsh
       dst: zsh/.p10k.zsh
 
-theme_scripts: 
-  path: ./themes/wsl_catppuccin_macchiato/scripts/

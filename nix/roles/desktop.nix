@@ -18,10 +18,8 @@ in
     alsa-utils
     alsa-plugins
     pamixer
-    # kdePackages.kscreenlocker
     xss-lock
     via
-    # element-desktop
     alpaca
     brightnessctl
     lm_sensors
@@ -33,7 +31,6 @@ in
     xfce.thunar
     xfce.thunar-volman
     kdePackages.dolphin
-    # calibre
     libimobiledevice
     usbmuxd
     ifuse
@@ -46,13 +43,11 @@ in
     libreoffice-qt6-fresh
     cargo
     rclone
-    # postgresql
     fortune
     cowsay
     pywal
     restic
     networkmanagerapplet
-    # luajitPackages.luarocks_bootstrap
     kdePackages.okular
     tmux
     neovim
@@ -62,25 +57,30 @@ in
     yazi
     cbonsai
     fastfetch
-    bat 
+    bat
     eza
     gitui
-    delta 
+    delta
     oh-my-posh
     tealdeer
     starship
-    # lsp s
+    lsof
+    postgresql
+    sqitchPg
+    deno
+    nest-cli
+
+    # language servers
     pyright
     nil
     lua-language-server
     markdown-oxide
     sqls
     postgrestools
-    lsof
-    postgresql
-    sqitchPg
-    deno
-    nest-cli
+    llvmPackages_latest.lldb
+    llvmPackages_latest.libllvm
+    llvmPackages_latest.libcxx
+    llvmPackages_latest.clang
 
     # formatters
     stylua
@@ -100,7 +100,6 @@ in
   users.groups.libvirtd.members = [ "alex" ];
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-
 
   programs.hyprland.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

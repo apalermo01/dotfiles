@@ -81,6 +81,7 @@ in
     llvmPackages_latest.libllvm
     llvmPackages_latest.libcxx
     llvmPackages_latest.clang
+    clang-tools 
 
     # formatters
     stylua

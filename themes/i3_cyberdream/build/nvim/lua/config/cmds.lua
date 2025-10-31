@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 	end,
 })
 
--- use zen to open urls
+-- use firefox to open urls
 local _orig_open = vim.ui.open
 
 vim.ui.open = function(input, opts)
@@ -117,3 +117,23 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.cmd("NoNeckPain")
+    end,
+})
+
+-- show some reminders on startup 
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function() 
+        vim.notify("Reminders: \n"..
+                   "<leader>ck => toggle NoNeckPain\n"..
+                   "K          => LSP hover \n"..
+                   "              Then <c-w>w to focus floating window\n"..
+                   "l/L        => end of word / WORD")
+    end,
+})
+
+-- snippets 
+require("luasnip.loaders.from_vscode").lazy_load()

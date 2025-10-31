@@ -9,7 +9,7 @@
 --          excepction: paste from clipboard: <leader>pc
 -- formatting:         <leader>c
 -- git:                <leader>g
--- harpoon / quick switching: <leader>h,j,k,l,;
+-- harpoon / quick switching: <leader>1,2,3,4,5,6
 --          -- do not use these keys for any other top level headers
 -- obsidian            <leader>o
 --          exception: show outline: <leader>ol
@@ -33,34 +33,6 @@ function CloseFloatingOrClearHighlight()
 end
 
 -----------------------------------------------------------------
--- remappings for colemak
------------------------------------------------------------------
--- motions
-map({ "n", "v" }, "n", "j", { desc = "move down" })
-map({ "n", "v" }, "e", "k", { desc = "move up" })
-map({ "n", "v" }, "i", "l", { desc = "move right" })
-
-map({ "n" }, "k", "i", { desc = "enter insert mode" })
-map({ "n" }, "K", "I", { desc = "capital I" })
-
-map({ "n" }, "j", "nzz", { desc = "next item in search" })
-map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
-
-map({ "n", "v" }, "l", "e", { desc = "end of word" })
-
--- window motions
-map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
-map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
-map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
-map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-
--- tmux
-map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
-map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
-map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
-map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
-
------------------------------------------------------------------
 -- misc
 -----------------------------------------------------------------
 
@@ -80,12 +52,11 @@ map("n", "<C-b>", "<C-b>zz")
 
 -- https://www.youtube.com/watch?v=w7i4amO_zaE
 -- move selected lines up/down in visualmode
-map("v", "N", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
-map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 
 -- join lines without moving cursor
 -- map("n", "N", "mzJ`z")
-
 
 -- paste over visual selection wihout yanking it
 map("x", "<leader>p", '"_dP')
@@ -107,7 +78,7 @@ map({ "v", "n" }, "<leader>pc", '"+p')
 -- map("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 -- spellcheck
-map("n", "<leader>s", function()
+map("n", "<leader><leader>s", function()
 	vim.wo.spell = not vim.wo.spell
 end, { desc = "toggle spellcheck" })
 
@@ -128,6 +99,9 @@ map("n", "[]", "k$][%?}<CR>")
 -- diffview
 map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
 
+-- automatically go back into visual mode after indenting
+map("v", ">", ">gv")
+map("v", "<", "<gv")
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
@@ -313,21 +287,6 @@ end, { desc = "open current file in Obsidian" })
 --------------------------------------------------------------------------------
 -- TELESCOPE (pickers) (<leader>p prefix)
 --------------------------------------------------------------------------------
-local telescope = require("telescope")
-local actions = require("telescope.actions")
-telescope.setup({
-	defaults = {
-		mappings = {
-			n = {
-
-				["j"] = false,
-				["k"] = false,
-				["n"] = actions.move_selection_next,
-				["e"] = actions.move_selection_previous,
-			},
-		},
-	},
-})
 local builtin = require("telescope.builtin")
 
 -- Find all files (hidden + no ignore)
@@ -490,53 +449,53 @@ map("n", "<leader>gh", builtin.git_bcommits, { desc = "Telescope: commit history
 -- harpoon
 --------------------------------------------------------------------------------
 -- local harpoon = require("harpoon")
--- map("n", "<leader>e", function()
+-- map("n", "<leader>a", function()
 -- 	harpoon.ui:toggle_quick_menu(harpoon:list())
 -- end, { desc = "show harpoon list" })
 -- map("n", "<leader>a", function()
 -- 	harpoon:list():add()
 -- end, { desc = "harpoon add" })
---
+
 -- map("n", "<leader>h", function()
 -- 	harpoon:list():select(1)
 -- end, { desc = "harpoon(1)" })
--- map("n", "<leader>j", function()
+-- map("n", "<leader>n", function()
 -- 	harpoon:list():select(2)
 -- end, { desc = "harpoon(2)" })
--- map("n", "<leader>k", function()
+-- map("n", "<leader>e", function()
 -- 	harpoon:list():select(3)
 -- end, { desc = "harpoon(3)" })
--- map("n", "<leader>l", function()
+-- map("n", "<leader>i", function()
 -- 	harpoon:list():select(4)
 -- end, { desc = "harpoon(4)" })
--- map("n", "<leader>;", function()
+-- map("n", "<leader>o", function()
 -- 	harpoon:list():select(5)
 -- end, { desc = "harpoon(5)" })
 -- map("n", "<leader>'", function()
--- 	harpoon:list():select(5)
--- end, { desc = "harpoon(5)" })
+-- 	harpoon:list():select(6)
+-- end, { desc = "harpoon(6)" })
 --
 -- map("n", "<leader><leader>h", function()
 -- 	harpoon:list():replace_at(1)
 -- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 1")
 -- end, { desc = "set current buffer to harpoon(1)" })
 --
--- map("n", "<leader><leader>j", function()
+-- map("n", "<leader><leader>n", function()
 -- 	harpoon:list():replace_at(2)
 -- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 2")
 -- end, { desc = "set current buffer to harpoon(2)" })
 --
--- map("n", "<leader><leader>k", function()
+-- map("n", "<leader><leader>e", function()
 -- 	harpoon:list():replace_at(3)
 -- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 3")
 -- end, { desc = "set current buffer to harpoon(3)" })
 --
--- map("n", "<leader><leader>l", function()
+-- map("n", "<leader><leader>i", function()
 -- 	harpoon:list():replace_at(4)
 -- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 4")
 -- end, { desc = "set current buffer to harpoon(4)" })
 --
--- map("n", "<leader><leader>;", function()
+-- map("n", "<leader><leader>o", function()
 -- 	harpoon:list():replace_at(5)
 -- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 5")
 -- end, { desc = "set current buffer to harpoon(5)" })
@@ -545,3 +504,9 @@ map("n", "<leader>gh", builtin.git_bcommits, { desc = "Telescope: commit history
 -- 	harpoon:list():replace_at(6)
 -- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
 -- end, { desc = "set current buffer to harpoon(6)" })
+--
+-------------------------------
+--- No neck pain --------------
+-------------------------------
+
+map("n", "<leader>ck", "<cmd>NoNeckPain<CR>")

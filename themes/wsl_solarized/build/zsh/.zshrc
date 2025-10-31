@@ -156,34 +156,6 @@ alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
 
-<<<<<<< HEAD
-# chi3() {
-#     cwd=$(pwd)
-#     cd ${HOME}/Documents/git/dotfiles 
-#     bash scripts/random_i3_theme.sh
-#     cd $(cwd)
-# }
-# chwsl() {
-#     cwd=$(pwd)
-#     cd ${HOME}/Documents/git/dotfiles 
-#     bash scripts/random_wsl_theme.sh
-#     cd $(cwd)
-# }
-||||||| 07daf938
-chi3() {
-    cwd=$(pwd)
-    cd ${HOME}/Documents/git/dotfiles 
-    bash scripts/random_i3_theme.sh
-    cd $(cwd)
-}
-chwsl() {
-    cwd=$(pwd)
-    cd ${HOME}/Documents/git/dotfiles 
-    bash scripts/random_wsl_theme.sh
-    cd $(cwd)
-}
-=======
->>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
@@ -266,20 +238,6 @@ function _maybe_source_aliases() {
     fi
 }
 
-<<<<<<< HEAD
-function _devcontainers() {
-    if [[ -d .devcontainer ]]; then
-        echo "Devcontainer found."   
-        echo "d  = devcontainer exec --workspace-folder . zsh"
-        echo "du = devcontainer up --workspace-folder . --remove-existing-container"
-
-        alias d="devcontainer exec --workspace-folder . zsh"
-        alias du="devcontainer up --workspace-folder . --remove-existing-container"
-    fi
-}
-
-||||||| 07daf938
-=======
 
 function _devcontainers() {
     if [[ -d .devcontainer ]]; then
@@ -301,43 +259,45 @@ function _devcontainers() {
         }
 
         du() {
-          local label="test-container=$(basename "$PWD")"
-          devcontainer up --id-label "$label" \
-              --workspace-folder .
-          # After container is up, clone/apply dotfiles inside it
-          devcontainer exec --id-label "$label" --workspace-folder . \
-            bash -lc 'set -euo pipefail; \
-              DOTPATH="$HOME/dotfiles"; \
-              if [ ! -d "$DOTPATH/.git" ]; then git clone https://github.com/apalermo01/dotfiles "$DOTPATH"; fi; \
-              sudo apt-get update -y && sudo apt-get install -y stow; \
-              cd "$DOTPATH"; \
-              theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
-              bash ./scripts/switch_theme.sh "$theme"'
-        }
-
+              local label="test-container=$(basename "$PWD")"
+              devcontainer up --id-label "$label" \
+                  --workspace-folder .
+              # After container is up, clone/apply dotfiles inside it
+              devcontainer exec --id-label "$label" --workspace-folder . \
+                bash -lc 'set -euo pipefail; \
+                  if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
+                  DOTPATH="$HOME/Documents/git/dotfiles"; \
+                  mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
+                  if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
+"$DOTPATH" pull --ff-only; fi; \
+                  sudo apt-get update -y && sudo apt-get install -y stow; \
+                  cd "$DOTPATH"; \
+                  bash ./scripts/switch_theme.sh wsl_dracula'
+            }
         dur() {
-          local label="test-container=$(basename "$PWD")"
-          echo "replacing devcontainer with label $label"
-          devcontainer up --id-label "$label" \
-              --workspace-folder . \
-              --remove-existing-container
-          # After container is up, clone/apply dotfiles inside it
-          devcontainer exec --id-label "$label" --workspace-folder . \
-            bash -lc 'set -euo pipefail; \
-              DOTPATH="$HOME/dotfiles"; \
-              if [ ! -d "$DOTPATH/.git" ]; then git clone https://github.com/apalermo01/dotfiles "$DOTPATH"; fi; \
-              sudo apt-get update -y && sudo apt-get install -y stow; \
-              cd "$DOTPATH"; \
-              theme=$(cat current_theme 2>/dev/null || echo i3_catppuccin_mocha); \
-              bash ./scripts/switch_theme.sh "$theme"'
-        }
-
+              local label="test-container=$(basename "$PWD")"
+              echo "replacing devcontainer with label $label"
+              devcontainer up --id-label "$label" \
+                  --workspace-folder . \
+                  --remove-existing-container
+              # After container is up, clone/apply dotfiles inside it
+              devcontainer exec --id-label "$label" --workspace-folder . \
+                bash -lc 'set -euo pipefail; \
+                  if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
+                  DOTPATH="$HOME/Documents/git/dotfiles"; \
+                  mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
+                  if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
+"$DOTPATH" pull --ff-only; fi; \
+                  sudo apt-get update -y && sudo apt-get install -y stow; \
+                  cd "$DOTPATH"; \
+                  bash ./scripts/switch_theme.sh wsl_dracula'
+            }
         dd()  { docker rm -f $(docker container ls -f "label=test-container=$(basename "$PWD")" -q); }
     fi
 }
 function _alias_jupyter() {
     if command -v jupyter; then
-        alias j="jupyter lab"
+        alias j="jupyter lab --allow-root"
         echo "aliased j to jupyter lab"
     fi
 }
@@ -350,7 +310,6 @@ add-zsh-hook chpwd _alias_jupyter
 ###################
 # other functions #
 ###################
->>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 function cat_all() {
 
     local -a viewer_cmd
@@ -390,20 +349,9 @@ function cat_all() {
         
 }
 
-<<<<<<< HEAD
-autoload -U add-zsh-hook
-add-zsh-hook chpwd _maybe_source_aliases
-add-zsh-hook chpwd _devcontainers
-
-||||||| 07daf938
-autoload -U add-zsh-hook
-add-zsh-hook chpwd _maybe_source_aliases
-
-=======
 switch_kb() {
     bash ~/Scripts/switch_kb_layout_via_term.sh
 }
->>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 #######################
 # Additional settings #
 #######################
@@ -414,29 +362,6 @@ fi
 ###########
 # HELPERS #
 ###########
-<<<<<<< HEAD
-echo "***************************** ALIASES *****************************"
-echo "tutoring                  = cd into tutoring dir and init a session"
-echo "quick_commit / qc / gcm   = git commit with current date as message"
-echo "cat_all                   = cat all files in cwd (recursive)"
-echo "on <name>                 = generate new note"
-echo "onp <name>                = generate new personal note"
-echo "n                         = cd into notes folder"
-echo "o                         = start obsidian"
-echo "ga                        = git add -p"
-echo "gc                        = git commit"
-echo "gb                        = git branch"
-echo "gd                        = git diff" 
-echo "gl                        = git log (pretty)"
-echo "gp                        = git push"
-echo "gpu                       = git pull"
-echo "*******************************************************************"
-
-||||||| 07daf938
-eval "$(fnm env --use-on-cd --shell zsh)"
-
-
-=======
 echo "******************************** ALIASES *******************************"
 echo "* tutoring                  = cd into tutoring dir and init a session  *"
 echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
@@ -456,7 +381,41 @@ echo "* j                         = open jupyter lab (if available)          *"
 echo "* cat_all                   = cat all files in directory               *"
 echo "* switch_kb                 = change kb layout                         *"
 echo "************************************************************************"
->>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
+export NOTES_PATH="/home/alex/Documents/git/notes/"
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+mkpretty() { 
+    local target_dir="/mnt/c/Users/apalermo/Downloads"
+
+    local files=(${(f)"$(find "$target_dir" -maxdepth 1 -type f -name "*.json" ! -name "pretty_*.json")"})
+    if [[ ${#files[@]} -eq 0 ]]; then
+        echo "No .json files to prettify in $target_dir"
+        return 1
+    fi
+    local i=1
+    for file in "${files[@]}"; do
+        printf "[%d] %s\n" "$i" "$(basename "$file")"
+        ((i++))
+    done
+    echo -n "Enter the number of the file to prettify: "
+    read -r num
+    if ! [[ "$num" =~ ^[0-9]+$ ]] || (( num < 1 || num > ${#files[@]} )); then
+        echo "Invalid selection. Please enter a number between 1 and ${#files[@]}."
+        return 1
+    fi
+    local selected_file=${files[$num]}
+
+    local base_name
+
+    base_name=$(basename "$selected_file")
+
+    local output_file="${target_dir}/pretty_${base_name}"
+    python3 -m json.tool "$selected_file" > "$output_file"
+    echo "Done."
+}
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -496,24 +455,6 @@ if command -v fastfetch >/dev/null 2>&1
 then
 	fastfetch
 fi
-<<<<<<< HEAD
-if command -v z >/dev/null 2>&1
-then
-	alias cd="z"
-fi
-if command -v zoxide >/dev/null 2>&1
-then
-	eval "$(zoxide init zsh)"
-fi
-if command -v direnv >/dev/null 2>&1
-then
-	eval "$(direnv hook zsh)"
-||||||| 07daf938
-fastfetch
-alias cd="z"
-eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
-=======
 
 if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init zsh)"
@@ -522,5 +463,4 @@ fi
 
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
->>>>>>> 1c976cdb1ddbc92d3783d03aef491cbca99cd727
 fi

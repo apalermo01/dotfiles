@@ -118,7 +118,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
--- start no neck pain on startup
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
         vim.cmd("NoNeckPain")
@@ -129,8 +128,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = function() 
         vim.notify("Reminders: \n"..
-                   "<leader>ck => toggle NoNeckPain")
+                   "<leader>ck => toggle NoNeckPain\n"..
+                   "K          => LSP hover \n"..
+                   "              Then <c-w>w to focus floating window\n"..
+                   "l/L        => end of word / WORD")
     end,
 })
+
 -- snippets 
 require("luasnip.loaders.from_vscode").lazy_load()

@@ -12,16 +12,6 @@ return {
 				})
 			end,
 
-            -- ["clangd"] = function()
-            --     if IS_NIXOS
-            --         vim.lsp.config('clangd').setup({
-            --             settungs = {
-            --
-            --             }
-            --         })
-            --
-            --     end
-            -- end,
 
 			["lua_ls"] = function()
 				vim.lsp.config('lua_ls').setup({
@@ -104,5 +94,11 @@ return {
 			capabilities = caps,
 		})
 		vim.lsp.enable({ "postgres_lsp" })
+
+        if IS_NIXOS then
+            require('lspconfig').clangd.setup({
+                cmd = { "/run/current-system/sw/bin/clangd" }
+            })
+        end
 	end,
 }

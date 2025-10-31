@@ -12,9 +12,10 @@ return {
 				})
 			end,
 
+
 			["lua_ls"] = function()
 				vim.lsp.config('lua_ls').setup({
-					cmd = nixos and { "lua-language-server" } or nil,
+					cmd = IS_NIXOS and { "lua-language-server" } or nil,
 					capabilities = capabilities,
 				})
 			end,
@@ -33,7 +34,7 @@ return {
 
 			["markdown_oxide"] = function()
 				vim.lsp.config('markdown_oxide').setup({
-					cmd = nixos and { "markdown-oxide" } or nil,
+					cmd = IS_NIXOS and { "markdown-oxide" } or nil,
 					capabilities = vim.tbl_deep_extend("force", capabilities, {
 						workspace = {
 							didChangeWatchedFiles = {
@@ -78,8 +79,6 @@ return {
 	},
 	config = function(_, opts)
 		require("mason-lspconfig").setup(opts)
-		-- local lspconfig = require("lspconfig")
-		-- local util = require("lspconfig.util")
 		local caps = vim.tbl_deep_extend(
 			"force",
 			{},
@@ -95,5 +94,11 @@ return {
 			capabilities = caps,
 		})
 		vim.lsp.enable({ "postgres_lsp" })
+
+        if IS_NIXOS then
+            require('lspconfig').clangd.setup({
+                cmd = { "/run/current-system/sw/bin/clangd" }
+            })
+        end
 	end,
 }

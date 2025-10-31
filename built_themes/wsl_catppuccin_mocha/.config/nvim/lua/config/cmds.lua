@@ -118,8 +118,19 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
+-- start no neck pain on startup
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
         vim.cmd("NoNeckPain")
     end,
 })
+
+-- show some reminders on startup 
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function() 
+        vim.notify("Reminders: \n"..
+                   "<leader>ck => toggle NoNeckPain")
+    end,
+})
+-- snippets 
+require("luasnip.loaders.from_vscode").lazy_load()

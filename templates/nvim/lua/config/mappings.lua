@@ -254,16 +254,16 @@ end, { desc = "trouble: previous diagnostic" })
 -- obsidian
 -----------------------------------------------------------------
 -- Show backlinks via Telescope
-map("n", "<leader>sbl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
+map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- template note
-map("n", "<leader>st", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
+map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
 
 -- Delete current note
-map("n", "<leader>sdd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
+map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
 
 -- Open current file in the Obsidian app (requires `obsidian` CLI in PATH)
-map("n", "<leader>so", function()
+map("n", "<leader>oo", function()
 	local vault_root = OBSIDIAN_NOTES_DIR
 	local vault_name = vim.fn.fnamemodify(vault_root, ":t")
 	local function urlencode(str)
@@ -287,21 +287,6 @@ end, { desc = "open current file in Obsidian" })
 --------------------------------------------------------------------------------
 -- TELESCOPE (pickers) (<leader>p prefix)
 --------------------------------------------------------------------------------
-local telescope = require("telescope")
-local actions = require("telescope.actions")
-telescope.setup({
-	defaults = {
-		mappings = {
-			n = {
-
-				["j"] = false,
-				["k"] = false,
-				["n"] = actions.move_selection_next,
-				["e"] = actions.move_selection_previous,
-			},
-		},
-	},
-})
 local builtin = require("telescope.builtin")
 
 -- Find all files (hidden + no ignore)

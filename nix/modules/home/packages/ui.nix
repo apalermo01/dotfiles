@@ -28,6 +28,7 @@ in
       (polybar.override { pulseSupport = true; })
       picom
       kitty
+      wezterm
       firefox
       nemo-with-extensions
       libnotify

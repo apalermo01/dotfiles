@@ -1,0 +1,59 @@
+colors:
+  method: pywal
+
+font_family: JetBrains NF Mono
+
+wallpaper:
+  method: feh
+  file: $THIS_THEME/wp7535729.jpg
+
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+
+polybar: 
+  bars: [left, center, right, tray]
+  template_path: $THIS_THEME
+
+nvim:
+  
+  colorscheme: pywal
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+ 
+tmux: 
+  append: 
+    - src: tmux.conf
+      dst: tmux/.tmux.conf
+
+rofi: 
+  template_path: $THIS_THEME
+
+zsh:
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+
+kitty:
+  overwrite:
+    - src: onedark.conf
+      dst: kitty/onedark.conf
+  append:
+    - src: kitty.conf
+      dst: kitty/kitty.conf
+
+apps:
+  name: OneDarkRed
+  provides:
+    qt: 
+      - colorscheme
+
+  requires:
+    qt.colorscheme: plasma-apply-colorscheme 
+
+okular: {}

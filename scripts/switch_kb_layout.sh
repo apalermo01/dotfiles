@@ -16,14 +16,14 @@ i3_keys=(
 )
 
 tmux_keys=(
-    "bind -n M-h previous-window|bind -n M-h previous-window"
-    "bind -n M-i next-window|bind -n M-i next-window"
-    "bind -n M-l last-window|bind -n M-l last-window"
+    "bind -n M-p previous-window|bind -n M-p previous-window"
+    "bind -n M-I next-window|bind -n M-L next-window"
+    "bind -n M-H last-window|bind -n M-H last-window"
 
-    "set -g @vim_navigator_mapping_left 'C-Left C-h'|set -g @vim_navigator_mapping_left 'C-Left C-h'"
-    "set -g @vim_navigator_mapping_right 'C-Right C-i'|set -g @vim_navigator_mapping_right 'C-Right C-l'"
-    "set -g @vim_navigator_mapping_up 'C-Up C-e'|set -g @vim_navigator_mapping_up 'C-Up C-k'"
-    "set -g @vim_navigator_mapping_down 'C-down C-n'|set -g @vim_navigator_mapping_down 'C-down C-j'"
+    "set -g @vim_navigator_mapping_left 'C-Left M-h'|set -g @vim_navigator_mapping_left 'C-Left M-h'"
+    "set -g @vim_navigator_mapping_right 'C-Right M-i'|set -g @vim_navigator_mapping_right 'C-Right M-l'"
+    "set -g @vim_navigator_mapping_up 'C-Up M-e'|set -g @vim_navigator_mapping_up 'C-Up M-k'"
+    "set -g @vim_navigator_mapping_down 'C-down M-n'|set -g @vim_navigator_mapping_down 'C-down M-j'"
 )
 
 colemak_i3() {

@@ -5,7 +5,7 @@ font_family: JetBrains NF Mono
 
 wallpaper:
   method: feh
-  file: $THIS_THEME/wp7535729.jpg
+  file: $THIS_THEME/wp7535729-road-to-autumn-wallpapers.jpg
 
 i3: 
   append: 
@@ -18,7 +18,7 @@ polybar:
 
 nvim:
   
-  colorscheme: pywal
+  colorscheme: gruvbox-material
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua
@@ -41,8 +41,8 @@ zsh:
 
 kitty:
   overwrite:
-    - src: onedark.conf
-      dst: kitty/onedark.conf
+    - src: current-theme.conf
+      dst: kitty/current-theme.conf
   append:
     - src: kitty.conf
       dst: kitty/kitty.conf

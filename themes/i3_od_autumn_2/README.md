@@ -1,3 +1,3 @@
-# OneDark
+# OneDark Autumn v2
 
-Wallpaper source: https://github.com/Narmis-E/onedark-wallpapers/blob/main/misc/od_autumn.jpg
+Wallpaper source: https://wallpapercave.com/w/wp7535729

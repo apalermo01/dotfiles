@@ -102,6 +102,16 @@ map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
 -- automatically go back into visual mode after indenting
 map("v", ">", ">gv")
 map("v", "<", "<gv")
+
+-- window motions
+map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
+map("n", "<leader>wj", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
+map("n", "<leader>wk", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
+map("n", "<leader>wl", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
+map("n", "<M-h>", "<C-w>h", {desc="win left"})
+map("n", "<M-j>", "<C-w>j", {desc="win down"})
+map("n", "<M-k>", "<C-w>k", {desc="win up"})
+map("n", "<M-l>", "<C-w>l", {desc="win right"})
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
@@ -519,3 +529,37 @@ map("n", "M-h", "<cmd><C-U>TmuxNavigateLeft<CR>")
 map("n", "M-j", "<cmd><C-U>TmuxNavigateDown<CR>")
 map("n", "M-k", "<cmd><C-U>TmuxNavigateUp<CR>")
 map("n", "M-l", "<cmd><C-U>TmuxNavigateRight<CR>")
+
+-------------------------------
+--- LSP Signature -------------
+-------------------------------
+-- local function escape_term_codes(str)
+--     return vim.api.nvim_replace_termcodes(str, true, false, true)
+-- end
+--
+-- local function is_float_open(window_id)
+--     return window_id and window_id ~= 0 and vim.api.nvim_win_is_valid(window_id)
+-- end
+--
+-- local function scroll_float(mapping)
+--     local win_id = _G._LSP_SIG_CFG.winnr;
+--
+--     if is_float_open(win_id) then
+--         vim.fn.win_execute(win_id, ':normal! ' .. mapping)
+--     end
+-- end
+--
+-- local scroll_up_mapping = escape_term_codes('<c-u>')
+-- local scroll_down_mapping = escape_term_codes('<c-d>')
+-- vim.keymap.set('i', '<c-u>', function() scroll_float(scroll_up_mapping) end, {})
+-- vim.keymap.set('i', '<c-d>', function() scroll_float(scroll_down_mapping) end, {})
+
+-- vim.keymap.set('i', '<C-d>', function()
+--   vim.lsp.util.scroll_preview(4)
+-- end, {})
+--
+-- vim.keymap.set('i', '<C-u>', function()
+--   vim.lsp.util.scroll_preview(-4)
+-- end, {})
+map("i", "<M-j>", "<C-o>j")
+map("i", "<M-k>", "<C-o>k")

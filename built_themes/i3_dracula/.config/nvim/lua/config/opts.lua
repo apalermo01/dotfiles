@@ -22,15 +22,13 @@ set.expandtab = true
 set.number = true
 set.rnu = true
 
-set.wrap = false
-
 set.swapfile = false
 set.backup = false
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set.undofile = true
 
-set.hlsearch = false
-set.incsearch = false
+set.hlsearch = true
+set.incsearch = true
 
 set.scrolloff = 8
 set.signcolumn = "yes"
@@ -44,6 +42,9 @@ set.compatible = false
 set.syntax = "on"
 set.wildmenu = true
 set.termguicolors = true
+
+set.wrap = true
+set.linebreak = true
 
 vim.cmd([[set path+=**]])
 vim.cmd([[set complete+=k]])

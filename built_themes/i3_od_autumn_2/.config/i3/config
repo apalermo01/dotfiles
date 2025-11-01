@@ -224,7 +224,7 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font Hack Nerd Font Mono 11
+font ZedMono Nerd Font 11
 bindsym $mod+f exec firefox
 
 # pretty sure this is for ubuntu
@@ -272,7 +272,7 @@ exec_always systemctl --user start xss-lock-i3
 
 client.focused	         #DB5F16        #e0cd8f    #0a0101  #DB5F16	        #DB5F16
 client.focused_inactive	 #e0cd8f  #e0cd8f    #0a0101  #e0cd8f	    #e0cd8f
-client.unfocused	     #0a0101  #e0cd8f   #0a0101  #0a0101	    #0a0101
+client.unfocused	     #e0cd8f  #e0cd8f   #0a0101  #e0cd8f	    #e0cd8f
 client.urgent	         #ff0000         #e0cd8f   #0a0101  #ff0000       #ff0000
 client.placeholder	     #0a0101  #e0cd8f   #0a0101  #0a0101	    #0a0101
 
@@ -290,4 +290,4 @@ floating_modifier $mod
 exec --no-startup-id mate-power-manager
 
 focus_follows_mouse no
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/wp7535729.jpg
+exec_always feh --bg-fill /home/alex/Pictures/wallpapers/wp7535729-road-to-autumn-wallpapers.jpg

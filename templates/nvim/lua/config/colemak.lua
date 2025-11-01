@@ -25,10 +25,10 @@ map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
 map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
 map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
 map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-map("n", "<C-h>", "<C-w>h", {desc="win left"})
-map("n", "<C-n>", "<C-w>j", {desc="win down"})
-map("n", "<C-e>", "<C-w>k", {desc="win up"})
-map("n", "<C-i>", "<C-w>l", {desc="win right"})
+map("n", "<M-h>", "<C-w>h", {desc="win left"})
+map("n", "<M-n>", "<C-w>j", {desc="win down"})
+map("n", "<M-e>", "<C-w>k", {desc="win up"})
+map("n", "<M-i>", "<C-w>l", {desc="win right"})
 -- tmux
 -- map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
 -- map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
@@ -232,3 +232,8 @@ telescope.setup({
 -- 	harpoon:list():replace_at(6)
 -- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
 -- end, { desc = "set current buffer to harpoon(6)" })
+
+-- LSP Signature 
+
+map("i", "<M-n>", "<C-o>j")
+map("i", "<M-e>", "<C-o>k")

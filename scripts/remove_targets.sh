@@ -14,3 +14,6 @@ rm ~/.p10k.zsh
 rm ~/.profile
 rm ~/.zshrc
 rm ~/profile
+rm ~/.config/okularrc
+rm ~/.tmux.conf
+rm ~/.config/install_theme.sh

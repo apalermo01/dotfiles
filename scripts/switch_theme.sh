@@ -40,7 +40,7 @@ if [ -f "./current_theme" ]; then
 fi
 
 echo "stowing new theme: $1"
-stow . -d "built_themes/$1" -t "$HOME" --dotfiles
+stow . -d "built_themes/$1" -t "$HOME" --dotfiles --adopt
 
 if [[ "$1" == *"wsl"* ]]; then
     ln -sf "$(realpath ./templates/global-wsl.yml)" "$RICER_DIR/ricer-global.yml"

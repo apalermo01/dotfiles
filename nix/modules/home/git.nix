@@ -23,7 +23,11 @@ in
       includes = [
         { path = "~/.gitconfig_work"; }
       ];
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Alex";
+          email = "alex.palermo.ai@gmail.com";
+        };
         delta = {
           navigate = true;
           dark = true;

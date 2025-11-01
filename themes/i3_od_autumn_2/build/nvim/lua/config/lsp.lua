@@ -29,19 +29,26 @@ local servers = {
 				},
 			},
 		}),
-		root_dir = function(fname)
-			local paths = {
-				"0-technical-notes",
-				"1-notes",
-			}
-			for _, sub in ipairs(paths) do
-				local full = OBSIDIAN_NOTES_DIR .. "/" .. sub
-				if fname:find(full, 1, true) then
-					return full
-				end
-			end
-			return vim.fn.getcwd()
-		end,
+        -- root_dir = vim.fn.expand('~/Documents/git/notes')
+        root_dir = function(bufnr, on_dir)
+            if vim.fn.expand("%:p"):match(vim.fn.expand('~/Documents/git/notes/')) then
+                on_dir(vim.fn.getcwd())
+            end
+        end
+        -- root_markers = { '.git', '.obsidian' }
+		-- root_dir = function(fname)
+		-- 	local paths = {
+		-- 		"0-technical-notes",
+		-- 		"1-notes",
+		-- 	}
+		-- 	for _, sub in ipairs(paths) do
+		-- 		local full = OBSIDIAN_NOTES_DIR .. "/" .. sub
+		-- 		if fname:find(full, 1, true) then
+		-- 			return full
+		-- 		end
+		-- 	end
+		-- 	return vim.fn.getcwd()
+		-- end,
 	},
 
 	nil_ls = {

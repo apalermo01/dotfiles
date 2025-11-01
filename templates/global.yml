@@ -14,10 +14,10 @@ i3:
 # Iosevkafont
 # font: Iosevka Nerd Font Mono
 kitty:
-  font_size: 12
+  font_size: 10
 
 # font: JetBrainsMono Nerd Font Mono
 # font: FiraCode Nerd Font Mono
-font: Hack Nerd Font Mono
-# font: ZedMono Nerd Font
+# font: Hack Nerd Font Mono
+font: ZedMono Nerd Font
 # font: Terminess Nerd Font Mono

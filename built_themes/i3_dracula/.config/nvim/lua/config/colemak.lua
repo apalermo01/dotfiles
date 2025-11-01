@@ -4,10 +4,12 @@
 -- motions
 map({ "n", "v", "o" }, "n", "j", { desc = "move down" })
 map({ "n", "v", "o" }, "e", "k", { desc = "move up" })
-map({ "n", "o" }, "i", "l", { desc = "move right", noremap = true })
+-- Do NOT map 'i' in operator-pending (o) or visual (v) modes, since
+-- 'i' is the builtin textobject prefix (e.g. ciw, vi()
+map({ "n", "v" }, "i", "l", { desc = "move right", noremap = true })
 
 map({ "n", "o" }, "k", "i", { desc = "enter insert mode", noremap = true })
-map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })
+-- map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })
 
 map({ "n" }, "j", "nzz", { desc = "next item in search" })
 map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
@@ -15,25 +17,28 @@ map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
 map({ "n", "v", "o" }, "l", "e", { desc = "end of word" })
 map({ "n", "v", "o" }, "L", "E", { desc = "end of WORD"})
 
+map("v", "N", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
+map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
+
 -- window motions
 map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
 map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
 map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
 map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-map("n", "<C-h>", "<C-w>h", {desc="win left"})
-map("n", "<C-n>", "<C-w>j", {desc="win down"})
-map("n", "<C-e>", "<C-w>k", {desc="win up"})
-map("n", "<C-i>", "<C-w>l", {desc="win right"})
+map("n", "<M-h>", "<C-w>h", {desc="win left"})
+map("n", "<M-n>", "<C-w>j", {desc="win down"})
+map("n", "<M-e>", "<C-w>k", {desc="win up"})
+map("n", "<M-i>", "<C-w>l", {desc="win right"})
 -- tmux
 -- map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
 -- map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
 -- map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
 -- map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
 vim.g.tmux_navigator_no_mappings = 1
-map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
-map("n", "<C-n>", "<cmd>TmuxNavigateDown<CR>")
-map("n", "<C-e>", "<cmd>TmuxNavigateUp<CR>")
-map("n", "<C-i>", "<cmd>TmuxNavigateRight<CR>")
+map("n", "<M-h>", "<cmd>TmuxNavigateLeft<CR>")
+map("n", "<M-n>", "<cmd>TmuxNavigateDown<CR>")
+map("n", "<M-e>", "<cmd>TmuxNavigateUp<CR>")
+map("n", "<M-i>", "<cmd>TmuxNavigateRight<CR>")
 map({ "n", "x" }, "gn", "gj", { desc = "screen down" })
 map({ "n", "x" }, "ge", "gk", { desc = "screen up (Colemak)" })
 
@@ -49,13 +54,16 @@ require("hardtime").setup({
 	------------------------------------------------------------------
 	-- 1) Colemak: treat h n e i as the four directional motions
 	------------------------------------------------------------------
-	restricted_keys = {
+    restricted_keys = {
 		["h"] = { "n", "x", "o" }, -- left
 		["n"] = { "n", "x", "o" }, -- down (you map n->j)
 		["e"] = { "n", "x", "o" }, -- up   (you map e->k)
-		["i"] = { "n", "x", "o" }, -- right (you map i->l)
+        -- Do not restrict 'i' in operator-pending or visual modes, it is
+        -- needed for textobjects like ciw/viw.
+        ["i"] = { "n" }, -- right (you map i->l)
         ["k"] = false,
         ["l"] = false,
+        ["j"] = false,
 		["+"] = { "n", "x" },
 		["gn"] = { "n", "x", "o" }, -- screen-down (gj)
 		["ge"] = { "n", "x", "o" }, -- screen-up   (gk)  ⚠ see note below
@@ -157,3 +165,75 @@ require("hardtime").setup({
 		},
 	},
 })
+
+-- telescope
+local telescope = require("telescope")
+local actions = require("telescope.actions")
+telescope.setup({
+	defaults = {
+		mappings = {
+			n = {
+
+				["j"] = false,
+				["k"] = false,
+				["n"] = actions.move_selection_next,
+				["e"] = actions.move_selection_previous,
+			},
+		},
+	},
+})
+
+-- harpoon
+-- map("n", "<leader>h", function()
+-- 	harpoon:list():select(1)
+-- end, { desc = "harpoon(1)" })
+-- map("n", "<leader>n", function()
+-- 	harpoon:list():select(2)
+-- end, { desc = "harpoon(2)" })
+-- map("n", "<leader>e", function()
+-- 	harpoon:list():select(3)
+-- end, { desc = "harpoon(3)" })
+-- map("n", "<leader>i", function()
+-- 	harpoon:list():select(4)
+-- end, { desc = "harpoon(4)" })
+-- map("n", "<leader>o", function()
+-- 	harpoon:list():select(5)
+-- end, { desc = "harpoon(5)" })
+-- map("n", "<leader>'", function()
+-- 	harpoon:list():select(6)
+-- end, { desc = "harpoon(6)" })
+--
+-- map("n", "<leader><leader>h", function()
+-- 	harpoon:list():replace_at(1)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 1")
+-- end, { desc = "set current buffer to harpoon(1)" })
+--
+-- map("n", "<leader><leader>n", function()
+-- 	harpoon:list():replace_at(2)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 2")
+-- end, { desc = "set current buffer to harpoon(2)" })
+--
+-- map("n", "<leader><leader>e", function()
+-- 	harpoon:list():replace_at(3)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 3")
+-- end, { desc = "set current buffer to harpoon(3)" })
+--
+-- map("n", "<leader><leader>i", function()
+-- 	harpoon:list():replace_at(4)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 4")
+-- end, { desc = "set current buffer to harpoon(4)" })
+--
+-- map("n", "<leader><leader>o", function()
+-- 	harpoon:list():replace_at(5)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 5")
+-- end, { desc = "set current buffer to harpoon(5)" })
+--
+-- map("n", "<leader><leader>'", function()
+-- 	harpoon:list():replace_at(6)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
+-- end, { desc = "set current buffer to harpoon(6)" })
+
+-- LSP Signature 
+
+map("i", "<M-n>", "<C-o>j")
+map("i", "<M-e>", "<C-o>k")

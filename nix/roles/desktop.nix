@@ -49,6 +49,7 @@ in
     restic
     networkmanagerapplet
     kdePackages.okular
+    kdePackages.plasma-workspace
     tmux
     neovim
     sioyek

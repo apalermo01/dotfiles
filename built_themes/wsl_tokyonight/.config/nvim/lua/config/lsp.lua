@@ -34,8 +34,6 @@ local servers = {
             local file = vim.fn.expand("%:p")
             if file:match('./git/notes/.') or file:match('./github/notes/.') then
                 on_dir(vim.fn.getcwd())
-            else 
-                vim.notify("no match - not starting markdown oxide")
             end
         end
 	},

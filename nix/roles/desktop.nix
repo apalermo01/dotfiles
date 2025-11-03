@@ -22,6 +22,7 @@ in
     networkmanagerapplet
     kdePackages.okular
     kdePackages.plasma-workspace
+    tor
 
     pinentry-qt
     libnotify

@@ -29,19 +29,15 @@ local servers = {
 				},
 			},
 		}),
-		root_dir = function(fname)
-			local paths = {
-				"0-technical-notes",
-				"1-notes",
-			}
-			for _, sub in ipairs(paths) do
-				local full = OBSIDIAN_NOTES_DIR .. "/" .. sub
-				if fname:find(full, 1, true) then
-					return full
-				end
-			end
-			return vim.fn.getcwd()
-		end,
+        -- root_dir = vim.fn.expand('~/Documents/git/notes')
+        root_dir = function(bufnr, on_dir)
+            local file = vim.fn.expand("%:p")
+            if file:match('./git/notes/.') or file:match('./github/notes/.') then
+                on_dir(vim.fn.getcwd())
+            else 
+                vim.notify("no match - not starting markdown oxide")
+            end
+        end
 	},
 
 	nil_ls = {
@@ -73,18 +69,7 @@ local servers = {
 }
 
 for name, config in pairs(servers) do
+    vim.lsp.enable(name)
 	vim.lsp.config(name, config)
 end
 
-vim.lsp.enable(vim.tbl_keys(servers))
-
-vim.diagnostic.config({
-	float = {
-		focusable = false,
-		style = "minimal",
-		border = "rounded",
-		source = "always",
-		header = "",
-		prefix = "",
-	},
-})

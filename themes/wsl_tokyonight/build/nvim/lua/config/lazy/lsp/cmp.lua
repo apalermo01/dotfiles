@@ -90,7 +90,7 @@ return {
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<C-a>"] = cmp.mapping.abort(),
-				["<C-o>"] = cmp.mapping.open_docs(),
+				-- ["<C-o>"] = cmp.mapping.open_docs(),
                 ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 -- ["]"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
                 -- ["<C-y>"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y

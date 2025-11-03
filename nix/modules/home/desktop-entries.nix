@@ -30,17 +30,5 @@ in
         "x-scheme-handler/unknown" = "firefox.desktop";
       };
     };
-    # configure obsidian
-    xdg.desktopEntries.obsidian = {
-      name = "Obsidian";
-      exec = "${pkgs.obsidian}/bin/obsidian %u";
-      type = "Application";
-      terminal = false;
-      mimeType = [
-        "x-scheme-handler/obsidian"
-        "text/markdown"
-      ];
-    };
-
   };
 }

@@ -45,11 +45,4 @@
       enable = true;
     };
   };
-
-  xdg.desktop-entries = {
-    freetube = {
-      noDisplay = true;
-    };
-  };
-
 }

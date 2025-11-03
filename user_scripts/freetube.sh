@@ -4,7 +4,7 @@
 connection=$(pgrep -a openvpn$ | head -n 1 | awk '{print $NF }' | cut -d '.' -f 1)
 
 if [ -n "$connection" ]; then
-    freetube
+    freetube "$@"
 else 
-    echo "VPN: not connected"
+    notify-send "Cannot start freetube. Openvpn not connected."
 fi

@@ -11,10 +11,22 @@ in
 {
   environment.systemPackages = with pkgs; [
 
+
+    # gui
+    pavucontrol
+    freetube
+    pywalfox-native
+    xfce.thunar
+    xfce.thunar-volman
+    kdePackages.dolphin
+    libreoffice-qt6-fresh
+    networkmanagerapplet
+    kdePackages.okular
+    kdePackages.plasma-workspace
+
     pinentry-qt
     libnotify
     dunst
-    pavucontrol
     alsa-utils
     alsa-plugins
     pamixer
@@ -23,14 +35,10 @@ in
     alpaca
     brightnessctl
     lm_sensors
-    pywalfox-native
     devcontainer
     docker
     qmk
     keymapviz
-    xfce.thunar
-    xfce.thunar-volman
-    kdePackages.dolphin
     libimobiledevice
     usbmuxd
     ifuse
@@ -40,20 +48,18 @@ in
     openvpn
     puddletag
     id3v2
-    libreoffice-qt6-fresh
     cargo
     rclone
     fortune
     cowsay
     pywal
     restic
-    networkmanagerapplet
-    kdePackages.okular
-    kdePackages.plasma-workspace
     tmux
     neovim
     sioyek
     stow
+
+    # cli utils
     fzf
     yazi
     cbonsai
@@ -62,6 +68,8 @@ in
     eza
     gitui
     delta
+    man-pages
+    man-pages-posix
     oh-my-posh
     tealdeer
     starship

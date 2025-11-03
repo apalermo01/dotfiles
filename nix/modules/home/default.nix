@@ -23,6 +23,7 @@
     ./pandoc.nix
     # ./ollama.nix
     ./cursor.nix
+    ./freetube.nix
   ];
 
 }

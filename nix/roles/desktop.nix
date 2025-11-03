@@ -14,7 +14,6 @@ in
 
     # gui
     pavucontrol
-    freetube
     pywalfox-native
     xfce.thunar
     xfce.thunar-volman

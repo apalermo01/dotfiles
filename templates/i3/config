@@ -261,10 +261,10 @@ bindsym $mod+Ctrl+l exec "i3lock"
 
 # show help notification
 bindsym $mod+Ctrl+Shift+h exec $HOME/Scripts/notify_help.sh
-bindsym $mod+Ctrl+s exec $HOME/Scripts/help.sh
+bindsym $mod+Ctrl+s exec $HOME/Scripts/list_scripts.sh
 
 # open a note
-# bindsym $mod+shift+n exec bash ~/Scripts/dmenu_notes.sh
+bindsym $mod+Ctrl+n exec $HOME/Scripts/dmenu_notes.sh
 
 exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
 exec_always systemctl --user start xss-lock-i3

@@ -261,22 +261,22 @@ bindsym $mod+Ctrl+l exec "i3lock"
 
 # show help notification
 bindsym $mod+Ctrl+Shift+h exec $HOME/Scripts/notify_help.sh
-bindsym $mod+Ctrl+s exec $HOME/Scripts/help.sh
+bindsym $mod+Ctrl+s exec $HOME/Scripts/list_scripts.sh
 
 # open a note
-# bindsym $mod+shift+n exec bash ~/Scripts/dmenu_notes.sh
+bindsym $mod+Shift+n exec bash $HOME/Scripts/dmenu_notes.sh
 
 exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
 exec_always systemctl --user start xss-lock-i3
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #FF983E     #091219      #091219      #FF983E	    #FF983E
-client.focused_inactive	 #D7883C     #091219      #091219	    #D7883C	    #D7883C
-client.unfocused	     #D7883C     #091219      #091219	    #D7883C	    #D7883C
-client.urgent	         #ff0000        #ff0000             #091219	    #ff0000       #ff0000
-client.placeholder	     #D7883C     #091219      #091219	    #FF983E	    #FF983E
+client.focused	         #6C6D90     #12121b      #12121b      #6C6D90	    #6C6D90
+client.focused_inactive	 #726B8F     #12121b      #12121b	    #726B8F	    #726B8F
+client.unfocused	     #726B8F     #12121b      #12121b	    #726B8F	    #726B8F
+client.urgent	         #ff0000        #ff0000             #12121b	    #ff0000       #ff0000
+client.placeholder	     #726B8F     #12121b      #12121b	    #6C6D90	    #6C6D90
 
-client.background	#091219
+client.background	#12121b
 
 # Gaps
 gaps inner 10
@@ -296,4 +296,4 @@ exec wal -R
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/fox.png
+exec_always feh --bg-fill /home/alex/Pictures/wallpapers/color-waves.png

@@ -9,7 +9,7 @@
 --          excepction: paste from clipboard: <leader>pc
 -- formatting:         <leader>c
 -- git:                <leader>g
--- harpoon / quick switching: <leader>h,j,k,l,;
+-- harpoon / quick switching: <leader>1,2,3,4,5,6
 --          -- do not use these keys for any other top level headers
 -- obsidian            <leader>o
 --          exception: show outline: <leader>ol
@@ -33,34 +33,6 @@ function CloseFloatingOrClearHighlight()
 end
 
 -----------------------------------------------------------------
--- remappings for colemak
------------------------------------------------------------------
--- motions
-map({ "n", "v" }, "n", "j", { desc = "move down" })
-map({ "n", "v" }, "e", "k", { desc = "move up" })
-map({ "n", "v" }, "i", "l", { desc = "move right" })
-
-map({ "n" }, "k", "i", { desc = "enter insert mode" })
-map({ "n" }, "K", "I", { desc = "capital I" })
-
-map({ "n" }, "j", "nzz", { desc = "next item in search" })
-map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
-
-map({ "n", "v" }, "l", "e", { desc = "end of word" })
-
--- window motions
-map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
-map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
-map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
-map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-
--- tmux
-map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
-map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
-map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
-map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
-
------------------------------------------------------------------
 -- misc
 -----------------------------------------------------------------
 
@@ -80,8 +52,8 @@ map("n", "<C-b>", "<C-b>zz")
 
 -- https://www.youtube.com/watch?v=w7i4amO_zaE
 -- move selected lines up/down in visualmode
-map("v", "N", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
-map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 
 -- join lines without moving cursor
 -- map("n", "N", "mzJ`z")
@@ -130,6 +102,16 @@ map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
 -- automatically go back into visual mode after indenting
 map("v", ">", ">gv")
 map("v", "<", "<gv")
+
+-- window motions
+map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
+map("n", "<leader>wj", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
+map("n", "<leader>wk", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
+map("n", "<leader>wl", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
+map("n", "<M-h>", "<C-w>h", {desc="win left"})
+map("n", "<M-j>", "<C-w>j", {desc="win down"})
+map("n", "<M-k>", "<C-w>k", {desc="win up"})
+map("n", "<M-l>", "<C-w>l", {desc="win right"})
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
@@ -282,16 +264,16 @@ end, { desc = "trouble: previous diagnostic" })
 -- obsidian
 -----------------------------------------------------------------
 -- Show backlinks via Telescope
-map("n", "<leader>sbl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
+map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- template note
-map("n", "<leader>st", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
+map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
 
 -- Delete current note
-map("n", "<leader>sdd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
+map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
 
 -- Open current file in the Obsidian app (requires `obsidian` CLI in PATH)
-map("n", "<leader>so", function()
+map("n", "<leader>oo", function()
 	local vault_root = OBSIDIAN_NOTES_DIR
 	local vault_name = vim.fn.fnamemodify(vault_root, ":t")
 	local function urlencode(str)
@@ -315,21 +297,6 @@ end, { desc = "open current file in Obsidian" })
 --------------------------------------------------------------------------------
 -- TELESCOPE (pickers) (<leader>p prefix)
 --------------------------------------------------------------------------------
-local telescope = require("telescope")
-local actions = require("telescope.actions")
-telescope.setup({
-	defaults = {
-		mappings = {
-			n = {
-
-				["j"] = false,
-				["k"] = false,
-				["n"] = actions.move_selection_next,
-				["e"] = actions.move_selection_previous,
-			},
-		},
-	},
-})
 local builtin = require("telescope.builtin")
 
 -- Find all files (hidden + no ignore)
@@ -491,65 +458,108 @@ map("n", "<leader>gh", builtin.git_bcommits, { desc = "Telescope: commit history
 --------------------------------------------------------------------------------
 -- harpoon
 --------------------------------------------------------------------------------
-local harpoon = require("harpoon")
-map("n", "<leader>a", function()
-	harpoon.ui:toggle_quick_menu(harpoon:list())
-end, { desc = "show harpoon list" })
+-- local harpoon = require("harpoon")
+-- map("n", "<leader>a", function()
+-- 	harpoon.ui:toggle_quick_menu(harpoon:list())
+-- end, { desc = "show harpoon list" })
 -- map("n", "<leader>a", function()
 -- 	harpoon:list():add()
 -- end, { desc = "harpoon add" })
 
-map("n", "<leader>h", function()
-	harpoon:list():select(1)
-end, { desc = "harpoon(1)" })
-map("n", "<leader>n", function()
-	harpoon:list():select(2)
-end, { desc = "harpoon(2)" })
-map("n", "<leader>e", function()
-	harpoon:list():select(3)
-end, { desc = "harpoon(3)" })
-map("n", "<leader>i", function()
-	harpoon:list():select(4)
-end, { desc = "harpoon(4)" })
-map("n", "<leader>o", function()
-	harpoon:list():select(5)
-end, { desc = "harpoon(5)" })
-map("n", "<leader>'", function()
-	harpoon:list():select(6)
-end, { desc = "harpoon(6)" })
-
-map("n", "<leader><leader>h", function()
-	harpoon:list():replace_at(1)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 1")
-end, { desc = "set current buffer to harpoon(1)" })
-
-map("n", "<leader><leader>n", function()
-	harpoon:list():replace_at(2)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 2")
-end, { desc = "set current buffer to harpoon(2)" })
-
-map("n", "<leader><leader>e", function()
-	harpoon:list():replace_at(3)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 3")
-end, { desc = "set current buffer to harpoon(3)" })
-
-map("n", "<leader><leader>i", function()
-	harpoon:list():replace_at(4)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 4")
-end, { desc = "set current buffer to harpoon(4)" })
-
-map("n", "<leader><leader>o", function()
-	harpoon:list():replace_at(5)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 5")
-end, { desc = "set current buffer to harpoon(5)" })
-
-map("n", "<leader><leader>'", function()
-	harpoon:list():replace_at(6)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
-end, { desc = "set current buffer to harpoon(6)" })
-
+-- map("n", "<leader>h", function()
+-- 	harpoon:list():select(1)
+-- end, { desc = "harpoon(1)" })
+-- map("n", "<leader>n", function()
+-- 	harpoon:list():select(2)
+-- end, { desc = "harpoon(2)" })
+-- map("n", "<leader>e", function()
+-- 	harpoon:list():select(3)
+-- end, { desc = "harpoon(3)" })
+-- map("n", "<leader>i", function()
+-- 	harpoon:list():select(4)
+-- end, { desc = "harpoon(4)" })
+-- map("n", "<leader>o", function()
+-- 	harpoon:list():select(5)
+-- end, { desc = "harpoon(5)" })
+-- map("n", "<leader>'", function()
+-- 	harpoon:list():select(6)
+-- end, { desc = "harpoon(6)" })
+--
+-- map("n", "<leader><leader>h", function()
+-- 	harpoon:list():replace_at(1)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 1")
+-- end, { desc = "set current buffer to harpoon(1)" })
+--
+-- map("n", "<leader><leader>n", function()
+-- 	harpoon:list():replace_at(2)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 2")
+-- end, { desc = "set current buffer to harpoon(2)" })
+--
+-- map("n", "<leader><leader>e", function()
+-- 	harpoon:list():replace_at(3)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 3")
+-- end, { desc = "set current buffer to harpoon(3)" })
+--
+-- map("n", "<leader><leader>i", function()
+-- 	harpoon:list():replace_at(4)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 4")
+-- end, { desc = "set current buffer to harpoon(4)" })
+--
+-- map("n", "<leader><leader>o", function()
+-- 	harpoon:list():replace_at(5)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 5")
+-- end, { desc = "set current buffer to harpoon(5)" })
+--
+-- map("n", "<leader><leader>'", function()
+-- 	harpoon:list():replace_at(6)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
+-- end, { desc = "set current buffer to harpoon(6)" })
+--
 -------------------------------
 --- No neck pain --------------
 -------------------------------
 
 map("n", "<leader>ck", "<cmd>NoNeckPain<CR>")
+
+
+-------------------------------
+--- Vim Tmux Navigator --------
+-------------------------------
+map("n", "M-h", "<cmd><C-U>TmuxNavigateLeft<CR>")
+map("n", "M-j", "<cmd><C-U>TmuxNavigateDown<CR>")
+map("n", "M-k", "<cmd><C-U>TmuxNavigateUp<CR>")
+map("n", "M-l", "<cmd><C-U>TmuxNavigateRight<CR>")
+
+-------------------------------
+--- LSP Signature -------------
+-------------------------------
+-- local function escape_term_codes(str)
+--     return vim.api.nvim_replace_termcodes(str, true, false, true)
+-- end
+--
+-- local function is_float_open(window_id)
+--     return window_id and window_id ~= 0 and vim.api.nvim_win_is_valid(window_id)
+-- end
+--
+-- local function scroll_float(mapping)
+--     local win_id = _G._LSP_SIG_CFG.winnr;
+--
+--     if is_float_open(win_id) then
+--         vim.fn.win_execute(win_id, ':normal! ' .. mapping)
+--     end
+-- end
+--
+-- local scroll_up_mapping = escape_term_codes('<c-u>')
+-- local scroll_down_mapping = escape_term_codes('<c-d>')
+-- vim.keymap.set('i', '<c-u>', function() scroll_float(scroll_up_mapping) end, {})
+-- vim.keymap.set('i', '<c-d>', function() scroll_float(scroll_down_mapping) end, {})
+
+-- vim.keymap.set('i', '<C-d>', function()
+--   vim.lsp.util.scroll_preview(4)
+-- end, {})
+--
+-- vim.keymap.set('i', '<C-u>', function()
+--   vim.lsp.util.scroll_preview(-4)
+-- end, {})
+map("i", "<M-j>", "<C-o>j")
+map("i", "<M-k>", "<C-o>k")

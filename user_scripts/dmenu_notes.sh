@@ -16,8 +16,9 @@ choice=$(find ~/Documents/git/notes/ \
     done |
     rofi -dmenu -i -p "select a note: ")
 
-if ! "${choice}"; then 
-    exit(0)
+if [ -z "${choice}" ]; then 
+    notify-send "empty selection, canceling"
+    exit 0
 fi
 if ! echo "${choice}" | grep '/'; then
     choice="0-Inbox/$choice"

@@ -24,6 +24,7 @@ in
     kdePackages.plasma-workspace
     tor-browser
     anytype
+    standardnotes
 
     pinentry-qt
     libnotify

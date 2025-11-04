@@ -41,6 +41,8 @@
               "discord"
               "cursor"
               "via"
+              "anytype"
+              "anytype-heart"
             ];
         };
       };

@@ -23,6 +23,7 @@ in
     kdePackages.okular
     kdePackages.plasma-workspace
     tor-browser
+    anytype
 
     pinentry-qt
     libnotify

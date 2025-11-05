@@ -11,7 +11,6 @@ in
 {
   environment.systemPackages = with pkgs; [
 
-
     # gui
     pavucontrol
     pywalfox-native
@@ -93,7 +92,7 @@ in
     llvmPackages_latest.libllvm
     llvmPackages_latest.libcxx
     llvmPackages_latest.clang
-    clang-tools 
+    clang-tools
     clang
 
     # formatters
@@ -199,11 +198,11 @@ in
   security.rtkit.enable = true;
 
   # fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka
-  ];
+  # fonts.packages = with pkgs; [
+    # nerd-fonts.fira-code
+    # nerd-fonts.jetbrains-mono
+    # nerd-fonts.iosevka
+  # ];
 
   # users
   users.users.alex = {

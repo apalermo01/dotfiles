@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 -- top-level keys:
 -- buffer operations:  <leader>b
 -- tab operations:     <leader>t
@@ -11,7 +9,7 @@ vim.g.mapleader = " "
 --          excepction: paste from clipboard: <leader>pc
 -- formatting:         <leader>c
 -- git:                <leader>g
--- harpoon / quick switching: <leader>h,j,k,l,;
+-- harpoon / quick switching: <leader>1,2,3,4,5,6
 --          -- do not use these keys for any other top level headers
 -- obsidian            <leader>o
 --          exception: show outline: <leader>ol
@@ -38,40 +36,27 @@ end
 -- misc
 -----------------------------------------------------------------
 
--- netrw
--- map("n", "<leader>ex", vim.cmd.Ex)
-
 -- Newlines above and below without leaving normal mode
-map("n", "oo", "o<Esc>k")
-map("n", "OO", "O<Esc>j")
+map("n", "oo", "o<Esc>k", { desc = "newline below without leaving normal mode" })
+map("n", "OO", "O<Esc>j", { desc = "new line above witnout leaving normal mode" })
 
 -- use escape to clear highlights and close floating windowns
 map("i", "<C-c>", "<Esc>")
 map("n", "<Esc>", CloseFloatingOrClearHighlight, { noremap = true, silent = true })
 
 -- movement
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz", { desc = "half page down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "half page up" })
 map("n", "<C-f>", "<C-f>zz")
 map("n", "<C-b>", "<C-b>zz")
 
--- tmux
-map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
-map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>")
-map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
-map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>")
-
 -- https://www.youtube.com/watch?v=w7i4amO_zaE
 -- move selected lines up/down in visualmode
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 
 -- join lines without moving cursor
-map("n", "J", "mzJ`z")
-
--- keep search matches centered
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
+-- map("n", "N", "mzJ`z")
 
 -- paste over visual selection wihout yanking it
 map("x", "<leader>p", '"_dP')
@@ -93,7 +78,7 @@ map({ "v", "n" }, "<leader>pc", '"+p')
 -- map("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 -- spellcheck
-map("n", "<leader>s", function()
+map("n", "<leader><leader>s", function()
 	vim.wo.spell = not vim.wo.spell
 end, { desc = "toggle spellcheck" })
 
@@ -104,6 +89,29 @@ map("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 map("n", "<leader>ol", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project config" })
+
+-- navigate by { }
+map("n", "[[", "?{<CR>w99[{")
+map("n", "][", "/}<CR>b99]}")
+map("n", "]]", "j0[[%/{<CR>")
+map("n", "[]", "k$][%?}<CR>")
+
+-- diffview
+map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
+
+-- automatically go back into visual mode after indenting
+map("v", ">", ">gv")
+map("v", "<", "<gv")
+
+-- window motions
+map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
+map("n", "<leader>wj", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
+map("n", "<leader>wk", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
+map("n", "<leader>wl", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
+map("n", "<M-h>", "<C-w>h", {desc="win left"})
+map("n", "<M-j>", "<C-w>j", {desc="win down"})
+map("n", "<M-k>", "<C-w>k", {desc="win up"})
+map("n", "<M-l>", "<C-w>l", {desc="win right"})
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
@@ -128,7 +136,7 @@ map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "tabonly" })
 -----------------------------------------------------------------
 -- buffers
 -----------------------------------------------------------------
-map("n", "<leader>bN", "<cmd>enew<CR>", { desc = "new buffer" })
+map("n", "<leader>N", "<cmd>enew<CR>", { desc = "new buffer" })
 map("n", "<leader>x", function()
 	require("bufdelete").bufdelete(0, true)
 end, { desc = "delete this buffer" })
@@ -179,196 +187,90 @@ end, { desc = "trouble: previous diagnostic" })
 --     require("dap").continue({ before = get_args })
 -- end, { desc = "DAP: Run with args" })
 
-map("n", "<leader>dB", function()
-	require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
-end, { desc = "DAP: Breakpoint condition" })
-
-map("n", "<leader>db", function()
-	require("dap").toggle_breakpoint()
-end, { desc = "DAP: Toggle breakpoint" })
-
-map("n", "<leader>dc", function()
-	require("dap").continue()
-end, { desc = "DAP: Run/Continue" })
-
-map("n", "<leader>dC", function()
-	require("dap").run_to_cursor()
-end, { desc = "DAP: Run to cursor" })
-
-map("n", "<leader>dg", function()
-	require("dap").goto_()
-end, { desc = "DAP: Go to line (no execute)" })
-
-map("n", "<leader>di", function()
-	require("dap").step_into()
-end, { desc = "DAP: Step into" })
-
-map("n", "<leader>dj", function()
-	require("dap").down()
-end, { desc = "DAP: Down" })
-
-map("n", "<leader>dk", function()
-	require("dap").up()
-end, { desc = "DAP: Up" })
-
-map("n", "<leader>dl", function()
-	require("dap").run_last()
-end, { desc = "DAP: Run last" })
-
-map("n", "<leader>do", function()
-	require("dap").step_out()
-end, { desc = "DAP: Step out" })
-
-map("n", "<leader>dO", function()
-	require("dap").step_over()
-end, { desc = "DAP: Step over" })
-
-map("n", "<leader>dP", function()
-	require("dap").pause()
-end, { desc = "DAP: Pause" })
-
-map("n", "<leader>dr", function()
-	require("dap").repl.toggle()
-end, { desc = "DAP: Toggle REPL" })
-
-map("n", "<leader>ds", function()
-	require("dap").session()
-end, { desc = "DAP: Session" })
-
-map("n", "<leader>dx", function()
-	require("dap").terminate()
-end, { desc = "DAP: Terminate" })
-
-map("n", "<leader>dw", function()
-	require("dap.ui.widgets").hover()
-end, { desc = "DAP: Widgets" })
-
--- nvim-dap-ui keymaps
-map("n", "<leader>du", function()
-	require("dapui").toggle({})
-end, { desc = "DAP: Toggle UI" })
-
-map({ "n", "v" }, "<leader>de", function()
-	require("dapui").eval()
-end, { desc = "DAP: Eval" })
-
+-- map("n", "<leader>dB", function()
+-- 	require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+-- end, { desc = "DAP: Breakpoint condition" })
+--
+-- map("n", "<leader>db", function()
+-- 	require("dap").toggle_breakpoint()
+-- end, { desc = "DAP: Toggle breakpoint" })
+--
+-- map("n", "<leader>dc", function()
+-- 	require("dap").continue()
+-- end, { desc = "DAP: Run/Continue" })
+--
+-- map("n", "<leader>dC", function()
+-- 	require("dap").run_to_cursor()
+-- end, { desc = "DAP: Run to cursor" })
+--
+-- map("n", "<leader>dg", function()
+-- 	require("dap").goto_()
+-- end, { desc = "DAP: Go to line (no execute)" })
+--
+-- map("n", "<leader>di", function()
+-- 	require("dap").step_into()
+-- end, { desc = "DAP: Step into" })
+--
+-- map("n", "<leader>dj", function()
+-- 	require("dap").down()
+-- end, { desc = "DAP: Down" })
+--
+-- map("n", "<leader>dk", function()
+-- 	require("dap").up()
+-- end, { desc = "DAP: Up" })
+--
+-- map("n", "<leader>dl", function()
+-- 	require("dap").run_last()
+-- end, { desc = "DAP: Run last" })
+--
+-- map("n", "<leader>do", function()
+-- 	require("dap").step_out()
+-- end, { desc = "DAP: Step out" })
+--
+-- map("n", "<leader>dO", function()
+-- 	require("dap").step_over()
+-- end, { desc = "DAP: Step over" })
+--
+-- map("n", "<leader>dP", function()
+-- 	require("dap").pause()
+-- end, { desc = "DAP: Pause" })
+--
+-- map("n", "<leader>dr", function()
+-- 	require("dap").repl.toggle()
+-- end, { desc = "DAP: Toggle REPL" })
+--
+-- map("n", "<leader>ds", function()
+-- 	require("dap").session()
+-- end, { desc = "DAP: Session" })
+--
+-- map("n", "<leader>dx", function()
+-- 	require("dap").terminate()
+-- end, { desc = "DAP: Terminate" })
+--
+-- map("n", "<leader>dw", function()
+-- 	require("dap.ui.widgets").hover()
+-- end, { desc = "DAP: Widgets" })
+--
+-- -- nvim-dap-ui keymaps
+-- map("n", "<leader>du", function()
+-- 	require("dapui").toggle({})
+-- end, { desc = "DAP: Toggle UI" })
+--
+-- map({ "n", "v" }, "<leader>de", function()
+-- 	require("dapui").eval()
+-- end, { desc = "DAP: Eval" })
+--
 -----------------------------------------------------------------
 -- obsidian
 -----------------------------------------------------------------
--- Jump to Obsidian notes directory
-map(
-	"n",
-	"<leader>ond",
-	":cd " .. (OBSIDIAN_NOTES_DIR) .. "<CR>",
-	{ desc = "jump to notes directory" }
-)
-
--- Format current file as Obsidian note (only if inside vault)
-map("n", "<leader>onf", function()
-	local current_file = vim.fn.expand("%:p")
-	local vault = OBSIDIAN_NOTES_DIR
-	if not current_file:find(vault, 1, true) then
-		print("Cannot format file— not in notes directory")
-		return
-	end
-	vim.cmd("ObsidianTemplate note")
-end, { desc = "format current file as a note" })
-
 -- Show backlinks via Telescope
 map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
--- Move current note to technical inbox
-map(
-	"n",
-	"<leader>okt",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/1-zettelkasten<CR>:bd<CR>",
-	{ desc = "move to technical notes" }
-)
-
--- Move current note to personal inbox
-map(
-	"n",
-	"<leader>okp",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/1-zettelkasten<CR>:bd<CR>",
-	{ desc = "move to personal notes" }
-)
-
--- Move to source material (technical)
-map(
-	"n",
-	"<leader>ost",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/2-source-material<CR>:bd<CR>",
-	{ desc = "move to source material (technical)" }
-)
-
--- Move to source material (private)
-map(
-	"n",
-	"<leader>osp",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/2-source-material<CR>:bd<CR>",
-	{ desc = "move to source material (private)" }
-)
-
--- Move to tags (normal)
-map(
-	"n",
-	"<leader>ott",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/3-tags<CR>:bd<CR>",
-	{ desc = "move to tags (normal)" }
-)
-
--- Move to tags (private)
-map(
-	"n",
-	"<leader>otp",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/3-tags<CR>:bd<CR>",
-	{ desc = "move to tags (private)" }
-)
-
--- Move to rough notes (normal)
-map(
-	"n",
-	"<leader>ort",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/0-notes/4-rough-notes<CR>:bd<CR>",
-	{ desc = "move to rough notes (normal)" }
-)
-
--- Move to rough notes (private)
-map(
-	"n",
-	"<leader>orp",
-	":!mv '%:p' " .. (OBSIDIAN_NOTES_DIR) .. "/0-notes/1-private/4-rough-notes<CR>:bd<CR>",
-	{ desc = "move to rough notes (private)" }
-)
+-- template note
+map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
 
 -- Delete current note
 map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
-
--- Create a new note in the technical inbox
-map("n", "<leader>ont", function()
-	local input = vim.fn.input("new note name: ")
-	if input == "" then
-		print("Expected an argument!")
-		return
-	end
-	local formatted_name = os.date("%Y-%m-%d") .. "_" .. input:gsub(" ", "-") .. ".md"
-	local notes_path = OBSIDIAN_NOTES_DIR
-	local full_path = notes_path .. "/0-notes/0-notes/0-inbox/" .. formatted_name
-	vim.cmd("edit " .. full_path)
-end, { desc = "New note in normal folder" })
-
--- Create a new note in the private inbox
-map("n", "<leader>onp", function()
-	local input = vim.fn.input("new note name: ")
-	if input == "" then
-		print("Expected an argument!")
-		return
-	end
-	local formatted_name = os.date("%Y-%m-%d") .. "_" .. input:gsub(" ", "-") .. ".md"
-	local notes_path = OBSIDIAN_NOTES_DIR
-	local full_path = notes_path .. "/0-notes/1-private/0-inbox/" .. formatted_name
-	vim.cmd("edit " .. full_path)
-end, { desc = "New note in private folder" })
 
 -- Open current file in the Obsidian app (requires `obsidian` CLI in PATH)
 map("n", "<leader>oo", function()
@@ -403,12 +305,14 @@ map("n", "<leader>pa", function()
 end, { desc = "Telescope: find all files" })
 
 -- File browser
-map("n", "<leader>pbb", "<cmd>Telescope file_browser<CR>", { desc = "Telescope: file browser" })
+-- map("n", "<leader>pbb", "<cmd>Telescope file_browser<CR>", { desc = "Telescope: file browser" })
 
 -- Search open buffers
-map("n", "<leader>pbu", builtin.buffers, { desc = "Telescope: search open buffers" })
+map("n", "<leader>b", builtin.buffers, { desc = "Telescope: search open buffers" })
+map("n", "<leader>pb", builtin.buffers, { desc = "Telescope: search open buffers" })
 
 -- Find files
+map("n", "<leader>f", builtin.find_files, { desc = "Telescope: find files" })
 map("n", "<leader>pf", builtin.find_files, { desc = "Telescope: find files" })
 
 -- Live grep
@@ -423,9 +327,6 @@ map("n", "<leader>pj", builtin.jumplist, { desc = "Telescope: jumplist" })
 -- List marks
 map("n", "<leader>pma", builtin.marks, { desc = "Telescope: list marks" })
 
--- List man pages
-map("n", "<leader>pmp", builtin.man_pages, { desc = "Telescope: list man pages" })
-
 -- Search old files
 map("n", "<leader>po", builtin.oldfiles, { desc = "Telescope: search old files" })
 
@@ -437,6 +338,9 @@ map("n", "<leader>pss", builtin.spell_suggest, { desc = "Telescope: spell sugges
 
 -- List registers
 map("n", '<leader>p"', builtin.registers, { desc = "Telescope: list registers" })
+
+-- keymaps
+map("n", "<leader>k", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- Prompted grep for a string
 map("n", "<leader>pw", function()
@@ -461,7 +365,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, vim.tbl_extend("force", opts, { desc = "LSP: go to definition" }))
 
 		-- Hover
-		map("n", "K", function()
+		map("n", "<leader>K", function()
 			vim.lsp.buf.hover()
 		end, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
 
@@ -554,59 +458,108 @@ map("n", "<leader>gh", builtin.git_bcommits, { desc = "Telescope: commit history
 --------------------------------------------------------------------------------
 -- harpoon
 --------------------------------------------------------------------------------
-local harpoon = require("harpoon")
-map("n", "<leader>e", function()
-	harpoon.ui:toggle_quick_menu(harpoon:list())
-end, { desc = "show harpoon list" })
-map("n", "<leader>a", function()
-	harpoon:list():add()
-end, { desc = "harpoon add" })
+-- local harpoon = require("harpoon")
+-- map("n", "<leader>a", function()
+-- 	harpoon.ui:toggle_quick_menu(harpoon:list())
+-- end, { desc = "show harpoon list" })
+-- map("n", "<leader>a", function()
+-- 	harpoon:list():add()
+-- end, { desc = "harpoon add" })
 
-map("n", "<leader>h", function()
-	harpoon:list():select(1)
-end, { desc = "harpoon(1)" })
-map("n", "<leader>j", function()
-	harpoon:list():select(2)
-end, { desc = "harpoon(2)" })
-map("n", "<leader>k", function()
-	harpoon:list():select(3)
-end, { desc = "harpoon(3)" })
-map("n", "<leader>l", function()
-	harpoon:list():select(4)
-end, { desc = "harpoon(4)" })
-map("n", "<leader>;", function()
-	harpoon:list():select(5)
-end, { desc = "harpoon(5)" })
-map("n", "<leader>'", function()
-	harpoon:list():select(5)
-end, { desc = "harpoon(5)" })
+-- map("n", "<leader>h", function()
+-- 	harpoon:list():select(1)
+-- end, { desc = "harpoon(1)" })
+-- map("n", "<leader>n", function()
+-- 	harpoon:list():select(2)
+-- end, { desc = "harpoon(2)" })
+-- map("n", "<leader>e", function()
+-- 	harpoon:list():select(3)
+-- end, { desc = "harpoon(3)" })
+-- map("n", "<leader>i", function()
+-- 	harpoon:list():select(4)
+-- end, { desc = "harpoon(4)" })
+-- map("n", "<leader>o", function()
+-- 	harpoon:list():select(5)
+-- end, { desc = "harpoon(5)" })
+-- map("n", "<leader>'", function()
+-- 	harpoon:list():select(6)
+-- end, { desc = "harpoon(6)" })
+--
+-- map("n", "<leader><leader>h", function()
+-- 	harpoon:list():replace_at(1)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 1")
+-- end, { desc = "set current buffer to harpoon(1)" })
+--
+-- map("n", "<leader><leader>n", function()
+-- 	harpoon:list():replace_at(2)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 2")
+-- end, { desc = "set current buffer to harpoon(2)" })
+--
+-- map("n", "<leader><leader>e", function()
+-- 	harpoon:list():replace_at(3)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 3")
+-- end, { desc = "set current buffer to harpoon(3)" })
+--
+-- map("n", "<leader><leader>i", function()
+-- 	harpoon:list():replace_at(4)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 4")
+-- end, { desc = "set current buffer to harpoon(4)" })
+--
+-- map("n", "<leader><leader>o", function()
+-- 	harpoon:list():replace_at(5)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 5")
+-- end, { desc = "set current buffer to harpoon(5)" })
+--
+-- map("n", "<leader><leader>'", function()
+-- 	harpoon:list():replace_at(6)
+-- 	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
+-- end, { desc = "set current buffer to harpoon(6)" })
+--
+-------------------------------
+--- No neck pain --------------
+-------------------------------
 
-map("n", "<leader><leader>h", function()
-	harpoon:list():replace_at(1)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 1")
-end, { desc = "set current buffer to harpoon(1)" })
+map("n", "<leader>ck", "<cmd>NoNeckPain<CR>")
 
-map("n", "<leader><leader>j", function()
-	harpoon:list():replace_at(2)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 2")
-end, { desc = "set current buffer to harpoon(2)" })
 
-map("n", "<leader><leader>k", function()
-	harpoon:list():replace_at(3)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 3")
-end, { desc = "set current buffer to harpoon(3)" })
+-------------------------------
+--- Vim Tmux Navigator --------
+-------------------------------
+map("n", "M-h", "<cmd><C-U>TmuxNavigateLeft<CR>")
+map("n", "M-j", "<cmd><C-U>TmuxNavigateDown<CR>")
+map("n", "M-k", "<cmd><C-U>TmuxNavigateUp<CR>")
+map("n", "M-l", "<cmd><C-U>TmuxNavigateRight<CR>")
 
-map("n", "<leader><leader>l", function()
-	harpoon:list():replace_at(4)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 4")
-end, { desc = "set current buffer to harpoon(4)" })
+-------------------------------
+--- LSP Signature -------------
+-------------------------------
+-- local function escape_term_codes(str)
+--     return vim.api.nvim_replace_termcodes(str, true, false, true)
+-- end
+--
+-- local function is_float_open(window_id)
+--     return window_id and window_id ~= 0 and vim.api.nvim_win_is_valid(window_id)
+-- end
+--
+-- local function scroll_float(mapping)
+--     local win_id = _G._LSP_SIG_CFG.winnr;
+--
+--     if is_float_open(win_id) then
+--         vim.fn.win_execute(win_id, ':normal! ' .. mapping)
+--     end
+-- end
+--
+-- local scroll_up_mapping = escape_term_codes('<c-u>')
+-- local scroll_down_mapping = escape_term_codes('<c-d>')
+-- vim.keymap.set('i', '<c-u>', function() scroll_float(scroll_up_mapping) end, {})
+-- vim.keymap.set('i', '<c-d>', function() scroll_float(scroll_down_mapping) end, {})
 
-map("n", "<leader><leader>;", function()
-	harpoon:list():replace_at(5)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 5")
-end, { desc = "set current buffer to harpoon(5)" })
-
-map("n", "<leader><leader>'", function()
-	harpoon:list():replace_at(6)
-	vim.notify("added " .. vim.fn.expand("%:h") .. " to harpoon 6")
-end, { desc = "set current buffer to harpoon(6)" })
+-- vim.keymap.set('i', '<C-d>', function()
+--   vim.lsp.util.scroll_preview(4)
+-- end, {})
+--
+-- vim.keymap.set('i', '<C-u>', function()
+--   vim.lsp.util.scroll_preview(-4)
+-- end, {})
+map("i", "<M-j>", "<C-o>j")
+map("i", "<M-k>", "<C-o>k")

@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*.md",
 	callback = function()
 		local path = vim.api.nvim_buf_get_name(0)
-		if not string.find(path, "templates/note.md") then
+		if not string.find(path, "5-Templates") then
 			local current_date = os.date("%Y-%m-%d")
 			local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
 
@@ -95,16 +95,46 @@ vim.api.nvim_create_autocmd("QuitPre", {
 	end,
 })
 
--- use zen to open urls
+-- use firefox to open urls
 local _orig_open = vim.ui.open
 
 vim.ui.open = function(input, opts)
-    local target = input or vim.fn.expand("<cfile>")
+	local target = input or vim.fn.expand("<cfile>")
 
-    if target:match("^[%a][%w+,-]*://") then
-        vim.fn.jobstart({ "firefox", target }, { detach = true })
-        vim.notify('opening ' .. target .. ' in firefox')
-    else
-        return _orig_open(input, opts)
-    end
+	if target:match("^[%a][%w+,-]*://") then
+		vim.fn.jobstart({ "firefox", target }, { detach = true })
+		vim.notify("opening " .. target .. " in firefox")
+	else
+		return _orig_open(input, opts)
+	end
 end
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = { "*" },
+	callback = function()
+		if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+			vim.api.nvim_exec("normal! g'\"", false)
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+        vim.cmd("NoNeckPain")
+    end,
+})
+
+-- show some reminders on startup 
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function() 
+        vim.notify("Reminders: \n"..
+                   "<leader>ck => toggle NoNeckPain\n"..
+                   "K          => LSP hover \n"..
+                   "              Then <c-w>w to focus floating window\n"..
+                   "l/L        => end of word / WORD"..
+                   "use M-{hnei/hjkl} to navigate tmux panes")
+    end,
+})
+
+-- snippets 
+require("luasnip.loaders.from_vscode").lazy_load()

@@ -12,17 +12,7 @@
   ];
 
   home.packages = with pkgs.nerd-fonts; [
-    terminess-ttf
-    jetbrains-mono
-    iosevka
-    iosevka-term
-    iosevka-term-slab
-    hack
-    fira-code
-    fira-mono
-    zed-mono
-    comic-shanns-mono
-    blex-mono
+    nerdfonts
   ];
 
   # define what will be installed by home manager here

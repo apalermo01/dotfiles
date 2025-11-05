@@ -4,9 +4,9 @@ set $mod Mod4
 
 # change focus
 bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+n focus down
+bindsym $mod+e focus up
+bindsym $mod+i focus right
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -15,9 +15,9 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+n move down
+bindsym $mod+Shift+e move up
+bindsym $mod+Shift+i move right
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -36,9 +36,9 @@ bindsym $mod+q split toggle; exec notify-send 'toggled splt method'
 bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking; exec notify-send 'stack layout. $mod+w to tab'
-bindsym $mod+w layout tabbed; exec notify-send 'tabbed layout. $mod+s to stack
-bindsym $mod+e layout toggle split
+bindsym $mod+c layout stacking; exec notify-send 'stack layout. $mod+t to tab'
+bindsym $mod+t layout tabbed; exec notify-send 'tabbed layout. $mod+k to stack'
+bindsym $mod+s layout toggle split; exec notify-send 'toggle split'
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -112,7 +112,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
@@ -132,7 +132,7 @@ mode "$mode_system" {
 }
 
 # Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"; exec notify-send 'resize use hjkl to resize- Esc to go back to normal'
+bindsym $mod+r mode "resize"; exec notify-send 'Use arrow keys to resize- Esc to go back to normal'
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         # Pressing left will shrink the window’s width.
@@ -145,12 +145,13 @@ mode "resize" {
         bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # exit resize mode: Enter or Escape
+        
         bindsym Return mode "default"; exec notify-send 'back to default mode'
         bindsym Escape mode "default"; exec notify-send 'back to default mode'
 }
@@ -198,9 +199,9 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"; exec notify-send "back to default mode"
 }
 
-bindsym $mod+u border none
-bindsym $mod+y border pixel 5
-bindsym $mod+n border normal
+bindsym $mod+u border none; exec notify-send "set border none. \$mod+y for pixel 5. \$mod+m for normal"
+bindsym $mod+y border pixel 5; exec notify-send "set border pixel 5. \$mod+u for none. \$mod+m for normal"
+bindsym $mod+m border normal; exec notify-send "set border normal. \$mod+u for none. \$mod+y for pixel 5"
 
 # Window kill command
 bindsym $mod+Shift+q kill
@@ -224,7 +225,7 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font Iosevka Nerd Font Mono 11
+font DejaVuSansMono 11
 bindsym $mod+f exec firefox
 
 # pretty sure this is for ubuntu
@@ -232,52 +233,22 @@ bindsym $mod+f exec firefox
 # arch
 bindsym $mod+b exec brave
 bindsym $mod+Ctrl+f exec ~/.config/i3/bin/rofifinder.sh
+bindsym $mod+Ctrl+o exec obsidian
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 
 # Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="Calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [title="i3_help"] floating enable sticky enable border normal
-for_window [class="Lightdm-gtk-greeter-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Thus"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="firefox"] border pixel 5
+for_window [class="obsidian"] border pixel 5
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
 # Autostart applications
-# exec_always --no-startup-id sh -c '
-#   if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
-#     eval $(dbus-launch --sh-syntax --exit-with-session)
-#   fi
-#   eval $(/run/wrappers/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
-#   export SSH_AUTH_SOCK
-# '
 exec --no-startup-id nm-applet
 exec_always --no-startup-id $HOME/.config/polybar/i3_polybar_start.sh
 exec_always --no-startup-id "bash $HOME/shift_monitor.sh"
@@ -286,36 +257,26 @@ exec --no-startup-id dunst
 # i3 lock
 bindsym $mod+Ctrl+l exec "i3lock"
 
-# auto lock
-# exec "xautolock -detectsleep -time 3 -locker \"i3lock\""
-# exec xss-lock 
 
 # other fancy scripts / tools
 
 # show help notification
-bindsym $mod+Ctrl+Shift+h exec "notify-send \\"keybindings:\\" \\"\
-$mod+shfit+b: workspace back and forth\n\
-$mod+Ctrl+h:  tile horizontally\n\
-$mod+Shift+v: tile vertically\n\
-$mod+q:       toggle split method\n\
-$mod+Shift+s: screenshot\n\
-$mod+s:       stacked layout\n\
-$mod+w:       tabbed layout\n\
-\\""
+bindsym $mod+Ctrl+Shift+h exec $HOME/Scripts/notify_help.sh
+bindsym $mod+Ctrl+s exec $HOME/Scripts/list_scripts.sh
 
 # open a note
-bindsym $mod+shift+n exec bash ~/Scripts/dmenu_notes.sh
+bindsym $mod+Ctrl+n exec $HOME/Scripts/dmenu_notes.sh
 
 exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
 exec_always systemctl --user start xss-lock-i3
 #                        border          background    text                 indicator      child bdr
-client.focused	         #ebbcba     #26233a  #e0def4  #ebbcba	    #ebbcba
-client.focused_inactive	 #908caa   #26233a  #e0def4  #908caa	#908caa
-client.unfocused	     #908caa   #26233a  #e0def4  #908caa	#908caa
-client.urgent	         #eb6f92     #26233a  #e0def4  #eb6f92     #eb6f92
-client.placeholder	     #908caa   #26233a  #e0def4  #908caa	#908caa
+client.focused	         {{ rose }}     {{ overlay }}  {{ text }}  {{ rose }}	    {{ rose }}
+client.focused_inactive	 {{ subtle }}   {{ overlay }}  {{ text }}  {{ subtle }}	{{ subtle }}
+client.unfocused	     {{ subtle }}   {{ overlay }}  {{ text }}  {{ subtle }}	{{ subtle }}
+client.urgent	         {{ love }}     {{ overlay }}  {{ text }}  {{ love }}     {{ love }}
+client.placeholder	     {{ subtle }}   {{ overlay }}  {{ text }}  {{ subtle }}	{{ subtle }}
 
-client.background	#26233a
+client.background	{{ overlay }}
 
 # Gaps
 gaps inner 10
@@ -329,8 +290,3 @@ floating_modifier $mod
 exec --no-startup-id mate-power-manager
 
 focus_follows_mouse no
-
-exec killall picom
-
-exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/leafy.png

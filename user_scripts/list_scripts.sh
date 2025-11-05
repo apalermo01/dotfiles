@@ -17,8 +17,9 @@ choice=$(find "${BASEDIR}" -name "*.sh" -print0 | while read -r -d '' file; do
     printf "%s\n" "${name}"
 done |  rofi -dmenu -i -p "available scripts")
 
-if ! $choice; then 
-    exit(0) 
+if [[ -z $choice ]]; then
+    notify-send "no script selected, exiting"
+    exit 0
 fi
 
 cmd=$(printf "run\nview help" | rofi -dmenu -i -p "What to do with ${choice}?")

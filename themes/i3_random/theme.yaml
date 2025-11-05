@@ -38,7 +38,6 @@ zsh:
     - src: p10k.zsh
       dst: zsh/.p10k.zsh
 
-
 kitty:
   append:
     - src: kitty.conf
@@ -47,13 +46,13 @@ kitty:
 picom: 
   template_path: $THIS_THEME
 
-# theme_scripts: 
-#   path: ./themes/i3_catppuccin_macchiato/scripts/
-
 fastfetch: 
   overwrite: 
     - src: config.jsonc
       dst: fastfetch/config.jsonc
+dunst:
+  font_size: 12
 
+sioyek: {}
 
 

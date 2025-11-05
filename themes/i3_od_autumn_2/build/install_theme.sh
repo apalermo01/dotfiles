@@ -10,3 +10,4 @@ fi
 
 
 plasma-apply-colorscheme OneDarkRed
+dunstctl reload 

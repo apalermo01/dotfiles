@@ -9,7 +9,8 @@ rm -r ~/.config/picom
 rm -r ~/.config/polybar
 rm -r ~/.config/rofi
 rm -r ~/.config/theme_scripts
-rm -r ~/.tmux.conf
+rm -r ~/.config/dunst
+rm ~/.tmux.conf
 rm ~/.p10k.zsh
 rm ~/.profile
 rm ~/.zshrc

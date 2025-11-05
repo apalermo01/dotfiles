@@ -1,0 +1,16 @@
+[global]
+follow = keyboard
+width = (100, 1000)
+height = (0, 1000)
+shrink = yes
+origin = center
+icon_path = /run/current-system/sw/share/icons/hicolor/
+browser = firefox
+corner_radius = 5
+background = "{{ color8 }}"
+foreground = "{{ color0 }}"
+frame_color = "{{ color9 }}"
+font = 
+
+[urgency_critical]
+background = "{{ color10 }}"

@@ -30,6 +30,9 @@ tmux:
 
 rofi: 
   template_path: $THIS_THEME
+  overwrite:
+    - src: images/leaves.jpg
+      dst: rofi/images/leaves.jpg
 
 zsh:
   append:
@@ -57,3 +60,9 @@ apps:
     qt.colorscheme: plasma-apply-colorscheme 
 
 okular: {}
+
+dunst:
+  overwrite:
+    - src: dunstrc 
+      dst: dunst/dunstrc
+  font_size: 14

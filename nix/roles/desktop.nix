@@ -25,6 +25,7 @@ in
     tor-browser
     anytype
     standardnotes
+    signal-desktop
 
     pinentry-qt
     libnotify

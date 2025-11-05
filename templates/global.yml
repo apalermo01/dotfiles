@@ -13,7 +13,7 @@ i3:
 kitty:
   font_size: 10
 
-font: DejaVuSansMono
+font: Agave Nerd Font
 
 dunst: {}
 sioyek: {}

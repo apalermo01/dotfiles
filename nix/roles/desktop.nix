@@ -179,6 +179,7 @@ in
   # };
   services.logind = {
     lidSwitch = "lock";
+    lidSwitchDocked = "lock";
   };
   # services.logind = {
   #   lidSwitch = "lock";

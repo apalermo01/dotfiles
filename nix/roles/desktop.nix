@@ -172,10 +172,13 @@ in
 
   security.pam.services.i3lock.enable = true;
 
-  services.logind.settings.Login = {
-    HandleLidSwitchDocked = "lock";
-    HandleLidSwitchExternalPower = "lock";
-    HandleLidSwitch = "lock";
+  # services.logind.settings.Login = {
+  #   HandleLidSwitchDocked = "lock";
+  #   HandleLidSwitchExternalPower = "lock";
+  #   HandleLidSwitch = "lock";
+  # };
+  services.logind = {
+    lidSwitch = "lock";
   };
   # services.logind = {
   #   lidSwitch = "lock";

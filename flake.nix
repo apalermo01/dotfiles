@@ -5,7 +5,6 @@
   description = "Main flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,26 +46,7 @@
         };
       };
       role = {
-        "headless" = ./nix/roles/headless.nix;
         "desktop" = ./nix/roles/desktop.nix;
-        "wsl" = ./nix/roles/headless.nix;
-        "server" = ./nix/roler/server.nix;
-      };
-
-      extraModuleList = {
-        "desktop" = [
-        ];
-
-        "wsl" = [
-          ./nix/roles/ai_tools.nix
-        ];
-
-        "gc-workstation" = [
-        ];
-
-        "server" = [
-
-        ];
       };
 
       mkSystem =
@@ -78,7 +58,7 @@
           modules = [
             { networking.hostName = hostname; }
 
-            # main configuration file
+            # common configuration file for ALL nixos systems
             ./nix/modules/system/configuration.nix
 
             # hardware configuration
@@ -98,8 +78,7 @@
                 inherit inputs;
               };
             }
-
-          ] ++ (extraModuleList.${hostname} );
+          ];
           specialArgs = { inherit inputs; };
         };
 
@@ -120,33 +99,20 @@
         };
 
     in
+
+    # declare the possible hosts here.
+    # I'm only using one system, so I'm removing the other hosts
     {
+
+      # machines running nixos
       nixosConfigurations = {
-        server = mkSystem pkgs "x86_64-linux" "server" "alex-server";
         desktop = mkSystem pkgs "x86_64-linux" "desktop";
       };
+
+      # home manager only
       homeConfigurations = {
-        wsl = mkHome system "wsl" "apalermo";
-        gc-workstation = mkHome system "gc-workstation" "user";
-      };
-      devShells.${system}.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.gcc
-          (pkgs.python313.withPackages (
-            ps: with ps; [
-              pip
-              virtualenv
-              numpy
-              matplotlib
-              toml
-              pyyaml
-              isort
-              black
-              jinja2
-              sioyek
-            ]
-          ))
-        ];
+        # wsl = mkHome system "wsl" "apalermo";
+        # gc-workstation = mkHome system "gc-workstation" "user";
       };
     };
 }

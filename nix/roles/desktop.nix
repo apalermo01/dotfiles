@@ -172,22 +172,11 @@ in
 
   security.pam.services.i3lock.enable = true;
 
-  # services.logind.settings.Login = {
-  #   HandleLidSwitchDocked = "lock";
-  #   HandleLidSwitchExternalPower = "lock";
-  #   HandleLidSwitch = "lock";
-  # };
-  services.logind = {
-    lidSwitch = "lock";
-    lidSwitchDocked = "lock";
-    lidSwitchExternalPower = "lock";
+  services.logind.settings.Login = {
+    HandleLidSwitchDocked = "lock";
+    HandleLidSwitchExternalPower = "lock";
+    HandleLidSwitch = "lock";
   };
-
-  # services.logind = {
-  #   lidSwitch = "lock";
-  #   lidSwitchExternalPower = "lock";
-  #   lidSwitchDocked = "ignore";
-  # };
 
   environment.etc."xdg/menus/plasma-applications.menu".source =
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";

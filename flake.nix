@@ -59,7 +59,8 @@
             { networking.hostName = hostname; }
 
             # common configuration file for ALL nixos systems
-            ./nix/modules/system/configuration.nix
+            # ./nix/modules/system/configuration.nix
+            ./nix/hosts/${hostname}/configuration.nix
 
             # hardware configuration
             ./nix/hosts/${hostname}/hardware-configuration.nix

@@ -11,100 +11,6 @@ in
 {
   environment.systemPackages = with pkgs; [
 
-    # gui
-    pavucontrol
-    pywalfox-native
-    xfce.thunar
-    xfce.thunar-volman
-    kdePackages.dolphin
-    libreoffice-qt6-fresh
-    networkmanagerapplet
-    kdePackages.okular
-    kdePackages.plasma-workspace
-    tor-browser
-    anytype
-    standardnotes
-    signal-desktop
-
-    # libraries 
-    libinput
-    libnotify
-    dunst
-    brightnessctl
-    lm_sensors
-    libimobiledevice
-    usbmuxd
-    ifuse
-    jellyfin-ffmpeg
-
-    pinentry-qt
-    alsa-utils
-    alsa-plugins
-    pamixer
-    # xss-lock
-    via
-    alpaca
-    devcontainer
-    docker
-    qmk
-    keymapviz
-    newsboat
-    networkmanagerapplet
-    openvpn
-    puddletag
-    id3v2
-    cargo
-    rclone
-    fortune
-    cowsay
-    pywal
-    restic
-    tmux
-    neovim
-    sioyek
-    stow
-
-    # cli utils
-    fzf
-    yazi
-    cbonsai
-    fastfetch
-    bat
-    eza
-    gitui
-    delta
-    man-pages
-    man-pages-posix
-    oh-my-posh
-    tealdeer
-    starship
-    lsof
-    postgresql
-    sqitchPg
-    deno
-    nest-cli
-
-    # language servers
-    pyright
-    nil
-    lua-language-server
-    markdown-oxide
-    sqls
-    postgrestools
-    llvmPackages_latest.lldb
-    llvmPackages_latest.libllvm
-    llvmPackages_latest.libcxx
-    llvmPackages_latest.clang
-    clang-tools
-    clang
-
-    # formatters
-    stylua
-    nixfmt-rfc-style
-    shfmt
-    mdformat
-    yamlfix
-    pgformatter
   ];
 
   services.usbmuxd.enable = true;
@@ -151,12 +57,12 @@ in
 
   # x-server. Can disable if only using wayland
   # services.displayManager.defaultSession = "plasmax11";
-  # services.xserver = {
-  #   enable = true;
-  #   windowManager.i3.enable = true;
-  # };
-  # services.displayManager.sddm.enable = true;
-  # services.displayManager.defaultSession = "none+i3";
+  services.xserver = {
+    enable = true;
+    windowManager.i3.enable = true;
+  };
+  services.displayManager.sddm.enable = true;
+  services.displayManager.defaultSession = "none+i3";
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -177,6 +83,9 @@ in
     HandleLidSwitchExternalPower = "lock";
     HandleLidSwitch = "lock";
   };
+  #   lidSwitchExternalPower = "lock";
+  #   lidSwitchDocked = "ignore";
+  # };
 
   environment.etc."xdg/menus/plasma-applications.menu".source =
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";

@@ -26,25 +26,28 @@ in
     standardnotes
     signal-desktop
 
-    pinentry-qt
+    # libraries 
+    libinput
     libnotify
     dunst
+    brightnessctl
+    lm_sensors
+    libimobiledevice
+    usbmuxd
+    ifuse
+    jellyfin-ffmpeg
+
+    pinentry-qt
     alsa-utils
     alsa-plugins
     pamixer
     xss-lock
     via
     alpaca
-    brightnessctl
-    lm_sensors
     devcontainer
     docker
     qmk
     keymapviz
-    libimobiledevice
-    usbmuxd
-    ifuse
-    jellyfin-ffmpeg
     newsboat
     networkmanagerapplet
     openvpn
@@ -168,10 +171,6 @@ in
   };
 
   security.pam.services.i3lock.enable = true;
-  # security.pam.services.betterlockscreen = {
-  #   enable = true;
-  #
-  # };
 
   services.logind.settings.Login = {
     HandleLidSwitchDocked = "lock";
@@ -196,13 +195,6 @@ in
   };
 
   security.rtkit.enable = true;
-
-  # fonts
-  # fonts.packages = with pkgs; [
-    # nerd-fonts.fira-code
-    # nerd-fonts.jetbrains-mono
-    # nerd-fonts.iosevka
-  # ];
 
   # users
   users.users.alex = {

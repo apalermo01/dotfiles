@@ -111,8 +111,6 @@
 
       # home manager only
       homeConfigurations = {
-        # wsl = mkHome system "wsl" "apalermo";
-        # gc-workstation = mkHome system "gc-workstation" "user";
       };
     };
 }

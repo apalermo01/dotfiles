@@ -10,7 +10,7 @@ corner_radius = 5
 background = "#9c8f64"
 foreground = "#0a0101"
 frame_color = "#A0210E"
-font = "Agave Nerd Font 14"
+font = "IosevkaTerm Nerd Font Mono 14"
 
 
 [urgency_critical]

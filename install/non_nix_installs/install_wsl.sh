@@ -134,7 +134,6 @@ done
 
 echo "📦 Installing cargo packages..."
 cargo_install_if_missing eza
-# cargo_install_if_missing gitui
 cargo_install_if_missing fastfetch
 cargo_install_if_missing tealdeer
 cargo_install_if_missing stylua
@@ -144,9 +143,6 @@ cargo_install_if_missing fnm
 cargo_install_if_missing git-delta
 
 command -v datagrip || install_datagrip 
-
-# oh-my-posh
-# bash -s scripts/non_nix_installs/install_oh_my_posh.sh
 
 pipx ensurepath 
 pipx install git+http://github.com/apalermo01/ricer.git

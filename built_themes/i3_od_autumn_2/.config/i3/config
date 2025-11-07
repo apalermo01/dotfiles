@@ -225,7 +225,7 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font Agave Nerd Font 11
+font IosevkaTerm Nerd Font Mono 11
 bindsym $mod+f exec firefox
 
 # pretty sure this is for ubuntu
@@ -268,7 +268,8 @@ bindsym $mod+Ctrl+s exec $HOME/Scripts/list_scripts.sh
 bindsym $mod+Ctrl+n exec $HOME/Scripts/dmenu_notes.sh
 
 exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
-exec_always systemctl --user start xss-lock-i3
+# exec_always systemctl --user start xss-lock-i3
+exec --no-startup-id systemctl --user restart xss-lock-i3.service
 #                        border           background    text         indicator      child bdr
 
 client.focused	         #DB5F16        #e0cd8f    #0a0101  #DB5F16	        #DB5F16
@@ -291,4 +292,8 @@ floating_modifier $mod
 exec --no-startup-id mate-power-manager
 
 focus_follows_mouse no
+
+exec killall picom
+
+exec_always picom --backend glx --config ~/.config/picom/picom.conf
 exec_always feh --bg-fill /home/alex/Pictures/wallpapers/wp7535729-road-to-autumn-wallpapers.jpg

@@ -82,7 +82,6 @@ done
 
 echo "📦 Installing cargo packages..."
 cargo_install_if_missing eza
-# cargo_install_if_missing gitui
 cargo_install_if_missing fastfetch
 cargo_install_if_missing tealdeer
 cargo_install_if_missing stylua

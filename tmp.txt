@@ -1,5 +1,0 @@
-# change focus
-bindsym $mod+q focus left
-bindsym $mod+n focus down
-bindsym $mod+e focus up
-bindsym $mod+i focus right

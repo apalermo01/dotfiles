@@ -26,7 +26,7 @@ in
     enable = mkEnableOption "xss-lock for i3 sessions";
     time = mkOption {
       type = types.int;
-      default = 5;
+      default = 1;
       description = "Minutes of idle before lock";
     };
     notify = mkOption {
@@ -49,7 +49,8 @@ in
 
     systemd.user.services.xss-lock-i3 = {
       Unit = {
-        PartOf = [ "graphical-session.target" ];
+        # PartOf = [ "graphical-session.target" ];
+        PartOf = [ "default.target" ];
         Description = "xss-lock for i3";
       };
       Service = {
@@ -57,7 +58,8 @@ in
         Restart = "on-failure";
       };
 
-      Install.WantedBy = ["graphical-session.target"];
+      # Install.WantedBy = ["graphical-session.target"];
+      Install.WantedBy = ["default.target"];
     };
   };
 

@@ -10,20 +10,20 @@ if [[ ! -d ~/Documents/git/dotfiles/nix/hosts/$hostname ]]; then
     exit
 fi
 
-echo "Cleaning up old Home Manager backups..."
-find "$HOME" -type f -name "*.hm-bak" | while IFS= read -r file; do
-
-    read -rp "Delete $file ? [y/N]: " answer </dev/tty
-
-    case "$answer" in [yY] | [yY][eE][sS])
-        rm -f "$file"
-        echo "Removed: $file"
-        ;;
-    *)
-        echo "Skipped: $file"
-        ;;
-    esac
-done
+# echo "Cleaning up old Home Manager backups..."
+# find "$HOME" -type f -name "*.hm-bak" | while IFS= read -r file; do
+#
+#     read -rp "Delete $file ? [y/N]: " answer </dev/tty
+#
+#     case "$answer" in [yY] | [yY][eE][sS])
+#         rm -f "$file"
+#         echo "Removed: $file"
+#         ;;
+#     *)
+#         echo "Skipped: $file"
+#         ;;
+#     esac
+# done
 echo "Installing system..."
 
 if grep -qi microsoft /proc/version; then

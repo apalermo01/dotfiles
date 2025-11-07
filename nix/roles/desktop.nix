@@ -180,7 +180,9 @@ in
   services.logind = {
     lidSwitch = "lock";
     lidSwitchDocked = "lock";
+    lidSwitchExternalPower = "lock";
   };
+
   # services.logind = {
   #   lidSwitch = "lock";
   #   lidSwitchExternalPower = "lock";
@@ -189,6 +191,8 @@ in
 
   environment.etc."xdg/menus/plasma-applications.menu".source =
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
+  services.power-profiles-daemon.enable = false;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

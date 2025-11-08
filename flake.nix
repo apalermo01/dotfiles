@@ -60,10 +60,6 @@
 
             ./nix/hosts/${hostname}/configuration.nix
 
-
-            # role specific configs
-            # role.${hostname}
-
             # home manager
             home-manager.nixosModules.home-manager
             {

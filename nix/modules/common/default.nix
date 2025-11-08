@@ -6,8 +6,6 @@
   ...
 }:
 
-# This is the configuration that is common for ALL systems. More platform
-# specific setups are in ./nix/roles
 {
 
   # system packages
@@ -45,8 +43,97 @@
     lua
     go
 
+    # gui
+    pavucontrol
+    pywalfox-native
+    xfce.thunar
+    xfce.thunar-volman
+    kdePackages.dolphin
+    libreoffice-qt6-fresh
+    networkmanagerapplet
+    kdePackages.okular
+    kdePackages.plasma-workspace
+    tor-browser
+    anytype
+    standardnotes
+    signal-desktop
     evtest
     nvimpager
+
+    # libraries 
+    libinput
+    libnotify
+    dunst
+    brightnessctl
+    lm_sensors
+    libimobiledevice
+    usbmuxd
+    ifuse
+    jellyfin-ffmpeg
+    pinentry-qt
+    alsa-utils
+    alsa-plugins
+    pamixer
+    # xss-lock
+    via
+    devcontainer
+    docker
+    qmk
+    keymapviz
+    newsboat
+    openvpn
+    puddletag
+    id3v2
+    cargo
+    rclone
+    fortune
+    cowsay
+    pywal
+    restic
+    tmux
+    sioyek
+    stow
+
+    fzf
+    yazi
+    cbonsai
+    fastfetch
+    bat
+    eza
+    gitui
+    delta
+    man-pages
+    man-pages-posix
+    oh-my-posh
+    tealdeer
+    starship
+    lsof
+    postgresql
+    sqitchPg
+    deno
+    nest-cli
+
+    # language servers
+    pyright
+    nil
+    lua-language-server
+    markdown-oxide
+    sqls
+    postgrestools
+    llvmPackages_latest.lldb
+    llvmPackages_latest.libllvm
+    llvmPackages_latest.libcxx
+    llvmPackages_latest.clang
+    clang-tools
+    clang
+
+    # formatters
+    stylua
+    nixfmt-rfc-style
+    shfmt
+    mdformat
+    yamlfix
+    pgformatter
   ];
 
   programs.fish.enable = true;

@@ -65,7 +65,7 @@
             # ./nix/modules/desktop/i3.nix
 
             # hardware configuration
-            ./nix/hosts/${hostname}/hardware-configuration.nix
+            # ./nix/hosts/${hostname}/hardware-configuration.nix
 
             # role specific configs
             role.${hostname}

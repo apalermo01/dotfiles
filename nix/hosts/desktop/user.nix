@@ -84,6 +84,7 @@
 
   # define what will be installed by home manager here
   fonts.fontconfig.enable = true;
+
   modules = {
     packages.headless.enable = true;
     packages.ui.enable = true;

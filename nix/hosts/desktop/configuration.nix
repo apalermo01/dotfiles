@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ../../modules/common
-  ];
+  # imports = [
+  #   ../../modules/common
+  # ];
   modules.sddmMonitorLayout.enable = true;
 }

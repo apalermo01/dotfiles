@@ -60,8 +60,8 @@
 
             # common configuration file for ALL nixos systems
             # ./nix/modules/system/configuration.nix
-            ./nix/modules/common
-            # ./nix/hosts/desktop/configuration.nix
+            # ./nix/modules/common
+            ./nix/hosts/desktop/test_cfg.nix
             ./nix/modules/system/i3.nix
 
             # hardware configuration

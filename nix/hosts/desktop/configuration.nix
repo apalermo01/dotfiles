@@ -5,8 +5,10 @@
     ./hardware-configuration.nix
     ../../modules/common
     ../../modules/wm/i3.nix
+    ../../modules/system/external_monitor.nix
   ];
 
+  # modules.sddmMonitorLayout.enable = true;
   services.usbmuxd.enable = true;
   virtualisation.docker = {
     enable = true;

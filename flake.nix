@@ -58,7 +58,7 @@
           modules = [
             { networking.hostName = hostname; }
 
-            ./nix/hosts/desktop/test_cfg.nix
+            ./nix/hosts/${hostname}/configuration.nix
 
 
             # role specific configs

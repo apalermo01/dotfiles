@@ -58,14 +58,8 @@
           modules = [
             { networking.hostName = hostname; }
 
-            # common configuration file for ALL nixos systems
-            # ./nix/modules/system/configuration.nix
-            # ./nix/modules/common
             ./nix/hosts/desktop/test_cfg.nix
-            # ./nix/modules/desktop/i3.nix
 
-            # hardware configuration
-            # ./nix/hosts/${hostname}/hardware-configuration.nix
 
             # role specific configs
             role.${hostname}

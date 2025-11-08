@@ -62,7 +62,7 @@
 
 
             # role specific configs
-            role.${hostname}
+            # role.${hostname}
 
             # home manager
             home-manager.nixosModules.home-manager

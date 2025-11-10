@@ -19,14 +19,12 @@ fi
 mkdir -p "$RICER_DIR"
 
 # On first run (no current_theme), proactively back up common conflicting files
-if [ ! -f "./current_theme" ]; then
-  for f in "$HOME/.zshrc" "$HOME/.profile" "$HOME/.bashrc" "$HOME/.zshenv"; do
-    if [ -f "$f" ] && [ ! -L "$f" ]; then
-      mv -f "$f" "${f}.pre-dotfiles.bak"
-      echo "Backed up $f -> ${f}.pre-dotfiles.bak"
-    fi
-  done
+for f in "$HOME/.zshrc" "$HOME/.profile" "$HOME/.bashrc" "$HOME/.zshenv" "$HOME/.tmux.conf"; do
+if [ -f "$f" ] && [ ! -L "$f" ]; then
+  mv -f "$f" "${f}.pre-dotfiles.bak"
+  echo "Backed up $f -> ${f}.pre-dotfiles.bak"
 fi
+done
 
 if [ -f "./current_theme" ]; then
     current_theme="$(cat ./current_theme)"

@@ -29,8 +29,10 @@ local servers = {
 				},
 			},
 		}),
+        -- root_dir = vim.fn.expand('~/Documents/git/notes')
         root_dir = function(bufnr, on_dir)
-            if vim.fn.expand("%:p"):match(vim.fn.expand('~/Documents/git/notes/')) then
+            local file = vim.fn.expand("%:p")
+            if file:match('./git/notes/.') or file:match('./github/notes/.') then
                 on_dir(vim.fn.getcwd())
             end
         end
@@ -62,6 +64,10 @@ local servers = {
 		cmd = IS_NIXOS and { "/run/current-system/sw/bin/clangd" } or { "clangd" },
 		filetypes = { "c", "cpp" },
 	},
+
+    pyright = {
+        capabilities = capabilities
+    },
 }
 
 for name, config in pairs(servers) do

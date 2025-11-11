@@ -38,6 +38,7 @@
     unzip
     xsel
     fnm
+    ncurses
 
     # programming languages
     lua

@@ -121,6 +121,9 @@ init_system() {
         arch) 
             bootstrap_arch 
             ;;
+        *) 
+            echo "ERROR: unknown os_id: $os_id"
+            exit 1
     esac
 }
 

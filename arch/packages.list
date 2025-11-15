@@ -14,6 +14,7 @@ xorg-server
 i3-wm
 sddm
 feh 
+picom 
 
 # utilities
 zsh 

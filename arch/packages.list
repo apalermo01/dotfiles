@@ -1,5 +1,33 @@
+# important stuff
+base
+base-devel
+bluez
+bluez-utils
+efibootmgr
+grub
+linux
+linux-firmware
+zram-generator
+
+# window management 
+xorg-server
+i3-wm
+sddm
+
+# utilities
+zsh 
+polybar
+rofi
+
+# tui
 neovim
-i3
+htop
+
+# gui
 kitty
+firefox
+
+# utilities
 openssh
 git
+python-pipx

@@ -104,6 +104,7 @@ init_system() {
         arch) 
             bootstrap_arch 
             ;;
+    esac
 }
 
 if ! command -v nix >/dev/null; then

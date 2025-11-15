@@ -1,6 +1,6 @@
 #!/usr/bin/env bash 
 
-LISTFILE="~/Documents/git/dotfiles/arch/packages.list"
+LISTFILE="$HOME/Documents/git/dotfiles/arch/packages.list"
 
 INSTALL () {
     sudo pacman -S $@

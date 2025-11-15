@@ -78,7 +78,14 @@ bootstrap_nix() {
 bootstrap_arch() {
     echo "scripts to bootstrap arch go here"
 
-    sudo pacman -S git
+    sudo pacman -S git nano openssh || {
+        echo "You may not be sudo"
+        echo "login as root and run: "
+        echo "sudo usermod -a -G wheel <your user>"
+        echo ""
+        echo "once that is done, open /etc/sudoers and "
+        echo "uncomment the line starting with %wheel ALL="
+    }
 
     if [[ ! -d $HOME/Documents/git/dotfiles ]]; then 
         clone_dotfiles

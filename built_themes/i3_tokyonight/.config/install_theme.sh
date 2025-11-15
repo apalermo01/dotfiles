@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
-plasma-apply-colorscheme TokyoNight
+if command -v plasma-apply-colorscheme; then
+    plasma-apply-colorscheme TokyoNight
+fi
+
 dunstctl reload 

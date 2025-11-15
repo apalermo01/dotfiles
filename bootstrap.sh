@@ -114,7 +114,7 @@ init_system() {
 
     os_id=$(grep -E '^ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
     
-    case os_id in 
+    case $os_id in 
         nixos)
             bootstrap_nix
             ;;

@@ -1,9 +1,8 @@
 [global]
 # monitor = 0
 follow = keyboard
-font = "DejaVuSansMono 12"
-
 width = (100, 1000)
 # format = "<b>%a<\b>\n<b>%s<\b>\n\n%b\n%p"
 shrink = yes
 browser = firefox
+font = "DaddyTimeMono Nerd Font Mono 12"

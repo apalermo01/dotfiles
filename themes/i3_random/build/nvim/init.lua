@@ -33,4 +33,4 @@ require("config")
 -- local log = require('cmp.utils.debug').log
 -- log.enable('DEBUG')  
 vim.cmd.colorscheme("pywal")
-vim.cmd([[set guifont=DejaVuSansMono]])
+vim.cmd([[set guifont=DaddyTimeMono\ Nerd\ Font\ Mono]])

@@ -32,6 +32,13 @@ bootstrap_nix_package_manager() {
 }
 
 bootstrap_nix() {
+    if [[ ! -d $HOME/Documents/git/dotfiles ]]; then 
+        clone_dotfiles
+    fi
+
+    cd $HOME/Documents/git/dotfiles/
+
+    echo "current dir = $(pwd)"
     echo "🖥  NixOS detected."
     echo "Available NixOS hosts  desktop"
     read -r -p "Select host to switch to: " hostname
@@ -70,6 +77,16 @@ bootstrap_nix() {
 # use this on a blank arch system
 bootstrap_arch() {
     echo "scripts to bootstrap arch go here"
+
+    pacman -S git
+
+    if [[ ! -d $HOME/Documents/git/dotfiles ]]; then 
+        clone_dotfiles
+    fi
+
+    cd $HOME/Documents/git/dotfiles/
+
+    echo "current dir = $(pwd)"
 }
 
 # installs # 
@@ -113,14 +130,9 @@ fi
 
 confirm "Is the SSH key for github set up and agent loaded?" || exit 0
 
-if [[ ! -d $HOME/Documents/git/dotfiles ]]; then 
-    clone_dotfiles
-fi
-
-cd $HOME/Documents/git/dotfiles/
-echo "current dir = $(pwd)"
 
 confirm "Run host initialization?" && init_system
+
 
 confirm "Install restic backup?" && nix develop --command "./scripts/install_backup.sh"
 

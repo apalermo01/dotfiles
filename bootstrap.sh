@@ -78,20 +78,18 @@ bootstrap_nix() {
 bootstrap_arch() {
     echo "scripts to bootstrap arch go here"
 
-    sudo pacman -S git nano openssh || {
-        echo "You may not be sudo"
-        echo "login as root and run: "
-        echo "sudo usermod -a -G wheel <your user>"
-        echo ""
-        echo "once that is done, open /etc/sudoers and "
-        echo "uncomment the line starting with %wheel ALL="
-    }
+    # sudo pacman -S git openssh || {
+    #     echo "You may not be sudo"
+    #     echo "login as root and run: "
+    #     echo "sudo usermod -a -G wheel <your user>"
+    #     echo ""
+    #     echo "once that is done, open /etc/sudoers and "
+    #     echo "uncomment the line starting with %wheel ALL="
+    # }
+    
+    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/packages.list -o ~/packages.list
 
-    if [[ ! -d $HOME/Documents/git/dotfiles ]]; then 
-        clone_dotfiles
-    fi
-
-    cd $HOME/Documents/git/dotfiles/
+    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch-update.sh -o ~/arch-update.sh
 
     echo "current dir = $(pwd)"
 }

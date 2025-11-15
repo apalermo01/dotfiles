@@ -1,3 +1,16 @@
-[UiSettings]
-ColorScheme = Dracula
+[Desktop Entry]
+FullScreen=false
 
+[General]
+LockSidebar=true
+ShowSidebar=true
+
+[Recent Files]
+File1[$e]=$HOME/Documents/git/tutoring/sessions/2025/JR_data_science/20251106/2025-11-06 - linear regression and perceptrons.pdf
+File2[$e]=$HOME/Documents/git/tutoring/sessions/2025/JR_data_science/20251109/20251109-prep.pdf
+File3[$e]=$HOME/Documents/git/Executive-Comp-to-Patient-Care/results/incentive_perc_vs_Operating Margin_year=2022_cmsYear=2022_minRev=250000000_maxRev=500000000.tiff
+File4[$e]=$HOME/Documents/git/Executive-Comp-to-Patient-Care/results/incentive_perc_vs_COPD Death Rate Score_year=2022_cmsYear=2022_minRev=250000000_maxRev=500000000.tiff
+Name1[$e]=2025-11-06 - linear regression and perceptrons.pdf
+Name2[$e]=20251109-prep.pdf
+Name3[$e]=incentive_perc_vs_Operating Margin_year=2022_cmsYear=2022_minRev=250000000_maxRev=500000000.tiff
+Name4[$e]=incentive_perc_vs_COPD Death Rate Score_year=2022_cmsYear=2022_minRev=250000000_maxRev=500000000.tiff

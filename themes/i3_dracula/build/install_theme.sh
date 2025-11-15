@@ -12,3 +12,4 @@ fi
 
 ya pack -a yazi-rs/flavors:dracula
 plasma-apply-colorscheme Dracula
+dunstctl reload 

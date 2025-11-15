@@ -37,6 +37,8 @@ stow
 xclip
 xsel
 dunst
+zoxide 
+yazi
 
 # other
 ttf-nerd-fonts-symbols

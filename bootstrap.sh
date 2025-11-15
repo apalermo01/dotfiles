@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-IFS=$'\n\t'
+# IFS=$'\n\t'
 
 # util functions
 confirm() { read -r -p "$1 [y/n]: " ans; [[ $ans =~ ^[Yy]$ ]]; }
@@ -103,7 +103,12 @@ bootstrap_arch() {
 	pipx install git+https://github.com/apalermo01/ricer.git -f
     cp ./templates/global.yml ~/.config/ricer/ricer-global.yml
 
+    echo "installing cargo"
+    curl https://sh.rustup.rs -sSf | sh
+
+
     echo "Package installation complete"
+    echo "Change shell to zsh using chsh -s /bin/zsh"
 }
 
 make_ssh() {

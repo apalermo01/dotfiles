@@ -85,7 +85,11 @@ bootstrap_arch() {
     
     confirm "press y to continue... "
 
+<<<<<<< HEAD
+    sudo pacman -S $(cat ~/packages.list | sed -e "/#/d") || {
+=======
     sudo pacman -Syu || {
+>>>>>>> e991e5e1f3eaab4645ece03c950c7cdc3b35d798
         echo "You may not be sudo"
         echo "login as root and run: "
         echo "sudo usermod -a -G wheel <your user>"

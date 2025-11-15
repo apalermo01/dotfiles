@@ -78,7 +78,7 @@ bootstrap_nix() {
 bootstrap_arch() {
     echo "scripts to bootstrap arch go here"
 
-    pacman -S git
+    sudo pacman -S git
 
     if [[ ! -d $HOME/Documents/git/dotfiles ]]; then 
         clone_dotfiles

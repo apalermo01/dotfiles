@@ -124,6 +124,7 @@ init_system() {
         *) 
             echo "ERROR: unknown os_id: $os_id"
             exit 1
+            ;;
     esac
 }
 

@@ -132,7 +132,7 @@ mode "$mode_system" {
 }
 
 # Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"; exec notify-send 'resize use hjkl to resize- Esc to go back to normal'
+bindsym $mod+r mode "resize"; exec notify-send 'Use arrow keys to resize- Esc to go back to normal'
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         # Pressing left will shrink the window’s width.
@@ -140,17 +140,18 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 5 px or 5 ppt
-        bindsym n resize grow height 5 px or 5 ppt
-        bindsym e resize shrink height 5 px or 5 ppt
-        bindsym i resize grow width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # exit resize mode: Enter or Escape
+        
         bindsym Return mode "default"; exec notify-send 'back to default mode'
         bindsym Escape mode "default"; exec notify-send 'back to default mode'
 }
@@ -224,7 +225,7 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font ZedMono Nerd Font 11
+font DaddyTimeMono Nerd Font Mono 11
 bindsym $mod+f exec firefox
 
 # pretty sure this is for ubuntu
@@ -267,7 +268,7 @@ bindsym $mod+Ctrl+s exec $HOME/Scripts/list_scripts.sh
 bindsym $mod+Ctrl+n exec $HOME/Scripts/dmenu_notes.sh
 
 exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
-exec_always systemctl --user start xss-lock-i3
+# exec_always systemctl --user start xss-lock-i3
 #                        border           background    text         indicator      child bdr
 client.focused	         #2ac3de     #24283b    #414868  #2ac3de	#2ac3de
 client.focused_inactive	 #545c7e     #24283b    #414868  #545c7e	#545c7e

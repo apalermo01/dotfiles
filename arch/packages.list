@@ -36,6 +36,7 @@ python-pywal
 stow
 xclip
 xsel
+dunst
 
 # other
 ttf-nerd-fonts-symbols

@@ -85,7 +85,7 @@ bootstrap_arch() {
     
     confirm "press y to continue... "
 
-    sudo pacman -S $(cat ~/packages.list) || {
+    sudo pacman -Syu || {
         echo "You may not be sudo"
         echo "login as root and run: "
         echo "sudo usermod -a -G wheel <your user>"
@@ -93,10 +93,12 @@ bootstrap_arch() {
         echo "once that is done, open /etc/sudoers and "
         echo "uncomment the line starting with %wheel ALL="
     }
+    sudo pacman -S $(cat ~/packages.list | sed -e '/#*/')
 
  	pipx ensurepath
 	source ~/.bashrc
-	pipx install git+https://github.com/apalermo01/ricer.git
+	pipx install git+https://github.com/apalermo01/ricer.git -f
+    cp ./templates/global.yml ~/.config/ricer/ricer-global.yml
 
     echo "Package installation complete"
 }

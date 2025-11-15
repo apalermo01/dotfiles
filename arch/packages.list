@@ -13,6 +13,7 @@ zram-generator
 xorg-server
 i3-wm
 sddm
+feh 
 
 # utilities
 zsh 
@@ -31,3 +32,10 @@ firefox
 openssh
 git
 python-pipx
+python-pywal
+stow
+xclip
+xsel
+
+# other
+ttf-nerd-fonts-symbols

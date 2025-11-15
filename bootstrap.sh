@@ -31,6 +31,7 @@ bootstrap_nix_package_manager() {
     fi
 }
 
+# set up nixos
 bootstrap_nix() {
     if [[ ! -d $HOME/Documents/git/dotfiles ]]; then 
         clone_dotfiles
@@ -74,11 +75,17 @@ bootstrap_nix() {
         --extra-experimental-features flakes \
         run ".#homeConfigurations.${profile}.activationPackage"
 }
-# use this on a blank arch system
-bootstrap_arch() {
-    echo "scripts to bootstrap arch go here"
 
-    sudo pacman -S git openssh python-pipx || {
+# set up arch
+bootstrap_arch() {
+    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/packages.list -o ~/packages.list
+
+    echo "Installing these packages:"
+    cat ~/packages.list
+    
+    confirm "press y to continue... "
+
+    sudo pacman -S $(cat ~/packages.list) || {
         echo "You may not be sudo"
         echo "login as root and run: "
         echo "sudo usermod -a -G wheel <your user>"
@@ -89,13 +96,32 @@ bootstrap_arch() {
 
  	pipx ensurepath
 	source ~/.bashrc
-	pipx install git+ssh://git@github.com:apalermo01/ricer.git
-    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/packages.list -o ~/packages.list
+	pipx install git+https://github.com/apalermo01/ricer.git
 
-    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch-update.sh -o ~/arch-update.sh
+    echo "Package installation complete"
+}
 
+make_ssh() {
+    ssh-keygen -t ed25519 -f ~/.ssh/$1
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/$1
 
-    echo "current dir = $(pwd)"
+    case $1 in 
+        github)
+            cat <<- EOF > ~/.ssh/config
+                Host github.com 
+                    Hostname github.com 
+                    IdentityFile ~/.ssh/github
+                EOF
+        ;;
+        gitlab)
+            cat <<- EOF > ~/.ssh/config
+                Host gitlab.com 
+                    Hostname gitlab.com 
+                    IdentityFile ~/.ssh/gitlab
+                EOF
+        ;;
+    esac
 }
 
 # installs # 
@@ -143,11 +169,11 @@ fi
 
 confirm "Is the SSH key for github set up and agent loaded?" || exit 0
 
-
 confirm "Run host initialization?" && init_system
-
 
 confirm "Install restic backup?" && nix develop --command "./scripts/install_backup.sh"
 
+confirm "Make ssh key for github?" && make_ssh "github"
+confirm "Make ssh key for gitlab?" && make_ssh "gitlab"
 
 echo "System fully initialized"

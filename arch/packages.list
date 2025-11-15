@@ -14,6 +14,7 @@ xorg-server
 i3-wm
 sddm
 feh 
+picom 
 
 # utilities
 zsh 
@@ -37,6 +38,8 @@ stow
 xclip
 xsel
 dunst
+zoxide 
+yazi
 
 # other
 ttf-nerd-fonts-symbols

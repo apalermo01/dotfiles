@@ -112,14 +112,14 @@ make_ssh() {
                 Host github.com 
                     Hostname github.com 
                     IdentityFile ~/.ssh/github
-                EOF
+EOF
         ;;
         gitlab)
             cat <<- EOF > ~/.ssh/config
                 Host gitlab.com 
                     Hostname gitlab.com 
                     IdentityFile ~/.ssh/gitlab
-                EOF
+EOF
         ;;
     esac
 }

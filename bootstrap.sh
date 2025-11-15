@@ -111,48 +111,6 @@ bootstrap_arch() {
     echo "Change shell to zsh using chsh -s /bin/zsh"
 }
 
-make_ssh() {
-    ssh-keygen -t ed25519 -f ~/.ssh/$1
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/$1
-
-    case $1 in 
-        github)
-            cat <<- EOF > ~/.ssh/config
-                Host github.com 
-                    Hostname github.com 
-                    IdentityFile ~/.ssh/github
-EOF
-        ;;
-        gitlab)
-            cat <<- EOF > ~/.ssh/config
-                Host gitlab.com 
-                    Hostname gitlab.com 
-                    IdentityFile ~/.ssh/gitlab
-EOF
-        ;;
-    esac
-}
-
-# installs # 
-clone_dotfiles() {
-    git_root="$HOME/Documents/git"
-    mkdir -p "$git_root"
-
-    if command -v nix-shell >/dev/null; then
-        nix-shell -p git --command "
-            cd $git_root && git clone git@github.com:apalermo01/dotfiles && cd $git_root/dotfiles
-        "
-    else
-        ( git clone git@github.com:apalermo01/dotfiles "$git_root/dotfiles"
-          cd "$git_root/dotfiles" )
-    fi
-
-    cd $git_root/dotfiles
-
-    echo "Dotfiles repo has been cloned and installed."
-
-}
 
 init_system() {
     local hostname os_id profile
@@ -164,7 +122,7 @@ init_system() {
             bootstrap_nix
             ;;
         arch) 
-            bootstrap_arch 
+            bash ./arch/bootstrap_arch.sh
             ;;
         *) 
             echo "ERROR: unknown os_id: $os_id"

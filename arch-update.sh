@@ -19,7 +19,7 @@ parse_listfile () {
 }
 
 diff_listfile () {
-    diff -u <(parse_listfile ~/packages.list) <(LIST | sort) | sed -n "/^[-+][^-+]/p" | sort
+    diff -u <(parse_listfile $LISTFILE) <(LIST | sort) | sed -n "/^[-+][^-+]/p" | sort
 }
 
 main () {

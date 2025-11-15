@@ -88,7 +88,8 @@ bootstrap_arch() {
     }
 
  	pipx ensurepath
-	pipx install git+git@github.com:apalermo01/ricer.git
+	source ~/.bashrc
+	pipx install git+ssh://git@github.com:apalermo01/ricer.git
     curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/packages.list -o ~/packages.list
 
     curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch-update.sh -o ~/arch-update.sh

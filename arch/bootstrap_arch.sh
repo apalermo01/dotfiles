@@ -93,11 +93,11 @@ if [[ $EUID -ne 0 ]]; then
     echo "Package installation complete"
     echo "Change shell to zsh using chsh -s /bin/zsh"
 
-    if [[ -d ~/.ssh/github ]]; then
+    if [[ ! -e ~/.ssh/github ]]; then
         confirm "Make ssh key for github?" && make_ssh "github"
     fi
 
-    if [[ -d ~/.ssh/gitlab ]]; then
+    if [[ ! -e ~/.ssh/gitlab ]]; then
         confirm "Make ssh key for gitlab?" && make_ssh "gitlab"
     fi
 

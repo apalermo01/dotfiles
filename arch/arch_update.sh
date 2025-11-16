@@ -1,5 +1,7 @@
 #!/usr/bin/env bash 
 
+set -e 
+
 LISTFILE="$HOME/Documents/git/dotfiles/arch/packages.list"
 
 INSTALL () {
@@ -36,4 +38,4 @@ main () {
 	INSTALL $to_install
 }
 
-main
+main $1

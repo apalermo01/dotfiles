@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 
-confirm() { read -r -p "$1 [y/n]: " ans; [[ $ans =~ ^[Yy]$ ]]; }
+confirm() {
+    read -r -p "$1 [y/n]: " ans
+    [[ $ans =~ ^[Yy]$ ]]
+}
 
 make_ssh() {
     ssh-keygen -t ed25519 -f ~/.ssh/$1
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/$1
 
-    case $1 in 
-        github)
-            cat <<- EOF > ~/.ssh/config
+    case $1 in
+    github)
+        cat <<-EOF >~/.ssh/config
                 Host github.com 
                     Hostname github.com 
                     IdentityFile ~/.ssh/github
 EOF
         ;;
-        gitlab)
-            cat <<- EOF > ~/.ssh/config
+    gitlab)
+        cat <<-EOF >~/.ssh/config
                 Host gitlab.com 
                     Hostname gitlab.com 
                     IdentityFile ~/.ssh/gitlab
@@ -29,13 +32,13 @@ if [[ $EUID -eq 0 ]]; then
     echo "running arch bootstrap in root mode"
 
     read -p "adding user to sudoers file. What is the username? " user
-    if ! id $user >/dev/null 2>&1; then 
+    if ! id $user >/dev/null 2>&1; then
         echo "user $user not found. Exiting..."
         exit 1
     fi
 
     if grep -q $user /etc/sudoers; then
-        echo "$user ALL=(ALL:ALL) ALL" >> /etc/sudoers
+        echo "$user ALL=(ALL:ALL) ALL" >>/etc/sudoers
     else
         echo "$user is already in the sudoers file"
     fi
@@ -43,7 +46,7 @@ if [[ $EUID -eq 0 ]]; then
     echo "downloading package list and update script from dotfiles repo"
     curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/packages.list -o ~/packages.list
 
-    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/arch_update.sh -o ~/arch_update.sh 
+    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/arch_update.sh -o ~/arch_update.sh
 
     echo "Installing these packages:"
     cat ~/packages.list
@@ -64,13 +67,13 @@ if [[ $EUID -eq 0 ]]; then
     echo "cleaning up package list and install script"
     rm ~/packages.list ~/arch_update.sh
 
-    echo "bash <(curl -sL raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/bootstrap.sh)" > /home/$user/runme.sh
+    echo "bash <(curl -sL raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/bootstrap.sh)" >/home/$user/runme.sh
 
     echo "Root bootstrap is complete. To continue, log in as the normal user and re-run the bootstrap script. To help, I put the command in /home/$user/runme.sh"
 
 else
     echo "Bootstrap script is being run as a normal user. Skipping steps that require root..."
-fi 
+fi
 
 if [[ $EUID -ne 0 ]]; then
     if [ ! -d ~/.config/ricer/ ]; then
@@ -86,10 +89,24 @@ if [[ $EUID -ne 0 ]]; then
     curl -fsS https://dl.brave.com/install.sh | sh
 
     echo "generating ssh keys"
-    make_ssh
 
     echo "Package installation complete"
     echo "Change shell to zsh using chsh -s /bin/zsh"
 
-fi
+    confirm "Make ssh key for github?" && make_ssh "github"
+    confirm "Make ssh key for gitlab?" && make_ssh "gitlab"
 
+    confirm "overwrite /etc/greetd/config.toml?" && {
+        cat <<-EOF >/etc/greetd/config.toml
+[terminal]
+vt = 1
+
+[default_session]
+command = "tuigreet --cmd sway"
+user = "greeter"
+EOF
+
+    echo "enabling greetd.service"
+    sudo systemctl enable greetd.service
+    }
+fi

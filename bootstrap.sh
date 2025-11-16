@@ -108,7 +108,5 @@ confirm "Run host initialization?" && init_system
 
 confirm "Install restic backup (nix only)?" && nix develop --command "./scripts/install_backup.sh"
 
-confirm "Make ssh key for github?" && make_ssh "github"
-confirm "Make ssh key for gitlab?" && make_ssh "gitlab"
 
 echo "System fully initialized"

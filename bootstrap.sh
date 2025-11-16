@@ -90,7 +90,7 @@ init_system() {
             bootstrap_nix
             ;;
         arch) 
-            bash bootstrap_arch
+            bootstrap_arch
             ;;
         *) 
             echo "ERROR: unknown os_id: $os_id"

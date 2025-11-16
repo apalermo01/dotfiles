@@ -24,7 +24,11 @@ EOF
 }
 
 read -p "adding user to sudoers file. What is the username? " user
-echo "$user ALL=(ALL:ALL) ALL" >> /etc/sudoers
+if grep -q $user /etc/sudoers; then
+    echo "$user ALL=(ALL:ALL) ALL" >> /etc/sudoers
+else
+    echo "$user is already in the sudoers file"
+fi
 
 curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/packages.list -o ~/packages.list
 
@@ -44,7 +48,7 @@ sudo pacman -Syu || {
     echo "uncomment the line starting with %wheel ALL="
 }
 
-bash ~/arch_update.sh
+bash ~/arch_update.sh ~/packages.list
 
 pipx ensurepath
 source ~/.bashrc

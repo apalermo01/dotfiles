@@ -37,13 +37,14 @@ if [[ $EUID -eq 0 ]]; then
         exit 1
     fi
 
-    if grep -q $user /etc/sudoers; then
+    if ! grep -q $user /etc/sudoers; then
         echo "$user ALL=(ALL:ALL) ALL" >>/etc/sudoers
     else
         echo "$user is already in the sudoers file"
     fi
 
-    echo "downloading package list and update script from dotfiles repo"
+    read -n1 -srp "downloading package list and update script from dotfiles repo. Press any key to continue..."
+
     curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/packages.list -o ~/packages.list
 
     curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/arch_update.sh -o ~/arch_update.sh
@@ -67,6 +68,7 @@ if [[ $EUID -eq 0 ]]; then
     echo "cleaning up package list and install script"
     rm ~/packages.list ~/arch_update.sh
 
+
     echo "bash <(curl -sL raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/bootstrap.sh)" >/home/$user/runme.sh
 
     echo "Root bootstrap is complete. To continue, log in as the normal user and re-run the bootstrap script. To help, I put the command in /home/$user/runme.sh"
@@ -79,9 +81,22 @@ if [[ $EUID -ne 0 ]]; then
     if ! command -v ricer; then
         echo "installing ricer..."
         pipx install git+https://github.com/apalermo01/ricer.git -f
+        pipx ensurepath
+        source ~/.bashrc
         mkdir -p ~/.config/ricer
         curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/templates/global.yml -o ~/.config/ricer/ricer-global.yml
     fi
+
+    read -n1 -srp "installing yay. Press any key to continue..."
+    mkdir -p ~/tmp/yay
+    sudo pacman -S --needed git base-devel 
+    git clone https://aur.archlinux.org/yay.git ~/tmp/yay
+    cd ~/tmp/yay
+    makepkg -si
+
+    cd 
+    yes | rm -r ~/tmp
+
     echo "installing cargo"
     curl https://sh.rustup.rs -sSf | sh
 

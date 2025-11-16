@@ -36,6 +36,7 @@ networkmanager-openvpn
 
 # language runtimes and utilities
 gcc 
+go
 markdown-oxide
 pyright
 bash-language-server

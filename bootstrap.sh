@@ -77,7 +77,7 @@ bootstrap_nix() {
 }
 
 bootstrap_arch() {
-    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/bootstrap_arch.sh | bash
+    bash <(curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/bootstrap_arch.sh)
 
 }
 init_system() {

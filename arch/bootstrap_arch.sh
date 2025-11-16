@@ -29,6 +29,11 @@ if [[ $EUID -eq 0 ]]; then
     echo "running arch bootstrap in root mode"
 
     read -p "adding user to sudoers file. What is the username? " user
+    if ! id $user >/dev/null 2>&1; then 
+        echo "user $user not found. Exiting..."
+        exit 1
+    fi
+
     if grep -q $user /etc/sudoers; then
         echo "$user ALL=(ALL:ALL) ALL" >> /etc/sudoers
     else
@@ -58,8 +63,13 @@ if [[ $EUID -eq 0 ]]; then
 
     echo "cleaning up package list and install script"
     rm ~/packages.list ~/arch_update.sh
+
+    echo "bash <(curl -sL raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/bootstrap.sh)" > /home/$user/runme.sh
+
+    echo "Root bootstrap is complete. To continue, log in as the normal user and re-run the bootstrap script. To help, I put the command in /home/$user/runme.sh"
+
 else
-    echo "bootstrap script is being run as root user. To complete the remaining steps, log out and re-run this script as a normal user."
+    echo "Bootstrap script is being run as a normal user. Skipping steps that require root..."
 fi 
 
 if [[ $EUID -ne 0 ]]; then
@@ -77,10 +87,9 @@ if [[ $EUID -ne 0 ]]; then
 
     echo "generating ssh keys"
     make_ssh
-else 
-    echo "The remaining installations must be done by the user. Please re-run this script outide of root."
+
+    echo "Package installation complete"
+    echo "Change shell to zsh using chsh -s /bin/zsh"
 
 fi
 
-echo "Package installation complete"
-echo "Change shell to zsh using chsh -s /bin/zsh"

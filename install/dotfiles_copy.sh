@@ -8,13 +8,15 @@ confirm() {
 }
 
 curl -sL https://github.com/apalermo01/dotfiles/archive/refs/heads/main.zip -o ~/dotfiles.zip
+unzip -d ~/Documents/ ~/dotfiles.zip
 
-unzip -d ~/Documents/dotfiles ~/dotfiles.zip
 
-echo "dotfiles copied to ~/Documents/dotfiles"
+sed -i 's|Documents/git/dotfiles|Documents/dotfiles-main|g' ~/Documents/dotfiles-main/templates/global.yml
+
+echo "dotfiles copied to ~/Documents/dotfiles-main"
 
 if command -v ricer; then
     confirm "run ricer? " && {
-        ricer switch
+        ricer switch --root ~/Documents/dotfiles-main/
     }
 fi

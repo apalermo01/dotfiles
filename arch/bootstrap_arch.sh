@@ -102,7 +102,7 @@ if [[ $EUID -ne 0 ]]; then
     fi
 
     confirm "overwrite /etc/greetd/config.toml?" && {
-        cat <<-EOF >/etc/greetd/config.toml
+        sudo cat <<-EOF >/etc/greetd/config.toml
 [terminal]
 vt = 1
 

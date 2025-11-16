@@ -80,6 +80,7 @@ bootstrap_arch() {
     bash <(curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/bootstrap_arch.sh)
 
 }
+
 init_system() {
     local hostname os_id profile
 
@@ -103,11 +104,9 @@ if ! command -v nix >/dev/null; then
     if confirm "Nix package manager not found. Install?"; then bootstrap_nix_package_manager; fi
 fi
 
-confirm "Is the SSH key for github set up and agent loaded?" || exit 0
-
 confirm "Run host initialization?" && init_system
 
-confirm "Install restic backup?" && nix develop --command "./scripts/install_backup.sh"
+confirm "Install restic backup (nix only)?" && nix develop --command "./scripts/install_backup.sh"
 
 confirm "Make ssh key for github?" && make_ssh "github"
 confirm "Make ssh key for gitlab?" && make_ssh "gitlab"

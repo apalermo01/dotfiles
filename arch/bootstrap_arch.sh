@@ -23,6 +23,8 @@ EOF
     esac
 }
 
+read -p "adding user to sudoers file. What is the username? " user
+echo "$user ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
 curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/packages.list -o ~/packages.list
 

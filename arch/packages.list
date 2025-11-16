@@ -58,8 +58,8 @@ yazi
 btop 
 ncdu 
 ripgrep 
-zinit 
-killall 
+# zinit 
+# killall 
 openvpn
 pipewire 
 unzip

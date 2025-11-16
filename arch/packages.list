@@ -66,6 +66,7 @@ openvpn
 pipewire 
 unzip
 man-db
+virt-manager
 
 # other
 ttf-nerd-fonts-symbols

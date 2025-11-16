@@ -68,6 +68,16 @@ if [[ $EUID -eq 0 ]]; then
     echo "cleaning up package list and install script"
     rm ~/packages.list ~/arch_update.sh
 
+    confirm "overwrite /etc/greetd/config.toml?" && {
+        sudo cat <<-EOF >/etc/greetd/config.toml
+[terminal]
+vt = 1
+
+[default_session]
+command = "tuigreet --cmd startx"
+user = "greeter"
+EOF
+    }
 
     echo "bash <(curl -sL raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/bootstrap.sh)" >/home/$user/runme.sh
 
@@ -87,14 +97,16 @@ if [[ $EUID -ne 0 ]]; then
         curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/templates/global.yml -o ~/.config/ricer/ricer-global.yml
     fi
 
-    read -n1 -srp "installing yay. Press any key to continue..."
-    mkdir -p ~/tmp/yay
-    sudo pacman -S --needed git base-devel 
-    git clone https://aur.archlinux.org/yay.git ~/tmp/yay
-    cd ~/tmp/yay
-    makepkg -si
+    if ! command -v yay; then
+        read -n1 -srp "installing yay. Press any key to continue..."
+        mkdir -p ~/tmp/yay
+        sudo pacman -S --needed git base-devel
+        git clone https://aur.archlinux.org/yay.git ~/tmp/yay
+        cd ~/tmp/yay
+        makepkg -si
+    fi
 
-    cd 
+    cd
     yes | rm -r ~/tmp
 
     echo "installing cargo"
@@ -115,17 +127,6 @@ if [[ $EUID -ne 0 ]]; then
     if [[ ! -e ~/.ssh/gitlab ]]; then
         confirm "Make ssh key for gitlab?" && make_ssh "gitlab"
     fi
-
-    confirm "overwrite /etc/greetd/config.toml?" && {
-        sudo cat <<-EOF >/etc/greetd/config.toml
-[terminal]
-vt = 1
-
-[default_session]
-command = "tuigreet --cmd startx"
-user = "greeter"
-EOF
-    }
 
     echo "enabling greetd.service"
     sudo systemctl enable greetd.service

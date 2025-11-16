@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+confirm() { read -r -p "$1 [y/n]: " ans; [[ $ans =~ ^[Yy]$ ]]; }
+
 make_ssh() {
     ssh-keygen -t ed25519 -f ~/.ssh/$1
     eval "$(ssh-agent -s)"

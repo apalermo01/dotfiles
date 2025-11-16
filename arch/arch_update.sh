@@ -2,6 +2,8 @@
 
 set -e 
 
+confirm() { read -r -p "$1 [y/n]: " ans; [[ $ans =~ ^[Yy]$ ]]; }
+
 LISTFILE="$HOME/Documents/git/dotfiles/arch/packages.list"
 
 INSTALL () {

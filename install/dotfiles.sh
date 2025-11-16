@@ -1,6 +1,6 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
-git_root="$HOME/Documents/git"
+ggit@github.com:apalermoit_root="$HOME/Documents/git"
 mkdir -p "$git_root"
 
 if command -v nix-shell >/dev/null; then
@@ -8,8 +8,9 @@ if command -v nix-shell >/dev/null; then
         cd $git_root && git clone git@github.com:apalermo01/dotfiles && cd $git_root/dotfiles
     "
 else
-    ( git clone git@github.com:apalermo01/dotfiles "$git_root/dotfiles"
-      cd "$git_root/dotfiles" )
+    cd $git_root
+    git clone git@github.com:apalermo01/dotfiles.git
+    cd "$git_root/dotfiles"
 fi
 
 cd $git_root/dotfiles

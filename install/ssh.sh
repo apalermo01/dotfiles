@@ -7,14 +7,16 @@ make_ssh() {
 
     case $1 in 
         github)
-            cat <<- EOF > ~/.ssh/config
+            sed -i '/github/d' ~/.ssh/config
+            cat <<- EOF >> ~/.ssh/config
                 Host github.com 
                     Hostname github.com 
                     IdentityFile ~/.ssh/github
 EOF
         ;;
         gitlab)
-            cat <<- EOF > ~/.ssh/config
+            sed -i '/gitlab/d' ~/.ssh/config
+            cat <<- EOF >> ~/.ssh/config
                 Host gitlab.com 
                     Hostname gitlab.com 
                     IdentityFile ~/.ssh/gitlab

@@ -13,6 +13,7 @@ zram-generator
 xorg-server
 i3-wm
 sddm
+greetd-tuigreet
 feh 
 picom 
 polybar
@@ -36,6 +37,10 @@ networkmanager-openvpn
 gcc 
 markdown-oxide
 pyright
+bash-language-server
+bash-completion
+clang
+shfmt
 nodejs 
 nvm 
 
@@ -58,6 +63,7 @@ killall
 openvpn
 pipewire 
 unzip
+man-db
 
 # other
 ttf-nerd-fonts-symbols

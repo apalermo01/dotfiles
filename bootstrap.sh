@@ -76,42 +76,10 @@ bootstrap_nix() {
         run ".#homeConfigurations.${profile}.activationPackage"
 }
 
-# set up arch
 bootstrap_arch() {
-    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/packages.list -o ~/packages.list
+    curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/arch/bootstrap_arch.sh | bash
 
-    echo "Installing these packages:"
-    cat ~/packages.list
-    
-    confirm "press y to continue... "
-
-    sudo pacman -Syu || {
-        echo "You may not be sudo"
-        echo "login as root and run: "
-        echo "sudo usermod -a -G wheel <your user>"
-        echo ""
-        echo "once that is done, open /etc/sudoers and "
-        echo "uncomment the line starting with %wheel ALL="
-    }
-    
-    echo "upgrade done"
-    sudo pacman -S $(cat ~/packages.list | sed -e '/#/d')
-
-    echo "installation done"
- 	pipx ensurepath
-	source ~/.bashrc
-	pipx install git+https://github.com/apalermo01/ricer.git -f
-    cp ./templates/global.yml ~/.config/ricer/ricer-global.yml
-
-    echo "installing cargo"
-    curl https://sh.rustup.rs -sSf | sh
-
-
-    echo "Package installation complete"
-    echo "Change shell to zsh using chsh -s /bin/zsh"
 }
-
-
 init_system() {
     local hostname os_id profile
 
@@ -122,7 +90,7 @@ init_system() {
             bootstrap_nix
             ;;
         arch) 
-            bash ./arch/bootstrap_arch.sh
+            bash bootstrap_arch
             ;;
         *) 
             echo "ERROR: unknown os_id: $os_id"

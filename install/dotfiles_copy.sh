@@ -13,6 +13,8 @@ unzip -d ~/Documents/ ~/dotfiles.zip
 
 sed -i 's|Documents/git/dotfiles|Documents/dotfiles-main|g' ~/Documents/dotfiles-main/templates/global.yml
 
+sed -i 's|Documents/git/dotfiles|Documents/dotfiles-main|g' ~/.config/ricer/ricer-global.yml
+
 echo "dotfiles copied to ~/Documents/dotfiles-main"
 
 if command -v ricer; then

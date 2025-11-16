@@ -76,7 +76,7 @@ else
 fi
 
 if [[ $EUID -ne 0 ]]; then
-    if [ ! -d ~/.config/ricer/ ]; then
+    if ! command -v ricer; then
         echo "installing ricer..."
         pipx install git+https://github.com/apalermo01/ricer.git -f
         mkdir -p ~/.config/ricer

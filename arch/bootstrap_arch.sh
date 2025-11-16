@@ -93,8 +93,13 @@ if [[ $EUID -ne 0 ]]; then
     echo "Package installation complete"
     echo "Change shell to zsh using chsh -s /bin/zsh"
 
-    confirm "Make ssh key for github?" && make_ssh "github"
-    confirm "Make ssh key for gitlab?" && make_ssh "gitlab"
+    if [[ -d ~/.ssh/github ]]; then
+        confirm "Make ssh key for github?" && make_ssh "github"
+    fi
+
+    if [[ -d ~/.ssh/gitlab ]]; then
+        confirm "Make ssh key for gitlab?" && make_ssh "gitlab"
+    fi
 
     confirm "overwrite /etc/greetd/config.toml?" && {
         cat <<-EOF >/etc/greetd/config.toml
@@ -102,11 +107,20 @@ if [[ $EUID -ne 0 ]]; then
 vt = 1
 
 [default_session]
-command = "tuigreet --cmd sway"
+command = "tuigreet --cmd startx"
 user = "greeter"
 EOF
+    }
 
     echo "enabling greetd.service"
     sudo systemctl enable greetd.service
+
+    confirm "write xinitrc to start i3? " && {
+        cat <<-EOF >~/.xinitrc
+exec i3
+EOF
+    }
+    confirm "download copy of dotfiles repo? " && {
+        bash <(curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/install/dotfiles_copy.sh)
     }
 fi

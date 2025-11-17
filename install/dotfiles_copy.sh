@@ -21,4 +21,6 @@ if command -v ricer; then
     confirm "run ricer? " && {
         ricer switch --root ~/Documents/dotfiles-main/
     }
+else 
+    echo "command ricer not found"
 fi

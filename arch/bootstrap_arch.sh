@@ -109,13 +109,14 @@ if [[ $EUID -ne 0 ]]; then
     cd
     yes | rm -r ~/tmp
 
-    echo "installing cargo"
-    curl https://sh.rustup.rs -sSf | sh
+    if ! command -v cargo
+        confirm "install cargo? [y/n]" && curl https://sh.rustup.rs -sSf | sh
+    fi
 
-    echo "installing brave"
-    curl -fsS https://dl.brave.com/install.sh | sh
+    if ! command -v brave
+        confirm "install brave? [y/n]" && curl -fsS https://dl.brave.com/install.sh | sh
+    fi
 
-    echo "generating ssh keys"
 
     echo "Package installation complete"
     echo "Change shell to zsh using chsh -s /bin/zsh"
@@ -131,11 +132,13 @@ if [[ $EUID -ne 0 ]]; then
     echo "enabling greetd.service"
     sudo systemctl enable greetd.service
 
-    confirm "write xinitrc to start i3? " && {
-        cat <<-EOF >~/.xinitrc
+    if ! grep -q "i3" ~/.xinitrc; then
+        confirm "write xinitrc to start i3? " && {
+            cat <<-EOF >~/.xinitrc
 exec i3
 EOF
-    }
+        }
+    fi
     confirm "download copy of dotfiles repo? " && {
         bash <(curl -sL https://raw.githubusercontent.com/apalermo01/dotfiles/refs/heads/main/install/dotfiles_copy.sh)
     }

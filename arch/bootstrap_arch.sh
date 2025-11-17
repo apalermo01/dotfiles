@@ -109,11 +109,11 @@ if [[ $EUID -ne 0 ]]; then
     cd
     yes | rm -r ~/tmp
 
-    if ! command -v cargo
+    if ! command -v cargo; then 
         confirm "install cargo? [y/n]" && curl https://sh.rustup.rs -sSf | sh
     fi
 
-    if ! command -v brave
+    if ! command -v brave; then 
         confirm "install brave? [y/n]" && curl -fsS https://dl.brave.com/install.sh | sh
     fi
 

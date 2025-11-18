@@ -45,9 +45,6 @@
             ];
         };
       };
-      role = {
-        "desktop" = ./nix/roles/desktop.nix;
-      };
 
       mkSystem =
         pkgs: system: hostname:

@@ -157,7 +157,7 @@
       xorg.libXrender
       libGL
       libGLU
-      libtinfo
+      # libtinfo
       # libgnt
       # ncurses
     ];

@@ -31,7 +31,7 @@ if grep -qi microsoft /proc/version; then
     nix run .#homeConfigurations.wsl.activationPackage
 else
     echo "Detected NixOs system, using nixos-rebuild."
-    sudo nixos-rebuild switch --flake .#$hostname
+    sudo nixos-rebuild switch --flake .#$hostname --show-trace
 fi
 
 echo "Build succeeded, committing to git.."

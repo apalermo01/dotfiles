@@ -53,6 +53,7 @@
     libreoffice-qt6-fresh
     networkmanagerapplet
     kdePackages.okular
+    kdePackages.qtsvg
     kdePackages.plasma-workspace
     tor-browser
     anytype

@@ -3,9 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/common
-    ../../modules/wm/i3.nix
-    ../../modules/system/external_monitor.nix
+    ../../modules/common.nix
+    ../../modules/i3.nix
+    ../../modules/external_monitor.nix
   ];
 
   # modules.sddmMonitorLayout.enable = true;

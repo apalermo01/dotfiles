@@ -3,6 +3,7 @@
 --
 return {
     "epwalsh/obsidian.nvim",
+    enabled = true,
     ft = {"md", "markdown"},
     cond = function()
         local vault_path = vim.fn.expand(OBSIDIAN_NOTES_DIR)

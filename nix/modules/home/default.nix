@@ -21,9 +21,9 @@
     ./discord.nix
     ./vlc.nix
     ./pandoc.nix
-    # ./ollama.nix
     ./cursor.nix
     ./freetube.nix
+    ./zsh.nix
   ];
 
 }

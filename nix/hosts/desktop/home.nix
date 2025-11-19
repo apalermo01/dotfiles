@@ -9,8 +9,7 @@
 
 {
   imports = [
-    ../../modules/home/default.nix
-    ../../modules/home/fonts.nix
+    ../../modules/home_manager/default.nix
   ];
 
   # define what will be installed by home manager here

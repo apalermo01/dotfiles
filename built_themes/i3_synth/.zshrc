@@ -347,7 +347,7 @@ function cat_all() {
         "${viewer_cmd[@]}" -- "$f"
         printf '\n'
     done
-        
+
 }
 
 switch_kb() {

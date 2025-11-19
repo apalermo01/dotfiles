@@ -62,7 +62,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.alex = import (./nix/hosts + "/${hostname}/user.nix");
+              home-manager.users.alex = import (./nix/hosts + "/${hostname}/home.nix");
               home-manager.backupFileExtension = "hm-bak";
               home-manager.extraSpecialArgs = {
                 inherit inputs;
@@ -77,7 +77,7 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
           modules = [
-            ./nix/hosts/${hostname}/user.nix
+            ./nix/hosts/${hostname}/home.nix
             {
               home = {
                 username = "${username}";

@@ -8,9 +8,10 @@
 {
   home.stateVersion = "21.03";
   imports = [
-    ./packages/headless.nix
-    ./packages/ui.nix
-    ./packages/home_only.nix
+    ./headless.nix
+    ./ui.nix
+    ./home_only.nix
+    ./fonts.nix
     ./git.nix
     ./direnv.nix
     ./zoxide.nix

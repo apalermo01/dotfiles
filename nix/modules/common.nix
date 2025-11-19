@@ -43,79 +43,36 @@
     kdePackages.okular
     kdePackages.qtsvg
     kdePackages.plasma-workspace
-    # signal-desktop
-    # evtest
-    # nvimpager
 
-    # libraries 
     libinput
-    # libnotify
-    # dunst
     brightnessctl
     lm_sensors
     libimobiledevice
     usbmuxd
-    # jellyfin-ffmpeg
     pinentry-qt
     alsa-utils
     alsa-plugins
     pamixer
-    # xss-lock
     via
     devcontainer
     docker
     qmk
     keymapviz
-    # newsboat
-    # openvpn
     cargo
     rclone
     restic
 
 
-    # language servers
-    nil
-    markdown-oxide
-    sqls
-    postgrestools
     llvmPackages_latest.lldb
     llvmPackages_latest.libllvm
     llvmPackages_latest.libcxx
     llvmPackages_latest.clang
 
-    # formatters
-    nixfmt-rfc-style
-    shfmt
-    mdformat
-    yamlfix
-    pgformatter
   ];
 
   programs.fish.enable = true;
   programs.zsh.enable = true;
   programs.dconf.enable = true;
-
-  # https://github.com/mcdonc/.nixconfig/blob/master/videos/pydev/script.rst
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc.lib
-      zlib
-      xorg.libX11
-      xorg.libXext
-      xorg.libXi
-      xorg.libXcursor
-      xorg.libXrandr
-      xorg.libxcb
-      xorg.libXinerama
-      xorg.libXrender
-      libGL
-      libGLU
-      # libtinfo
-      # libgnt
-      # ncurses
-    ];
-  };
 
   # fixes command-not-found error
   programs.command-not-found.enable = false;

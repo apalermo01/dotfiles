@@ -15,7 +15,6 @@ in
   };
   config = mkIf cfg.enable {
     home.packages = [ pkgs.code-cursor 
-                      # pkgs.code-cursor-fhs 
                       pkgs.cmatrix ];
   };
 }

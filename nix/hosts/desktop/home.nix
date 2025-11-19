@@ -18,6 +18,7 @@
   modules = {
     python.enable = true;
     packages.ui.enable = true;
+    packages.enable = true;
     git.enable = true;
     direnv.enable = true;
     zoxide.enable = true;
@@ -31,4 +32,16 @@
     xss-lock-i3.enable = true;
   };
 
+  xdg.desktopEntries = {
+    obsidian = {
+      name = "Obsidian";
+      exec = "${pkgs.obsidian}/bin/obsidian %u";
+      type = "Application";
+      terminal = false;
+      mimeType = [
+        "x-scheme-handler/obsidian"
+        "text/markdown"
+      ];
+    };
+  };
 }

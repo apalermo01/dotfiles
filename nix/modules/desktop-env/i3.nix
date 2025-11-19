@@ -8,6 +8,7 @@
     feh
     (polybar.override { pulseSupport = true; })
     picom
+    i3lock
     kitty
   ];
 

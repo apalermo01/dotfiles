@@ -1,24 +1,20 @@
 {
   pkgs,
-  # unstablePkgs,
   lib,
   config,
-  inputs,
   ...
 }:
 
 with lib;
 
 let
-  cfg = config.modules.packages.ui;
-
+  cfg = config.modules.packages;
 in
 {
-  options.modules.packages.ui = {
-    enable = mkEnableOption "UI Packages";
+  options.modules.packages = {
+    enable = mkEnableOption "packages";
   };
 
-  # define things that are installed but not managed by home manager here
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       xournalpp
@@ -45,7 +41,33 @@ in
       brave
       glib
       xdg-utils
+      neovim
+      btop
+      ncdu
+      direnv
+      ripgrep
+      zinit
+      dbt
+      killall
+      fortune
+      cowsay
+      pywal
+      stow
+
+      # language utils
+      nixfmt-rfc-style
+
+      # compilers / builders
+      gcc
+      cargo
+      gnumake
+
+      # language runtimes
+      nodejs
+      go
+
+      glibcLocales
+
     ];
   };
-
 }

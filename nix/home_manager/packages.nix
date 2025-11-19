@@ -69,6 +69,27 @@ in
       xfce.thunar-volman
       kdePackages.dolphin
 
+    newsboat
+      tmux
+      fzf
+      yazi
+      sioyek
+    cbonsai
+    delta
+    man-pages
+    man-pages-posix
+    oh-my-posh
+    tealdeer
+    starship
+    lsof
+    postgresql
+    sqitchPg
+    deno
+    nest-cli
+    fastfetch
+    bat
+    eza
+    openvpn
       # language utils
       nixfmt-rfc-style
 

@@ -66,43 +66,15 @@
     docker
     qmk
     keymapviz
-    newsboat
-    openvpn
-    puddletag
-    id3v2
+    # newsboat
+    # openvpn
     cargo
     rclone
-    fortune
-    cowsay
-    pywal
     restic
-    tmux
-    sioyek
-    stow
 
-    fzf
-    yazi
-    cbonsai
-    fastfetch
-    bat
-    eza
-    gitui
-    delta
-    man-pages
-    man-pages-posix
-    oh-my-posh
-    tealdeer
-    starship
-    lsof
-    postgresql
-    sqitchPg
-    deno
-    nest-cli
 
     # language servers
-    pyright
     nil
-    lua-language-server
     markdown-oxide
     sqls
     postgrestools
@@ -112,7 +84,6 @@
     llvmPackages_latest.clang
 
     # formatters
-    stylua
     nixfmt-rfc-style
     shfmt
     mdformat

@@ -181,85 +181,6 @@ map("n", "<leader>dp", function()
 	require("trouble").previous({ skip_groups = true, jump = true })
 end, { desc = "trouble: previous diagnostic" })
 
--- Core nvim-dap keymaps
--- TODO: what is get_args?
--- map("n", "<leader>da", function()
---     require("dap").continue({ before = get_args })
--- end, { desc = "DAP: Run with args" })
-
--- map("n", "<leader>dB", function()
--- 	require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
--- end, { desc = "DAP: Breakpoint condition" })
---
--- map("n", "<leader>db", function()
--- 	require("dap").toggle_breakpoint()
--- end, { desc = "DAP: Toggle breakpoint" })
---
--- map("n", "<leader>dc", function()
--- 	require("dap").continue()
--- end, { desc = "DAP: Run/Continue" })
---
--- map("n", "<leader>dC", function()
--- 	require("dap").run_to_cursor()
--- end, { desc = "DAP: Run to cursor" })
---
--- map("n", "<leader>dg", function()
--- 	require("dap").goto_()
--- end, { desc = "DAP: Go to line (no execute)" })
---
--- map("n", "<leader>di", function()
--- 	require("dap").step_into()
--- end, { desc = "DAP: Step into" })
---
--- map("n", "<leader>dj", function()
--- 	require("dap").down()
--- end, { desc = "DAP: Down" })
---
--- map("n", "<leader>dk", function()
--- 	require("dap").up()
--- end, { desc = "DAP: Up" })
---
--- map("n", "<leader>dl", function()
--- 	require("dap").run_last()
--- end, { desc = "DAP: Run last" })
---
--- map("n", "<leader>do", function()
--- 	require("dap").step_out()
--- end, { desc = "DAP: Step out" })
---
--- map("n", "<leader>dO", function()
--- 	require("dap").step_over()
--- end, { desc = "DAP: Step over" })
---
--- map("n", "<leader>dP", function()
--- 	require("dap").pause()
--- end, { desc = "DAP: Pause" })
---
--- map("n", "<leader>dr", function()
--- 	require("dap").repl.toggle()
--- end, { desc = "DAP: Toggle REPL" })
---
--- map("n", "<leader>ds", function()
--- 	require("dap").session()
--- end, { desc = "DAP: Session" })
---
--- map("n", "<leader>dx", function()
--- 	require("dap").terminate()
--- end, { desc = "DAP: Terminate" })
---
--- map("n", "<leader>dw", function()
--- 	require("dap.ui.widgets").hover()
--- end, { desc = "DAP: Widgets" })
---
--- -- nvim-dap-ui keymaps
--- map("n", "<leader>du", function()
--- 	require("dapui").toggle({})
--- end, { desc = "DAP: Toggle UI" })
---
--- map({ "n", "v" }, "<leader>de", function()
--- 	require("dapui").eval()
--- end, { desc = "DAP: Eval" })
---
 -----------------------------------------------------------------
 -- obsidian
 -----------------------------------------------------------------
@@ -304,15 +225,10 @@ map("n", "<leader>pa", function()
 	builtin.find_files({ hidden = true, no_ignore = true })
 end, { desc = "Telescope: find all files" })
 
--- File browser
--- map("n", "<leader>pbb", "<cmd>Telescope file_browser<CR>", { desc = "Telescope: file browser" })
-
 -- Search open buffers
-map("n", "<leader>b", builtin.buffers, { desc = "Telescope: search open buffers" })
 map("n", "<leader>pb", builtin.buffers, { desc = "Telescope: search open buffers" })
 
 -- Find files
-map("n", "<leader>f", builtin.find_files, { desc = "Telescope: find files" })
 map("n", "<leader>pf", builtin.find_files, { desc = "Telescope: find files" })
 
 -- Live grep
@@ -334,18 +250,27 @@ map("n", "<leader>po", builtin.oldfiles, { desc = "Telescope: search old files" 
 map("n", "<leader>pr", builtin.resume, { desc = "Telescope: resume last picker" })
 
 -- Spell suggestions
-map("n", "<leader>pss", builtin.spell_suggest, { desc = "Telescope: spell suggest" })
+map("n", "<leader>ps", builtin.spell_suggest, { desc = "Telescope: spell suggest" })
 
 -- List registers
 map("n", '<leader>p"', builtin.registers, { desc = "Telescope: list registers" })
 
 -- keymaps
-map("n", "<leader>k", builtin.keymaps, { desc = "Telescope: keymaps" })
+map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+
+-- workspace symbols
+map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+
+-- keymaps
+map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+
+-- workspace_symbol
+map("n", "<leader>pd", builtin.lsp_definitions, { desc = "Telescope: lsp definition" })
 
 -- Prompted grep for a string
-map("n", "<leader>pw", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end, { desc = "Telescope: search for a string" })
+-- map("n", "<leader>pw", function()
+-- 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+-- end, { desc = "Telescope: search for a string" })
 
 --------------------------------------------------------------------------------
 -- LSP MAPS (<leader>v prefix)

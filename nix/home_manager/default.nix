@@ -17,6 +17,7 @@
     ./fonts.nix
     ./git.nix
     ./direnv.nix
+    ./obsidian.nix
     ./datagrip.nix
     ./desktop-entries.nix
     ./freetube.nix

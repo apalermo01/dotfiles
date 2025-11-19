@@ -10,7 +10,6 @@
   # python.enable = true;
   # ricer.enable = true;
   zsh.enable = true;
-  # programs.zsh.enable = true;
   # modules.sddmMonitorLayout.enable = true;
   services.usbmuxd.enable = true;
   virtualisation.docker = {

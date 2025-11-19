@@ -16,6 +16,7 @@
     windowManager.i3.enable = true;
   };
 
+  security.pam.services.i3lock.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.defaultSession = "none+i3";
 }

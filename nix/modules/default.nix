@@ -4,8 +4,7 @@
 {
   imports = [
     ./desktop-env
-    # ./dev
-    # ./dev/python.nix
+    ./zsh
     ./common.nix
     ./external_monitor.nix
   ];

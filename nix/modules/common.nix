@@ -49,14 +49,13 @@
 
     # libraries 
     libinput
-    libnotify
-    dunst
+    # libnotify
+    # dunst
     brightnessctl
     lm_sensors
     libimobiledevice
     usbmuxd
-    ifuse
-    jellyfin-ffmpeg
+    # jellyfin-ffmpeg
     pinentry-qt
     alsa-utils
     alsa-plugins

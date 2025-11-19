@@ -9,7 +9,7 @@
 
   ricer.enable = true;
   zsh.enable = true;
-  i3.enable = true;
+  i3wm.enable = true;
 
   # modules.sddmMonitorLayout.enable = true;
   services.usbmuxd.enable = true;

@@ -7,10 +7,10 @@
 
 {
   options = {
-    i3.enable = lib.mkEnableOption "i3wm";
+    i3wm.enable = lib.mkEnableOption "i3wm";
   };
 
-  config = lib.mkIf config.ricer.enable {
+  config = lib.mkIf config.i3wm.enable {
     environment.systemPackages = with pkgs; [
       xss-lock
       rofi

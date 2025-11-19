@@ -1,6 +1,5 @@
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
 {
-  pkgs,
   lib,
   config,
   ...
@@ -18,8 +17,8 @@ in
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = "Alex";
-      userEmail = "alex.palermo.ai@gmail.com";
+      user.name = "Alex";
+      user.email = "alex.palermo.ai@gmail.com";
       includes = [
         { path = "~/.gitconfig_work"; }
       ];

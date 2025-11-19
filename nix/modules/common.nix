@@ -18,32 +18,11 @@
     any-nix-shell
     gnome-keyring
     seahorse
-
-    # zinit
-
-    # cli utilities
-    # file
-    # pandoc
-    # unzip
-    # xsel
-    # fnm
-
-    # programming languages
-    # lua
-    # go
-
-    # gui
     pavucontrol
-    # pywalfox-native
-    # xfce.thunar
-    # xfce.thunar-volman
-    # kdePackages.dolphin
-    # libreoffice-qt6-fresh
     networkmanagerapplet
     kdePackages.okular
     kdePackages.qtsvg
     kdePackages.plasma-workspace
-
     libinput
     brightnessctl
     lm_sensors
@@ -61,24 +40,19 @@
     cargo
     rclone
     restic
-
-
     llvmPackages_latest.lldb
     llvmPackages_latest.libllvm
     llvmPackages_latest.libcxx
     llvmPackages_latest.clang
-
   ];
 
   programs.fish.enable = true;
-  programs.zsh.enable = true;
   programs.dconf.enable = true;
 
   # fixes command-not-found error
   programs.command-not-found.enable = false;
   programs.nix-index = {
     enable = true;
-    enableFishIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
   };

@@ -9,16 +9,17 @@
   home.stateVersion = "21.03";
   imports = [
     ./dev
+    ./desktop
     ./packages.nix
 
 
 
     ./fonts.nix
     ./git.nix
+    ./dbt.nix
     ./direnv.nix
     ./zoxide.nix
     ./datagrip.nix
-    ./xss-lock-i3.nix
     ./desktop-entries.nix
     ./obs.nix
     ./discord.nix

@@ -9,7 +9,6 @@
     (polybar.override { pulseSupport = true; })
     picom
     i3lock
-    kitty
   ];
 
   services.xserver = {

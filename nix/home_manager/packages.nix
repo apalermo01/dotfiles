@@ -17,32 +17,6 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      xournalpp
-      kitty
-      firefox
-      nemo-with-extensions
-      libnotify
-      dunst
-      mailutils
-      zoom-us
-      obsidian
-      imagemagick
-      dconf-editor
-      themechanger
-      kdePackages.kconfig
-      libsForQt5.xp-pen-deco-01-v2-driver
-      kdePackages.kde-cli-tools
-      libsForQt5.qt5ct
-      libsForQt5.qtstyleplugin-kvantum
-      flameshot
-      xdg-desktop-portal
-      xdg-desktop-portal-gtk
-      i3lock
-      brave
-      glib
-      xdg-utils
-      neovim
-      git
       wget
       file
       pandoc
@@ -53,81 +27,62 @@ in
       ncdu
       direnv
       ripgrep
+      neovim
+      tmux
+      kitty
+      dunst
       zinit
-      dbt
-      killall
       fortune
       cowsay
       pywal
-      pywalfox-native
       stow
-      xfce.thunar
-    libreoffice-qt6-fresh
-    signal-desktop
-    evtest
-    nvimpager
-      xfce.thunar-volman
-      kdePackages.dolphin
+      pywalfox-native
 
-    newsboat
-      tmux
-      fzf
-      yazi
-      sioyek
-    cbonsai
-    delta
-    man-pages
-    man-pages-posix
-    oh-my-posh
-    tealdeer
-    starship
-    lsof
-    postgresql
-    sqitchPg
-    deno
-    nest-cli
-    fastfetch
-    bat
-    eza
-    openvpn
-      # language utils
-      nixfmt-rfc-style
-
-      # compilers / builders
-      gcc
-      cargo
-      gnumake
-
-      # language runtimes
-      nodejs
-      go
-
+      libnotify
+      glib
       glibcLocales
 
       xournalpp
-      kitty
       firefox
-      nemo-with-extensions
-      libnotify
-      dunst
-      mailutils
+      brave
       zoom-us
+      libreoffice-qt6-fresh
+      signal-desktop
       obsidian
-      imagemagick
-      dconf-editor
-      themechanger
+      flameshot
+
+      kdePackages.dolphin
       kdePackages.kconfig
-      libsForQt5.xp-pen-deco-01-v2-driver
       kdePackages.kde-cli-tools
+
       libsForQt5.qt5ct
       libsForQt5.qtstyleplugin-kvantum
-      flameshot
+      libsForQt5.xp-pen-deco-01-v2-driver
       xdg-desktop-portal
       xdg-desktop-portal-gtk
-      i3lock
-      brave
-      glib
       xdg-utils
+      xfce.thunar
+      xfce.thunar-volman
+
+      killall
+      nvimpager
+      newsboat
+      fzf
+      yazi
+      sioyek
+      cbonsai
+      delta
+      man-pages
+      man-pages-posix
+      oh-my-posh
+      tealdeer
+      starship
+      lsof
+      fastfetch
+      bat
+      eza
+      openvpn
+
     ];
   };
 }

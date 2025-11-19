@@ -51,7 +51,6 @@ in
       signal-desktop
       flameshot
 
-      kdePackages.dolphin
       kdePackages.kconfig
       kdePackages.kde-cli-tools
       kdePackages.okular

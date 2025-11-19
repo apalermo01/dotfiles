@@ -9,14 +9,14 @@
 
 {
   imports = [
-    ../../modules/home_manager/default.nix
+    ../../home_manager/default.nix
   ];
 
   # define what will be installed by home manager here
   fonts.fontconfig.enable = true;
 
   modules = {
-    packages.headless.enable = true;
+    packages.headless.enable = false;
     packages.ui.enable = true;
     git.enable = true;
     direnv.enable = true;

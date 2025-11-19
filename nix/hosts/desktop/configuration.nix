@@ -6,6 +6,10 @@
     ../../modules/default.nix
   ];
 
+
+  python.enable = true;
+  ricer.enable = true;
+
   # modules.sddmMonitorLayout.enable = true;
   services.usbmuxd.enable = true;
   virtualisation.docker = {

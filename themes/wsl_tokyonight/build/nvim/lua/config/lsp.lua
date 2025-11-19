@@ -64,6 +64,10 @@ local servers = {
 		cmd = IS_NIXOS and { "/run/current-system/sw/bin/clangd" } or { "clangd" },
 		filetypes = { "c", "cpp" },
 	},
+
+    pyright = {
+        capabilities = capabilities
+    },
 }
 
 for name, config in pairs(servers) do

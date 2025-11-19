@@ -9,7 +9,7 @@
   home.stateVersion = "21.03";
   imports = [
     ./dev
-    ./desktop
+    ./wm
     ./packages.nix
 
 

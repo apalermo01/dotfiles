@@ -11,7 +11,10 @@
   };
 
   config = lib.mkIf config.kdePlasma.enable {
-
+    environment.systemPackages = with pkgs; [
+      kdePackages.plasma-workspace
+    ];
+    programs.kdeconnect.enable = true;
     services.xserver = {
       enable = true;
     };
@@ -20,8 +23,10 @@
       sddm.enable = true;
       sddm.wayland.enable = true;
     };
-    
+
     services.desktopManager.plasma6.enable = true;
+    environment.etc."xdg/menus/plasma-applications.menu".source =
+      "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   };
 }

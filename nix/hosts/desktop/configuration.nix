@@ -13,13 +13,11 @@
 
   environment.systemPackages = with pkgs; [
     any-nix-shell
-    kdePackages.plasma-workspace
   ];
 
   i3wm.enable = true;
-  kdePlasma.enable = true;
+  kdePlasma.enable = false;
   programs.zsh.enable = true;
-
 
 
   # modules.sddmMonitorLayout.enable = true;
@@ -37,7 +35,6 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs.nix-ld.enable = true;
-  programs.kdeconnect.enable = true;
 
   # networking
   networking = {
@@ -61,7 +58,6 @@
   services.udev.packages = [ pkgs.via ];
   hardware.keyboard.qmk.enable = true;
 
-  services.desktopManager.plasma6.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
@@ -80,8 +76,8 @@
     HandleLidSwitch = "lock";
   };
 
-  environment.etc."xdg/menus/plasma-applications.menu".source =
-    "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+  # environment.etc."xdg/menus/plasma-applications.menu".source =
+  #   "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   services.power-profiles-daemon.enable = false;
   # Enable CUPS to print documents.

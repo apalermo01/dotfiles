@@ -6,7 +6,7 @@
   imports = [
     ./python.nix
     ./c.nix
-    ./lua.nix
-    ./go.nix
+    # ./lua.nix
+    # ./go.nix
   ];
 }

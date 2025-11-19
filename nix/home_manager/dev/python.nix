@@ -8,21 +8,22 @@
 
 with lib;
 let 
-  python = pkgs.python313.withPackages (ps: [
+  pythonEnv = pkgs.python313.withPackages (ps: [
     ps.black
     ps.isort
     ps.ipython
+    ps.numpy
     ps.pip
   ]);
 
   cfg = config.modules.python;
 in
 {
-  options.python.enable = mkEnableOption "Enables python";
+  options.modules.python.enable = mkEnableOption "Enables python";
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      python
+      pythonEnv
       pyright
     ];
   };

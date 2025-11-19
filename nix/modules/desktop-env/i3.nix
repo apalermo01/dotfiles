@@ -2,13 +2,13 @@
 
 {
   environment.systemPackages = with pkgs; [
-      xss-lock
-      rofi
-      i3
-      feh
-      (polybar.override { pulseSupport = true; })
-      picom
-      kitty
+    xss-lock
+    rofi
+    i3
+    feh
+    (polybar.override { pulseSupport = true; })
+    picom
+    kitty
   ];
 
   services.xserver = {

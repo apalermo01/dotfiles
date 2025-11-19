@@ -7,12 +7,12 @@
 
 with lib;
 let 
-  c = config.modules.c;
+  cfg = config.modules.c;
 in
 {
-  options.c.enable = mkEnableOption "Enables C and clangd";
+  options.modules.c.enable = mkEnableOption "Enables C and clangd";
 
-  config = mkIf c.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       clang-tools
       clang

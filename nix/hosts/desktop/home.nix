@@ -16,6 +16,7 @@
   fonts.fontconfig.enable = true;
 
   modules = {
+    python.enable = true;
     packages.ui.enable = true;
     git.enable = true;
     direnv.enable = true;

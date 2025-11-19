@@ -7,7 +7,7 @@
   ];
 
 
-  python.enable = true;
+  # python.enable = true;
   ricer.enable = true;
 
   # modules.sddmMonitorLayout.enable = true;

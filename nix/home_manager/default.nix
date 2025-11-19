@@ -13,8 +13,6 @@
 
 
 
-    # ./ui.nix
-    # ./home_only.nix
     ./fonts.nix
     ./git.nix
     ./direnv.nix

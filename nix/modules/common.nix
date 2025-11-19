@@ -11,33 +11,22 @@
   # system packages
   environment.systemPackages = with pkgs; [
     tree
-    neovim
-    nodejs
     nix-index
-    git
-    wget
-    gcc
-    btop
-    ncdu
     devenv
-    gnumake
-    killall
     gnupg1
-    ripgrep
-    fuse
     dbus
-    shutter
     any-nix-shell
     gnome-keyring
     seahorse
-    zinit
+
+    # zinit
 
     # cli utilities
-    file
-    pandoc
-    unzip
-    xsel
-    fnm
+    # file
+    # pandoc
+    # unzip
+    # xsel
+    # fnm
 
     # programming languages
     lua

@@ -16,11 +16,11 @@
   ];
 
   i3wm.enable = true;
+  tuigreet.enable = true;
   kdePlasma.enable = false;
   programs.zsh.enable = true;
 
 
-  # modules.sddmMonitorLayout.enable = true;
   services.usbmuxd.enable = true;
   virtualisation.docker = {
     enable = true;

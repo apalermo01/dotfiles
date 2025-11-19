@@ -70,7 +70,6 @@
   # without this, we're getting prompted for the wifi password every time
   # we reboot into i3
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
   security.pam.services.login.enableGnomeKeyring = true;
 
   # Configure keymap in X11

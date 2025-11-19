@@ -7,9 +7,10 @@
   ];
 
 
-  # python.enable = true;
-  # ricer.enable = true;
+  ricer.enable = true;
   zsh.enable = true;
+  i3.enable = true;
+
   # modules.sddmMonitorLayout.enable = true;
   services.usbmuxd.enable = true;
   virtualisation.docker = {
@@ -21,7 +22,7 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
-  programs.hyprland.enable = true;
+  programs.hyprland.enable = false;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs.nix-ld.enable = true;
@@ -63,7 +64,6 @@
     jack.enable = true;
   };
 
-  security.pam.services.i3lock.enable = true;
 
   services.logind.settings.Login = {
     HandleLidSwitchDocked = "lock";

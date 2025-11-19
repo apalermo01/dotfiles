@@ -3,7 +3,7 @@
 }:
 {
   imports = [
-    ./desktop-env
+    ./wm
     ./zsh
     ./common.nix
     ./external_monitor.nix

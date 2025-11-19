@@ -30,5 +30,8 @@
     services.displayManager.sddm.enable = true;
     services.displayManager.defaultSession = "none+i3";
 
+    services = {
+      xss-lock-i3.enable = true;
+    };
   };
 }

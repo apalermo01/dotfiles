@@ -48,7 +48,6 @@ in
       zoom-us
       libreoffice-qt6-fresh
       signal-desktop
-      obsidian
       flameshot
 
       kdePackages.dolphin

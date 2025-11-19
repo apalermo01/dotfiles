@@ -8,8 +8,9 @@
 
 
   ricer.enable = true;
-  zsh.enable = true;
   i3wm.enable = true;
+
+  programs.zsh.enable = true;
 
   # modules.sddmMonitorLayout.enable = true;
   services.usbmuxd.enable = true;

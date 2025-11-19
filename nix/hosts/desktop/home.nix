@@ -17,7 +17,7 @@
 
   modules = {
     python.enable = true;
-    # zsh.enable = true;
+    zsh.enable = true;
     # packages.ui.enable = true;
     packages.enable = true;
     git.enable = true;
@@ -27,22 +27,8 @@
     discord.enable = true;
     obs.enable = true;
     vlc.enable = true;
+    obsidian.enable = true;
     # freetube.enable = true;
   };
-  services = {
-    xss-lock-i3.enable = true;
-  };
 
-  xdg.desktopEntries = {
-    obsidian = {
-      name = "Obsidian";
-      exec = "${pkgs.obsidian}/bin/obsidian %u";
-      type = "Application";
-      terminal = false;
-      mimeType = [
-        "x-scheme-handler/obsidian"
-        "text/markdown"
-      ];
-    };
-  };
 }

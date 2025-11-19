@@ -27,7 +27,7 @@
     ./pandoc.nix
     ./cursor.nix
     ./freetube.nix
-    ./zsh.nix
+    # ./zsh.nix
   ];
 
 }

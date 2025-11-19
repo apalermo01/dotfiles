@@ -17,6 +17,7 @@
 
   modules = {
     python.enable = true;
+    # zsh.enable = true;
     # packages.ui.enable = true;
     packages.enable = true;
     git.enable = true;

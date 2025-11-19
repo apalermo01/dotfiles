@@ -14,12 +14,10 @@
     devenv
     gnupg1
     dbus
-    any-nix-shell
     gnome-keyring
     seahorse
     pavucontrol
     networkmanagerapplet
-    kdePackages.plasma-workspace
     libinput
     brightnessctl
     lm_sensors

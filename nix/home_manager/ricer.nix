@@ -5,8 +5,8 @@
   ...
 }:
 {
-  options = {
-    modules.ricer.enable = lib.mkEnableOption "enables custom theme switcher";
+  options.modules.ricer = {
+    enable = lib.mkEnableOption "enables custom theme switcher";
   };
 
   config = lib.mkIf config.modules.ricer.enable {

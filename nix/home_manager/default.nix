@@ -18,6 +18,7 @@
     ./git.nix
     ./direnv.nix
     ./obsidian.nix
+    ./ricer.nix
     ./datagrip.nix
     ./desktop-entries.nix
     ./freetube.nix

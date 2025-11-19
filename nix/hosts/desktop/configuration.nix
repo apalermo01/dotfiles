@@ -14,10 +14,13 @@
   environment.systemPackages = with pkgs; [
     any-nix-shell
     kdePackages.plasma-workspace
-
   ];
+
   i3wm.enable = true;
+  kdePlasma.enable = true;
   programs.zsh.enable = true;
+
+
 
   # modules.sddmMonitorLayout.enable = true;
   services.usbmuxd.enable = true;

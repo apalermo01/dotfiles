@@ -21,7 +21,6 @@
     packages.enable = true;
     git.enable = true;
     direnv.enable = true;
-    zoxide.enable = true;
     desktop-entries.enable = true;
     obsidian.enable = true;
     freetube.enable = false;

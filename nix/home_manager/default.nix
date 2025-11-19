@@ -21,7 +21,7 @@
     ./datagrip.nix
     ./desktop-entries.nix
     ./freetube.nix
-    # ./zsh.nix
+    ./zsh.nix
   ];
 
 }

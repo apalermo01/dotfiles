@@ -19,6 +19,7 @@
     python.enable = true;
     zsh.enable = false;
     packages.enable = true;
+    ricer.enable = true;
     git.enable = true;
     direnv.enable = true;
     desktop-entries.enable = true;

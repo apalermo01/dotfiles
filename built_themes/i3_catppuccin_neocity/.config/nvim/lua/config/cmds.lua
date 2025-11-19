@@ -131,7 +131,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
                    "<leader>ck => toggle NoNeckPain\n"..
                    "K          => LSP hover \n"..
                    "              Then <c-w>w to focus floating window\n"..
-                   "l/L        => end of word / WORD")
+                   "l/L        => end of word / WORD"..
+                   "use M-{hnei/hjkl} to navigate tmux panes")
     end,
 })
 

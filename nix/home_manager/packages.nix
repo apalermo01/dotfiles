@@ -59,7 +59,15 @@ in
       fortune
       cowsay
       pywal
+      pywalfox-native
       stow
+      xfce.thunar
+    libreoffice-qt6-fresh
+    signal-desktop
+    evtest
+    nvimpager
+      xfce.thunar-volman
+      kdePackages.dolphin
 
       # language utils
       nixfmt-rfc-style

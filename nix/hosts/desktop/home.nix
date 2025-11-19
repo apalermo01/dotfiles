@@ -17,7 +17,7 @@
 
   modules = {
     python.enable = true;
-    packages.ui.enable = true;
+    # packages.ui.enable = true;
     packages.enable = true;
     git.enable = true;
     direnv.enable = true;

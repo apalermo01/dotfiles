@@ -29,26 +29,23 @@
     # fnm
 
     # programming languages
-    lua
-    go
+    # lua
+    # go
 
     # gui
     pavucontrol
-    pywalfox-native
-    xfce.thunar
-    xfce.thunar-volman
-    kdePackages.dolphin
-    libreoffice-qt6-fresh
+    # pywalfox-native
+    # xfce.thunar
+    # xfce.thunar-volman
+    # kdePackages.dolphin
+    # libreoffice-qt6-fresh
     networkmanagerapplet
     kdePackages.okular
     kdePackages.qtsvg
     kdePackages.plasma-workspace
-    tor-browser
-    anytype
-    standardnotes
-    signal-desktop
-    evtest
-    nvimpager
+    # signal-desktop
+    # evtest
+    # nvimpager
 
     # libraries 
     libinput

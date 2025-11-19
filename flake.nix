@@ -25,7 +25,7 @@
       pkgs = import inputs.nixpkgs {
         overlays = [
           (import ./nix/overlays/postgrestools.nix)
-          (import ./nix/overlays/ricer.nix)
+          # (import ./nix/overlays/ricer.nix)
           (import ./nix/overlays/sioyek.nix)
         ];
         system = system;

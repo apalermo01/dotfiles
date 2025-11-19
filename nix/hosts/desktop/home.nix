@@ -18,17 +18,15 @@
   modules = {
     python.enable = true;
     zsh.enable = true;
-    # packages.ui.enable = true;
     packages.enable = true;
     git.enable = true;
     direnv.enable = true;
     zoxide.enable = true;
     desktop-entries.enable = true;
-    discord.enable = true;
-    obs.enable = true;
-    vlc.enable = true;
     obsidian.enable = true;
-    # freetube.enable = true;
+    freetube.enable = false;
   };
 
+  programs.zoxide.enable = true;
+  programs.obs-studio.enable = true;
 }

@@ -17,6 +17,7 @@ in
       pgformatter
       postgrestools
       sqls
+      dbt
       sqitchPg
     ];
   };

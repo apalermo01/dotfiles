@@ -43,6 +43,7 @@ in
       glibcLocales
 
       xournalpp
+      discord
       firefox
       brave
       zoom-us
@@ -63,6 +64,7 @@ in
       xfce.thunar
       xfce.thunar-volman
 
+      vlc
       killall
       nvimpager
       newsboat

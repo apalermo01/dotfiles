@@ -16,7 +16,7 @@ in
   };
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs.jetbrains.datagrip
+      pkgs.obsidian
     ];
   };
   xdg.desktopEntries = {

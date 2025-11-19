@@ -46,7 +46,7 @@
     llvmPackages_latest.clang
   ];
 
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
   programs.dconf.enable = true;
 
   # fixes command-not-found error

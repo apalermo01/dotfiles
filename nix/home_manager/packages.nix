@@ -54,6 +54,8 @@ in
       kdePackages.dolphin
       kdePackages.kconfig
       kdePackages.kde-cli-tools
+      kdePackages.okular
+      kdePackages.qtsvg
 
       libsForQt5.qt5ct
       libsForQt5.qtstyleplugin-kvantum
@@ -66,6 +68,8 @@ in
 
       vlc
       killall
+      rclone
+      restic
       nvimpager
       newsboat
       fzf
@@ -74,6 +78,7 @@ in
       cbonsai
       delta
       man-pages
+      tree
       man-pages-posix
       oh-my-posh
       tealdeer

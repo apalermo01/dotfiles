@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -6,10 +11,12 @@
     ../../modules/default.nix
   ];
 
+  environment.systemPackages = with pkgs; [
+    any-nix-shell
+    kdePackages.plasma-workspace
 
-  ricer.enable = true;
+  ];
   i3wm.enable = true;
-
   programs.zsh.enable = true;
 
   # modules.sddmMonitorLayout.enable = true;
@@ -51,7 +58,6 @@
   services.udev.packages = [ pkgs.via ];
   hardware.keyboard.qmk.enable = true;
 
-
   services.desktopManager.plasma6.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -64,7 +70,6 @@
     pulse.enable = true;
     jack.enable = true;
   };
-
 
   services.logind.settings.Login = {
     HandleLidSwitchDocked = "lock";
@@ -112,4 +117,13 @@
       keep-derivations = true
     '';
   };
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.11"; # Did you read the comment?
+
 }

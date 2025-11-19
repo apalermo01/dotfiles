@@ -16,7 +16,6 @@
   fonts.fontconfig.enable = true;
 
   modules = {
-    packages.headless.enable = false;
     packages.ui.enable = true;
     git.enable = true;
     direnv.enable = true;
@@ -25,7 +24,7 @@
     discord.enable = true;
     obs.enable = true;
     vlc.enable = true;
-    freetube.enable = true;
+    # freetube.enable = true;
   };
   services = {
     xss-lock-i3.enable = true;

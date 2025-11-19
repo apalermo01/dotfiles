@@ -8,7 +8,6 @@
 {
   home.stateVersion = "21.03";
   imports = [
-    ./headless.nix
     ./ui.nix
     ./home_only.nix
     ./fonts.nix

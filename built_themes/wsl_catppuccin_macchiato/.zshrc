@@ -18,6 +18,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light chisui/zsh-nix-shell 
 
 # load autocompletions
 autoload -U compinit && compinit
@@ -466,3 +467,7 @@ fi
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

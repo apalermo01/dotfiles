@@ -10,15 +10,6 @@ return {
 			["<C-v>"] = { "actions.select", opts = { vertical = true } },
 			["<C-h>"] = false,
 			["<C-l>"] = false,
-			-- ["<leader>pv"] = {
-			-- 	callback = function()
-			-- 		local oil = require("oil")
-			-- 		local file_path = oil.get_current_dir() -- Get the current file path from oil
-			-- 		if file_path then
-			-- 			open_floating_preview(file_path)
-			-- 		end
-			-- 	end,
-			-- },
 		},
 
 		win_options = {

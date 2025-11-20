@@ -29,21 +29,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- trouble: only open when there's something that will crash the program
--- vim.api.nvim_create_autocmd("DiagnosticChanged", {
--- 	callback = function(args)
--- 		local bufnr = args.buf
--- 		local errors = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.ERROR })
--- 		if errors ~= nil and #errors > 0 then
--- 			require("trouble").open({
--- 				mode = "diagnostics",
--- 				filter = { buf = 0 },
--- 				focus = false,
--- 				pinned = true,
--- 			})
--- 		end
--- 	end,
--- })
 
 -- trouble: close when closing buffer
 local trouble = require("trouble")
@@ -131,7 +116,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
                    "<leader>ck => toggle NoNeckPain\n"..
                    "K          => LSP hover \n"..
                    "              Then <c-w>w to focus floating window\n"..
-                   "l/L        => end of word / WORD")
+                   "l/L        => end of word / WORD"..
+                   "use M-{hnei/hjkl} to navigate tmux panes")
     end,
 })
 

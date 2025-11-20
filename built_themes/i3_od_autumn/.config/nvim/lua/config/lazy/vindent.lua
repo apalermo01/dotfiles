@@ -1,3 +1,0 @@
-return {
-    'jeetsukumaran/vim-indentwise'
-}

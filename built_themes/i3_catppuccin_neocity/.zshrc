@@ -13,17 +13,17 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-# global plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
+# # global plugins
+# zinit light zsh-users/zsh-syntax-highlighting
+# zinit light zsh-users/zsh-completions
+# zinit light zsh-users/zsh-autosuggestions
+# zinit light Aloxaf/fzf-tab
 zinit light chisui/zsh-nix-shell 
 
 # load autocompletions
 autoload -U compinit && compinit
 
-zinit cdreplay -q
+# zinit cdreplay -q
 
 ####################
 # Helper Functions #
@@ -91,10 +91,10 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# zstyle ':completion:*' menu no
+# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 if command -v z >/dev/null 2>&1
 then
@@ -347,7 +347,7 @@ function cat_all() {
         "${viewer_cmd[@]}" -- "$f"
         printf '\n'
     done
-        
+
 }
 
 switch_kb() {
@@ -383,10 +383,10 @@ echo "* cat_all                   = cat all files in directory               *"
 echo "* switch_kb                 = change kb layout                         *"
 echo "************************************************************************"
 export NOTES_PATH="/home/alex/Documents/git/notes/"
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 mkpretty() { 
     local target_dir="/mnt/c/Users/apalermo/Downloads"

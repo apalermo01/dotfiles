@@ -16,7 +16,8 @@
   ];
 
   i3wm.enable = true;
-  tuigreet.enable = true;
+  tuigreet.enable = false;
+  sddm.enable = true;
   kdePlasma.enable = false;
   programs.zsh.enable = true;
 

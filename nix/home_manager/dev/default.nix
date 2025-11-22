@@ -4,26 +4,19 @@
 }:
 {
   imports = [
-    ./python.nix
     ./c.nix
-    ./lua.nix
+    ./deno.nix
     ./go.nix
+    ./lua.nix
+    ./markdown.nix
+    ./nest.nix
+    ./nixlang.nix
+    ./node.nix
+    ./python.nix
+    ./rust.nix
+    ./shfmt.nix
     ./sql.nix
+    ./yamlfix.nix
   ];
 
-  home.packages = with pkgs; [
-    nixfmt-rfc-style
-    nil
-    nodejs
-    deno
-    nest-cli
-    markdown-oxide
-    shfmt
-    mdformat
-    yamlfix
-    gcc
-    cargo
-    gnumake
-
-  ];
 }

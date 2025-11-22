@@ -16,7 +16,22 @@
   fonts.fontconfig.enable = true;
 
   modules = {
+    # dev tools
     python.enable = true;
+    c.enable = true;
+    deno.enable = true;
+    go.enable = true;
+    lua.enable = true;
+    markdown.enable = true;
+    nest.enable = true;
+    nixlang.enable = true;
+    node.enable = true;
+    rust.enable = true;
+    shfmt.enable = true;
+    sql.enable = true; 
+    yamlfix.enable = true;
+    
+
     zsh.enable = false;
     packages.enable = true;
     ricer.enable = true;

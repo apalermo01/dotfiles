@@ -45,7 +45,7 @@ colemak_tmux() {
     for k in "${tmux_keys[@]}"; do
         colemak_key=$(echo "${k}" | cut -d '|' -f 1)
         qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
-        sed -i "s/${qwerty_key}/${colemak_key}/" ~/.tmux.conf
+        sed -i "s/${qwerty_key}/${colemak_key}/" ~/.config/tmux/tmux.conf
     done
 
 }
@@ -68,7 +68,7 @@ qwerty_tmux() {
     for k in "${tmux_keys[@]}"; do
         colemak_key=$(echo "${k}" | cut -d '|' -f 1)
         qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
-        sed -i "s/${colemak_key}/${qwerty_key}/" ~/.tmux.conf
+        sed -i "s/${colemak_key}/${qwerty_key}/" ~/.config/tmux/tmux.conf
     done
 }
 

@@ -16,7 +16,7 @@ in
     home.packages = with pkgs; [
       clang-tools
       clang
-      gcc
+      # gcc
       gnumake
     ];
   };

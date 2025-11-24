@@ -55,6 +55,7 @@ in
       kdePackages.kde-cli-tools
       kdePackages.okular
       kdePackages.qtsvg
+      kdePackages.dolphin
 
       libsForQt5.qt5ct
       libsForQt5.qtstyleplugin-kvantum

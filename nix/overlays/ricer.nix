@@ -12,8 +12,8 @@ in
     src = super.fetchFromGitHub {
       owner = "apalermo01";
       repo = "ricer";
-      rev = "0679a5353589c96e206cb05d575439f0fe97d374";
-      sha256 = "HwSHb9q7FUYUE1chP5OrORas4A7VSmNOIDWGak2HJI0=";
+      rev = "568403beb40ccc5e23c642be194d46ced2136093";
+      sha256 = "sha256-RFynfm8MHEX1qbAisNUglRqurRij4rpPGlE/jdNXHPQ=";
     };
 
     propagatedBuildInputs = with py.pkgs; [
@@ -32,9 +32,9 @@ in
 
     doCheck = false;
 
-    postInstall = ''
-      mkdir -p $out/share/ricer 
-      cp config/ricer*.yml $out/share/ricer
-    '';
+    # postInstall = ''
+    #   mkdir -p $out/share/ricer 
+    #   cp default_cfg_files/ricer*.yml $out/share/ricer
+    # '';
   };
 }

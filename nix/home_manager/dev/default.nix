@@ -4,6 +4,7 @@
 }:
 {
   imports = [
+    ./ai.nix
     ./c.nix
     ./deno.nix
     ./go.nix

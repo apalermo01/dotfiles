@@ -17,7 +17,8 @@
 
   modules = {
     python.enable = true;
-    zsh.enable = true;
+    # zsh.enable = true;
+    ai.enable = true;
     datagrip.enable = true;
     packages.enable = true;
     ricer.enable = true;

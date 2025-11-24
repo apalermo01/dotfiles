@@ -18,11 +18,17 @@
   modules = {
     python.enable = true;
     zsh.enable = true;
+    datagrip.enable = true;
     packages.enable = true;
     ricer.enable = true;
     git.enable = true;
     direnv.enable = true;
-    desktop-entries.enable = true;
+    nixlang.enable = true;
+    shfmt.enable = true;
+    sql.enable = true;
+    yamlfix.enable = true;
+    lua.enable = true;
+    markdown.enable = true;
   };
 
   programs.zoxide.enable = true;

@@ -101,6 +101,7 @@
 
       # home manager only
       homeConfigurations = {
+        wsl = mkHome pkgs "x86_64-linux" "apalermo";
       };
     };
 }

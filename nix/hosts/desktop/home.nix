@@ -40,6 +40,9 @@
     desktop-entries.enable = true;
     obsidian.enable = true;
     freetube.enable = false;
+    kde-pkgs.enable = true;
+    gui-pkgs.enable = true;
+    xdg.enable = true;
   };
 
   programs.zoxide.enable = true;

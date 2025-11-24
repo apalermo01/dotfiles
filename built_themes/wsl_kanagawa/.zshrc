@@ -465,3 +465,5 @@ fi
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
 fi
+
+if [ -e /home/apalermo/.nix-profile/etc/profile.d/nix.sh ]; then . /home/apalermo/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

@@ -52,6 +52,7 @@ in
       flameshot
 
       kdePackages.kconfig
+      kdePackages.kservice
       kdePackages.kde-cli-tools
       kdePackages.okular
       kdePackages.qtsvg

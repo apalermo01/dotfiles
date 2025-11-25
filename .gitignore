@@ -4,4 +4,4 @@ current_theme
 **/fish/conf.d
 **/fish/functions
 .direnv
-./built_themes/*
+built_themes/*

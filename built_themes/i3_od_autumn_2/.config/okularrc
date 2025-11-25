@@ -1,3 +1,15 @@
-[UiSettings]
-ColorScheme = OneDarkRed
+[Desktop Entry]
+FullScreen=false
 
+[General]
+LockSidebar=true
+ShowSidebar=true
+
+[Recent Files]
+File1[$e]=$HOME/Downloads/cms-2552-10/2025 R23P240i.pdf
+File2[$e]=$HOME/Downloads/p152_40/R24P240i.pdf
+Name1[$e]=2025 R23P240i.pdf
+Name2[$e]=R24P240i.pdf
+
+[UiSettings]
+ColorScheme=OneDarkRed

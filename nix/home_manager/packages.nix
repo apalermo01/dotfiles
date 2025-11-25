@@ -36,42 +36,13 @@ in
       cowsay
       pywal
       stow
-      pywalfox-native
 
-      libnotify
       glib
       glibcLocales
 
-      xournalpp
-      discord
-      firefox
-      brave
-      zoom-us
-      libreoffice-qt6-fresh
-      signal-desktop
-      flameshot
 
-      kdePackages.kconfig
-      kdePackages.kservice
-      kdePackages.kde-cli-tools
-      kdePackages.okular
-      kdePackages.qtsvg
-      kdePackages.dolphin
-      kdePackages.ark
 
-      libsForQt5.qt5ct
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.xp-pen-deco-01-v2-driver
-      xdg-desktop-portal
-      xdg-desktop-portal-gtk
-      xdg-utils
-      xfce.thunar
-      xfce.thunar-volman
-
-      vlc
       killall
-      rclone
-      restic
       nvimpager
       newsboat
       fzf
@@ -89,7 +60,6 @@ in
       fastfetch
       bat
       eza
-      openvpn
 
     ];
   };

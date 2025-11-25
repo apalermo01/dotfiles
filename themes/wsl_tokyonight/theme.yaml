@@ -10,7 +10,7 @@ nvim:
 tmux:
   append:
     - src: tmux.conf
-      dst: tmux/.tmux.conf
+      dst: tmux/tmux.conf
 zsh:
   feats: [fastfetch]
   env:

@@ -33,15 +33,16 @@
           allowUnfreePredicate =
             pkg:
             builtins.elem (lib.getName pkg) [
-              "obsidian"
-              "zoom"
-              "datagrip"
-              "xp-pen-deco-01-v2-driver"
-              "discord"
-              "cursor"
-              "via"
               "anytype"
               "anytype-heart"
+              "claude-code"
+              "cursor"
+              "datagrip"
+              "discord"
+              "obsidian"
+              "xp-pen-deco-01-v2-driver"
+              "via"
+              "zoom"
             ];
         };
       };
@@ -101,6 +102,7 @@
 
       # home manager only
       homeConfigurations = {
+        wsl = mkHome pkgs "wsl" "apalermo";
       };
     };
 }

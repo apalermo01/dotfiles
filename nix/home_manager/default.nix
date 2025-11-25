@@ -23,6 +23,7 @@
     ./desktop-entries.nix
     ./freetube.nix
     ./zsh.nix
+    ./gui-pkgs.nix
   ];
 
 }

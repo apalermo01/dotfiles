@@ -2,6 +2,12 @@
 # https://www.youtube.com/watch?v=ud7YxC33Z3w
 # https://scottspence.com/posts/speeding-up-my-zsh-shell 
 
+#######
+# Nix #
+#######
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
 
 #########
 # zinit #

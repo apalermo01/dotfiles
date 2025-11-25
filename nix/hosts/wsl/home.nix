@@ -30,6 +30,7 @@
     yamlfix.enable = true;
     lua.enable = true;
     markdown.enable = true;
+    node.enable = true;
   };
 
   programs.zoxide.enable = true;

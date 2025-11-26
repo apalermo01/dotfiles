@@ -5,11 +5,11 @@
   ...
 }:
 {
-  options.modules.gui-packages = {
+  options.modules.gui-pkgs = {
     enable = lib.mkEnableOption "Enables gui based packages";
   };
 
-  config = lib.mkIf config.modules.gui-packages.enable {
+  config = lib.mkIf config.modules.gui-pkgs.enable {
     home.packages = with pkgs; [
       pywalfox-native
       libnotify

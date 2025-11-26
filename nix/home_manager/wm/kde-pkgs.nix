@@ -18,6 +18,9 @@ in
       kdePackages.kde-cli-tools
       kdePackages.okular
       kdePackages.qtsvg
+      kdePackages.dolphin
+      kdePackages.ark
+
     ];
   };
 }

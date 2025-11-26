@@ -30,6 +30,7 @@
     shfmt.enable = true;
     sql.enable = true; 
     yamlfix.enable = true;
+    presenterm.enable = true;
     
 
     zsh.enable = false;

@@ -19,6 +19,7 @@
     ./direnv.nix
     ./obsidian.nix
     ./ricer.nix
+    ./presenterm.nix
     ./datagrip.nix
     ./desktop-entries.nix
     ./freetube.nix

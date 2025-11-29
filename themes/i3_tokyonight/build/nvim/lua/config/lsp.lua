@@ -61,7 +61,7 @@ local servers = {
 
 	clangd = {
 		capabilities = capabilities,
-		cmd = IS_NIXOS and { "/run/current-system/sw/bin/clangd" } or { "clangd" },
+        cmd = { "clangd" },
 		filetypes = { "c", "cpp" },
 	},
 

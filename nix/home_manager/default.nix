@@ -17,6 +17,7 @@
     ./fonts.nix
     ./git.nix
     ./direnv.nix
+    ./distrobox.nix
     ./obsidian.nix
     ./ricer.nix
     ./presenterm.nix

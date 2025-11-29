@@ -91,11 +91,11 @@ return {
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<C-a>"] = cmp.mapping.abort(),
 				-- ["<C-o>"] = cmp.mapping.open_docs(),
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping.confirm({ select = false }),
                 -- ["]"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
                 -- ["<C-y>"] = cmp.mapping.confirm({ select = false }), -- ] is in layer above y
 				["<Tab>"] = cmp.mapping(function(fallback)
-                    vim.notify("use <c-n> and <c-p> to scroll cmp")
+                    -- vim.notify("use <c-n> and <c-p> to scroll cmp")
                     if luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
                     else

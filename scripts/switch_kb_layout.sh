@@ -3,16 +3,7 @@
 set -e
 
 i3_keys=(
-    "bindsym \$mod+h focus left|bindsym \$mod+h focus left"
-    "bindsym \$mod+n focus down|bindsym \$mod+j focus down"
-    "bindsym \$mod+e focus up|bindsym \$mod+k focus up"
-    "bindsym \$mod+i focus right|bindsym \$mod+l focus right"
-    "bindsym \$mod+Shift+h move left|bindsym \$mod+Shift+h move left"
-    "bindsym \$mod+Shift+n move down|bindsym \$mod+Shift+j move down"
-    "bindsym \$mod+Shift+e move up|bindsym \$mod+Shift+k move up"
-    "bindsym \$mod+Shift+i move right|bindsym \$mod+Shift+l move right"
-    "bindsym \$mod+k layout stacking; exec notify-send 'stack layout. \$mod+t to tab'|bindsym \$mod+k layout stacking; exec notify-send 'stack layout. \$mod+t to tab'"
-    "bindsym \$mod+t layout tabbed; exec notify-send 'tabbed layout. \$mod+k to stack'|bindsym \$mod+t layout tabbed; exec notify-send 'tabbed layout. \$mod+k to stack'"
+    "include ~/.config/i3/colemak.conf|include ~/.config/i3/qwerty.conf"
 )
 
 tmux_keys=(

@@ -31,7 +31,7 @@
     sql.enable = true; 
     yamlfix.enable = true;
     presenterm.enable = true;
-    
+    distrobox.enable = true;
 
     zsh.enable = false;
     packages.enable = true;

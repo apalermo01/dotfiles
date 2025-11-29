@@ -320,7 +320,7 @@ fi
 # Obsidian Functions #
 ######################
 
-export NOTES_PATH="/home/alex/Documents/git/notes"
+export NOTES_PATH="/home/alex/Documents/git/notes/"
 
 
 ###########

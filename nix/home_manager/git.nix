@@ -17,8 +17,6 @@ in
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = "Alex";
-      userEmail = "alex.palermo.ai@gmail.com";
       includes = [
         { path = "~/.gitconfig_work"; }
       ];

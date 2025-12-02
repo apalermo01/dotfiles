@@ -32,6 +32,7 @@
     yamlfix.enable = true;
     presenterm.enable = true;
     distrobox.enable = true;
+    matugen.enable = true;
 
     zsh.enable = false;
     packages.enable = true;

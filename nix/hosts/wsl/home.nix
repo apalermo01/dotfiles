@@ -31,6 +31,7 @@
     lua.enable = true;
     markdown.enable = true;
     node.enable = true;
+    matugen.enable = true;
   };
 
   programs.zoxide.enable = true;

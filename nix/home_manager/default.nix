@@ -12,12 +12,11 @@
     ./wm
     ./packages.nix
 
-
-
     ./fonts.nix
     ./git.nix
     ./direnv.nix
     ./distrobox.nix
+    ./matugen.nix
     ./obsidian.nix
     ./ricer.nix
     ./presenterm.nix

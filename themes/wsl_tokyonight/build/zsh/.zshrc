@@ -320,7 +320,7 @@ fi
 # Obsidian Functions #
 ######################
 
-export NOTES_PATH="/home/alex/Documents/git/notes"
+export NOTES_PATH="/home/alex/Documents/git/notes/"
 
 
 ###########
@@ -471,13 +471,4 @@ mkpretty() {
 if command -v fastfetch >/dev/null 2>&1
 then
 	fastfetch
-fi
-
-if command -v zoxide >/dev/null 2>&1; then
-    eval "$(zoxide init zsh)"
-    alias cd="z" 
-fi
-
-if command -v direnv >/dev/null 2>&1; then
-    eval "$(direnv hook zsh)"
 fi

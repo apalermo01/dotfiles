@@ -251,13 +251,13 @@ exec source ~/.profile
 include ~/.config/i3/qwerty.config
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #9D5C59     #0f1018      #0f1018      #9D5C59	    #9D5C59
-client.focused_inactive	 #5F6169     #0f1018      #0f1018	    #5F6169	    #5F6169
-client.unfocused	     #5F6169     #0f1018      #0f1018	    #5F6169	    #5F6169
-client.urgent	         #ff0000        #ff0000             #0f1018	    #ff0000       #ff0000
-client.placeholder	     #5F6169     #0f1018      #0f1018	    #9D5C59	    #9D5C59
+client.focused	         #F3975F     #0d0d12      #0d0d12      #F3975F	    #F3975F
+client.focused_inactive	 #A96772     #0d0d12      #0d0d12	    #A96772	    #A96772
+client.unfocused	     #A96772     #0d0d12      #0d0d12	    #A96772	    #A96772
+client.urgent	         #ff0000        #ff0000             #0d0d12	    #ff0000       #ff0000
+client.placeholder	     #A96772     #0d0d12      #0d0d12	    #F3975F	    #F3975F
 
-client.background	#0f1018
+client.background	#0d0d12
 
 # Gaps
 gaps inner 10
@@ -277,4 +277,4 @@ exec wal -R
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/fantasy-woods.jpg
+exec_always feh --bg-fill /home/alex/Pictures/wallpapers/3squares.png

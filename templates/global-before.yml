@@ -1,0 +1,15 @@
+hook_path:
+  - "~/Documents/git/dotfiles/scripts/switch_theme.sh $THEME_NAME"
+  - "~/Documents/git/dotfiles/scripts/switch_kb_layout.sh q"
+
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+kitty:
+  font_size: 10
+
+font: RecMonoCasual Nerd Font Mono
+
+dunst: {}
+sioyek: {}

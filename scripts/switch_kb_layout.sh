@@ -46,13 +46,13 @@ qwerty_i3() {
         for k in "${i3_keys[@]}"; do
             colemak_key=$(echo "${k}" | cut -d '|' -f 1)
             qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
-            sed -i "s/${colemak_key}/${qwerty_key}/" ~/.config/i3/config
+            sed -i "s|${colemak_key}|${qwerty_key}|" ~/.config/i3/config
         done
     fi
 }
 
 qwerty_nvim() {
-    sed -i "s/require(\"config.colemak\")/-- require(\"config.colemak\")/" -i ~/.config/nvim/lua/config/init.lua
+    sed -i "s/require(\"config.colemak\")/-- require(\"config.colemak\")/" ~/.config/nvim/lua/config/init.lua
 }
 
 qwerty_tmux() {

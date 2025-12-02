@@ -1,0 +1,10 @@
+hook_path:
+  - "~/Documents/git/dotfiles/scripts/switch_theme.sh $THEME_NAME"
+  - "~/Documents/git/dotfiles/scripts/switch_kb_layout.sh c"
+
+font: Iosveska Nerd Font Mono
+# font: JetBrainsMono Nerd Font Mono
+# font: FiraCode Nerd Font Mono
+# font: Hack Nerd Font Mono
+# font: ZedMono Nerd Font
+# font: Terminess Nerd Font Mono

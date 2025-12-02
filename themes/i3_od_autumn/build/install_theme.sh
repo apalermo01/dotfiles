@@ -47,4 +47,8 @@ fi
 # source ~/.tmux.od_autumn.tmux
 
 
-plasma-apply-colorscheme OneDarkRed
+if command -v plasma-apply-colorscheme; then
+    plasma-apply-colorscheme OneDarkRed
+fi
+
+dunstctl reload 

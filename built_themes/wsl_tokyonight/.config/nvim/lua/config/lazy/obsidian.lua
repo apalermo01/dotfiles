@@ -2,7 +2,8 @@
 -- https://github.com/zazencodes/dotfiles/blob/main/nvim/lua/workflows.lua
 --
 return {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
+    enabled = true,
     ft = {"md", "markdown"},
     cond = function()
         local vault_path = vim.fn.expand(OBSIDIAN_NOTES_DIR)
@@ -23,9 +24,9 @@ return {
             {
                 name = "notes",
                 path = OBSIDIAN_NOTES_DIR,
-                overrides = {
-                    notes_subdir = "0-Inbox"
-                },
+                -- overrides = {
+                --     notes_subdir = "0-Inbox"
+                -- },
             },
         },
         disable_frontmatter = true,

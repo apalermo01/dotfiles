@@ -30,3 +30,4 @@ end
 
 require("config")
 vim.cmd.colorscheme("tokyonight")
+vim.cmd([[set guifont=Iosveska\ Nerd\ Font\ Mono]])

@@ -41,7 +41,7 @@ echo "stowing new theme: $1"
 stow . -d "built_themes/$1" -t "$HOME" --dotfiles --adopt
 
 if [[ "$1" == *"wsl"* ]]; then
-    ln -sf "$(realpath ./templates/global-wsl.yml)" "$RICER_DIR/ricer-global-before.yml"
+    ln -sf "$(realpath ./templates/global-wsl-before.yml)" "$RICER_DIR/ricer-global-before.yml"
     ln -sf "$(realpath ./templates/global-wsl-after.yml)" "$RICER_DIR/ricer-global-after.yml"
 else
     ln -sf "$(realpath ./templates/global-before.yml)" "$RICER_DIR/ricer-global-before.yml"

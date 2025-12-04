@@ -62,7 +62,9 @@ apps:
   requires:
     qt.colorscheme: plasma-apply-colorscheme 
 
-okular: {}
+okular:
+  UiSettings:
+    test: test
 
 yazi:
   dark: dracula

@@ -443,11 +443,11 @@ if command -v direnv >/dev/null 2>&1; then
 fi
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-
-
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# wal -Rq
+(\cat ~/.cache/wal/sequences &)
 if command -v fastfetch >/dev/null 2>&1
 then
 	fastfetch

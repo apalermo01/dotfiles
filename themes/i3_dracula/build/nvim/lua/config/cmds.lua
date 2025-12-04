@@ -29,21 +29,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
--- trouble: only open when there's something that will crash the program
--- vim.api.nvim_create_autocmd("DiagnosticChanged", {
--- 	callback = function(args)
--- 		local bufnr = args.buf
--- 		local errors = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.ERROR })
--- 		if errors ~= nil and #errors > 0 then
--- 			require("trouble").open({
--- 				mode = "diagnostics",
--- 				filter = { buf = 0 },
--- 				focus = false,
--- 				pinned = true,
--- 			})
--- 		end
--- 	end,
--- })
 
 -- trouble: close when closing buffer
 local trouble = require("trouble")
@@ -138,3 +123,25 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 -- snippets 
 require("luasnip.loaders.from_vscode").lazy_load()
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "DiffviewViewEnter",
+    callback = function()
+        vim.notify("Diffview reminders: \n"..
+                   "<leader>co  => choose OUR version\n"..
+                   "<leader>ct  => choose THEIR version\n"..
+                   "<leader>cb  => choose BASE version\n"..
+                   "<leader>ca  => choose ALL versions\n"..
+                   "dx          => delete conflict region\n"..
+                   "<leader>ct  => close tab (closing diffview)")
+    end,
+})
+-- vim.api.nvim_create_autocmd("CmdlineLeave", {
+--     pattern = "*",
+--     callback = function() 
+--         vim.notify(vim.fn.expand("<amatch>"))
+--         -- vim.notify(vim.v.event)
+--         vim.notify(vim.fn.getcmdtype())
+--         vim.notify(vim.fn.getcmdline())
+--     end,
+-- })

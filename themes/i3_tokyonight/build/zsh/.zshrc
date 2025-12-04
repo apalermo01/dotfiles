@@ -433,6 +433,14 @@ echo "* cat_all                   = cat all files in directory               *"
 echo "* switch_kb                 = change kb layout                         *"
 echo "************************************************************************"
 
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+    alias cd="z" 
+fi
+
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 

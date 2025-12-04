@@ -22,7 +22,7 @@ colemak_i3() {
         for k in "${i3_keys[@]}"; do
             colemak_key=$(echo "${k}" | cut -d '|' -f 1)
             qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
-            sed -i "s/${qwerty_key}/${colemak_key}/" ~/.config/i3/config
+            sed -i "s|${qwerty_key}|${colemak_key}|" ~/.config/i3/config
         done
     fi
 

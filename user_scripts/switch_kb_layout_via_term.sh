@@ -7,8 +7,8 @@ fi
 
 echo "switching kb layout"
 
-cfg_path="${HOME}/Documents/git/dotfiles/templates/global.yml"
-wsl_cfg_path="${HOME}/Documents/git/dotfiles/templates/global.yml"
+cfg_path="${HOME}/Documents/git/dotfiles/templates/global-before.yml"
+wsl_cfg_path="${HOME}/Documents/git/dotfiles/templates/global-before.yml"
 current_theme_path="${HOME}/Documents/git/dotfiles/current_theme"
 current_theme=$(cat "${current_theme_path}")
 colemak_line='switch_kb_layout.sh c"'

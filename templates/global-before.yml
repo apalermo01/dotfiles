@@ -1,6 +1,6 @@
 hook_path:
   - "~/Documents/git/dotfiles/scripts/switch_theme.sh $THEME_NAME"
-  - "~/Documents/git/dotfiles/scripts/switch_kb_layout.sh q"
+  - "~/Documents/git/dotfiles/scripts/switch_kb_layout.sh c"
 
 i3: 
   append: 

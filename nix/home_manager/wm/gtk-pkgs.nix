@@ -15,6 +15,15 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       gtk3
+      gtk4
+      glib
+      gsettings-desktop-schemas
+      gnome-desktop
     ];
+
+    gtk = {
+      enable = true;
+      theme.name = "Adwaita";
+    };
   };
 }

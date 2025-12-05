@@ -61,6 +61,7 @@ in
       bat
       eza
 
+      themechanger
     ];
   };
 }

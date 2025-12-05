@@ -17,25 +17,28 @@ map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
 map({ "n", "v", "o" }, "l", "e", { desc = "end of word" })
 map({ "n", "v", "o" }, "L", "E", { desc = "end of WORD"})
 
+map("v", "N", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
+map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
+
 -- window motions
 map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
 map("n", "<leader>wn", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
 map("n", "<leader>we", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
 map("n", "<leader>wi", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-map("n", "<C-h>", "<C-w>h", {desc="win left"})
-map("n", "<C-n>", "<C-w>j", {desc="win down"})
-map("n", "<C-e>", "<C-w>k", {desc="win up"})
-map("n", "<C-i>", "<C-w>l", {desc="win right"})
+map("n", "<M-h>", "<C-w>h", {desc="win left"})
+map("n", "<M-n>", "<C-w>j", {desc="win down"})
+map("n", "<M-e>", "<C-w>k", {desc="win up"})
+map("n", "<M-i>", "<C-w>l", {desc="win right"})
 -- tmux
 -- map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
 -- map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
 -- map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
 -- map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
 vim.g.tmux_navigator_no_mappings = 1
-map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
-map("n", "<C-n>", "<cmd>TmuxNavigateDown<CR>")
-map("n", "<C-e>", "<cmd>TmuxNavigateUp<CR>")
-map("n", "<C-i>", "<cmd>TmuxNavigateRight<CR>")
+map("n", "<M-h>", "<cmd>TmuxNavigateLeft<CR>")
+map("n", "<M-n>", "<cmd>TmuxNavigateDown<CR>")
+map("n", "<M-e>", "<cmd>TmuxNavigateUp<CR>")
+map("n", "<M-i>", "<cmd>TmuxNavigateRight<CR>")
 map({ "n", "x" }, "gn", "gj", { desc = "screen down" })
 map({ "n", "x" }, "ge", "gk", { desc = "screen up (Colemak)" })
 
@@ -163,7 +166,7 @@ require("hardtime").setup({
 	},
 })
 
--- telescore
+-- telescope
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 telescope.setup({
@@ -179,3 +182,7 @@ telescope.setup({
 		},
 	},
 })
+
+-- LSP Signature 
+map("i", "<M-n>", "<C-o>j")
+map("i", "<M-e>", "<C-o>k")

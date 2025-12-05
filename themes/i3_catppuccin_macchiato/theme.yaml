@@ -26,7 +26,7 @@ nvim:
 tmux: 
   append: 
     - src: tmux.conf
-      dst: tmux/.tmux.conf
+      dst: tmux/tmux.conf
 
 rofi: 
   template_path: $THIS_THEME

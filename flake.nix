@@ -27,7 +27,7 @@
           (import ./nix/overlays/postgrestools.nix)
           (import ./nix/overlays/ricer.nix)
           (import ./nix/overlays/sioyek.nix)
-          (import ./nix/overlays/glib.nix)
+          # (import ./nix/overlays/glib.nix)
         ];
         system = system;
         config = {

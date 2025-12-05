@@ -1,0 +1,13 @@
+I'm trying to run gsettings on nixos but when I run gsettings list-schemas I get "No schemas installed". When I run:
+
+
+
+export XDG_DATA_DIRS=/nix/store/6546hslddlnvg5fmx8vv3man2blcprib-gsettings-desktop-schemas-49.1/share/gsettings-schemas/gsettings-desktop-schemas-49.1:$XDG_DATA_DIRS
+
+
+
+it then works. 
+
+
+
+I'm trying to figure out how to set this in my home manager setup

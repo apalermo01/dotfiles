@@ -28,7 +28,7 @@
     node.enable = true;
     rust.enable = true;
     shfmt.enable = true;
-    sql.enable = true; 
+    sql.enable = true;
     yamlfix.enable = true;
     presenterm.enable = true;
     distrobox.enable = true;
@@ -50,4 +50,8 @@
 
   programs.zoxide.enable = true;
   programs.obs-studio.enable = true;
+
+  # gtk
+  # programs.dconf.enable = true;
+  # services.dbus.enable = true;
 }

@@ -6,7 +6,7 @@
 }:
 
 with lib;
-let 
+let
   cfg = config.modules.gtk-pkgs;
 in
 {
@@ -23,7 +23,15 @@ in
 
     gtk = {
       enable = true;
-      theme.name = "Adwaita";
+      theme.name = "adw-gtk3";
+      theme.package = pkgs.adw-gtk3;
     };
+
+    home.sessionVariables = {
+      XDG_DATA_DIRS = lib.mkBefore "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}";
+    };
+    home.file.".config/gsettings-init.sh".text = ''
+      export XDG_DATA_DIRS="${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:$XDG_DATA_DIRS"
+    '';
   };
 }

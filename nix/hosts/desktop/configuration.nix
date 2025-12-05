@@ -21,6 +21,9 @@
   kdePlasma.enable = false;
   programs.zsh.enable = true;
 
+  services.desktopManager.gnome.sessionPath = [
+    pkgs.gsettings-desktop-schemas
+  ];
 
   services.usbmuxd.enable = true;
   virtualisation.docker = {

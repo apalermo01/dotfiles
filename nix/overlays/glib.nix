@@ -1,7 +1,7 @@
 final: prev:
 
 {
-  glib = prev.pkgs.glib.override {
+  glib = prev.glib.override {
 
   };
 }

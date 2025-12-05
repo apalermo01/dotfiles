@@ -1,0 +1,69 @@
+template_path: '~/Documents/git/dotfiles/templates/'
+scripts_root: '~/Documents/git/dotfiles/user_scripts/'
+dotfiles_path: '~/Documents/git/dotfiles/built_themes'
+themes_path: '~/Documents/git/dotfiles/themes'
+wallpaper_path: '~/Pictures/wallpapers/'
+ricer_before_override: '~/.config/ricer/ricer-global-before.yml'
+ricer_after_override: '~/.config/ricer/ricer-global-after.yml'
+ricer_defaulf_cfg: '~/.config/ricer/ricer.yml'
+
+tools:
+  dunst: 
+    config_path: '.config/dunst'
+    jinja: False 
+
+  sioyek:
+    config_path: '.config/sioyek'
+    jinja: False
+
+  i3:
+    config_path: '.config/i3'
+    jinja: True
+  
+  polybar:
+    config_path: '.config/polybar'
+    jinja: True
+
+  colors:
+    config_path: ""  
+
+  wallpaper:
+    config_path: ""  
+
+  nvim:
+    config_path: '.config/nvim'
+
+  tmux:
+    config_path: '.config/tmux'
+    jinja: True
+  
+  zsh: 
+    config_path: ''
+
+  kitty:
+    config_path: '.config/kitty'
+
+  picom:
+    config_path: '.config/picom'
+  
+  rofi:
+    config_path: '.config/rofi'
+
+  fastfetch:
+    config_path: '.config/fastfetch'
+  
+  apps:
+    config_path: '.config/'
+
+  okular:
+    config_path: '.config/'
+
+  yazi:
+    config_path: '.config/yazi'
+
+  global:
+    config_path: ''
+
+  gtk:
+    config_path: '.config/gtk-3.0/'
+    jinja: True

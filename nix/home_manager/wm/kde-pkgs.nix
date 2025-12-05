@@ -20,6 +20,7 @@ in
       kdePackages.qtsvg
       kdePackages.dolphin
       kdePackages.ark
+      kdePackages.plasma-workspace
 
     ];
   };

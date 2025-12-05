@@ -1,0 +1,13 @@
+colors:
+  method: manual
+gtk: 
+  bg_color: "surface2"
+  fg_color: "blue"
+  base_color: "base"
+  text_color: "crust"
+  borders: "mauve"
+  header_bg_color: "blue"
+  header_fg_color: "lavender"
+  selected_bg_color: "red"
+  tooltip_bg_color: "mauve"
+  tooltip_fg_color: "pink"

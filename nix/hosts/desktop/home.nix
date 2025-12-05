@@ -45,6 +45,7 @@
     kde-pkgs.enable = true;
     gui-pkgs.enable = true;
     xdg.enable = true;
+    gtk-pkgs.enable = true;
   };
 
   programs.zoxide.enable = true;

@@ -62,7 +62,11 @@ in
       eza
 
       themechanger
+
+      # needed for gtk themes
       sassc
+      meson
+      ninja
     ];
   };
 }

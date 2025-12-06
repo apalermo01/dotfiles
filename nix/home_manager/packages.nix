@@ -62,6 +62,7 @@ in
       eza
 
       themechanger
+      sassc
     ];
   };
 }

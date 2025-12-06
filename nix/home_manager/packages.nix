@@ -68,6 +68,8 @@ in
       meson
       ninja
       nautilus
+
+      sassc
     ];
   };
 }

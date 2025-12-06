@@ -64,7 +64,7 @@ in
       themechanger
 
       # needed for gtk themes
-      sassc
+      sass
       meson
       ninja
     ];

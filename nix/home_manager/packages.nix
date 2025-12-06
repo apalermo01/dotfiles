@@ -67,6 +67,7 @@ in
       dart-sass
       meson
       ninja
+      nautilus
     ];
   };
 }

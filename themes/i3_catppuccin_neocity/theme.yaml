@@ -54,4 +54,7 @@ fastfetch:
     - src: config.jsonc
       dst: fastfetch/config.jsonc
 
-
+gtk:
+  gtk_theme: adw-gtk3
+  mode: dark
+  template_path: $THIS_THEME

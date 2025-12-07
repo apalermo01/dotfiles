@@ -49,3 +49,6 @@ picom:
 theme_scripts: 
   path: ./themes/i3_synth/scripts/
 
+gtk:
+  gtk_theme: Sweet-Dark-v40
+  gtk_install_script: install_gtk.sh

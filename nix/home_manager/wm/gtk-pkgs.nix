@@ -19,13 +19,14 @@ in
       glib
       gsettings-desktop-schemas
       gnome-desktop
+      ocs-url
     ];
 
-    gtk = {
-      enable = true;
-      theme.name = "adw-gtk3";
-      theme.package = pkgs.adw-gtk3;
-    };
+    # gtk = {
+    #   enable = true;
+    #   theme.name = "adw-gtk3";
+    #   theme.package = pkgs.adw-gtk3;
+    # };
 
     home.sessionVariables = {
       XDG_DATA_DIRS = lib.mkBefore "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}";

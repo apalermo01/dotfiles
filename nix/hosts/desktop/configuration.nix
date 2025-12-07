@@ -21,9 +21,9 @@
   kdePlasma.enable = false;
   programs.zsh.enable = true;
 
-  services.desktopManager.gnome.sessionPath = [
-    pkgs.gsettings-desktop-schemas
-  ];
+  # services.desktopManager.gnome.sessionPath = [
+  #   pkgs.gsettings-desktop-schemas
+  # ];
 
   services.usbmuxd.enable = true;
   virtualisation.docker = {
@@ -79,9 +79,6 @@
     HandleLidSwitchExternalPower = "lock";
     HandleLidSwitch = "lock";
   };
-
-  # environment.etc."xdg/menus/plasma-applications.menu".source =
-  #   "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   services.power-profiles-daemon.enable = false;
   # Enable CUPS to print documents.

@@ -67,3 +67,7 @@ tools:
   gtk:
     config_path: '.config/gtk-3.0/'
     jinja: True
+
+  qt:
+    config_path: '.config/Kvantum/'
+    jinja: True

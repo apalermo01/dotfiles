@@ -50,8 +50,4 @@
 
   programs.zoxide.enable = true;
   programs.obs-studio.enable = true;
-
-  # gtk
-  # programs.dconf.enable = true;
-  # services.dbus.enable = true;
 }

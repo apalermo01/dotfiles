@@ -60,14 +60,6 @@ fastfetch:
     - src: config.jsonc
       dst: fastfetch/config.jsonc
 
-gtk:
-  # bg_color:
-  # fg_color:
-  # base_color:
-  # text_color:
-  # borders:
-  # header_bg_color:
-  # header_fg_color:
-  # selected_bg_color:
-  # tooltip_bg_color:
-  # tooltip_fg_color:
+qt: 
+  method: manual
+  template_path: $THIS_THEME

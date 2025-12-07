@@ -21,7 +21,8 @@ in
       kdePackages.dolphin
       kdePackages.ark
       kdePackages.plasma-workspace
-
+      kdePackages.qtstyleplugin-kvantum
+      libsForQt5.qt5ct
     ];
   };
 }

@@ -448,7 +448,5 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # wal -Rq
 (\cat ~/.cache/wal/sequences &)
-if command -v fastfetch >/dev/null 2>&1
-then
-	fastfetch
-fi
+fortune | cowsay -r 
+wal -n -e -i /home/alex/Pictures/wallpapers/synth.jpg > /dev/null 

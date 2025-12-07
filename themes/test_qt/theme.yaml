@@ -1,0 +1,6 @@
+colors:
+  method: manual
+qt:
+  method: default
+  kv_theme: 'KvAdapta'
+  template_path: $THIS_THEME

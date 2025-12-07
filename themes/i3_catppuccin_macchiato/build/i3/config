@@ -271,4 +271,6 @@ floating_modifier $mod
 exec --no-startup-id mate-power-manager
 
 focus_follows_mouse no
+
+exec --no-startup-id bash "source ~/.config/gsettings-init.sh"
 exec_always feh --bg-fill /home/alex/Pictures/wallpapers/darker_unicat.png

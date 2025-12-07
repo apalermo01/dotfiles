@@ -132,13 +132,14 @@ vim.api.nvim_create_autocmd("User", {
                    "<leader>ct  => choose THEIR version\n"..
                    "<leader>cb  => choose BASE version\n"..
                    "<leader>ca  => choose ALL versions\n"..
+                   "[c / ]c     => jump between diffs\n"..
                    "dx          => delete conflict region\n"..
                    "<leader>ct  => close tab (closing diffview)")
     end,
 })
 -- vim.api.nvim_create_autocmd("CmdlineLeave", {
 --     pattern = "*",
---     callback = function() 
+--     callback = function()
 --         vim.notify(vim.fn.expand("<amatch>"))
 --         -- vim.notify(vim.v.event)
 --         vim.notify(vim.fn.getcmdtype())

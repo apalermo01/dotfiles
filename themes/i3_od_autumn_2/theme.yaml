@@ -68,3 +68,6 @@ dunst:
   font_size: 14
 
 picom: {}
+qt:
+  method: manual
+  template_path: $THIS_THEME

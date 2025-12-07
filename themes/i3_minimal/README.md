@@ -3,3 +3,5 @@
 A bare-bones theme for i3 for when you don't want any distractions
 
 ![Theme screenshot](i3_minimal_screenshot.png)
+
+Kvantum theme: https://github.com/GabePoel/KvLibadwaita

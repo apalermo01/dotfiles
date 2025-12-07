@@ -52,3 +52,6 @@ theme_scripts:
 gtk:
   gtk_theme: Sweet-Dark-v40
   gtk_install_script: install_gtk.sh
+qt:
+  method: manual
+  template_path: $THIS_THEME

@@ -66,6 +66,5 @@ gtk:
   gtk_install_script: install_gtk.sh
 
 qt:
-  method: default
-  kv_theme: 'KvAdapta'
+  method: manual
   template_path: $THIS_THEME

@@ -433,18 +433,6 @@ echo "* cat_all                   = cat all files in directory               *"
 echo "* switch_kb                 = change kb layout                         *"
 echo "************************************************************************"
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-if command -v fastfetch >/dev/null 2>&1
-then
-	fastfetch
-fi
-
 if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init zsh)"
     alias cd="z" 
@@ -453,3 +441,10 @@ fi
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
 fi
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
+
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -69,3 +69,7 @@ okular:
 yazi:
   dark: dracula
   light: dracula
+
+qt:
+  method: manual
+  template_path: $THIS_THEME

@@ -56,3 +56,6 @@ dunst:
 sioyek: {}
 
 
+qt:
+  method: manual
+  template_path: $THIS_THEME

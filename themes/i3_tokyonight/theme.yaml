@@ -54,3 +54,6 @@ apps:
     qt: [colorscheme]
   requires:
     qt.colorscheme: plasma-apply-colorscheme
+qt:
+  method: manual
+  template_path: $THIS_THEME

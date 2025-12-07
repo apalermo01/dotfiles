@@ -62,3 +62,6 @@ apps:
     qt.colorscheme: plasma-apply-colorscheme 
 
 okular: {}
+qt:
+  method: manual
+  template_path: $THIS_THEME

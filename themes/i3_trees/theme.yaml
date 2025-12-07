@@ -45,3 +45,6 @@ okular: {}
 yazi:
   dark: everforest-medium
   light: everforest-medium
+qt:
+  method: manual
+  template_path: $THIS_THEME

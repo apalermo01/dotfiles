@@ -21,10 +21,22 @@
   kdePlasma.enable = false;
   programs.zsh.enable = true;
 
-  # services.desktopManager.gnome.sessionPath = [
-  #   pkgs.gsettings-desktop-schemas
-  # ];
 
+
+  services.acpid = {
+    enable = true;
+    lidEventCommands = ''
+      LID_STATE=$(cat /proc/acpi/button/lid/LID/state | awk '{print $2}')
+      EXTERNAL_MONITOR=$(xrandr | grep " connected" | grep -v "eDP" | awk '{print $1}')
+
+      if [ "$LID_STATE" = "closed" ] && [ -n "$EXTERNAL_MONITOR" ]; then
+        export DISPLAY=:0
+        xrandr --output eDP-1 --off --output $EXTERNAL_MONITOR --auto
+      else 
+        xrandr --output eDP-1 --auto --output $EXTERNAL_MONITOR --auto
+      fi
+    '';
+  };
   services.usbmuxd.enable = true;
   virtualisation.docker = {
     enable = true;
@@ -75,7 +87,7 @@
   };
 
   services.logind.settings.Login = {
-    HandleLidSwitchDocked = "lock";
+    HandleLidSwitchDocked = "ignore";
     HandleLidSwitchExternalPower = "lock";
     HandleLidSwitch = "lock";
   };

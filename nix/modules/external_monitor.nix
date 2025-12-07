@@ -22,7 +22,7 @@ in
     lidEventCommands = ''
         export DISPLAY=:0
         export PATH=$PATH:/run/current-system/sw/bin
-        export XAUTHORITY=$(ls /var/run/sddm/ | head -n1)
+        export XAUTHORITY=/var/run/sddm/$(ls /var/run/sddm/ | head -n1)
         # export XAUTHORITY=/var/run/sddm/xauth_edUlZp
         echo "xauthority: $XAUTHORITY"
 

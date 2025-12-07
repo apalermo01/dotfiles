@@ -22,7 +22,7 @@ in
         export DISPLAY=:0
         export PATH=$PATH:/run/current-system/sw/bin
         export XAUTHORITY=$(ls /var/run/sddm/ | head -n1)
-
+        echo "xauthority: $XAUTHORITY"
         LID_STATE=$(cat /proc/acpi/button/lid/LID/state | awk '{print $2}')
         EXTERNAL_MONITOR=$(xrandr | grep " connected" | grep -v "eDP" | awk '{print $1}')
 

@@ -33,6 +33,7 @@ in
         else
           xrandr --output eDP-1 --auto 
           ${MonitorLayout}
+          i3-msg reload
         fi
     '';
   };

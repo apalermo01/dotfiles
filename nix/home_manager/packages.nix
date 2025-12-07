@@ -63,7 +63,6 @@ in
 
       # disable laptop screen on close
       acpi
-      doas
 
       # needed for gtk themes
       dart-sass

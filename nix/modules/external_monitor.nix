@@ -31,7 +31,8 @@ in
         if [ "$LID_STATE" = "closed" ] && [ -n "$EXTERNAL_MONITOR" ]; then
           xrandr --output eDP-1 --off --output $EXTERNAL_MONITOR --auto
         else
-          xrandr --output $EXTERNAL_MONITOR --auto --left-of eDP-1
+          xrandr --output eDP-1 --auto 
+          ${MonitorLayout}
         fi
     '';
   };

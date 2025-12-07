@@ -70,6 +70,7 @@ in
       nautilus
 
       sassc
+      dconf-editor
     ];
   };
 }

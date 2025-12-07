@@ -61,7 +61,7 @@ in
       bat
       eza
 
-      themechanger
+      acpi
 
       # needed for gtk themes
       dart-sass

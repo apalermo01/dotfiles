@@ -23,7 +23,6 @@ in
         export DISPLAY=:0
         export PATH=$PATH:/run/current-system/sw/bin
         export XAUTHORITY=/var/run/sddm/$(ls /var/run/sddm/ | head -n1)
-        # export XAUTHORITY=/var/run/sddm/xauth_edUlZp
         echo "xauthority: $XAUTHORITY"
 
         LID_STATE=$(cat /proc/acpi/button/lid/LID/state | awk '{print $2}')

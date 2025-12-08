@@ -1,9 +1,5 @@
-# Cattppuccin neocity
+# Kanagawa theme
 
-Adapted from: 
-- https://github.com/n6v26r/.dotfiles/tree/main
-- https://www.reddit.com/r/unixporn/comments/1f797qq/i3_need_to_stop_wasting_time/
+wallpaper: https://www.reddit.com/r/wallpaper/comments/wxp2s8/3840x2160_the_great_wave_off_kanagawa/
 
-wallpaper: https://github.com/D3Ext/aesthetic-wallpapers/blob/main/pages/Page5.md
-
-kvantum theme: https://github.com/catppuccin/kvantum
+kvantum theme: https://github.com/james-mkn/Utterly-Kanagawa

@@ -1,17 +1,17 @@
 
-#                        border             background          text            indicator       child bdr
-client.focused	         {{ lavender }}     {{ lavender }}      {{ base }}      {{ lavender }}	{{ lavender }}
-client.focused_inactive	 {{ surface1 }}     {{ base }}          {{ text }}	    {{ surface1 }}	{{ surface1 }}
-client.unfocused	     {{ surface1 }}     {{ base }}          {{ text }}	    {{ surface1 }}	{{ surface1 }}
-client.urgent	         {{ peach }}        {{ base }}         {{ peach }}	    {{ overlay0 }}  {{ peach }}
-client.placeholder	     {{ overlay0 }}     {{ base }}         {{ text }}	    {{ overlay0 }}	{{ overlay0 }}
+#                        border             background          text                indicator       child bdr
+client.focused	         {{ green1 }}      {{ green1 }}        {{ background }}     {{ green1 }}	{{ green1 }}
+client.focused_inactive	 {{ purple1 }}     {{ background }}    {{ foreground }}	    {{ purple1 }}	{{ purple1 }}
+client.unfocused	     {{ purple1 }}     {{ background }}    {{ foreground }}	    {{ purple1 }}	{{ purple1 }}
+client.urgent	         {{ red2 }}        {{ background }}     {{ red2 }}	        {{ grey }}      {{ red2 }}
+client.placeholder	     {{ grey }}        {{ background }}    {{ foreground }}	    {{ grey }}	    {{ grey }}
 
-client.background	{{ base }}
+client.background	{{ background }}
 
 # Gaps
-gaps inner 20
+gaps inner 10
 gaps outer 5
-gaps top 35
+gaps top 10
 new_window pixel 5
 new_float normal
 

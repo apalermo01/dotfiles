@@ -1,6 +1,6 @@
 wallpaper: 
   method: feh
-  file: neocity.png
+  file: kanagawa.jpg
 
 colors:
   method: manual
@@ -16,7 +16,7 @@ polybar:
   template_path: $THIS_THEME
 
 nvim: 
-  colorscheme: catppuccin
+  colorscheme: kanagawa
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua
@@ -30,8 +30,6 @@ rofi:
   template_path: $THIS_THEME
 
 zsh: 
-  feats: 
-    - fastfetch
   append:
     - src: additions.zsh
       dst: zsh/.zshrc
@@ -49,16 +47,14 @@ kitty:
 picom: 
   template_path: $THIS_THEME
 
-fastfetch: 
-  overwrite: 
-    - src: config.jsonc
-      dst: fastfetch/config.jsonc
-
 gtk:
-  gtk_theme: adw-gtk3
-  mode: dark
-  template_path: $THIS_THEME
+  gtk_install_script: install_gtk.sh
+  gtk_theme: Kanagawa-Dark
 
 qt:
   method: manual
   template_path: $THIS_THEME
+
+yazi:
+  dark: kanagawa
+  light: kanagawa

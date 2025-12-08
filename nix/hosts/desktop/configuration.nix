@@ -21,49 +21,6 @@
   kdePlasma.enable = false;
   programs.zsh.enable = true;
 
-  # systemd.user.services.lid-switch-monitor = {
-  #   description = "Monitor lid switch for display management";
-  #   wantedBy = [ "graphical-session.target" ];
-  #   serviceConfig = {
-  #     Type = "simple";
-  #     # ExecStart = "${pkgs.acpi}/bin/acpi_listen";
-  #     Restart = "always";
-  #   };
-  #   script = ''
-  #     echo "lib-switch-monitor running..."
-  #     ${pkgs.acpi}/bin/acpi_listen | while read -r event; do
-  #       if echo "$event" | ${pkgs.gnugrep}/bin/grep -q "button/lid"; then
-  #         LID_STATE=$(cat /proc/acpi/button/lid/LID/state | ${pkgs.gawk}/bin/awk '{print $2}')
-  #         EXTERNAL_MONITOR=$(${pkgs.xorg.xrandr}/bin/xrandr | ${pkgs.gnugrep}/bin/grep " connected" | ${pkgs.gnugrep}/bin/grep -v "eDP" | ${pkgs.gawk}/bin/awk '{print $1}')
-  #
-  #         if [ "$LID_STATE" = "closed" ] && [ -n "$EXTERNAL_MONITOR" ]; then
-  #           ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --off --output $EXTERNAL_MONITOR --auto
-  #         else 
-  #           ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --auto --output $EXTERNAL_MONITOR --auto
-  #         fi
-  #       fi
-  #     done
-  #   '';
-  # };
-
-  # services.acpid.enable = true;
-  # services.acpid = {
-  #   enable = true;
-  #   lidEventCommands = ''
-  #     export DISPLAY=:0
-  #     export PATH=$PATH:/run/current-system/sw/bin
-  #     export XAUTHORITY=/var/run/sddm/xauth_edUlZp
-  #
-  #     LID_STATE=$(cat /proc/acpi/button/lid/LID/state | awk '{print $2}')
-  #     EXTERNAL_MONITOR=$(xrandr | grep " connected" | grep -v "eDP" | awk '{print $1}')
-  #
-  #     if [ "$LID_STATE" = "closed" ] && [ -n "$EXTERNAL_MONITOR" ]; then
-  #       xrandr --output eDP-1 --off --output $EXTERNAL_MONITOR --auto
-  #     else
-  #       xrandr --output $EXTERNAL_MONITOR --auto --left-of eDP-1
-  #     fi
-  #   '';
-  # };
   services.usbmuxd.enable = true;
   virtualisation.docker = {
     enable = true;

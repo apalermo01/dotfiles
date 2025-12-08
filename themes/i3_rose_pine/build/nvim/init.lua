@@ -21,7 +21,7 @@ IS_NIXOS = is_nixos()
 -- return 2 variants of a function depending on whether or not we're running nix
 -- borrowed from https://github.com/NicoElbers/nixPatch-nvim/tree/main 
 switchNix = function(nonNix, nix)
-    if vim.g.nix == true then 
+    if vim.g.nix == true then
         return nix
     else
         return nonNix
@@ -29,8 +29,5 @@ switchNix = function(nonNix, nix)
 end
 
 require("config")
-
--- local log = require('cmp.utils.debug').log
--- log.enable('DEBUG')  
 vim.cmd.colorscheme("rose-pine")
-vim.cmd([[set guifont=DejaVuSansMono]])
+vim.cmd([[set guifont=RecMonoCasual\ Nerd\ Font\ Mono]])

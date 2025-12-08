@@ -30,7 +30,7 @@ tmux:
       dst: tmux/tmux.conf
 
 rofi: 
-  template_path: ./themes/i3_rose_pine/rofi/
+  template_path: $THIS_THEME
 
 zsh:
   feats:

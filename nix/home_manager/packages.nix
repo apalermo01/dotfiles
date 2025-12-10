@@ -72,6 +72,7 @@ in
 
       sassc
       dconf-editor
+      st
     ];
   };
 }

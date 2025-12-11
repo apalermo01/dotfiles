@@ -137,6 +137,18 @@ vim.api.nvim_create_autocmd("User", {
                    "<leader>ct  => close tab (closing diffview)")
     end,
 })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function() 
+    vim.highlight.on_yank()
+  end,
+})
+
+map("n", "<leader>pa", function() 
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  print("file: ", path)
+end)
 -- vim.api.nvim_create_autocmd("CmdlineLeave", {
 --     pattern = "*",
 --     callback = function()

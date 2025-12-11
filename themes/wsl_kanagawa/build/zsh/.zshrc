@@ -441,31 +441,42 @@ fi
 if command -v direnv >/dev/null 2>&1; then
     eval "$(direnv hook zsh)"
 fi
-# export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
-#
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-thm_bg="#282c34"
-thm_fd="#abb2bf"
-thm_red="#e06c75"
-thm_orange="#d19a66"
-thm_yellow="#e5c07b"
-thm_green="#98c379"
-thm_cyan="#56b6c2"
+export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 
-autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%b '
-setopt PROMPT_SUBST
-homedir="%~"
-time_24hr="%*"
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-st_dt="%F{$thm_yellow}%K{$thm_bg} ${time_24hr} %k%f"
-st_dir="%F{$thm_cyan}%K{$thm_bg} ${homedir} %k%f"
-st_br="%F{$thm_red}%K{$thm_bg} ${vcs_info_msg_0_}%k%f"
-str_end="%F{$thm_cyan} %f"
+mkpretty() { 
+    local target_dir="/mnt/c/Users/apalermo/Downloads"
 
-PROMPT="${st_dt}${st_dir}${st_br}${str_end}"
+    local files=(${(f)"$(find "$target_dir" -maxdepth 1 -type f -name "*.json" ! -name "pretty_*.json")"})
+    if [[ ${#files[@]} -eq 0 ]]; then
+        echo "No .json files to prettify in $target_dir"
+        return 1
+    fi
+    local i=1
+    for file in "${files[@]}"; do
+        printf "[%d] %s\n" "$i" "$(basename "$file")"
+        ((i++))
+    done
+    echo -n "Enter the number of the file to prettify: "
+    read -r num
+    if ! [[ "$num" =~ ^[0-9]+$ ]] || (( num < 1 || num > ${#files[@]} )); then
+        echo "Invalid selection. Please enter a number between 1 and ${#files[@]}."
+        return 1
+    fi
+    local selected_file=${files[$num]}
+
+    local base_name
+
+    base_name=$(basename "$selected_file")
+
+    local output_file="${target_dir}/pretty_${base_name}"
+    python3 -m json.tool "$selected_file" > "$output_file"
+    echo "Done."
+}
+if command -v fastfetch >/dev/null 2>&1
+then
+	fastfetch
+fi

@@ -1,22 +1,33 @@
 -----------------------------------------------------------------
 -- remappings for colemak
+-- switch n/N and j/J
+-- switch i/I and k/K
 -----------------------------------------------------------------
+
 -- motions
 map({ "n", "v", "o" }, "n", "j", { desc = "move down" })
 map({ "n", "v", "o" }, "e", "k", { desc = "move up" })
--- Do NOT map 'i' in operator-pending (o) or visual (v) modes, since
--- 'i' is the builtin textobject prefix (e.g. ciw, vi()
-map({ "n", "v" }, "i", "l", { desc = "move right", noremap = true })
+map({ "v" }, "k", "i", { desc = "move right", noremap = true })
+map({ "n" }, "i", "l", { desc = "move right", noremap = true })
 
+-- selections 
+-- i/a -> ti/ta 
+-- ex: vib to select in brackets now vtib since i is also move right 
+map({ "o", "x", "n" }, "ti", "i")
+map({ "o", "x", "n" }, "ta", "a")
+
+-- insert mode (i -> k)
 map({ "n", "o" }, "k", "i", { desc = "enter insert mode", noremap = true })
--- map({ "n", "o" }, "K", "I", { desc = "capital I", noremap = true })
 
+-- searching
 map({ "n" }, "j", "nzz", { desc = "next item in search" })
 map({ "n" }, "J", "Nzz", { desc = "previous item in search" })
 
+-- select end of work (e -> l)
 map({ "n", "v", "o" }, "l", "e", { desc = "end of word" })
 map({ "n", "v", "o" }, "L", "E", { desc = "end of WORD"})
 
+-- moving lines vertically
 map("v", "N", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
 map("v", "E", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 
@@ -29,11 +40,8 @@ map("n", "<M-h>", "<C-w>h", {desc="win left"})
 map("n", "<M-n>", "<C-w>j", {desc="win down"})
 map("n", "<M-e>", "<C-w>k", {desc="win up"})
 map("n", "<M-i>", "<C-w>l", {desc="win right"})
+
 -- tmux
--- map("n", "<leader>th", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux navigate left" })
--- map("n", "<leader>tn", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux navigate down" })
--- map("n", "<leader>te", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux navigate up" })
--- map("n", "<leader>ti", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux navigate right" })
 vim.g.tmux_navigator_no_mappings = 1
 map("n", "<M-h>", "<cmd>TmuxNavigateLeft<CR>")
 map("n", "<M-n>", "<cmd>TmuxNavigateDown<CR>")
@@ -42,6 +50,13 @@ map("n", "<M-i>", "<cmd>TmuxNavigateRight<CR>")
 map({ "n", "x" }, "gn", "gj", { desc = "screen down" })
 map({ "n", "x" }, "ge", "gk", { desc = "screen up (Colemak)" })
 
+-- LSP Signature 
+map("i", "<M-n>", "<C-o>j")
+map("i", "<M-e>", "<C-o>k")
+
+-- Questions
+-- :map_l?
+-- :c_CTRL-A
 
 -- require("hardtime").setup({
 -- 	-- keep your usual global switches as you like
@@ -183,6 +198,3 @@ telescope.setup({
 	},
 })
 
--- LSP Signature 
-map("i", "<M-n>", "<C-o>j")
-map("i", "<M-e>", "<C-o>k")

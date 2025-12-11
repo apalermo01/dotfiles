@@ -91,10 +91,11 @@ map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project config" })
 
 -- navigate by { }
-map("n", "[[", "?{<CR>w99[{")
-map("n", "][", "/}<CR>b99]}")
-map("n", "]]", "j0[[%/{<CR>")
-map("n", "[]", "k$][%?}<CR>")
+-- I don't remember what this does so I'm removing it for now
+-- map("n", "[[", "?{<CR>w99[{")
+-- map("n", "][", "/}<CR>b99]}")
+-- map("n", "]]", "j0[[%/{<CR>")
+-- map("n", "[]", "k$][%?}<CR>")
 
 -- diffview
 map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
@@ -259,13 +260,13 @@ map("n", '<leader>p"', builtin.registers, { desc = "Telescope: list registers" }
 map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace symbols
-map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+-- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- keymaps
-map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+-- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace_symbol
-map("n", "<leader>pd", builtin.lsp_definitions, { desc = "Telescope: lsp definition" })
+-- map("n", "<leader>pd", builtin.lsp_definitions, { desc = "Telescope: lsp definition" })
 
 -- Prompted grep for a string
 -- map("n", "<leader>pw", function()
@@ -290,8 +291,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, vim.tbl_extend("force", opts, { desc = "LSP: go to definition" }))
 
 		-- Hover
-		map("n", "<leader>K", function()
-			vim.lsp.buf.hover()
+		map("n", "K", function()
+            vim.notify("reminder: <C-w>w then k/j to scroll docs")
+			vim.lsp.buf.hover {
+                focus = true
+            }
 		end, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
 
 		-- Show diagnostic in floating

@@ -2,6 +2,11 @@ local cmp_lsp = require("cmp_nvim_lsp")
 local capabilities =
 	vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
 
+
+-- borders on floating windows
+-- vim.lsp.util.open_floating_preview.Opts
+
+-- server settings
 local servers = {
 	lua_ls = {
 		capabilities = capabilities,

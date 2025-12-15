@@ -1,31 +1,25 @@
+---
+colors:
+  method: manual
 nvim:
   colorscheme: kanagawa
   overwrite:
     - src: theme.lua
       dst: nvim/lua/config/theme.lua
-
 tmux:
   append:
-    - src: tmux.conf 
+    - src: tmux.conf
       dst: tmux/tmux.conf
-
 fastfetch:
   overwrite:
-    - src: config.jsonc 
+    - src: config.jsonc
       dst: fastfetch/config.jsonc
-     
-zsh: 
-  feats: 
-    - fastfetch
+zsh:
+  feats: [fastfetch]
   env:
-    NOTES_PATH: "/mnt/c/Users/apalermo/github/notes/"
+    NOTES_PATH: /mnt/c/Users/apalermo/github/notes/
   append:
     - src: additions.zsh
       dst: zsh/.zshrc
-  overwrite:
-    - src: p10k.zsh
-      dst: zsh/.p10k.zsh
-
-theme_scripts: 
+theme_scripts:
   path: ./themes/wsl_dracula/scripts/
-

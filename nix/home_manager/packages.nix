@@ -73,7 +73,7 @@ in
       sassc
       dconf-editor
 
-      emacs
+      lua54Packages.orgmode
     ];
   };
 }

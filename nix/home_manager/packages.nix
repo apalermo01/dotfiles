@@ -73,7 +73,7 @@ in
       sassc
       dconf-editor
 
-      lua54Packages.orgmode
+      luajitPackages.orgmode
     ];
   };
 }

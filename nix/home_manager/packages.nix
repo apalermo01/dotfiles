@@ -72,6 +72,8 @@ in
 
       sassc
       dconf-editor
+
+      emacs
     ];
   };
 }

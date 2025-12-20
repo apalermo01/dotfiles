@@ -17,6 +17,7 @@
       discord
       firefox
       brave
+      librewolf
       zoom-us
       libreoffice-qt6-fresh
       signal-desktop

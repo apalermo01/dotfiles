@@ -25,6 +25,7 @@
     ./freetube.nix
     ./zsh.nix
     ./gui-pkgs.nix
+    ./reaper.nix
   ];
 
 }

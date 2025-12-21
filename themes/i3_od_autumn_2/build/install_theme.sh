@@ -9,8 +9,4 @@ if [ -f ~/.config/polybar/i3_polybar_start.sh ]; then
 fi
 
 
-if command -v plasma-apply-colorscheme; then
-    plasma-apply-colorscheme OneDarkRed
-fi
-
 dunstctl reload 

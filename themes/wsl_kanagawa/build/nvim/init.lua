@@ -29,5 +29,5 @@ switchNix = function(nonNix, nix)
 end
 
 require("config")
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme("kanagawa")
 vim.cmd([[set guifont=Iosveska\ Nerd\ Font\ Mono]])

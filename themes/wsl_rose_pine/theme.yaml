@@ -16,15 +16,8 @@ tmux:
       dst: tmux/tmux.conf
 
 zsh: 
-  feats: 
-    - fastfetch
-
   env:
     NOTES_PATH: "/mnt/c/Users/apalermo/github/notes/"
   append:
     - src: additions.zsh
       dst: zsh/.zshrc
-  overwrite:
-    - src: p10k.zsh
-      dst: zsh/.p10k.zsh
-

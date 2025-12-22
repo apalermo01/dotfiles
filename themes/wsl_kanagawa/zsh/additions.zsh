@@ -1,35 +1,46 @@
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
-zinit ice depth=1; zinit light romkatv/powerlevel10k
 
+wal -q -n -e -i ~/Documents/git/dotfiles/wallpapers/kanagawa.jpg
 
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+foreground="#dcd7ba"
+background="#1f1f28"
+cursorColor="#dcd7ba"
+    
+black="#090618"
+grey="#727169"
+    
+red1="#c34043"
+red2="#e82424"
+    
+green1="#76946a"
+green2="#98bb6c"
+    
+yellow1="#c0a36e"
+yellow2="#e6c384"
+    
+blue1="#7e9cd8"
+blue2="#7fb4ca"
+    
+purple1="#957fb8"
+purple2="#938aa9"
+    
+cyan1="#6a9589"
+cyan2="#7aa89f"
+    
+white1="#c8c093"
+white2="#dcd7ba"
 
-mkpretty() { 
-    local target_dir="/mnt/c/Users/apalermo/Downloads"
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%b '
+zstyle ':vcs_info:git:*' actionformats '%b (%a) %m%u%c'
+setopt PROMPT_SUBST
+homedir="%~"
+time_24hr="%*"
 
-    local files=(${(f)"$(find "$target_dir" -maxdepth 1 -type f -name "*.json" ! -name "pretty_*.json")"})
-    if [[ ${#files[@]} -eq 0 ]]; then
-        echo "No .json files to prettify in $target_dir"
-        return 1
-    fi
-    local i=1
-    for file in "${files[@]}"; do
-        printf "[%d] %s\n" "$i" "$(basename "$file")"
-        ((i++))
-    done
-    echo -n "Enter the number of the file to prettify: "
-    read -r num
-    if ! [[ "$num" =~ ^[0-9]+$ ]] || (( num < 1 || num > ${#files[@]} )); then
-        echo "Invalid selection. Please enter a number between 1 and ${#files[@]}."
-        return 1
-    fi
-    local selected_file=${files[$num]}
+st_dt="%F{$yellow1}%K{$background} ${time_24hr} %k%f"
+st_dir="%F{$blue2}%K{$background} ${homedir} %k%f"
+st_br='%F{$red1}%K{$background} ${vcs_info_msg_0_}%k%f'
+str_end="%F{$blue2} %f"
 
-    local base_name
-
-    base_name=$(basename "$selected_file")
-
-    local output_file="${target_dir}/pretty_${base_name}"
-    python3 -m json.tool "$selected_file" > "$output_file"
-    echo "Done."
-}
+PROMPT="${st_dt}${st_dir}${st_br}${str_end}"

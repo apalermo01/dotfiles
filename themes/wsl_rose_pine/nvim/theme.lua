@@ -4,8 +4,12 @@ return {
         "rose-pine/neovim",
         name = "rose-pine",
         opts = {
-            variant = 'main',
+            variant = 'moon',
             dim_inactive_windows = true,
+
+            styles = {
+                transparency = true
+            }
         }
     },
     {
@@ -28,4 +32,13 @@ return {
             })
         end
     },
+
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            require('notify').setup({
+                background_colour = "#000000"
+            })
+        end
+    }
 }

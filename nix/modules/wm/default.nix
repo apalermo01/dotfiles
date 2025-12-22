@@ -7,5 +7,6 @@
     ./plasma.nix
     ./sddm.nix
     ./tuigreet.nix
+    ./cosmic.nix
   ];
 }

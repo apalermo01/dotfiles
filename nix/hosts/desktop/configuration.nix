@@ -19,6 +19,9 @@
   tuigreet.enable = false;
   sddm.enable = true;
   kdePlasma.enable = false;
+  cosmic.enable = true;
+
+
   programs.zsh.enable = true;
 
   services.usbmuxd.enable = true;

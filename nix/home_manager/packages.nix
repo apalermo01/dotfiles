@@ -74,6 +74,8 @@ in
       dconf-editor
 
       luajitPackages.orgmode
+
+      tree-sitter
     ];
   };
 }

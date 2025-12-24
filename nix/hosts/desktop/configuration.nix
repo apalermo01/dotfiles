@@ -20,6 +20,7 @@
   sddm.enable = true;
   kdePlasma.enable = true;
   cosmic.enable = false;
+  ld.enable = true;
 
 
   programs.zsh.enable = true;

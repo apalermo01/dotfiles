@@ -26,6 +26,7 @@
         xorg.libXrender
         libGL
         libGLU
+        libclang
         # libtinfo
         # libgnt
         # ncurses

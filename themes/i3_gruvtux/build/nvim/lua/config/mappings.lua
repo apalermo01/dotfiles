@@ -116,14 +116,15 @@ map("n", "<M-l>", "<C-w>l", {desc="win right"})
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
-map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
-map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
-map(
-	"t",
-	"<leader><leader>tt",
-	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
-	{ desc = "toggle floating terminal" }
-)
+-- terminal mapping moved to `terminal.lua`
+-- map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
+-- map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
+-- map(
+-- 	"t",
+-- 	"<leader><leader>tt",
+-- 	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
+-- 	{ desc = "toggle floating terminal" }
+-- )
 
 -----------------------------------------------------------------
 -- tabs
@@ -292,17 +293,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Hover
 		map("n", "K", function()
-            vim.notify("reminder: <C-w>w then k/j to scroll docs")
+            vim.notify("reminder: KK to hover then k/j to scroll docs")
 			vim.lsp.buf.hover {
-                focus = true
+                border = "single"
             }
 		end, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
 
 		-- Show diagnostic in floating
 		map("n", "<leader>vk", function()
-			vim.diagnostic.open_float()
+			vim.diagnostic.open_float {
+                border = "single"
+            }
 		end, vim.tbl_extend("force", opts, { desc = "LSP: show diagnostic" }))
-
+    
 		-- Workspace symbols
 		map("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()

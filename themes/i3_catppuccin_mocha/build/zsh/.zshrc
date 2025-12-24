@@ -2,6 +2,29 @@
 # https://www.youtube.com/watch?v=ud7YxC33Z3w
 # https://scottspence.com/posts/speeding-up-my-zsh-shell 
 
+####################
+# Terminal outputs #
+####################
+echo "******************************** ALIASES *******************************"
+echo "* tutoring                  = cd into tutoring dir and init a session  *"
+echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
+echo "* cat_all                   = cat all files in cwd (recursive)         *"
+echo "* on <name>                 = generate new note                        *"
+echo "* onp <name>                = generate new personal note               *"
+echo "* n                         = cd into notes folder                     *"
+echo "* o                         = start obsidian                           *"
+echo "* ga                        = git add -p                               *"
+echo "* gc                        = git commit                               *"
+echo "* gb                        = git branch                               *"
+echo "* gd                        = git diff                                 *" 
+echo "* gl                        = git log (pretty)                         *"
+echo "* gp                        = git push                                 *"
+echo "* gpu                       = git pull                                 *"
+echo "* j                         = open jupyter lab (if available)          *"
+echo "* cat_all                   = cat all files in directory               *"
+echo "* switch_kb                 = change kb layout                         *"
+echo "************************************************************************"
+
 #######
 # Nix #
 #######
@@ -9,9 +32,9 @@ if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
   . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
-#########
-# zinit #
-#########
+###########
+# plugins #
+###########
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -22,10 +45,15 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
+zinit ice wait
 zinit light zsh-users/zsh-completions
+zinit ice wait
 zinit light zsh-users/zsh-autosuggestions
+zinit ice wait
 zinit light Aloxaf/fzf-tab
+zinit ice wait
 zinit light chisui/zsh-nix-shell 
+zinit ice wait
 zinit light zsh-users/zsh-syntax-highlighting
 
 
@@ -41,9 +69,9 @@ fi
 
 zinit cdreplay -q
 
-####################
-# Helper Functions #
-####################
+##############
+# Functions #
+#############
 
 function start_tutoring() {
     if [[ ! -d "${HOME}/Documents/git/tutoring" ]]; then
@@ -413,25 +441,6 @@ fi
 ###########
 # HELPERS #
 ###########
-echo "******************************** ALIASES *******************************"
-echo "* tutoring                  = cd into tutoring dir and init a session  *"
-echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
-echo "* cat_all                   = cat all files in cwd (recursive)         *"
-echo "* on <name>                 = generate new note                        *"
-echo "* onp <name>                = generate new personal note               *"
-echo "* n                         = cd into notes folder                     *"
-echo "* o                         = start obsidian                           *"
-echo "* ga                        = git add -p                               *"
-echo "* gc                        = git commit                               *"
-echo "* gb                        = git branch                               *"
-echo "* gd                        = git diff                                 *" 
-echo "* gl                        = git log (pretty)                         *"
-echo "* gp                        = git push                                 *"
-echo "* gpu                       = git pull                                 *"
-echo "* j                         = open jupyter lab (if available)          *"
-echo "* cat_all                   = cat all files in directory               *"
-echo "* switch_kb                 = change kb layout                         *"
-echo "************************************************************************"
 
 if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init zsh)"

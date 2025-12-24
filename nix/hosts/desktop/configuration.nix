@@ -18,8 +18,8 @@
   i3wm.enable = true;
   tuigreet.enable = false;
   sddm.enable = true;
-  kdePlasma.enable = false;
-  cosmic.enable = true;
+  kdePlasma.enable = true;
+  cosmic.enable = false;
 
 
   programs.zsh.enable = true;

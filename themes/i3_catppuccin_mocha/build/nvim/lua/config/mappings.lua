@@ -91,10 +91,11 @@ map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project config" })
 
 -- navigate by { }
-map("n", "[[", "?{<CR>w99[{")
-map("n", "][", "/}<CR>b99]}")
-map("n", "]]", "j0[[%/{<CR>")
-map("n", "[]", "k$][%?}<CR>")
+-- I don't remember what this does so I'm removing it for now
+-- map("n", "[[", "?{<CR>w99[{")
+-- map("n", "][", "/}<CR>b99]}")
+-- map("n", "]]", "j0[[%/{<CR>")
+-- map("n", "[]", "k$][%?}<CR>")
 
 -- diffview
 map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
@@ -115,14 +116,15 @@ map("n", "<M-l>", "<C-w>l", {desc="win right"})
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
-map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
-map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
-map(
-	"t",
-	"<leader><leader>tt",
-	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
-	{ desc = "toggle floating terminal" }
-)
+-- terminal mapping moved to `terminal.lua`
+-- map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
+-- map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
+-- map(
+-- 	"t",
+-- 	"<leader><leader>tt",
+-- 	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
+-- 	{ desc = "toggle floating terminal" }
+-- )
 
 -----------------------------------------------------------------
 -- tabs
@@ -259,13 +261,13 @@ map("n", '<leader>p"', builtin.registers, { desc = "Telescope: list registers" }
 map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace symbols
-map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+-- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- keymaps
-map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+-- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace_symbol
-map("n", "<leader>pd", builtin.lsp_definitions, { desc = "Telescope: lsp definition" })
+-- map("n", "<leader>pd", builtin.lsp_definitions, { desc = "Telescope: lsp definition" })
 
 -- Prompted grep for a string
 -- map("n", "<leader>pw", function()
@@ -290,15 +292,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, vim.tbl_extend("force", opts, { desc = "LSP: go to definition" }))
 
 		-- Hover
-		map("n", "<leader>K", function()
-			vim.lsp.buf.hover()
+		map("n", "K", function()
+            vim.notify("reminder: KK to hover then k/j to scroll docs")
+			vim.lsp.buf.hover {
+                border = "single"
+            }
 		end, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
 
 		-- Show diagnostic in floating
 		map("n", "<leader>vk", function()
-			vim.diagnostic.open_float()
+			vim.diagnostic.open_float {
+                border = "single"
+            }
 		end, vim.tbl_extend("force", opts, { desc = "LSP: show diagnostic" }))
-
+    
 		-- Workspace symbols
 		map("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()

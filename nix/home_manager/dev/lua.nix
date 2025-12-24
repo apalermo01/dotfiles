@@ -17,6 +17,7 @@ in
       lua
       lua-language-server
       stylua
+      luajitPackages.luarocks
     ];
   };
 }

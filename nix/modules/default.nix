@@ -6,5 +6,6 @@
     ./wm
     ./common.nix
     ./external_monitor.nix
+    ./ld.nix
   ];
 }

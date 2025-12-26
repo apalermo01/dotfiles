@@ -32,8 +32,8 @@ white2="#dcd7ba"
 
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%b '
-zstyle ':vcs_info:git:*' actionformats '%b (%a) %m%u%c'
+zstyle ':vcs_info:git:*' formats ' %b '
+zstyle ':vcs_info:git:*' actionformats ' %b (%a) %m%u%c'
 setopt PROMPT_SUBST
 homedir="%~"
 time_24hr="%*"
@@ -41,6 +41,6 @@ time_24hr="%*"
 st_dt="%F{$yellow1}%K{$background} ${time_24hr} %k%f"
 st_dir="%F{$blue2}%K{$background} ${homedir} %k%f"
 st_br='%F{$red1}%K{$background} ${vcs_info_msg_0_}%k%f'
-str_end="%F{$blue2} %f"
+str_end="%F{$background} %f"
 
 PROMPT="${st_dt}${st_dir}${st_br}${str_end}"

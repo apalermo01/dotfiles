@@ -76,6 +76,7 @@ in
       luajitPackages.orgmode
 
       tree-sitter
+      typos
     ];
   };
 }

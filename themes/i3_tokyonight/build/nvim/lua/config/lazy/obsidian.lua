@@ -5,11 +5,6 @@ return {
     "obsidian-nvim/obsidian.nvim",
     enabled = true,
     ft = {"md", "markdown"},
-    cond = function()
-        local vault_path = vim.fn.expand(OBSIDIAN_NOTES_DIR)
-        local current_file_path = vim.api.nvim_buf_get_name(0)
-        return vim.startswith(current_file_path, vault_path)
-    end,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
@@ -24,12 +19,12 @@ return {
             {
                 name = "notes",
                 path = OBSIDIAN_NOTES_DIR,
-                -- overrides = {
-                --     notes_subdir = "0-Inbox"
-                -- },
             },
         },
-        disable_frontmatter = true,
+        frontmatter = {
+            enabled = true,
+            sort = { 'id', 'aliases', 'version', 'tags', 'date_created', 'date_modified', 'type', 'project', 'area'}
+        },
         templates = {
             folder = OBSIDIAN_TEMPLATE_FOLDER,
             date_format = "%Y-%m-%d",

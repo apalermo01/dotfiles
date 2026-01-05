@@ -83,8 +83,6 @@ vim.cmd([[set spellfile=~/.config/en.utf-8.add]])
 vim.cmd([[set guifont=JetBrainsMono\ Nerd\ Font\ Mono]])
 vim.cmd([[set completeopt=menu,preview,menuone,noselect]])
 
-vim.notify = require('notify')
-require('telescope').load_extension('emoji')
 -- UI
 set.so = 7
 vim.o.cursorlineopt = "both"

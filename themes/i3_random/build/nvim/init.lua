@@ -30,4 +30,4 @@ end
 
 require("config")
 vim.cmd.colorscheme("pywal")
-vim.cmd([[set guifont=RecMonoCasual\ Nerd\ Font\ Mono]])
+vim.cmd([[set guifont=NotoMono\ Nerd\ Font\ Mono]])

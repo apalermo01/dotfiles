@@ -18,6 +18,7 @@ in
       lua-language-server
       stylua
       luajitPackages.luarocks
+      selene
     ];
   };
 }

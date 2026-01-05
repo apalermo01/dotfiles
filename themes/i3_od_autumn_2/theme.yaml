@@ -27,6 +27,8 @@ tmux:
   append: 
     - src: tmux.conf
       dst: tmux/tmux.conf
+    - src: od_autumn.tmux
+      dst: tmux/tmux.conf
 
 rofi: 
   template_path: $THIS_THEME

@@ -5,5 +5,5 @@ width = (100, 1000)
 # format = "<b>%a<\b>\n<b>%s<\b>\n\n%b\n%p"
 shrink = yes
 browser = firefox
-font = "RecMonoCasual Nerd Font Mono 12"
+font = "NotoMono Nerd Font Mono 12"
 

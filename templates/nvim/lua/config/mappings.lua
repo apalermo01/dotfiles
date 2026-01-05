@@ -190,7 +190,10 @@ end, { desc = "trouble: previous diagnostic" })
 map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- template note
-map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
+map("n", "<leader>op", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
+
+-- tags
+map("n", "<leader>ot", "<cmd>ObsidianTags<CR>", { desc = "Obsidian tags"})
 
 -- Delete current note
 map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })

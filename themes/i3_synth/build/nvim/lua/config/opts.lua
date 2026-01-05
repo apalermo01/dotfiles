@@ -13,36 +13,66 @@ end
 -- General
 set.guicursor = "n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
 
+set.number = true
+set.rnu = true
+set.cursorline = true
+set.wrap = true 
+set.scrolloff = 8
+set.sidescrolloff = 8
+
 set.tabstop = 4
 set.shiftwidth = 4
 set.softtabstop = 4
 set.expandtab = true
+set.smartindent = true 
+set.autoindent = true
 
-set.number = true
-set.rnu = true
-
-set.swapfile = false
-set.backup = false
-set.undodir = os.getenv("HOME") .. "/.vim/undodir"
-set.undofile = true
-
+set.ignorecase = true
+set.smartcase = true
 set.hlsearch = true
 set.incsearch = true
 
-set.scrolloff = 8
+set.termguicolors = true
 set.signcolumn = "yes"
+-- set.colorcolumn = "80"
+set.showmatch = true
+set.matchtime = 2
+set.cmdheight = 1
+set.completeopt = "menuone,noinsert,noselect"
+set.showmode = false
+set.pumheight = 10
+set.pumblend = 10  
+set.winblend = 0
+-- set.concealcursor = ""
+set.lazyredraw = true 
+set.synmaxcol = 300
 
-set.updatetime = 50
-set.colorcolumn = "80"
+set.swapfile = false
+set.backup = false
+set.writebackup = false
+set.undofile = true
+set.undodir = os.getenv("HOME") .. "/.vim/undodir"
+set.updatetime = 300
+-- set.timeoutlen = 5000
+-- set.ttimeoutlen = 0
+set.autoread = true 
+set.autowrite = false
 
 set.showcmd = true
 set.showmode = true
 set.compatible = false
 set.syntax = "on"
 set.wildmenu = true
-set.termguicolors = true
 
-set.wrap = true
+set.hidden = true
+set.backspace = "indent,eol,start"
+set.autochdir = false 
+set.iskeyword:append("-")
+set.path:append("**")
+set.selection = "exclusive"
+set.mouse = "a"
+set.clipboard:append("unnamedplus")
+
 set.linebreak = true
 
 vim.cmd([[set path+=**]])
@@ -100,6 +130,7 @@ autocmd("FileType", {
 		"gomod",
 		"checkhealth",
 		"gitcommit",
+        "rust",
 	},
 	callback = function()
 		vim.opt_local.spell = false

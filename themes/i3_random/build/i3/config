@@ -203,8 +203,9 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font RecMonoCasual Nerd Font Mono 11
-bindsym $mod+f exec firefox
+font NotoMono Nerd Font Mono 11
+# bindsym $mod+f exec firefox
+bindsym $mod+f exec librewolf
 
 # pretty sure this is for ubuntu
 # bindsym $mod+b exec brave-browser
@@ -251,13 +252,13 @@ exec source ~/.profile
 include ~/.config/i3/qwerty.config
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #30534D     #0E151D      #0E151D      #30534D	    #30534D
-client.focused_inactive	 #2E3643     #0E151D      #0E151D	    #2E3643	    #2E3643
-client.unfocused	     #2E3643     #0E151D      #0E151D	    #2E3643	    #2E3643
-client.urgent	         #ff0000        #ff0000             #0E151D	    #ff0000       #ff0000
-client.placeholder	     #2E3643     #0E151D      #0E151D	    #30534D	    #30534D
+client.focused	         #976E92     #0a080b      #0a080b      #976E92	    #976E92
+client.focused_inactive	 #617388     #0a080b      #0a080b	    #617388	    #617388
+client.unfocused	     #617388     #0a080b      #0a080b	    #617388	    #617388
+client.urgent	         #ff0000        #ff0000             #0a080b	    #ff0000       #ff0000
+client.placeholder	     #617388     #0a080b      #0a080b	    #976E92	    #976E92
 
-client.background	#0E151D
+client.background	#0a080b
 
 # Gaps
 gaps inner 10
@@ -277,4 +278,4 @@ exec wal -R
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/astronaut.jpg
+exec_always feh --bg-fill /home/alex/Pictures/wallpapers/steampunk_portal.png

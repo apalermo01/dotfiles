@@ -9,7 +9,7 @@ i3:
 kitty:
   font_size: 10
 
-font: RecMonoCasual Nerd Font Mono
-
+# font: RecMonoCasual Nerd Font Mono
+font: NotoMono Nerd Font Mono
 dunst: {}
 sioyek: {}

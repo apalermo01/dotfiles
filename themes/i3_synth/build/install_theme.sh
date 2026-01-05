@@ -25,6 +25,9 @@ if [[ ! -d $ICON_DIR ]]; then
     unzip ${ICON_DIR}/candy-icons.zip -d ${ICON_DIR}/candy-icons
     rm ${ICON_DIR}/candy-icons.zip
 
+    mv ${ICON_DIR}/candy-icons/candy-icons-master ${HOME}/.local/share/icons/candy-icons
 fi
+
+# TODO - write to settings.ini
 
 dunstctl reload 

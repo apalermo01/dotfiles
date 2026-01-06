@@ -1,6 +1,29 @@
-# references:
+# refererces:
 # https://www.youtube.com/watch?v=ud7YxC33Z3w
 # https://scottspence.com/posts/speeding-up-my-zsh-shell 
+
+####################
+# Terminal outputs #
+####################
+echo "******************************** ALIASES *******************************"
+echo "* tutoring                  = cd into tutoring dir and init a session  *"
+echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
+echo "* cat_all                   = cat all files in cwd (recursive)         *"
+echo "* on <name>                 = generate new note                        *"
+echo "* onp <name>                = generate new personal note               *"
+echo "* n                         = cd into notes folder                     *"
+echo "* o                         = start obsidian                           *"
+echo "* ga                        = git add -p                               *"
+echo "* gc                        = git commit                               *"
+echo "* gb                        = git branch                               *"
+echo "* gd                        = git diff                                 *" 
+echo "* gl                        = git log (pretty)                         *"
+echo "* gp                        = git push                                 *"
+echo "* gpu                       = git pull                                 *"
+echo "* j                         = open jupyter lab (if available)          *"
+echo "* cat_all                   = cat all files in directory               *"
+echo "* switch_kb                 = change kb layout                         *"
+echo "************************************************************************"
 
 #######
 # Nix #
@@ -9,9 +32,9 @@ if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
   . "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 
-#########
-# zinit #
-#########
+###########
+# plugins #
+###########
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -22,28 +45,29 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-zinit light chisui/zsh-nix-shell 
-zinit light zsh-users/zsh-syntax-highlighting
 
+zinit load romkatv/zsh-defer
+zsh-defer zinit light zsh-users/zsh-completions
+zsh-defer zinit light zsh-users/zsh-autosuggestions
+zsh-defer zinit light Aloxaf/fzf-tab
+zsh-defer zinit light chisui/zsh-nix-shell 
+zsh-defer zinit light zsh-users/zsh-syntax-highlighting
 
 ################
 # AUTOCOMPLETE #
 ################
 autoload -Uz compinit
 if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
-    compinit
+    zsh-defer compinit
 else
-    compinit -C
+    zsh-defer compinit -C
 fi
 
 zinit cdreplay -q
 
-####################
-# Helper Functions #
-####################
+##############
+# Functions #
+#############
 
 function start_tutoring() {
     if [[ ! -d "${HOME}/Documents/git/tutoring" ]]; then
@@ -168,6 +192,11 @@ new_personal_note() {
     touch "0-Inbox/$formatted_file_name"
     nvim "0-Inbox/$formatted_file_name"
 }
+
+journal_entry() {
+    bash ~/Scripts/journal_entry.sh
+}
+
 bt() { ~/Scripts/bluetooth.sh }
 
 function _maybe_source_aliases() {
@@ -311,10 +340,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
-if command -v z >/dev/null 2>&1
-then
-    zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-fi
 
 ######################
 # Obsidian Functions #
@@ -349,41 +374,44 @@ alias tutoring="start_tutoring"
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
 
-if command -v git >/dev/null 2>&1
-then
-    alias g='git'
-    alias ga='git add -p'
-    alias gc='git commit'
-    alias gb='git branch'
-    alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
-    alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-    alias gp='git push'
-    alias gpu='git pull'
-    alias gcm="git add . && git commit -m $(date +%D)"
-fi
-alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
+_cond_aliases() {
+    if command -v git >/dev/null 2>&1
+    then
+        alias g='git'
+        alias ga='git add -p'
+        alias gc='git commit'
+        alias gb='git branch'
+        alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
+        alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+        alias gp='git push'
+        alias gpu='git pull'
+        alias gcm="git add . && git commit -m $(date +%D)"
+    fi
 
-if command -v yazi >/dev/null 2>&1
-then
-    alias lf="y"
-    alias l="y"
-    alias y="yazi"
-    alias ya="y"
-    alias yazi="y"
-fi
+    if command -v yazi >/dev/null 2>&1
+    then
+        alias lf="y"
+        alias l="y"
+        alias y="yazi"
+        alias ya="y"
+        alias yazi="y"
+    fi
 
-if command -v bat >/dev/null 2>&1
-then
-    alias cat="bat --no-pager"
-elif command -v batcat >/dev/null 2>&1
-then
-    alias cat="batcat --no-pager"
-fi
+    if command -v bat >/dev/null 2>&1
+    then
+        alias cat="bat --no-pager"
+    elif command -v batcat >/dev/null 2>&1
+    then
+        alias cat="batcat --no-pager"
+    fi
 
-if command -v eza >/dev/null 2>&1
-then
-    alias ls="eza"
-fi
+    if command -v eza >/dev/null 2>&1
+    then
+        alias ls="eza"
+    fi
+}
+
+zsh-defer _cond_aliases
 
 if [[ -f "${HOME}/work_cmds.sh" ]]; then
     source ~/work_cmds.sh
@@ -396,51 +424,38 @@ fi
 # cd hooks #
 ############
 
-autoload -U add-zsh-hook
-add-zsh-hook chpwd _maybe_source_aliases
-add-zsh-hook chpwd _devcontainers
-add-zsh-hook chpwd _alias_jupyter
+zsh-defer autoload -U add-zsh-hook
+zsh-defer add-zsh-hook chpwd _maybe_source_aliases
+zsh-defer add-zsh-hook chpwd _devcontainers
+zsh-defer add-zsh-hook chpwd _alias_jupyter
 
 
 #######################
-# Additional settings #
+# Additional Commands #
 #######################
-if command -v fnm >/dev/null 2>&1; then
-  eval "$(fnm env --use-on-cd --shell zsh)"
-fi
 
+_cmds() {
+    if command -v fnm >/dev/null 2>&1; then
+        eval "$(fnm env --use-on-cd --shell zsh)"
+    fi
 
-###########
-# HELPERS #
-###########
-echo "******************************** ALIASES *******************************"
-echo "* tutoring                  = cd into tutoring dir and init a session  *"
-echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
-echo "* cat_all                   = cat all files in cwd (recursive)         *"
-echo "* on <name>                 = generate new note                        *"
-echo "* onp <name>                = generate new personal note               *"
-echo "* n                         = cd into notes folder                     *"
-echo "* o                         = start obsidian                           *"
-echo "* ga                        = git add -p                               *"
-echo "* gc                        = git commit                               *"
-echo "* gb                        = git branch                               *"
-echo "* gd                        = git diff                                 *" 
-echo "* gl                        = git log (pretty)                         *"
-echo "* gp                        = git push                                 *"
-echo "* gpu                       = git pull                                 *"
-echo "* j                         = open jupyter lab (if available)          *"
-echo "* cat_all                   = cat all files in directory               *"
-echo "* switch_kb                 = change kb layout                         *"
-echo "************************************************************************"
+    if command -v zoxide >/dev/null 2>&1; then
+        eval "$(zoxide init zsh)"
+        alias cd="z" 
+    fi
 
-if command -v zoxide >/dev/null 2>&1; then
-    eval "$(zoxide init zsh)"
-    alias cd="z" 
-fi
+    if command -v direnv >/dev/null 2>&1; then
+        eval "$(direnv hook zsh)"
+    fi
 
-if command -v direnv >/dev/null 2>&1; then
-    eval "$(direnv hook zsh)"
-fi
+    if command -v z >/dev/null 2>&1; then
+        zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+    fi
+}
+
+_cmds
+
+alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 

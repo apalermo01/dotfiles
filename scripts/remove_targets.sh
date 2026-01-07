@@ -10,11 +10,11 @@ rm -r ~/.config/polybar
 rm -r ~/.config/rofi
 rm -r ~/.config/theme_scripts
 rm -r ~/.config/dunst
+rm -r ~/.config/tmux
 rm ~/.tmux.conf
 rm ~/.p10k.zsh
 rm ~/.profile
 rm ~/.zshrc
 rm ~/profile
 rm ~/.config/okularrc
-rm ~/.tmux.conf
 rm ~/.config/install_theme.sh

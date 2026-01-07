@@ -456,3 +456,8 @@ _cmds() {
 _cmds
 
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+bindkey -M vicmd 'v' edit-command-line

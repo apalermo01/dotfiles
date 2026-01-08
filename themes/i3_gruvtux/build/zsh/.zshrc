@@ -1,4 +1,37 @@
-# refere
+# refererces:
+# https://www.youtube.com/watch?v=ud7YxC33Z3w
+# https://scottspence.com/posts/speeding-up-my-zsh-shell 
+
+####################
+# Terminal outputs #
+####################
+echo "******************************** ALIASES *******************************"
+echo "* tutoring                  = cd into tutoring dir and init a session  *"
+echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
+echo "* cat_all                   = cat all files in cwd (recursive)         *"
+echo "* on <name>                 = generate new note                        *"
+echo "* onp <name>                = generate new personal note               *"
+echo "* n                         = cd into notes folder                     *"
+echo "* o                         = start obsidian                           *"
+echo "* ga                        = git add -p                               *"
+echo "* gc                        = git commit                               *"
+echo "* gb                        = git branch                               *"
+echo "* gd                        = git diff                                 *" 
+echo "* gl                        = git log (pretty)                         *"
+echo "* gp                        = git push                                 *"
+echo "* gpu                       = git pull                                 *"
+echo "* j                         = open jupyter lab (if available)          *"
+echo "* cat_all                   = cat all files in directory               *"
+echo "* switch_kb                 = change kb layout                         *"
+echo "************************************************************************"
+
+#######
+# Nix #
+#######
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
 ###########
 # plugins #
 ###########
@@ -159,6 +192,11 @@ new_personal_note() {
     touch "0-Inbox/$formatted_file_name"
     nvim "0-Inbox/$formatted_file_name"
 }
+
+journal_entry() {
+    bash ~/Scripts/journal_entry.sh
+}
+
 bt() { ~/Scripts/bluetooth.sh }
 
 function _maybe_source_aliases() {
@@ -336,7 +374,7 @@ alias tutoring="start_tutoring"
 # git aliases 
 # https://www.youtube.com/watch?v=G3NJzFX6XhY
 
-_conditional_aliases() {
+_cond_aliases() {
     if command -v git >/dev/null 2>&1
     then
         alias g='git'
@@ -371,13 +409,13 @@ _conditional_aliases() {
     then
         alias ls="eza"
     fi
-
-    if [[ -f "${HOME}/work_cmds.sh" ]]; then
-        source ~/work_cmds.sh
-    fi
 }
 
-zsh-defer _conditional_aliases()
+zsh-defer _cond_aliases
+
+if [[ -f "${HOME}/work_cmds.sh" ]]; then
+    source ~/work_cmds.sh
+fi
 
 
 
@@ -410,13 +448,12 @@ _cmds() {
         eval "$(direnv hook zsh)"
     fi
 
-    if command -v z >/dev/null 2>&1
-    then
+    if command -v z >/dev/null 2>&1; then
         zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
     fi
 }
 
-zsh-defer _cmds
+_cmds
 
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 zinit ice depth=1; zinit light romkatv/powerlevel10k

@@ -16,7 +16,7 @@ set.guicursor = "n-v-c-sm:block,i-ci-ve:ver25-Cursor,r-cr-o:hor20"
 set.number = true
 set.rnu = true
 set.cursorline = true
-set.wrap = false
+set.wrap = true 
 set.scrolloff = 8
 set.sidescrolloff = 8
 
@@ -62,6 +62,7 @@ set.showcmd = true
 set.showmode = true
 set.compatible = false
 set.syntax = "on"
+vim.g.markdown_fenced_languages = {"rust", "python", "C", "bash=sh"}
 set.wildmenu = true
 
 set.hidden = true
@@ -82,7 +83,6 @@ vim.cmd([[set spell spelllang=en_us]])
 vim.cmd([[set spellfile=~/.config/en.utf-8.add]])
 vim.cmd([[set guifont=JetBrainsMono\ Nerd\ Font\ Mono]])
 vim.cmd([[set completeopt=menu,preview,menuone,noselect]])
-
 
 -- UI
 set.so = 7
@@ -131,6 +131,7 @@ autocmd("FileType", {
 		"gomod",
 		"checkhealth",
 		"gitcommit",
+        "rust",
 	},
 	callback = function()
 		vim.opt_local.spell = false

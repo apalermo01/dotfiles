@@ -47,4 +47,5 @@ require("nvim-treesitter").install({
 	"requirements",
 	"sql",
 	"nix",
+    "rust"
 })

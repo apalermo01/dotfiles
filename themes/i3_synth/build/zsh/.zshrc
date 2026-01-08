@@ -192,6 +192,11 @@ new_personal_note() {
     touch "0-Inbox/$formatted_file_name"
     nvim "0-Inbox/$formatted_file_name"
 }
+
+journal_entry() {
+    bash ~/Scripts/journal_entry.sh
+}
+
 bt() { ~/Scripts/bluetooth.sh }
 
 function _maybe_source_aliases() {

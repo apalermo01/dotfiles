@@ -1,3 +1,6 @@
+
+vim.notify = require('notify')
+require('telescope').load_extension('emoji')
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local group = augroup("config", {})
@@ -131,12 +134,12 @@ autocmd("BufReadPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        vim.cmd("NoNeckPain")
-    end,
-})
-
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     callback = function()
+--         vim.cmd("NoNeckPain")
+--     end,
+-- })
+--
 -- snippets 
 require("luasnip.loaders.from_vscode").lazy_load()
 

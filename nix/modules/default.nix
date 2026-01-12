@@ -7,5 +7,6 @@
     ./common.nix
     ./external_monitor.nix
     ./ld.nix
+    ./hp.nix
   ];
 }

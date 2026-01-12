@@ -6,7 +6,7 @@
 }:
 {
   options = {
-    ld.enable = lib.mkEnableOption "enable hp";
+    hp.enable = lib.mkEnableOption "enable hp";
   };
 
   config = lib.mkIf config.hp.enable {

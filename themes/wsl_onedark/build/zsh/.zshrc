@@ -456,6 +456,11 @@ _cmds() {
 _cmds
 
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+bindkey -M vicmd 'v' edit-command-line
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 

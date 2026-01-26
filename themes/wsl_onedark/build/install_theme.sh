@@ -2,4 +2,4 @@
 
 
 
-wal -n -e -i ~/Pictures/wallpapers/darker_unicat.png
+# wal -n -e -i ~/Pictures/wallpapers/darker_unicat.png

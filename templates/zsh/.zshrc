@@ -6,23 +6,17 @@
 # Terminal outputs #
 ####################
 echo "******************************** ALIASES *******************************"
-echo "* tutoring                  = cd into tutoring dir and init a session  *"
 echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
 echo "* cat_all                   = cat all files in cwd (recursive)         *"
 echo "* on <name>                 = generate new note                        *"
 echo "* onp <name>                = generate new personal note               *"
 echo "* n                         = cd into notes folder                     *"
 echo "* o                         = start obsidian                           *"
-echo "* ga                        = git add -p                               *"
-echo "* gc                        = git commit                               *"
-echo "* gb                        = git branch                               *"
 echo "* gd                        = git diff                                 *" 
 echo "* gl                        = git log (pretty)                         *"
-echo "* gp                        = git push                                 *"
-echo "* gpu                       = git pull                                 *"
 echo "* j                         = open jupyter lab (if available)          *"
 echo "* cat_all                   = cat all files in directory               *"
-echo "* switch_kb                 = change kb layout                         *"
+echo "* ^x^e                      = open command in editor                   *"
 echo "************************************************************************"
 
 #######
@@ -459,5 +453,5 @@ alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^X^E' edit-command-line
+bindkey '^x^e' edit-command-line
 bindkey -M vicmd 'v' edit-command-line

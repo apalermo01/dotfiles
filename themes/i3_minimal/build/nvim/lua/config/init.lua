@@ -3,6 +3,9 @@ require("config.lazy_init")
 require("config.cmds")
 -- require("config.test_lsp")
 require("config.mappings")
+require("config.colemak")
+require("config.lsp")
+require("config.terminal")
 local augroup = vim.api.nvim_create_augroup
 
 -- Declare a global function to retrieve the current directory
@@ -17,3 +20,32 @@ function _G.get_oil_winbar()
 		return vim.api.nvim_buf_get_name(0)
 	end
 end
+require("nvim-treesitter").install({
+	"bash",
+	"c",
+	"css",
+	"html",
+	"lua",
+	"markdown",
+	"markdown_inline",
+	"python",
+	"go",
+	"git_config",
+	"gitcommit",
+	"git_rebase",
+	"gitignore",
+	"gitattributes",
+	"vim",
+	"vimdoc",
+	"comment",
+	"diff",
+	"dockerfile",
+	"json",
+	"jsonc",
+	"rasi",
+	"regex",
+	"requirements",
+	"sql",
+	"nix",
+    "rust"
+})

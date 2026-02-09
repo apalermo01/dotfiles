@@ -1,9 +1,7 @@
 return {
     "shortcuts/no-neck-pain.nvim",
+    enabled = false,
     opts = {
-        -- mappings = {
-        --     enabled = true
-        -- },
         integrations = {
             outline = {
                 position = "right",

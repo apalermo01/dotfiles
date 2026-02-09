@@ -3,6 +3,7 @@
 --
 return {
     "obsidian-nvim/obsidian.nvim",
+    branch = "main",
     enabled = true,
     ft = {"md", "markdown"},
     dependencies = {
@@ -12,6 +13,7 @@ return {
     },
 
     opts = {
+        legacy_commands = false,
         ui = {
             enable = false,
         },
@@ -19,12 +21,12 @@ return {
             {
                 name = "notes",
                 path = OBSIDIAN_NOTES_DIR,
-                -- overrides = {
-                --     notes_subdir = "0-Inbox"
-                -- },
             },
         },
-        disable_frontmatter = true,
+        frontmatter = {
+            enabled = true,
+            sort = { 'id', 'aliases', 'version', 'tags', 'date_created', 'date_modified', 'type', 'project', 'area'}
+        },
         templates = {
             folder = OBSIDIAN_TEMPLATE_FOLDER,
             date_format = "%Y-%m-%d",

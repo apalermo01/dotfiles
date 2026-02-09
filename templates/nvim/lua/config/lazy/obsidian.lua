@@ -2,7 +2,7 @@
 -- https://github.com/zazencodes/dotfiles/blob/main/nvim/lua/workflows.lua
 --
 return {
-    "apalermo01/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     branch = "main",
     enabled = true,
     ft = {"md", "markdown"},

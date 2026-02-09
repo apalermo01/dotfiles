@@ -76,7 +76,10 @@ in
       luajitPackages.orgmode
 
       tree-sitter
+      
       typos
+
+      nemo-with-extensions
     ];
   };
 }

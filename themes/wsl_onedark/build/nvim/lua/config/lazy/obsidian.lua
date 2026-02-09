@@ -3,7 +3,7 @@
 --
 return {
     "apalermo01/obsidian.nvim",
-    branch = "vim-NIL-handling",
+    branch = "main",
     enabled = true,
     ft = {"md", "markdown"},
     dependencies = {

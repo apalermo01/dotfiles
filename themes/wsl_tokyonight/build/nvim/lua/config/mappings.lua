@@ -91,10 +91,11 @@ map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project config" })
 
 -- navigate by { }
-map("n", "[[", "?{<CR>w99[{")
-map("n", "][", "/}<CR>b99]}")
-map("n", "]]", "j0[[%/{<CR>")
-map("n", "[]", "k$][%?}<CR>")
+-- I don't remember what this does so I'm removing it for now
+-- map("n", "[[", "?{<CR>w99[{")
+-- map("n", "][", "/}<CR>b99]}")
+-- map("n", "]]", "j0[[%/{<CR>")
+-- map("n", "[]", "k$][%?}<CR>")
 
 -- diffview
 map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
@@ -108,21 +109,22 @@ map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
 map("n", "<leader>wj", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
 map("n", "<leader>wk", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
 map("n", "<leader>wl", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-map("n", "<M-h>", "<C-w>h", {desc="win left"})
-map("n", "<M-j>", "<C-w>j", {desc="win down"})
-map("n", "<M-k>", "<C-w>k", {desc="win up"})
-map("n", "<M-l>", "<C-w>l", {desc="win right"})
+map("n", "<M-h>", "<C-w>h", { desc = "win left" })
+map("n", "<M-j>", "<C-w>j", { desc = "win down" })
+map("n", "<M-k>", "<C-w>k", { desc = "win up" })
+map("n", "<M-l>", "<C-w>l", { desc = "win right" })
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
-map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
-map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
-map(
-	"t",
-	"<leader><leader>tt",
-	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
-	{ desc = "toggle floating terminal" }
-)
+-- terminal mapping moved to `terminal.lua`
+-- map("n", "<leader><leader>tr", "<cmd>tabnew | term<CR>", { desc = "open terminal in new tab" })
+-- map("n", "<leader><leader>tt", "<cmd>lua require('FTerm').toggle()<cr>", { desc = "toggle floating terminal" })
+-- map(
+-- 	"t",
+-- 	"<leader><leader>tt",
+-- 	"<C-\\><C-n><cmd>lua require('FTerm').toggle()<cr>",
+-- 	{ desc = "toggle floating terminal" }
+-- )
 
 -----------------------------------------------------------------
 -- tabs
@@ -185,10 +187,13 @@ end, { desc = "trouble: previous diagnostic" })
 -- obsidian
 -----------------------------------------------------------------
 -- Show backlinks via Telescope
-map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
+map("n", "<leader>obl", "<cmd>Obsidian backlinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- template note
-map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
+map("n", "<leader>op", "<cmd>Obsidian template<CR>", { desc = "Insert obsidian template" })
+
+-- tags
+map("n", "<leader>ot", "<cmd>Obsidian tags<CR>", { desc = "Obsidian tags" })
 
 -- Delete current note
 map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
@@ -232,7 +237,12 @@ map("n", "<leader>pb", builtin.buffers, { desc = "Telescope: search open buffers
 map("n", "<leader>pf", builtin.find_files, { desc = "Telescope: find files" })
 
 -- Live grep
-map("n", "<leader>pg", builtin.live_grep, { desc = "Telescope: live grep" })
+map(
+	"n",
+	"<leader>pg",
+	":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+	{ desc = "Telescope: live grep" }
+)
 
 -- git history
 map("n", "<leader>ph", builtin.git_bcommits, { desc = "Telescope: commit history" })
@@ -259,13 +269,13 @@ map("n", '<leader>p"', builtin.registers, { desc = "Telescope: list registers" }
 map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace symbols
-map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+-- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- keymaps
-map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+-- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace_symbol
-map("n", "<leader>pd", builtin.lsp_definitions, { desc = "Telescope: lsp definition" })
+-- map("n", "<leader>pd", builtin.lsp_definitions, { desc = "Telescope: lsp definition" })
 
 -- Prompted grep for a string
 -- map("n", "<leader>pw", function()
@@ -290,13 +300,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, vim.tbl_extend("force", opts, { desc = "LSP: go to definition" }))
 
 		-- Hover
-		map("n", "<leader>K", function()
-			vim.lsp.buf.hover()
+		map("n", "K", function()
+			vim.notify("reminder: KK to hover then k/j to scroll docs")
+			vim.lsp.buf.hover({
+				border = "single",
+			})
 		end, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
 
 		-- Show diagnostic in floating
 		map("n", "<leader>vk", function()
-			vim.diagnostic.open_float()
+			vim.diagnostic.open_float({
+				border = "single",
+			})
 		end, vim.tbl_extend("force", opts, { desc = "LSP: show diagnostic" }))
 
 		-- Workspace symbols
@@ -385,7 +400,6 @@ map("n", "<leader>gh", builtin.git_bcommits, { desc = "Telescope: commit history
 -------------------------------
 
 map("n", "<leader>ck", "<cmd>NoNeckPain<CR>")
-
 
 -------------------------------
 --- Vim Tmux Navigator --------

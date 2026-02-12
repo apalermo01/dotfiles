@@ -2,9 +2,9 @@
 -- https://github.com/zazencodes/dotfiles/blob/main/nvim/lua/workflows.lua
 --
 return {
-    "apalermo01/obsidian.nvim",
-    branch = "vim-NIL-handling",
-    enabled = true,
+    "obsidian-nvim/obsidian.nvim",
+    branch = "main",
+    enabled = false,
     ft = {"md", "markdown"},
     dependencies = {
         "nvim-lua/plenary.nvim",

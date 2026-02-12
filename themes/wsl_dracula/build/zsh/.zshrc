@@ -1,8 +1,34 @@
-# references:
+# refererces:
 # https://www.youtube.com/watch?v=ud7YxC33Z3w
-#########
-# zinit #
-#########
+# https://scottspence.com/posts/speeding-up-my-zsh-shell 
+
+####################
+# Terminal outputs #
+####################
+echo "******************************** ALIASES *******************************"
+echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
+echo "* cat_all                   = cat all files in cwd (recursive)         *"
+echo "* on <name>                 = generate new note                        *"
+echo "* onp <name>                = generate new personal note               *"
+echo "* n                         = cd into notes folder                     *"
+echo "* o                         = start obsidian                           *"
+echo "* gd                        = git diff                                 *" 
+echo "* gl                        = git log (pretty)                         *"
+echo "* j                         = open jupyter lab (if available)          *"
+echo "* cat_all                   = cat all files in directory               *"
+echo "* ^x^e                      = open command in editor                   *"
+echo "************************************************************************"
+
+#######
+# Nix #
+#######
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
+
+###########
+# plugins #
+###########
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -13,20 +39,29 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-# global plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
 
-# load autocompletions
-autoload -U compinit && compinit
+zinit load romkatv/zsh-defer
+zsh-defer zinit light zsh-users/zsh-completions
+zsh-defer zinit light zsh-users/zsh-autosuggestions
+zsh-defer zinit light Aloxaf/fzf-tab
+zsh-defer zinit light chisui/zsh-nix-shell 
+zsh-defer zinit light zsh-users/zsh-syntax-highlighting
+
+################
+# AUTOCOMPLETE #
+################
+autoload -Uz compinit
+if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+    zsh-defer compinit
+else
+    zsh-defer compinit -C
+fi
 
 zinit cdreplay -q
 
-####################
-# Helper Functions #
-####################
+##############
+# Functions #
+#############
 
 function start_tutoring() {
     if [[ ! -d "${HOME}/Documents/git/tutoring" ]]; then
@@ -57,54 +92,73 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-###########
-# General #
-###########
-
-export MANPAGER="nvim +Man!"
-export EDITOR="nvim"
-
 function quick_commit() {
     today=$(date "+%Y-%m-%d")
     git add . && git commit -m "$today"
 }
 
-alias qc="quick_commit"
+function cat_all() {
 
-# history
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
+    local -a viewer_cmd
 
-# keybindings
-bindkey -v
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+    if command -v bat &>/dev/null; then
+        viewer_cmd=("bat" "--paging=never" "--style=plain")
+    elif command -v batcat &>/dev/null; then
+        viewer_cmd=("batcat" "--paging=never" "--style=plain")
+    else
+        viewer_cmd=("cat")
+    fi
+    find . -type f \
+        -not -path "./.git/*" \
+        -not -path "*/__pycache__/*" \
+        -not -path "./.venv/*" \
+        -not -path "./venv/*" \
+        -not -path "./env/*" \
+        -not -path "./build/*" \
+        -not -path "./dist/*" \
+        -not -path "*.egg-info/*" \
+        -not -path "./.pytest_cache/*" \
+        -not -path "./.mypy_cache/*" \
+        -not -path "./.ruff_cache/*" \
+        -not -path "./.idea/*" \
+        -not -path "./.vscode/*" \
+        -not -name ".env" \
+        -not -name "*.pyc" \
+        -not -name ".coverage" \
+        -not -name ".DS_Store" \
+        -not -name "*.db" \
+        -not -name "*.sqlite3" \
+        -print0 | while IFS= read -r -d '' f; do
+    printf '==> %s <==\n' "$f"
+    "${viewer_cmd[@]}" -- "$f"
+    printf '\n'
+done
 
-# completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+}
 
-if command -v z >/dev/null 2>&1
-then
-    zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-fi
+ba () {
+    echo "bootstrapping aliases"
+    if [ -f aliases.sh ]; then
+        echo "aliases.sh found, sourcing..."
+        source aliases.sh
+    else
+        read -q "?aliases.sh not found. Make one? [y/n]: " mk_alias
+        if [[ ! $mk_alias =~ ^[Yy]$ ]]; then
+            echo "exiting..."
+            exit
+        fi
 
-######################
-# Obsidian Functions #
-######################
+        cat <<EOF > aliases.sh
+            #!/usr/bin/env bash
 
-export NOTES_PATH="/home/alex/Documents/git/notes"
+            a() {
+                echo "Aliases quick reference: "
+            }
+
+            # enter any other project-specific alias commands here:
+EOF
+    fi
+}
 
 new_note() {
     if [[ "$#" -ne 1 ]]; then
@@ -132,103 +186,13 @@ new_personal_note() {
     touch "0-Inbox/$formatted_file_name"
     nvim "0-Inbox/$formatted_file_name"
 }
-bt() { ~/Scripts/bluetooth.sh }
 
-###########
-# Aliases #
-###########
-
-# Obsidian
-alias on='new_note'
-alias onp='new_personal_note'
-
-# other
-alias personal='bash ~/Scripts/personal_docs.sh'
-alias reading='bash ~/Scripts/reading_session.sh'
-alias notes='cd ~/Documents/git/notes'
-alias n='cd ~/Documents/git/notes'
-alias o='obsidian'
-alias ls='ls --color'
-
-alias vim='nvim'
-alias vi='nvim'
-alias nivm='nvim'
-alias v='nvim'
-alias tutoring="start_tutoring"
-
-
-# git aliases 
-# https://www.youtube.com/watch?v=G3NJzFX6XhY
-
-if command -v git >/dev/null 2>&1
-then
-    alias g='git'
-    alias ga='git add -p'
-    alias gc='git commit'
-    alias gb='git branch'
-    alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
-    alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-    alias gp='git push'
-    alias gpu='git pull'
-    alias gcm="git add . && git commit -m $(date +%D)"
-fi
-alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
-
-if command -v yazi >/dev/null 2>&1
-then
-    alias lf="y"
-    alias l="y"
-    alias y="yazi"
-    alias ya="y"
-    alias yazi="y"
-fi
-
-if command -v bat >/dev/null 2>&1
-then
-    alias cat="bat --no-pager"
-elif command -v batcat >/dev/null 2>&1
-then
-    alias cat="batcat --no-pager"
-fi
-
-if command -v eza >/dev/null 2>&1
-then
-    alias ls="eza"
-fi
-
-if [[ -f "${HOME}/work_cmds.sh" ]]; then
-    source ~/work_cmds.sh
-fi
-
-ba () {
-    echo "bootstrapping aliases"
-    if [ -f aliases.sh ]; then
-        echo "aliases.sh found, sourcing..."
-        source aliases.sh
-    else
-        read -q "?aliases.sh not found. Make one? [y/n]: " mk_alias
-        if [[ ! $mk_alias =~ ^[Yy]$ ]]; then
-            echo "exiting..."
-            exit
-        fi
-
-        cat <<EOF > aliases.sh
-            #!/usr/bin/env bash
-
-            a() {
-                echo "Aliases quick reference: "
-            }
-
-            # enter any other project-specific alias commands here:
-EOF
-    fi
+journal_entry() {
+    bash ~/Scripts/journal_entry.sh
 }
 
+bt() { ~/Scripts/bluetooth.sh }
 
-
-############
-# cd hooks #
-############
 function _maybe_source_aliases() {
     if [[ -f aliases.sh ]]; then
         read -q "?aliases.sh found - would you like to source it? [Y/n]: " src
@@ -302,90 +266,9 @@ function _alias_jupyter() {
     fi
 }
 
-autoload -U add-zsh-hook
-add-zsh-hook chpwd _maybe_source_aliases
-add-zsh-hook chpwd _devcontainers
-add-zsh-hook chpwd _alias_jupyter
-
-###################
-# other functions #
-###################
-function cat_all() {
-
-    local -a viewer_cmd
-
-    if command -v bat &>/dev/null; then
-        viewer_cmd=("bat" "--paging=never" "--style=plain")
-    elif command -v batcat &>/dev/null; then
-        viewer_cmd=("batcat" "--paging=never" "--style=plain")
-    else
-        viewer_cmd=("cat")
-    fi
-    find . -type f \
-        -not -path "./.git/*" \
-        -not -path "*/__pycache__/*" \
-        -not -path "./.venv/*" \
-        -not -path "./venv/*" \
-        -not -path "./env/*" \
-        -not -path "./build/*" \
-        -not -path "./dist/*" \
-        -not -path "*.egg-info/*" \
-        -not -path "./.pytest_cache/*" \
-        -not -path "./.mypy_cache/*" \
-        -not -path "./.ruff_cache/*" \
-        -not -path "./.idea/*" \
-        -not -path "./.vscode/*" \
-        -not -name ".env" \
-        -not -name "*.pyc" \
-        -not -name ".coverage" \
-        -not -name ".DS_Store" \
-        -not -name "*.db" \
-        -not -name "*.sqlite3" \
-        -print0 | while IFS= read -r -d '' f; do
-        printf '==> %s <==\n' "$f"
-        "${viewer_cmd[@]}" -- "$f"
-        printf '\n'
-    done
-        
-}
-
 switch_kb() {
     bash ~/Scripts/switch_kb_layout_via_term.sh
 }
-#######################
-# Additional settings #
-#######################
-if command -v fnm >/dev/null 2>&1; then
-  eval "$(fnm env --use-on-cd --shell zsh)"
-fi
-
-###########
-# HELPERS #
-###########
-echo "******************************** ALIASES *******************************"
-echo "* tutoring                  = cd into tutoring dir and init a session  *"
-echo "* quick_commit / qc / gcm   = git commit with current date as message  *"
-echo "* cat_all                   = cat all files in cwd (recursive)         *"
-echo "* on <name>                 = generate new note                        *"
-echo "* onp <name>                = generate new personal note               *"
-echo "* n                         = cd into notes folder                     *"
-echo "* o                         = start obsidian                           *"
-echo "* ga                        = git add -p                               *"
-echo "* gc                        = git commit                               *"
-echo "* gb                        = git branch                               *"
-echo "* gd                        = git diff                                 *" 
-echo "* gl                        = git log (pretty)                         *"
-echo "* gp                        = git push                                 *"
-echo "* gpu                       = git pull                                 *"
-echo "* j                         = open jupyter lab (if available)          *"
-echo "* cat_all                   = cat all files in directory               *"
-echo "* switch_kb                 = change kb layout                         *"
-echo "************************************************************************"
-export NOTES_PATH="/home/alex/Documents/git/notes/"
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 mkpretty() { 
     local target_dir="/mnt/c/Users/apalermo/Downloads"
@@ -416,6 +299,162 @@ mkpretty() {
     python3 -m json.tool "$selected_file" > "$output_file"
     echo "Done."
 }
+
+###########
+# General #
+###########
+
+export MANPAGER="nvim +Man!"
+export EDITOR="nvim"
+
+
+alias qc="quick_commit"
+
+# history
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# keybindings
+bindkey -v
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+# completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+
+######################
+# Obsidian Functions #
+######################
+
+export NOTES_PATH="/home/alex/Documents/git/notes/"
+
+
+###########
+# Aliases #
+###########
+
+# Obsidian
+alias on='new_note'
+alias onp='new_personal_note'
+
+# other
+alias personal='bash ~/Scripts/personal_docs.sh'
+alias reading='bash ~/Scripts/reading_session.sh'
+alias notes='cd ~/Documents/git/notes'
+alias n='cd ~/Documents/git/notes'
+alias o='obsidian'
+alias ls='ls --color'
+
+alias vim='nvim'
+alias vi='nvim'
+alias nivm='nvim'
+alias v='nvim'
+alias tutoring="start_tutoring"
+
+
+# git aliases 
+# https://www.youtube.com/watch?v=G3NJzFX6XhY
+
+_cond_aliases() {
+    if command -v git >/dev/null 2>&1
+    then
+        alias g='git'
+        alias ga='git add -p'
+        alias gc='git commit'
+        alias gb='git branch'
+        alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
+        alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+        alias gp='git push'
+        alias gpu='git pull'
+        alias gcm="git add . && git commit -m $(date +%D)"
+    fi
+
+    if command -v yazi >/dev/null 2>&1
+    then
+        alias lf="y"
+        alias l="y"
+        alias y="yazi"
+        alias ya="y"
+        alias yazi="y"
+    fi
+
+    if command -v bat >/dev/null 2>&1
+    then
+        alias cat="bat --no-pager"
+    elif command -v batcat >/dev/null 2>&1
+    then
+        alias cat="batcat --no-pager"
+    fi
+
+    if command -v eza >/dev/null 2>&1
+    then
+        alias ls="eza"
+    fi
+}
+
+zsh-defer _cond_aliases
+
+if [[ -f "${HOME}/work_cmds.sh" ]]; then
+    source ~/work_cmds.sh
+fi
+
+
+
+
+############
+# cd hooks #
+############
+
+zsh-defer autoload -U add-zsh-hook
+zsh-defer add-zsh-hook chpwd _maybe_source_aliases
+zsh-defer add-zsh-hook chpwd _devcontainers
+zsh-defer add-zsh-hook chpwd _alias_jupyter
+
+
+#######################
+# Additional Commands #
+#######################
+
+_cmds() {
+    if command -v fnm >/dev/null 2>&1; then
+        eval "$(fnm env --use-on-cd --shell zsh)"
+    fi
+
+    if command -v zoxide >/dev/null 2>&1; then
+        eval "$(zoxide init zsh)"
+        alias cd="z" 
+    fi
+
+    if command -v direnv >/dev/null 2>&1; then
+        eval "$(direnv hook zsh)"
+    fi
+
+    if command -v z >/dev/null 2>&1; then
+        zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+    fi
+}
+
+_cmds
+
+alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+bindkey -M vicmd 'v' edit-command-line
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
@@ -454,13 +493,4 @@ mkpretty() {
 if command -v fastfetch >/dev/null 2>&1
 then
 	fastfetch
-fi
-
-if command -v zoxide >/dev/null 2>&1; then
-    eval "$(zoxide init zsh)"
-    alias cd="z" 
-fi
-
-if command -v direnv >/dev/null 2>&1; then
-    eval "$(direnv hook zsh)"
 fi

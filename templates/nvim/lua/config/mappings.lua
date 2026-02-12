@@ -269,7 +269,7 @@ map("n", '<leader>p"', builtin.registers, { desc = "Telescope: list registers" }
 map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace symbols
-map("n", "<leader>pw", builtin.keymaps, { desc = "Telescope: keymaps" })
+map("n", "<leader>pw", builtin.lsp_workspace_symbols, { desc = "Telescope: workspace_symbol" })
 
 -- keymaps
 -- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })

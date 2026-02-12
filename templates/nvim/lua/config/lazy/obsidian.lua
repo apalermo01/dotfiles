@@ -4,7 +4,7 @@
 return {
     "obsidian-nvim/obsidian.nvim",
     branch = "main",
-    enabled = true,
+    enabled = false,
     ft = {"md", "markdown"},
     dependencies = {
         "nvim-lua/plenary.nvim",

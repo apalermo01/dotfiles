@@ -251,7 +251,7 @@ map("n", "<leader>ph", builtin.git_bcommits, { desc = "Telescope: commit history
 map("n", "<leader>pj", builtin.jumplist, { desc = "Telescope: jumplist" })
 
 -- List marks
-map("n", "<leader>pma", builtin.marks, { desc = "Telescope: list marks" })
+map("n", "<leader>pm", builtin.marks, { desc = "Telescope: list marks" })
 
 -- Search old files
 map("n", "<leader>po", builtin.oldfiles, { desc = "Telescope: search old files" })
@@ -269,7 +269,7 @@ map("n", '<leader>p"', builtin.registers, { desc = "Telescope: list registers" }
 map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace symbols
--- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+map("n", "<leader>pw", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- keymaps
 -- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })

@@ -134,12 +134,12 @@ autocmd("BufReadPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        vim.cmd("NoNeckPain")
-    end,
-})
-
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     callback = function()
+--         vim.cmd("NoNeckPain")
+--     end,
+-- })
+--
 -- snippets 
 require("luasnip.loaders.from_vscode").lazy_load()
 

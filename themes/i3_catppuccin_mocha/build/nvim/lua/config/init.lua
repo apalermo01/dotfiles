@@ -20,32 +20,3 @@ function _G.get_oil_winbar()
 		return vim.api.nvim_buf_get_name(0)
 	end
 end
-require("nvim-treesitter").install({
-	"bash",
-	"c",
-	"css",
-	"html",
-	"lua",
-	"markdown",
-	"markdown_inline",
-	"python",
-	"go",
-	"git_config",
-	"gitcommit",
-	"git_rebase",
-	"gitignore",
-	"gitattributes",
-	"vim",
-	"vimdoc",
-	"comment",
-	"diff",
-	"dockerfile",
-	"json",
-	"jsonc",
-	"rasi",
-	"regex",
-	"requirements",
-	"sql",
-	"nix",
-    "rust"
-})

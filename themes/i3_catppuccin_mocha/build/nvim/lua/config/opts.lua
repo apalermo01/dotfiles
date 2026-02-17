@@ -62,7 +62,7 @@ set.showcmd = true
 set.showmode = true
 set.compatible = false
 set.syntax = "on"
-vim.g.markdown_fenced_languages = {"rust", "python", "C", "bash=sh"}
+vim.g.markdown_fenced_languages = {"rust", "python", "c", "bash=sh"}
 set.wildmenu = true
 
 set.hidden = true

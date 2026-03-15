@@ -80,6 +80,7 @@ in
       typos
 
       nemo-with-extensions
+      poppler
     ];
   };
 }

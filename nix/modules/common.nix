@@ -35,6 +35,7 @@
     llvmPackages_latest.libllvm
     llvmPackages_latest.libcxx
     llvmPackages_latest.clang
+    # liberation_ttf
   ];
 
   # fixes command-not-found error

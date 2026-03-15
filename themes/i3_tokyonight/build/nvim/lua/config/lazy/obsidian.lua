@@ -3,6 +3,7 @@
 --
 return {
     "obsidian-nvim/obsidian.nvim",
+    branch = "main",
     enabled = true,
     ft = {"md", "markdown"},
     dependencies = {
@@ -12,6 +13,7 @@ return {
     },
 
     opts = {
+        legacy_commands = false,
         ui = {
             enable = false,
         },

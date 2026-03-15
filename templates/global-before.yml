@@ -11,6 +11,6 @@ kitty:
 
 # font: RecMonoCasual Nerd Font Mono
 # font: NotoMono Nerd Font Mono
-font: JetBrainsMono Nerd Font
+font: JetBrainsMono Nerd Font Mono
 dunst: {}
 sioyek: {}

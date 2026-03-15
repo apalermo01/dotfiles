@@ -200,7 +200,7 @@ bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 5%-
 
-font NotoMono Nerd Font Mono 11
+font JetBrainsMono Nerd Font 11
 # bindsym $mod+f exec firefox
 bindsym $mod+f exec librewolf
 
@@ -245,13 +245,13 @@ exec_always --no-startup-id systemctl --user import-environment DISPLAY XAUTHORI
 exec source ~/.profile
 include ~/.config/i3/qwerty.config
 #                        border             background          text            indicator       child bdr
-client.focused	         #A3589B       #051103    #54A9C3  #A3589B	    #A3589B
-client.focused_inactive	 #474E8F       #051103    #54A9C3  #474E8F	    #474E8F
-client.unfocused	     #474E8F       #051103    #54A9C3  #474E8F	    #474E8F
-client.urgent	         #E46DA2       #051103    #54A9C3  #E46DA2         #E46DA2
-client.placeholder	     #474E8F       #051103    #54A9C3  #474E8F	    #474E8F
+client.focused	         #A3589B       #0c170a    #A3589B  #A3589B	    #A3589B
+client.focused_inactive	 #474E8F       #0c170a    #474E8F  #474E8F	    #474E8F
+client.unfocused	     #474E8F       #0c170a    #474E8F  #474E8F	    #474E8F
+client.urgent	         #E46DA2       #0c170a    #E46DA2  #E46DA2         #E46DA2
+client.placeholder	     #474E8F       #0c170a    #474E8F  #474E8F	    #474E8F
 
-client.background	#051103
+client.background	#0c170a
 
 # Gaps
 gaps inner 10

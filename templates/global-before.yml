@@ -10,6 +10,7 @@ kitty:
   font_size: 10
 
 # font: RecMonoCasual Nerd Font Mono
-font: NotoMono Nerd Font Mono
+# font: NotoMono Nerd Font Mono
+font: JetBrainsMono Nerd Font
 dunst: {}
 sioyek: {}

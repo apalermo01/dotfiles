@@ -22,5 +22,5 @@ require("lazy").setup({
 	change_detection = { notify = false }
 })
 
-vim.notify = require('notify')
+-- vim.notify = require('notify')
 

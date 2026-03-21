@@ -19,6 +19,7 @@
       (polybar.override { pulseSupport = true; })
       picom
       i3lock
+      blueman
     ];
 
     services.xserver = {

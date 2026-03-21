@@ -1,3 +1,6 @@
+
+vim.notify = require('notify')
+require('telescope').load_extension('emoji')
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local group = augroup("config", {})
@@ -9,7 +12,8 @@ autocmd("VimEnter", {
                    "K          => LSP hover \n"..
                    "              Then <c-w>w to focus floating window\n"..
                    "C-u / C-d  => scroll docs in completion window\n" ..
-                   "l/L        => end of word / WORD"
+                   "l/L        => end of word / WORD\n" ..
+                   "<leader>pw => workspace symbols"
         )
     end,
 })
@@ -131,12 +135,12 @@ autocmd("BufReadPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        vim.cmd("NoNeckPain")
-    end,
-})
-
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--     callback = function()
+--         vim.cmd("NoNeckPain")
+--     end,
+-- })
+--
 -- snippets 
 require("luasnip.loaders.from_vscode").lazy_load()
 

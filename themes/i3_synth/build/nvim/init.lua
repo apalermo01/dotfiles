@@ -29,4 +29,4 @@ switchNix = function(nonNix, nix)
 end
 
 require("config")
-vim.cmd([[set guifont=JetBrainsMono\ Nerd\ Font\ Mono]])
+vim.cmd([[set guifont=IosevkaTerm\ Nerd\ Font\ Mono]])

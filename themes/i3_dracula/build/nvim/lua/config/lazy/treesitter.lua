@@ -1,35 +1,5 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	lazy = false,
-	build = ":TSUpdate",
-	config = function()
-		require("nvim-treesitter").install({
-			"bash",
-			"c",
-			"css",
-			"html",
-			"lua",
-			"markdown",
-			"markdown_inline",
-			"python",
-			"go",
-			"git_config",
-			"gitcommit",
-			"git_rebase",
-			"gitignore",
-			"gitattributes",
-			"vim",
-			"vimdoc",
-			"comment",
-			"diff",
-			"dockerfile",
-			"json",
-			"jsonc",
-			"rasi",
-			"regex",
-			"requirements",
-			"sql",
-			"nix",
-		})
-	end,
+	build = ":TSUpdate"
 }

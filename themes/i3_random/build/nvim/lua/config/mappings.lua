@@ -109,10 +109,10 @@ map("n", "<leader>wh", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
 map("n", "<leader>wj", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
 map("n", "<leader>wk", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
 map("n", "<leader>wl", "<cmd>wincmd l<CR>", { desc = "Go to right window" })
-map("n", "<M-h>", "<C-w>h", {desc="win left"})
-map("n", "<M-j>", "<C-w>j", {desc="win down"})
-map("n", "<M-k>", "<C-w>k", {desc="win up"})
-map("n", "<M-l>", "<C-w>l", {desc="win right"})
+map("n", "<M-h>", "<C-w>h", { desc = "win left" })
+map("n", "<M-j>", "<C-w>j", { desc = "win down" })
+map("n", "<M-k>", "<C-w>k", { desc = "win up" })
+map("n", "<M-l>", "<C-w>l", { desc = "win right" })
 -----------------------------------------------------------------
 -- terminal
 -----------------------------------------------------------------
@@ -187,10 +187,13 @@ end, { desc = "trouble: previous diagnostic" })
 -- obsidian
 -----------------------------------------------------------------
 -- Show backlinks via Telescope
-map("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "show backlinks (Telescope)" })
+map("n", "<leader>obl", "<cmd>Obsidian backlinks<CR>", { desc = "show backlinks (Telescope)" })
 
 -- template note
-map("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert obsidian template" })
+map("n", "<leader>op", "<cmd>Obsidian template<CR>", { desc = "Insert obsidian template" })
+
+-- tags
+map("n", "<leader>ot", "<cmd>Obsidian tags<CR>", { desc = "Obsidian tags" })
 
 -- Delete current note
 map("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "delete note" })
@@ -217,6 +220,26 @@ map("n", "<leader>oo", function()
 	vim.system({ "obsidian", uri }, { detach = true })
 end, { desc = "open current file in Obsidian" })
 
+map("n", "<leader>on", function()
+	require("obsidian")
+	local api = require("obsidian.api")
+	local log = require("obsidian.log")
+	local Note = require("obsidian.note")
+	local note_name = api.input("enter fleeting note name", { completion = "file" })
+	if not note_name then
+		return log.warn("Aborted")
+	elseif note_name == "" then
+		note_name = nil
+	end
+
+	local note = Note.create({
+		id = note_name,
+		template = "fleeting", 
+		should_write = true,
+	})
+
+    note:open { sync = true }
+end, { desc = "new fleeting note" })
 --------------------------------------------------------------------------------
 -- TELESCOPE (pickers) (<leader>p prefix)
 --------------------------------------------------------------------------------
@@ -234,7 +257,12 @@ map("n", "<leader>pb", builtin.buffers, { desc = "Telescope: search open buffers
 map("n", "<leader>pf", builtin.find_files, { desc = "Telescope: find files" })
 
 -- Live grep
-map("n", "<leader>pg", builtin.live_grep, { desc = "Telescope: live grep" })
+map(
+	"n",
+	"<leader>pg",
+	":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+	{ desc = "Telescope: live grep" }
+)
 
 -- git history
 map("n", "<leader>ph", builtin.git_bcommits, { desc = "Telescope: commit history" })
@@ -243,7 +271,7 @@ map("n", "<leader>ph", builtin.git_bcommits, { desc = "Telescope: commit history
 map("n", "<leader>pj", builtin.jumplist, { desc = "Telescope: jumplist" })
 
 -- List marks
-map("n", "<leader>pma", builtin.marks, { desc = "Telescope: list marks" })
+map("n", "<leader>pm", builtin.marks, { desc = "Telescope: list marks" })
 
 -- Search old files
 map("n", "<leader>po", builtin.oldfiles, { desc = "Telescope: search old files" })
@@ -261,7 +289,7 @@ map("n", '<leader>p"', builtin.registers, { desc = "Telescope: list registers" }
 map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace symbols
--- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+map("n", "<leader>pw", builtin.lsp_workspace_symbols, { desc = "Telescope: workspace_symbol" })
 
 -- keymaps
 -- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
@@ -293,19 +321,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Hover
 		map("n", "K", function()
-            vim.notify("reminder: KK to hover then k/j to scroll docs")
-			vim.lsp.buf.hover {
-                border = "single"
-            }
+			vim.notify("reminder: KK to hover then k/j to scroll docs")
+			vim.lsp.buf.hover({
+				border = "single",
+			})
 		end, vim.tbl_extend("force", opts, { desc = "LSP: hover" }))
 
 		-- Show diagnostic in floating
 		map("n", "<leader>vk", function()
-			vim.diagnostic.open_float {
-                border = "single"
-            }
+			vim.diagnostic.open_float({
+				border = "single",
+			})
 		end, vim.tbl_extend("force", opts, { desc = "LSP: show diagnostic" }))
-    
+
 		-- Workspace symbols
 		map("n", "<leader>vws", function()
 			vim.lsp.buf.workspace_symbol()
@@ -392,7 +420,6 @@ map("n", "<leader>gh", builtin.git_bcommits, { desc = "Telescope: commit history
 -------------------------------
 
 map("n", "<leader>ck", "<cmd>NoNeckPain<CR>")
-
 
 -------------------------------
 --- Vim Tmux Navigator --------

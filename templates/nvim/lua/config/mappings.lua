@@ -220,6 +220,26 @@ map("n", "<leader>oo", function()
 	vim.system({ "obsidian", uri }, { detach = true })
 end, { desc = "open current file in Obsidian" })
 
+map("n", "<leader>on", function()
+	require("obsidian")
+	local api = require("obsidian.api")
+	local log = require("obsidian.log")
+	local Note = require("obsidian.note")
+	local note_name = api.input("enter fleeting note name", { completion = "file" })
+	if not note_name then
+		return log.warn("Aborted")
+	elseif note_name == "" then
+		note_name = nil
+	end
+
+	local note = Note.create({
+		id = note_name,
+		template = "fleeting", 
+		should_write = true,
+	})
+
+    note:open { sync = true }
+end, { desc = "new fleeting note" })
 --------------------------------------------------------------------------------
 -- TELESCOPE (pickers) (<leader>p prefix)
 --------------------------------------------------------------------------------

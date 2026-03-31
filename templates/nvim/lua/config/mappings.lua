@@ -240,6 +240,11 @@ map("n", "<leader>on", function()
 
     note:open { sync = true }
 end, { desc = "new fleeting note" })
+
+map("n", "<leader>of", "<cmd>edit " .. OBSIDIAN_NOTES_DIR .. "/0-Inbox/fleeting.md<CR>", {desc = "open fleeting notes"}
+
+)
+
 --------------------------------------------------------------------------------
 -- TELESCOPE (pickers) (<leader>p prefix)
 --------------------------------------------------------------------------------

@@ -81,6 +81,7 @@ in
 
       nemo-with-extensions
       poppler
+      jq
     ];
   };
 }

@@ -16,6 +16,7 @@
   ];
 
   i3wm.enable = true;
+  hyprland.enable = true;
   tuigreet.enable = false;
   sddm.enable = true;
   kdePlasma.enable = true;
@@ -35,7 +36,6 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
-  programs.hyprland.enable = false;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   programs.nix-ld.enable = true;

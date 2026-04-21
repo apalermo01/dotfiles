@@ -80,8 +80,8 @@ in
       typos
 
       nemo-with-extensions
-      poppler
       jq
+      poppler-utils
     ];
   };
 }

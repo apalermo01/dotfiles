@@ -2,6 +2,11 @@ wallpaper:
   method: feh
   file: gruvtux.png
 
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+
 colors:
   method: manual
 

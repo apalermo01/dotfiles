@@ -1,5 +1,0 @@
-colors:
-  method: manual
-gtk:
-  gtk_theme: adw-gtk3
-  template_path: $THIS_THEME

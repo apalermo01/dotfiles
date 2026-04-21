@@ -246,13 +246,13 @@ exec source ~/.profile
 include ~/.config/i3/qwerty.config
 
 #                        border             background          text            indicator       child bdr
-client.focused	         #976E92     #120917      #120917      #976E92	    #976E92
-client.focused_inactive	 #617388     #120917      #120917	    #617388	    #617388
-client.unfocused	     #617388     #120917      #120917	    #617388	    #617388
-client.urgent	         #ff0000        #ff0000             #120917	    #ff0000       #ff0000
-client.placeholder	     #617388     #120917      #120917	    #976E92	    #976E92
+client.focused	         #4C6E5B     #091512      #4C6E5B      #4C6E5B	    #4C6E5B
+client.focused_inactive	 #215160     #091512      #215160	    #215160	    #215160
+client.unfocused	     #215160     #091512      #215160	    #215160	    #215160
+client.urgent	         #ff0000        #ff0000             #091512	    #ff0000       #ff0000
+client.placeholder	     #215160     #091512      #215160	    #4C6E5B	    #4C6E5B
 
-client.background	#120917
+client.background	#091512
 
 # Gaps
 gaps inner 10
@@ -272,4 +272,4 @@ exec wal -R
 exec killall picom
 
 exec_always picom --backend glx --config ~/.config/picom/picom.conf
-exec_always feh --bg-fill /home/alex/Pictures/wallpapers/steampunk_portal.png
+exec_always feh --bg-fill /home/alex/Pictures/wallpapers/cute-town-dark.png

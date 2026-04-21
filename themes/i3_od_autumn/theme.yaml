@@ -3,6 +3,11 @@ colors:
 
 font_family: JetBrains NF Mono
 
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+
 wallpaper:
   method: feh
   file: od_autumn.jpg

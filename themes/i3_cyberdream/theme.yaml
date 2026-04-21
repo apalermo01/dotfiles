@@ -2,6 +2,11 @@ yaml-language-server: $schema=https://raw.githubusercontent.com/apalermo01/ricer
 colors:
   method: manual
 
+i3: 
+  append: 
+    - src: config
+      dst: i3/config
+
 font_family: JetBrains NF Mono
 
 wallpaper:

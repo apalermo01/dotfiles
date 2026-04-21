@@ -22,21 +22,21 @@ $_hb_fg_color: #2f2f30; // Similar to rgba(0,0,6,0.8) on the background #ebebed
 
 // The main accent color and the matching text value
 // @define-color accent_bg_color @blue_3;
-@define-color accent_bg_color #89b4fa;
+@define-color accent_bg_color {{ blue }};
 @define-color accent_fg_color white;
 
 // destructive-action buttons
-@define-color destructive_bg_color #{if($variant == 'light', '@red_3', #f38ba8)};
+@define-color destructive_bg_color #{if($variant == 'light', '@red_3', {{ red }})};
 @define-color destructive_fg_color white;
 
 // Levelbars, entries, labels and infobars. These don't need text colors
-@define-color success_bg_color #{if($variant == 'light', '@green_4', #a6e3a1)};
+@define-color success_bg_color #{if($variant == 'light', '@green_4', {{ green }})};
 @define-color success_fg_color white;
 
-@define-color warning_bg_color #{if($variant == 'light', '@yellow_5', #f9e2af)};
+@define-color warning_bg_color #{if($variant == 'light', '@yellow_5', {{ yellow }})};
 @define-color warning_fg_color rgba(0,0,0,0.8);
 
-@define-color error_bg_color #{if($variant == 'light', '@red_3', #f38ba8)};
+@define-color error_bg_color #{if($variant == 'light', '@red_3', {{ red }})};
 @define-color error_fg_color white;
 
 // Colors derived from their matching bg color
@@ -57,25 +57,25 @@ $_hb_fg_color: #2f2f30; // Similar to rgba(0,0,6,0.8) on the background #ebebed
 
 // Window
 // @define-color window_bg_color #{if($variant == 'light', '#fafafb', '#222226')};
-@define-color window_bg_color #{if($variant == 'light', #313244 , #313244)};
-@define-color window_fg_color #{if($variant == 'light', $_fg_color, #f5e0dc)};
+@define-color window_bg_color #{if($variant == 'light', {{ surface0 }} , {{ surface0 }})};
+@define-color window_fg_color #{if($variant == 'light', $_fg_color, {{ rosewater }})};
 
 // Views - e.g. text view or tree view
-@define-color view_bg_color #{if($variant == 'light', '#ffffff', #313244)};
-@define-color view_fg_color #{if($variant == 'light', $_text_color, #f5e0dc)};
+@define-color view_bg_color #{if($variant == 'light', '#ffffff', {{ surface0 }})};
+@define-color view_fg_color #{if($variant == 'light', $_text_color, {{ rosewater }})};
 
 // Header bar, search bar, tab bar
-@define-color headerbar_bg_color #{if($variant == 'light', '#ebebed', #313244)};
-@define-color headerbar_fg_color #{if($variant == 'light', $_hb_fg_color, #f5e0dc)};
-@define-color headerbar_border_color #{if($variant == 'light', rgba(0,0,6,0.8), #f5e0dc)};
+@define-color headerbar_bg_color #{if($variant == 'light', '#ebebed', {{ surface0 }})};
+@define-color headerbar_fg_color #{if($variant == 'light', $_hb_fg_color, {{ rosewater }})};
+@define-color headerbar_border_color #{if($variant == 'light', rgba(0,0,6,0.8), {{ rosewater }})};
 @define-color headerbar_backdrop_color @window_bg_color;
 @define-color headerbar_shade_color #{if($variant == 'light', rgba(0,0,6,0.12), rgba(0,0,6,0.36))};
 @define-color headerbar_darker_shade_color #{if($variant == 'light', rgba(0,0,6,0.12), rgba(0,0,12,0.9))};
 
 // Split pane views
-@define-color sidebar_bg_color #{if($variant == 'light', '#ebebed', #313244)};
-@define-color sidebar_fg_color #{if($variant == 'light', $_hb_fg_color, #f5e0dc)};
-@define-color sidebar_backdrop_color #{if($variant == 'light', '#f2f2f4', #1e1e2e)};
+@define-color sidebar_bg_color #{if($variant == 'light', '#ebebed', {{ surface0 }})};
+@define-color sidebar_fg_color #{if($variant == 'light', $_hb_fg_color, {{ rosewater }})};
+@define-color sidebar_backdrop_color #{if($variant == 'light', '#f2f2f4', {{ base }})};
 @define-color sidebar_shade_color #{if($variant == 'light', rgba(0,0,6,0.07), rgba(0,0,6,0.25))};
 @define-color sidebar_border_color #{if($variant == 'light', rgba(0,0,6,0.07), rgba(0,0,6,0.36))};
 
@@ -85,17 +85,17 @@ $_hb_fg_color: #2f2f30; // Similar to rgba(0,0,6,0.8) on the background #ebebed
 @define-color card_shade_color #{if($variant == 'light', rgba(0,0,6,0.07), rgba(0,0,6,0.36))};
 
 // Dialogs
-@define-color dialog_bg_color #{if($variant == 'light', '#fafafb', #1e1e2e)};
-@define-color dialog_fg_color #{if($variant == 'light', $_fg_color, #f5e0dc)};
+@define-color dialog_bg_color #{if($variant == 'light', '#fafafb', {{ base }})};
+@define-color dialog_fg_color #{if($variant == 'light', $_fg_color, {{ rosewater }})};
 
 // Popovers
-@define-color popover_bg_color #{if($variant == 'light', '#ffffff', #313244)};
-@define-color popover_fg_color #{if($variant == 'light', $_text_color, #f5e0dc)};
+@define-color popover_bg_color #{if($variant == 'light', '#ffffff', {{ surface0 }})};
+@define-color popover_fg_color #{if($variant == 'light', $_text_color, {{ rosewater }})};
 @define-color popover_shade_color #{if($variant == 'light', rgba(0,0,6,0.07), rgba(0,0,6,0.25))};
 
 // Thumbnails
-@define-color thumbnail_bg_color #{if($variant == 'light', '#ffffff', #313244)};
-@define-color thumbnail_fg_color #{if($variant == 'light', $_text_color, #f5e0dc)};
+@define-color thumbnail_bg_color #{if($variant == 'light', '#ffffff', {{ surface0 }})};
+@define-color thumbnail_fg_color #{if($variant == 'light', $_text_color, {{ rosewater }})};
 
 // Miscellaneous
 @define-color shade_color #{if($variant == 'light', rgba(0,0,6,0.07), rgba(0,0,6,0.25))};

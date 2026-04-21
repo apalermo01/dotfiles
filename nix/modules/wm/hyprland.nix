@@ -10,11 +10,13 @@
     hyprland.enable = lib.mkEnableOption "hyprland";
   };
 
-  programs.hyprland.enable = true;
   config = lib.mkIf config.hyprland.enable {
+    programs.hyprland.enable = true;
     environment.systemPackages = with pkgs; [
       wofi
       wofi-emoji
+      hyprpaper
+      waybar
       # xss-lock
       # rofi
       # i3

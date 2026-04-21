@@ -1,10 +1,10 @@
 
 #                        border             background          text            indicator       child bdr
-client.focused	         {{ color2 }}     {{ background }}      {{ color0 }}      {{ color2 }}	    {{ color2 }}
-client.focused_inactive	 {{ color1 }}     {{ background }}      {{ color0 }}	    {{ color1 }}	    {{ color1 }}
-client.unfocused	     {{ color1 }}     {{ background }}      {{ color0 }}	    {{ color1 }}	    {{ color1 }}
+client.focused	         {{ color2 }}     {{ background }}      {{ color2 }}      {{ color2 }}	    {{ color2 }}
+client.focused_inactive	 {{ color1 }}     {{ background }}      {{ color1 }}	    {{ color1 }}	    {{ color1 }}
+client.unfocused	     {{ color1 }}     {{ background }}      {{ color1 }}	    {{ color1 }}	    {{ color1 }}
 client.urgent	         {{ red }}        {{ red }}             {{ color0 }}	    {{ red }}       {{ red }}
-client.placeholder	     {{ color1 }}     {{ background }}      {{ color0 }}	    {{ color2 }}	    {{ color2 }}
+client.placeholder	     {{ color1 }}     {{ background }}      {{ color1 }}	    {{ color2 }}	    {{ color2 }}
 
 client.background	{{ background }}
 

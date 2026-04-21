@@ -71,3 +71,6 @@ tools:
   qt:
     config_path: '.config/Kvantum/'
     jinja: True
+
+  hyprland:
+    config_path: '.config/hypr'

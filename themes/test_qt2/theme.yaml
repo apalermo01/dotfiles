@@ -1,5 +1,0 @@
-colors:
-  method: manual
-qt:
-  method: manual
-  template_path: $THIS_THEME

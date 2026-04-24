@@ -1,0 +1,57 @@
+hyprland: {}
+
+wallpaper: 
+  method: hyprpaper
+  file: $THIS_THEME/blacknode_wallpaper.png
+
+colors:
+  method: wallust
+
+font_family: Maple Mono
+
+##
+nvim: 
+  
+  colorscheme: catppuccin
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+
+##
+tmux: 
+  append: 
+    - src: tmux.conf
+      dst: tmux/tmux.conf
+
+rofi: 
+  template_path: $THIS_THEME
+
+zsh: 
+  feats: 
+    - fastfetch
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+
+kitty: {}
+  # append:
+  #   - src: kitty.conf
+  #     dst: kitty/kitty.conf
+  # overwrite: 
+  #   - src: current-theme.conf 
+  #     dst: kitty/current-theme.conf
+
+waybar:
+  template_path: $THIS_THEME
+
+fastfetch: 
+  overwrite: 
+    - src: config.jsonc
+      dst: fastfetch/config.jsonc
+
+qt: 
+  method: manual
+  template_path: $THIS_THEME

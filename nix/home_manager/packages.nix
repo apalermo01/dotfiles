@@ -35,6 +35,7 @@ in
       fortune
       cowsay
       pywal
+      wallust
       stow
 
       glib

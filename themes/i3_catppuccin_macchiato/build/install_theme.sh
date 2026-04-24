@@ -30,4 +30,3 @@ bash ${THEME_DIR}/catppuccin-gtk/Catppuccin-GTK-Theme-main/themes/install.sh
 #
 # # TODO - write to settings.ini
 
-dunstctl reload 

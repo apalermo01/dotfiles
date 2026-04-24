@@ -74,3 +74,7 @@ tools:
 
   hyprland:
     config_path: '.config/hypr'
+
+  waybar:
+    config_path: '.config/waybar'
+    jinja: true

@@ -6,6 +6,10 @@ i3_keys=(
     "include ~/.config/i3/colemak.conf|include ~/.config/i3/qwerty.conf"
 )
 
+hypr_keys=(
+    "source = ~/.config/hypr/colemak.conf|source = ~/.config/hypr/qwerty.conf"
+)
+
 tmux_keys=(
     "bind -n M-p previous-window|bind -n M-p previous-window"
     "bind -n M-I next-window|bind -n M-L next-window"
@@ -25,6 +29,18 @@ colemak_i3() {
             sed -i "s|${qwerty_key}|${colemak_key}|" ~/.config/i3/config
         done
     fi
+
+}
+
+colemak_hypr() {
+    if [ -d ~/.config/hypr ]; then
+        for k in "${hypr_keys[@]}"; do
+            colemak_key=$(echo "${k}" | cut -d '|' -f 1)
+            qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
+            sed -i "s|${qwerty_key}|${colemak_key}|" ~/.config/hypr/hyprland.conf
+        done
+    fi
+    pkill waybar && hyprctl reload
 
 }
 
@@ -51,6 +67,16 @@ qwerty_i3() {
     fi
 }
 
+qwerty_hypr() {
+    if [ -d ~/.config/hypr ]; then
+        for k in "${hypr_keys[@]}"; do
+            colemak_key=$(echo "${k}" | cut -d '|' -f 1)
+            qwerty_key=$(echo "${k}" | cut -d '|' -f 2)
+            sed -i "s|${colemak_key}|${qwerty_key}|" ~/.config/hypr/hyprland.conf
+        done
+    fi
+    pkill waybar && hyprctl reload
+}
 qwerty_nvim() {
     sed -i "s/require(\"config.colemak\")/-- require(\"config.colemak\")/" ~/.config/nvim/lua/config/init.lua
 }
@@ -65,12 +91,14 @@ qwerty_tmux() {
 
 colemak_layout() {
     colemak_i3
+    colemak_hypr
     colemak_nvim
     colemak_tmux
 }
 
 qwerty_layout() {
     qwerty_i3
+    qwerty_hypr
     qwerty_nvim
     qwerty_tmux
 }

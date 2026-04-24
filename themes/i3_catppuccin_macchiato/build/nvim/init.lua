@@ -30,4 +30,3 @@ end
 
 require("config")
 vim.cmd.colorscheme("catppuccin-macchiato")
-vim.cmd([[set guifont=NotoMono\ Nerd\ Font\ Mono]])

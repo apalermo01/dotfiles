@@ -1,0 +1,41 @@
+/* workspace */
+#hollow-left-2 {
+  background: {{ green }};
+  border-radius: 10.5pt;
+}
+
+/* backlight, audio, network, battery */
+#hollow-left-5 {
+    background: {{ mauve }};
+  border-radius: 10.5pt;
+}
+
+/* clock */
+#hollow-right-4 {
+    background: {{ red }};
+  border-radius: 10.5pt;
+}
+
+/* window */
+#hollow-right-5 {
+  background: {{ green }};
+  border-radius: 10.5pt;
+  padding: 8px;
+}
+
+/* cpu, temp, memory */
+#hollow-right-1 {
+    background: {{ blue }};
+  border-radius: 10.5pt;
+}
+
+/* #hollow-left-1, */
+/* #hollow-left-3, */
+/* #hollow-left-4, */
+/* #hollow-left-6, */
+/* #hollow-left-7, */
+/* #hollow-center-1, */
+/* #hollow-center-2, */
+/* #hollow-right-2, */
+/* #hollow-right-3, */
+/**/

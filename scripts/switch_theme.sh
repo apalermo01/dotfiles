@@ -77,7 +77,14 @@ if [ ! -d $HOME/Scripts ]; then
 fi
 stow . -d user_scripts/ -t ~/Scripts
 
-if command -v i3 >/dev/null 2>&1; then
+if command -v i3 >/dev/null 2>&1 && [[ "$1" == *"i3"* ]]; then
     i3 restart
 fi
+
+if command -v hyprctl >/dev/null 2>&1 && [[ "$1" == *"hypr"* ]]; then
+    pkill waybar && hyprctl reload
+    # sleep 1
+    # hyprctl reload
+fi
+
 chmod +x "$HOME/Documents/git/dotfiles/scripts/switch_theme.sh"

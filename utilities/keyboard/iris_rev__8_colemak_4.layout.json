@@ -122,8 +122,8 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "S(KC_DOT)",
-      "S(KC_COMM)",
+      "KC_TRNS",
+      "KC_TRNS",
       "KC_TRNS",
       "KC_TRNS"
     ],
@@ -185,7 +185,7 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_NO",
+      "KC_TRNS",
       "KC_TRNS",
       "KC_TRNS"
     ],

@@ -2,7 +2,8 @@
   "clock": {
     "interval": 60,
     "format": "{:%H:%M}",
-    "format-alt": "󰸗  Semana {:%V  |  %Y}",
+    // "format-alt": "󰸗  Semana {:%V  |  %Y}",
+    "format-alt": "󰸗  {:%Y-%m-%d :: %H:%M}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",

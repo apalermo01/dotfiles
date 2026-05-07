@@ -220,6 +220,31 @@ map("n", "<leader>oo", function()
 	vim.system({ "obsidian", uri }, { detach = true })
 end, { desc = "open current file in Obsidian" })
 
+map("n", "<leader>on", function()
+	require("obsidian")
+	local api = require("obsidian.api")
+	local log = require("obsidian.log")
+	local Note = require("obsidian.note")
+	local note_name = api.input("enter fleeting note name", { completion = "file" })
+	if not note_name then
+		return log.warn("Aborted")
+	elseif note_name == "" then
+		note_name = nil
+	end
+
+	local note = Note.create({
+		id = note_name,
+		template = "fleeting", 
+		should_write = true,
+	})
+
+    note:open { sync = true }
+end, { desc = "new fleeting note" })
+
+map("n", "<leader>of", "<cmd>edit " .. OBSIDIAN_NOTES_DIR .. "/0-Inbox/fleeting.md<CR>", {desc = "open fleeting notes"}
+
+)
+
 --------------------------------------------------------------------------------
 -- TELESCOPE (pickers) (<leader>p prefix)
 --------------------------------------------------------------------------------
@@ -251,7 +276,7 @@ map("n", "<leader>ph", builtin.git_bcommits, { desc = "Telescope: commit history
 map("n", "<leader>pj", builtin.jumplist, { desc = "Telescope: jumplist" })
 
 -- List marks
-map("n", "<leader>pma", builtin.marks, { desc = "Telescope: list marks" })
+map("n", "<leader>pm", builtin.marks, { desc = "Telescope: list marks" })
 
 -- Search old files
 map("n", "<leader>po", builtin.oldfiles, { desc = "Telescope: search old files" })
@@ -269,7 +294,7 @@ map("n", '<leader>p"', builtin.registers, { desc = "Telescope: list registers" }
 map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
 
 -- workspace symbols
--- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })
+map("n", "<leader>pw", builtin.lsp_workspace_symbols, { desc = "Telescope: workspace_symbol" })
 
 -- keymaps
 -- map("n", "<leader>pk", builtin.keymaps, { desc = "Telescope: keymaps" })

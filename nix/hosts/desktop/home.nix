@@ -15,6 +15,7 @@
   # define what will be installed by home manager here
   fonts.fontconfig.enable = true;
 
+
   modules = {
     # dev tools
     python.enable = true;

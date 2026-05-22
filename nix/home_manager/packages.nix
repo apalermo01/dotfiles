@@ -57,7 +57,7 @@ in
       bat
       eza
       luajitPackages.orgmode
-      tree-sitter
+      # tree-sitter
       typos
       jq
       poppler-utils

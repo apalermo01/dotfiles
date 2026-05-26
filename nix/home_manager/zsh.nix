@@ -17,7 +17,7 @@ in
   };
   config = mkIf cfg.enable {
     programs.zsh = {
-      enable = true;
+      enable = false;
       enableCompletion = true;
       plugins = [
         {

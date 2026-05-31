@@ -20,10 +20,10 @@ mkdir -p "$RICER_DIR"
 
 # On first run (no current_theme), proactively back up common conflicting files
 for f in "$HOME/.zshrc" "$HOME/.profile" "$HOME/.bashrc" "$HOME/.zshenv" "$HOME/.tmux.conf"; do
-if [ -f "$f" ] && [ ! -L "$f" ]; then
-  mv -f "$f" "${f}.pre-dotfiles.bak"
-  echo "Backed up $f -> ${f}.pre-dotfiles.bak"
-fi
+    if [ -f "$f" ] && [ ! -L "$f" ]; then
+        mv -f "$f" "${f}.pre-dotfiles.bak"
+        echo "Backed up $f -> ${f}.pre-dotfiles.bak"
+    fi
 done
 
 if [ -f "./current_theme" ]; then
@@ -63,17 +63,18 @@ if [ -d ./built_themes/$1/.config/theme_scripts/ ]; then
         fi
     done
 elif [ -f ./built_themes/$1/.config/install_theme.sh ]; then
-    echo "Executing install script"
-    bash "./built_themes/$1/.config/install_theme.sh"
+    script_path="./built_themes/$1/.config/install_theme.sh"
+    echo "Executing install script at ${script_path}"
+    bash "${script_path}"
 else
     echo "no theme install scripts detected"
 fi
 
-echo $1 > current_theme
+echo $1 >current_theme
 
 echo "copying user scripts"
-if [ ! -d $HOME/Scripts ]; then 
-    mkdir $HOME/Scripts/ 
+if [ ! -d $HOME/Scripts ]; then
+    mkdir $HOME/Scripts/
 fi
 stow . -d user_scripts/ -t ~/Scripts
 

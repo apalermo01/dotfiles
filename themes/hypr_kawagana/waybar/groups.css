@@ -1,0 +1,61 @@
+/* workspace */
+#hollow-left-2 {
+  background: {{ cyan1 }};
+}
+
+/* backlight, audio, network, battery */
+#hollow-left-5 {
+    background: {{ green1 }};
+}
+
+/* clock */
+#hollow-right-4 {
+    background: {{ cyan1 }};
+  /* border-radius: 10.5pt; */
+}
+
+/* window */
+#hollow-right-5 {
+  background: {{ yellow1 }};
+  /* border-radius: 10.5pt; */
+  padding: 8px;
+}
+
+/* cpu, temp, memory */
+#hollow-right-1 {
+    background: {{ purple1 }};
+  /* border-radius: 10.5pt; */
+}
+
+#workspaces button {
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  /* border-radius: 12px; */
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-right: 0px;
+  color: {{ background }};
+  animation: ws_normal 20s ease-in-out 1;
+}
+
+#workspaces button.active {
+  background: {{ green1 }};
+  color: {{ foreground }};
+  margin-left: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-right: 0px;
+  animation: ws_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces button:hover {
+  background: {{ blue1 }};
+  color: {{ red1 }};
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}

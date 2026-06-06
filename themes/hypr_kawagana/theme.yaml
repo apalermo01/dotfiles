@@ -1,0 +1,57 @@
+wallpaper: 
+  method: hyprpaper
+  file: kanagawa.jpg
+
+colors:
+  method: manual
+
+hyprland: 
+  overwrite:
+    - src: colors_and_decoration.conf
+      dst: hyprland/colors_and_decoration.conf
+
+waybar:
+  template_path: $THIS_THEME
+
+font_family: FiraCode Nerd Font
+
+nvim: 
+  colorscheme: kanagawa
+  overwrite:
+    - src: theme.lua
+      dst: nvim/lua/config/theme.lua
+
+tmux: 
+  append: 
+    - src: tmux.conf
+      dst: tmux/tmux.conf
+
+rofi: 
+  template_path: $THIS_THEME
+
+zsh: 
+  append:
+    - src: additions.zsh
+      dst: zsh/.zshrc
+  overwrite:
+    - src: p10k.zsh
+      dst: zsh/.p10k.zsh
+
+kitty:
+  append:
+    - src: kitty.conf
+      dst: kitty/kitty.conf
+    - src: current-theme.conf
+      dst: kitty/current-theme.conf
+
+gtk:
+  gtk_install_script: install_gtk.sh
+  gtk_theme: Kanagawa-Dark
+
+qt:
+  method: manual
+  template_path: $THIS_THEME
+
+yazi:
+  dark: kanagawa
+  light: kanagawa

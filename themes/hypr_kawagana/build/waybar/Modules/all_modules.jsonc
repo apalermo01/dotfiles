@@ -1,0 +1,14 @@
+{
+  "include": [
+    "~/.config/waybar/Modules/backlight.jsonc",
+    "~/.config/waybar/Modules/battery.jsonc",
+    "~/.config/waybar/Modules/clock.jsonc",
+    "~/.config/waybar/Modules/cpu.jsonc",
+    "~/.config/waybar/Modules/memory.jsonc",
+    "~/.config/waybar/Modules/network.jsonc",
+    "~/.config/waybar/Modules/temperature.jsonc",
+    "~/.config/waybar/Modules/window.jsonc",
+    "~/.config/waybar/Modules/wireplumber.jsonc",
+    "~/.config/waybar/Modules/workspaces.jsonc"
+  ]
+}

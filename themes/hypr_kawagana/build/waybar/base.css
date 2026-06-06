@@ -1,0 +1,30 @@
+
+* {
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+#waybar {
+  background-color: #1f1f28;
+}
+
+#waybar .module {
+    color: #dcd7ba;
+  padding: 0px 0px;
+  margin: -10px 5px -10px;
+  border: 2px;
+}
+
+#waybar .module:hover {
+  color: #c8c093;
+}
+
+#window#waybar {
+  /* color: @foreground; */
+    color: #dcd7ba;
+  background-color: #dcd7ba;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border: 2px solid #dcd7ba;
+}

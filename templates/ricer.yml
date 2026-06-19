@@ -49,6 +49,9 @@ tools:
   rofi:
     config_path: '.config/rofi'
 
+  wofi:
+    config_path: '.config/wofi'
+
   fastfetch:
     config_path: '.config/fastfetch'
   

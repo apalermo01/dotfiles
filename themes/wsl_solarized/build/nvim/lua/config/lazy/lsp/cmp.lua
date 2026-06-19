@@ -47,20 +47,17 @@ return {
 		local lspkind = require("lspkind")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 		local luasnip = require("luasnip")
-		local has_words_before = function()
-			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-			if col == 0 then
-				return false
-			end
-			local prev = vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col)
-			return not prev:match("%s")
-        end
 		cmp.setup({
 			snippet = {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
+
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered()
+            },
 
 			preselect = "None",
 
@@ -82,11 +79,8 @@ return {
 
 			mapping = cmp.mapping.preset.insert({
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				-- ["+"] = cmp.mapping.select_next_item(cmp_select),
-				-- ["<C-e>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-e>"] = cmp.mapping.select_prev_item(cmp_select),
-				-- ["$"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<C-a>"] = cmp.mapping.abort(),

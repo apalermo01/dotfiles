@@ -14,6 +14,7 @@
       pywalfox-native
       libnotify
       xournalpp
+      kitty
       discord
       firefox
       brave
@@ -32,6 +33,18 @@
       restic
 
       vlc
+
+      # disable laptop screen on close
+      acpi
+
+      # needed for gtk themes
+      dart-sass
+      meson
+      ninja
+      nautilus
+      sassc
+      dconf-editor
+      nemo-with-extensions
     ];
   };
 }

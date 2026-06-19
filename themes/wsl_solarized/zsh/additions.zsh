@@ -1,8 +1,14 @@
 export NOTES_PATH="/mnt/c/Users/apalermo/github/notes"
-zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+ZSH_THEME="solarized-powerline"
+ZSH_POWERLINE_SHOW_IP=false
+
+export ZSH="$HOME/.oh-my-zsh"
+plugins=(
+    git
+)
+
+source $ZSH/oh-my-zsh.sh
 
 mkpretty() { 
     local target_dir="/mnt/c/Users/apalermo/Downloads"

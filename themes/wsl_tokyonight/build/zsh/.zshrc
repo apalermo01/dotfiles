@@ -17,6 +17,7 @@ echo "* gl                        = git log (pretty)                         *"
 echo "* j                         = open jupyter lab (if available)          *"
 echo "* cat_all                   = cat all files in directory               *"
 echo "* ^x^e                      = open command in editor                   *"
+echo "* da                        = print the date (%Y-%m-%d)                *"
 echo "************************************************************************"
 
 #######
@@ -363,6 +364,8 @@ alias vi='nvim'
 alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
+
+alias da="date +'%Y-%m-%d'"
 
 
 # git aliases 

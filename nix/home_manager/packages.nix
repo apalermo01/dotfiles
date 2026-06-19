@@ -29,7 +29,6 @@ in
       ripgrep
       neovim
       tmux
-      kitty
       dunst
       zinit
       fortune
@@ -37,15 +36,11 @@ in
       pywal
       wallust
       stow
-
       glib
       glibcLocales
-
-
-
       killall
       nvimpager
-      newsboat
+      # newsboat
       fzf
       yazi
       sioyek
@@ -61,26 +56,9 @@ in
       fastfetch
       bat
       eza
-
-      # disable laptop screen on close
-      acpi
-
-      # needed for gtk themes
-      dart-sass
-      meson
-      ninja
-      nautilus
-
-      sassc
-      dconf-editor
-
       luajitPackages.orgmode
-
-      tree-sitter
-      
+      # tree-sitter
       typos
-
-      nemo-with-extensions
       jq
       poppler-utils
     ];

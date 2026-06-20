@@ -30,3 +30,5 @@ bash ${THEME_DIR}/kanagawa-gtk/Kanagawa-GKT-Theme-main/themes/install.sh \
 echo "Installer for GTK theme exited with code $?"
 
 
+
+kitty @ load-config

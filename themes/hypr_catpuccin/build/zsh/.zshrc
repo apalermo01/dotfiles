@@ -460,7 +460,6 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 bindkey -M vicmd 'v' edit-command-line
-
 ZSH_THEME="catppuccin"
 CATPPUCCIN_FLAVOR="mocha" # Required! Options: mocha, flappe, macchiato, latte
 CATPPUCCIN_SHOW_TIME=true  # Optional! If set to true, this will add the current time to the prompt.

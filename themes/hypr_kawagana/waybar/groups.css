@@ -1,6 +1,7 @@
 /* workspace */
 #hollow-left-2 {
   background: {{ background }};
+  margin-left: -5px;
 }
 
 /* backlight, audio, network, battery */
@@ -31,19 +32,13 @@
   box-shadow: none;
   text-shadow: none;
   padding: 0px;
-  /* border-radius: 12px; */
-  /* margin-top: 1em; */
-  /* margin-bottom: 1em; */
   margin-left: 0px;
-  /* padding-left: 3px; */
-  /* padding-right: 3px; */
-  /* margin-right: 0px; */
   color: {{ green1 }};
   animation: ws_normal 20s ease-in-out 1;
 }
 
 #workspaces button.active {
-  background: {{ green1 }};
+  background: {{ purple1 }};
   color: {{ foreground }};
   margin-left: 0px;
   padding-left: 0px;
@@ -54,8 +49,8 @@
 }
 
 #workspaces button:hover {
-  background: {{ blue1 }};
-  color: {{ red1 }};
+  background: {{ red1 }};
+  color: {{ background }};
   animation: ws_hover 20s ease-in-out 1;
   transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }

@@ -14,7 +14,8 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      nixfmt-rfc-style
+      nixfmt
+      # nixfmt-rfc-style
       nil
     ];
   };

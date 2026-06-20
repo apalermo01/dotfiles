@@ -9,8 +9,10 @@ let
   MonitorLayout = pkgs.writeShellScript "monitor-layout" ''
     #!/bin/sh
 
-    ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-2 --auto --left-of eDP-1
-    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --auto --left-of HDMI-2
+    # ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-2 --auto --left-of eDP-1
+    # ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --auto --left-of HDMI-2
+    ${pkgs.xrandr}/bin/xrandr --output HDMI-2 --auto --left-of eDP-1
+    ${pkgs.xrandr}/bin/xrandr --output DP-1 --auto --left-of HDMI-2
   '';
 in
 {

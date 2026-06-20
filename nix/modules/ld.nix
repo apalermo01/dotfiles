@@ -16,14 +16,14 @@
       libraries = with pkgs; [
         stdenv.cc.cc.lib
         zlib
-        xorg.libX11
-        xorg.libXext
-        xorg.libXi
-        xorg.libXcursor
-        xorg.libXrandr
-        xorg.libxcb
-        xorg.libXinerama
-        xorg.libXrender
+        libX11
+        libXext
+        libXi
+        libXcursor
+        libXrandr
+        libxcb
+        libXinerama
+        libXrender
         libGL
         libGLU
         libclang

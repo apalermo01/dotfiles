@@ -51,26 +51,27 @@ fi
 echo "stow successful!"
 
 echo "running theme install scripts"
-if [ -d ./built_themes/$1/.config/theme_scripts/ ]; then
-    # TODO: this section is no longer in use
-    for fname in $(ls ./themes/$1/.config/theme_scripts/ | sort); do
-        script="./themes/$1/.config/theme_scripts/$fname"
-        if [ -x "$script" ]; then
-            echo "Executing $script"
-            "$script"
-        else
-            echo "Skipping $script: not executable"
-        fi
-    done
-elif [ -f ./built_themes/$1/.config/install_theme.sh ]; then
+# if [ -d ./built_themes/$1/.config/theme_scripts/ ]; then
+#     # TODO: this section is no longer in use
+#     for fname in $(ls ./themes/$1/.config/theme_scripts/ | sort); do
+#         script="./themes/$1/.config/theme_scripts/$fname"
+#         if [ -x "$script" ]; then
+#             echo "Executing $script"
+#             "$script"
+#         else
+#             echo "Skipping $script: not executable"
+#         fi
+#     done
+if [ -f ./built_themes/$1/.config/install_theme.sh ]; then
     script_path="./built_themes/$1/.config/install_theme.sh"
     echo "Executing install script at ${script_path}"
-    bash "${script_path}"
+    bash "${script_path}" || echo $?
 else
     echo "no theme install scripts detected"
 fi
 
 echo $1 >current_theme
+echo "wrote current theme (${1}) to ./current_theme"
 
 echo "copying user scripts"
 if [ ! -d $HOME/Scripts ]; then

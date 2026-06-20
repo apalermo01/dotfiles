@@ -1,6 +1,6 @@
 /* workspace */
 #hollow-left-2 {
-  background: #6a9589;
+  background: #1f1f28;
 }
 
 /* backlight, audio, network, battery */
@@ -32,13 +32,13 @@
   text-shadow: none;
   padding: 0px;
   /* border-radius: 12px; */
-  margin-top: 1em;
-  margin-bottom: 1em;
+  /* margin-top: 1em; */
+  /* margin-bottom: 1em; */
   margin-left: 0px;
-  padding-left: 3px;
-  padding-right: 3px;
-  margin-right: 0px;
-  color: #1f1f28;
+  /* padding-left: 3px; */
+  /* padding-right: 3px; */
+  /* margin-right: 0px; */
+  color: #76946a;
   animation: ws_normal 20s ease-in-out 1;
 }
 
@@ -46,8 +46,8 @@
   background: #76946a;
   color: #dcd7ba;
   margin-left: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 0px;
+  padding-right: 0px;
   margin-right: 0px;
   animation: ws_active 20s ease-in-out 1;
   transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);

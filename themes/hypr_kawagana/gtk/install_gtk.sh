@@ -23,4 +23,5 @@ bash ${THEME_DIR}/kanagawa-gtk/Kanagawa-GKT-Theme-main/themes/install.sh \
     --size standard \
     --tweaks "${tweaks,,}"
 
+echo "Installer for GTK theme exited with code $?"
 

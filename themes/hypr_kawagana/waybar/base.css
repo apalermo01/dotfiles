@@ -11,9 +11,9 @@
 
 #waybar .module {
     color: {{ foreground }};
-  padding: 0px 0px;
-  margin: -10px 5px -10px;
-  border: 2px;
+    padding: 0px 0px;
+    margin: -10px 5px -10px;
+    border: 2px;
 }
 
 #waybar .module:hover {

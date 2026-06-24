@@ -61,7 +61,7 @@ in
       typos
       jq
       poppler-utils
-      blueman
+      overskride
     ];
   };
 }

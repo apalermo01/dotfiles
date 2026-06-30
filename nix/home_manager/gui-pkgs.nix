@@ -31,8 +31,8 @@
       rclone
       openvpn
       restic
-
       vlc
+      protonmail-desktop
 
       # disable laptop screen on close
       acpi

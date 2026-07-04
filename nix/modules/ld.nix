@@ -35,6 +35,7 @@
         fftwFloat
         libsndfile
         lilv
+        alsa-lib
 
         # libtinfo
         # libgnt

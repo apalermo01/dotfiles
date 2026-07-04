@@ -34,7 +34,7 @@
         overlays = [
           (import ./nix/overlays/postgrestools.nix)
           (import ./nix/overlays/ricer.nix)
-          (import ./nix/overlays/curl.nix)
+          # (import ./nix/overlays/curl.nix)
           # (import ./nix/overlays/sioyek.nix)
           # (import ./nix/overlays/glib.nix)
         ];

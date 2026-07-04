@@ -28,7 +28,7 @@
         libGLU
         libclang
         freetype
-        curl
+        curlWithGnuTls
         glibmm
         glib
         libsigcxx

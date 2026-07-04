@@ -36,6 +36,7 @@
         libsndfile
         lilv
         alsa-lib
+        fontconfig
 
         # libtinfo
         # libgnt

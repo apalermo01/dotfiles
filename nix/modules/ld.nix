@@ -28,6 +28,14 @@
         libGLU
         libclang
         freetype
+        curl
+        glibmm
+        glib
+        libsigcxx
+        fftw
+        libsndfile
+        lilv
+
         # libtinfo
         # libgnt
         # ncurses

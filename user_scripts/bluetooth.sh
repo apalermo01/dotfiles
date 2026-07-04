@@ -8,7 +8,6 @@ if [[ $1 = '-h' ]]; then
 fi
 
 connect() {
-    echo "running connect()"
     devices=$(bluetoothctl <<EOF 
 devices
 EOF
@@ -24,11 +23,11 @@ EOF
     fi
 
     bluetoothctl connect $mac
-    new_default_id=$(wpctl status | awk '/Filters/{flag=1;next}/Streams/{flag=0}flag' | grep "${mac}.*Audio/Sink" | grep -oP "[0-9]+(?=\. )" | head -1)
-    wpctl set-default $new_default_id
+    default_id=$(wpctl status | awk '/Sinks/{flag=1;next}/Sources/{flag=0}flag' | grep "${TARGET}" | grep -oP '[0-9]+(?=\. )' | head -1)
+    echo "wpctl: set new default sink id to $default_id"
+    wpctl set-default $default_id
 
-    echo "wpctl: set new default sink id"
-    wpctl status | awk '/Filters/{flag=1;next}/Streams/{flag=0}flag' | grep '*'
+    wpctl status | awk '/Sinks/{flag=1;next}/Sources/{flag=0}flag' | grep '*'
     exit 0
 }
 # info exits 1 if nothing is connected

@@ -27,6 +27,7 @@
         libGL
         libGLU
         libclang
+        freetype
         # libtinfo
         # libgnt
         # ncurses

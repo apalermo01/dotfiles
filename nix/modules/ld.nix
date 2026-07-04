@@ -32,7 +32,7 @@
         glibmm
         glib
         libsigcxx
-        fftw
+        fftwFloat
         libsndfile
         lilv
 

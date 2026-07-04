@@ -15,8 +15,8 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       clang-tools
-      clang
-      # gcc
+      # clang
+      gcc
       gnumake
     ];
   };

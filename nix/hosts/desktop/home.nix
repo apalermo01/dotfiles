@@ -48,6 +48,7 @@
     xdg.enable = true;
     gtk-pkgs.enable = true;
     reaper.enable = true;
+    musescore.enable = true;
   };
 
   programs.zoxide.enable = true;

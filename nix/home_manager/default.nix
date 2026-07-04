@@ -26,6 +26,7 @@
     ./zsh.nix
     ./gui-pkgs.nix
     ./reaper.nix
+    ./musescore.nix
   ];
 
 }

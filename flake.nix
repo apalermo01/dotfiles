@@ -1,6 +1,15 @@
 # github.com/sioodmy/dotfiles/blob/main/flake.nix
 # github.com/notusknot/dotfiles-nix
 
+# nixpkgs.config.packageOverrides = pkgs: {
+#   curl = pkgs.curl.override {
+#     gnutlsSupport = true;
+#     opensslSupport = false; # Optional: disable OpenSSL if not needed
+#   };
+# };   
+
+
+
 {
   description = "Main flake";
   inputs = {
@@ -18,7 +27,6 @@
       nixpkgs,
       ...
     }@inputs:
-
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -26,6 +34,7 @@
         overlays = [
           (import ./nix/overlays/postgrestools.nix)
           (import ./nix/overlays/ricer.nix)
+          (import ./nix/overlays/curl.nix)
           # (import ./nix/overlays/sioyek.nix)
           # (import ./nix/overlays/glib.nix)
         ];

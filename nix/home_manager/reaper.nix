@@ -12,6 +12,7 @@
   config = lib.mkIf config.modules.reaper.enable {
     home.packages = with pkgs; [
       reaper
+      guitarix
     ];
   };
 }

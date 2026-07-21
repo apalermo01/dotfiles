@@ -22,11 +22,14 @@
         libXcursor
         libXrandr
         libxcb
+        libxcb-util
+        libxcb-cursor
         libXinerama
         libXrender
         libGL
         libGLU
         libclang
+        libspiro
         freetype
         curlWithGnuTls
         glibmm

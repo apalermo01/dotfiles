@@ -33,6 +33,7 @@
         libxkbcommon
         pango
         libpanel
+        cairo
         freetype
         curlWithGnuTls
         glibmm

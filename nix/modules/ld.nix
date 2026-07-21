@@ -30,6 +30,9 @@
         libGLU
         libclang
         libspiro
+        libxkbcommon
+        pango
+        libpanel
         freetype
         curlWithGnuTls
         glibmm

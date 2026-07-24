@@ -14,6 +14,7 @@
       reaper
       guitarix
       guitarix-vst
+      surge-xt
     ];
   };
 }

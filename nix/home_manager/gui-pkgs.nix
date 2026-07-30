@@ -25,7 +25,7 @@
       flameshot
       libsForQt5.qt5ct
       libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.xp-pen-deco-01-v2-driver
+      # libsForQt5.xp-pen-deco-01-v2-driver
       # xfce.thunar
       # xfce.thunar-volman
       rclone

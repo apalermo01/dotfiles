@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("User", {
     end,
 })
 
--- obsidian: update date updated when saving a note
+-- obsidian: update date updated when saving a note; also set date created if it's not set
 autocmd("BufWritePre", {
 	pattern = "*.md",
 	callback = function()
@@ -55,6 +55,10 @@ autocmd("BufWritePre", {
 					lines[i] = "date_modified: " .. current_date
 					vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
 					break
+				elseif in_frontmatter and line:match("^date_created:$") then
+					lines[i] = "date_created: " .. current_date
+					vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+                    break
 				end
 			end
 		end
@@ -119,8 +123,8 @@ vim.ui.open = function(input, opts)
 	local target = input or vim.fn.expand("<cfile>")
 
 	if target:match("^[%a][%w+,-]*://") then
-		vim.fn.jobstart({ "firefox", target }, { detach = true })
-		vim.notify("opening " .. target .. " in firefox")
+		vim.fn.jobstart({ "brave", target }, { detach = true })
+		vim.notify("opening " .. target .. " in brave")
 	else
 		return _orig_open(input, opts)
 	end

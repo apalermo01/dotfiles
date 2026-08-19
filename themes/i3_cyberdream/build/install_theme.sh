@@ -37,3 +37,5 @@ if [ -f ~/.config/polybar/i3_polybar_start.sh ]; then
 fi
 
 
+
+kitty @ load-config

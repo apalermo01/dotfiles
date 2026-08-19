@@ -13,6 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     any-nix-shell
+    curlWithGnuTls
   ];
 
   i3wm.enable = true;

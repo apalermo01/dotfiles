@@ -28,4 +28,5 @@ bash ${THEME_DIR}/kanagawa-gtk/Kanagawa-GKT-Theme-main/themes/install.sh \
 
 
 
-dunstctl reload 
+
+kitty @ load-config

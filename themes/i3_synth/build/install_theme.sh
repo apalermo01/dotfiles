@@ -30,4 +30,5 @@ fi
 
 # TODO - write to settings.ini
 
-dunstctl reload 
+
+kitty @ load-config

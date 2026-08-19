@@ -41,6 +41,7 @@ map("n", "<M-n>", "<C-w>j", {desc="win down"})
 map("n", "<M-e>", "<C-w>k", {desc="win up"})
 map("n", "<M-i>", "<C-w>l", {desc="win right"})
 
+
 -- tmux
 vim.g.tmux_navigator_no_mappings = 1
 map("n", "<M-h>", "<cmd>TmuxNavigateLeft<CR>")

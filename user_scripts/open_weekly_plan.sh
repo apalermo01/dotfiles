@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 orig_directory=$(pwd)
-template_path="5-Templates/Weekly plan template.md"
+template_path="4-Templates/weekly-plan.md"
 
 cd $NOTES_PATH
 date_fmt="%Y-%m-%d"
@@ -36,7 +36,7 @@ results=$(find ./**/* -name "${file_name}.md")
 if [[ $results ]]; then
     nvim "${results}"
 else
-    full_path="./2-Writing/2-Planning/${file_name}.md"
+    full_path="./3-Writing/2-Planning/${file_name}.md"
     cp "${template_path}" "${full_path}"
     sed -i "s/Weekly Plan.*/Weekly Planning ${start_date_fmt} - ${end_date_fmt}/" "${full_path}"
     nvim "${full_path}"

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-TARGET="JBL VIBE BUDS"
+# TARGET="JBL VIBE BUDS"
+TARGET="WH-CH520"
 
 if [[ $1 = '-h' ]]; then 
     echo "Connect or disconnect bluetooth device with hardcoded mac address"
@@ -23,6 +24,7 @@ EOF
     fi
 
     bluetoothctl connect $mac
+    wpctl status | awk '/Sinks/{flag=1;next}/Sources/{flag=0}flag'
     default_id=$(wpctl status | awk '/Sinks/{flag=1;next}/Sources/{flag=0}flag' | grep "${TARGET}" | grep -oP '[0-9]+(?=\. )' | head -1)
     echo "wpctl: set new default sink id to $default_id"
     wpctl set-default $default_id

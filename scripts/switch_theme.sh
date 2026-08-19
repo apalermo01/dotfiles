@@ -26,6 +26,13 @@ for f in "$HOME/.zshrc" "$HOME/.profile" "$HOME/.bashrc" "$HOME/.zshenv" "$HOME/
     fi
 done
 
+# for some reason the base config file for i3 isn't getting un-stowed properly, so just delete it outright
+if [[ ("$1" == *"i3"*) && (-e ~/.config/i3/config) ]]; then 
+    rm ~/.config/i3/config
+    echo "Removed ~/.config/i3/config"
+
+fi
+
 if [ -f "./current_theme" ]; then
     current_theme="$(cat ./current_theme)"
     echo "un-stowing current theme: $current_theme"
@@ -44,6 +51,7 @@ if [[ "$1" == *"wsl"* ]]; then
     ln -sf "$(realpath ./templates/global-wsl-before.yml)" "$RICER_DIR/ricer-global-before.yml"
     ln -sf "$(realpath ./templates/global-wsl-after.yml)" "$RICER_DIR/ricer-global-after.yml"
 else
+
     ln -sf "$(realpath ./templates/global-before.yml)" "$RICER_DIR/ricer-global-before.yml"
     ln -sf "$(realpath ./templates/global-after.yml)" "$RICER_DIR/ricer-global-after.yml"
 fi

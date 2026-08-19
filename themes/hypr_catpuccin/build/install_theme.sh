@@ -61,3 +61,5 @@ fi
 ln -f $HOME/.zsh/catppuccin-zsh/catppuccin.zsh-theme ~/.oh-my-zsh/themes/
 
 ln -f $HOME/.zsh/catppuccin-zsh/catppuccin-flavors/* ~/.oh-my-zsh/themes/catppuccin-flavors
+
+kitty @ load-config

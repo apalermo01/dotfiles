@@ -47,4 +47,5 @@ fi
 # source ~/.tmux.od_autumn.tmux
 
 
-dunstctl reload 
+
+kitty @ load-config

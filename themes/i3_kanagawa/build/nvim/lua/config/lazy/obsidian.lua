@@ -25,7 +25,7 @@ return {
         },
         frontmatter = {
             enabled = true,
-            sort = { 'id', 'aliases', 'version', 'tags', 'date_created', 'date_modified', 'type', 'project', 'area'}
+            -- sort = { 'id', 'aliases', 'version', 'tags', 'date_created', 'date_modified', 'type', 'project', 'area'}
         },
         templates = {
             folder = OBSIDIAN_TEMPLATE_FOLDER,

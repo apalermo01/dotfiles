@@ -17,6 +17,8 @@ echo "* gl                        = git log (pretty)                         *"
 echo "* j                         = open jupyter lab (if available)          *"
 echo "* cat_all                   = cat all files in directory               *"
 echo "* ^x^e                      = open command in editor                   *"
+echo "* da                        = print the date (%Y-%m-%d)                *"
+echo "* planning                  = open weekly plan                         *"
 echo "************************************************************************"
 
 #######
@@ -353,6 +355,7 @@ alias onp='new_personal_note'
 # other
 alias personal='bash ~/Scripts/personal_docs.sh'
 alias reading='bash ~/Scripts/reading_session.sh'
+alias planning='bash ~/Scripts/open_weekly_plan.sh'
 alias notes='cd ~/Documents/git/notes'
 alias n='cd ~/Documents/git/notes'
 alias o='obsidian'
@@ -363,6 +366,8 @@ alias vi='nvim'
 alias nivm='nvim'
 alias v='nvim'
 alias tutoring="start_tutoring"
+
+alias da="date +'%Y-%m-%d'"
 
 
 # git aliases 

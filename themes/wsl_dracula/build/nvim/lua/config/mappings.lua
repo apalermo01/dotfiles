@@ -89,7 +89,7 @@ map("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 map("n", "<leader>ol", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project config" })
-
+map("n", "<leader>t", "<cmd>Neotree toggle<CR>", {desc = "toggle neotree"})
 -- navigate by { }
 -- I don't remember what this does so I'm removing it for now
 -- map("n", "[[", "?{<CR>w99[{")

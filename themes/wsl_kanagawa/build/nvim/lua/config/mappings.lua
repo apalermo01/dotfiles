@@ -89,7 +89,7 @@ map("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
 map("n", "<leader>ol", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 map("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "toggle undo tree" })
 map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project config" })
-
+map("n", "<leader>t", "<cmd>Neotree toggle<CR>", {desc = "toggle neotree"})
 -- navigate by { }
 -- I don't remember what this does so I'm removing it for now
 -- map("n", "[[", "?{<CR>w99[{")
@@ -98,7 +98,26 @@ map("n", "<leader>E", "<cmd>EditProjectConfig<CR>", { desc = "edit project confi
 -- map("n", "[]", "k$][%?}<CR>")
 
 -- diffview
-map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
+map("n", "<leader>dfh", "<cmd>DiffviewFileHistory %<cr>")
+map("n", "<leader>dfb", function() 
+    require('telescope.builtin').git_branches({
+        attach_mappings = function(prompt_bufrn, map)
+            local actions = require("telescope.actions")
+            local action_state = require("telescope.actions.state")
+
+            actions.select_default:replace(function()
+                actions.close(prompt_bufrn)
+                local selection = action_state.get_selected_entry()
+                if selection then
+                    vim.cmd("DiffviewOpen " .. selection.value ..  '...HEAD')
+                end
+            end)
+
+            return true
+        end
+    })
+
+end)
 
 -- automatically go back into visual mode after indenting
 map("v", ">", ">gv")

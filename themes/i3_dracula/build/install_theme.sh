@@ -11,4 +11,5 @@ fi
 
 
 ya pack -a yazi-rs/flavors:dracula
-dunstctl reload 
+
+kitty @ load-config

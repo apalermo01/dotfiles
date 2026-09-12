@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-dunstctl reload 
+
+kitty @ load-config

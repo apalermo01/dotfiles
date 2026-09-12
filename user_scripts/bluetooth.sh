@@ -24,6 +24,7 @@ EOF
     fi
 
     bluetoothctl connect $mac
+    sleep 1
     wpctl status | awk '/Sinks/{flag=1;next}/Sources/{flag=0}flag'
     default_id=$(wpctl status | awk '/Sinks/{flag=1;next}/Sources/{flag=0}flag' | grep "${TARGET}" | grep -oP '[0-9]+(?=\. )' | head -1)
     echo "wpctl: set new default sink id to $default_id"

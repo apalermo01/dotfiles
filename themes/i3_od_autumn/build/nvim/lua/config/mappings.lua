@@ -189,6 +189,9 @@ end, { desc = "trouble: previous diagnostic" })
 -- Show backlinks via Telescope
 map("n", "<leader>obl", "<cmd>Obsidian backlinks<CR>", { desc = "show backlinks (Telescope)" })
 
+-- show bookmarks in telescope
+map("n", "<leader>obk", "<cmd>Obsidian bookmarks<CR>", { desc = "show bookmarks (Telescope)" })
+
 -- template note
 map("n", "<leader>op", "<cmd>Obsidian template<CR>", { desc = "Insert obsidian template" })
 
@@ -234,7 +237,7 @@ map("n", "<leader>on", function()
 
 	local note = Note.create({
 		id = note_name,
-		template = "fleeting", 
+		-- template = "fleeting", 
 		should_write = true,
 	})
 

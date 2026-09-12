@@ -1,7 +1,7 @@
 -- Globals
 OBSIDIAN_NOTES_DIR = os.getenv("NOTES_PATH") or "/home/alex/Documents/git/notes"
 OBSIDIAN_NOTES_SUBDIR = os.getenv("OBSIDIAN_NOTES_SUBDIR") or "0-Inbox"
-OBSIDIAN_TEMPLATE_FOLDER = os.getenv("OBSIDIAN_TEMPLATE_FOLDER") or "5-Templates"
+OBSIDIAN_TEMPLATE_FOLDER = os.getenv("OBSIDIAN_TEMPLATE_FOLDER") or "4-Templates"
 
 map = vim.keymap.set
 vim.g.mapleader = " "
@@ -30,4 +30,4 @@ end
 
 require("config")
 vim.cmd.colorscheme("default")
-vim.cmd([[set guifont=NotoMono\ Nerd\ Font\ Mono]])
+vim.cmd([[set guifont=IosevkaTerm\ Nerd\ Font\ Mono]])

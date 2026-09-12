@@ -18,6 +18,7 @@ echo "* j                         = open jupyter lab (if available)          *"
 echo "* cat_all                   = cat all files in directory               *"
 echo "* ^x^e                      = open command in editor                   *"
 echo "* da                        = print the date (%Y-%m-%d)                *"
+echo "* planning                  = open weekly plan                         *"
 echo "************************************************************************"
 
 #######
@@ -354,6 +355,7 @@ alias onp='new_personal_note'
 # other
 alias personal='bash ~/Scripts/personal_docs.sh'
 alias reading='bash ~/Scripts/reading_session.sh'
+alias planning='bash ~/Scripts/open_weekly_plan.sh'
 alias notes='cd ~/Documents/git/notes'
 alias n='cd ~/Documents/git/notes'
 alias o='obsidian'
@@ -458,14 +460,20 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 bindkey -M vicmd 'v' edit-command-line
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+ZSH_THEME="catppuccin"
+CATPPUCCIN_FLAVOR="mocha" # Required! Options: mocha, flappe, macchiato, latte
+CATPPUCCIN_SHOW_TIME=true  # Optional! If set to true, this will add the current time to the prompt.
+CATPPUCCIN_SHOW_HOSTNAME="never"  # Optional! Options: never, always, ssh
 
+export ZSH="$HOME/.oh-my-zsh"
+plugins=(
+    git
+)
 
+source $ZSH/oh-my-zsh.sh
 
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 alias nu="bash ~/Documents/git/dotfiles/nix-update.sh"
+
 if command -v fastfetch >/dev/null 2>&1
 then
 	fastfetch

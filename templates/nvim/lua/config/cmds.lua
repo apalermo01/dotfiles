@@ -12,7 +12,7 @@ autocmd("VimEnter", {
                    "K          => LSP hover \n"..
                    "l/L        => end of word / WORD\n" ..
                    "<leader>cf => copy path\n" ..
-                   "<leader>dfb => diff view\n" ..
+                   "<leader>dfb => diff view\n"
         )
     end,
 })
@@ -158,3 +158,6 @@ map("n", "<leader>pa", function()
   vim.fn.setreg("+", path)
   print("file: ", path)
 end)
+
+
+

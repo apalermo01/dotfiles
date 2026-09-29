@@ -10,10 +10,9 @@ autocmd("VimEnter", {
     callback = function() 
         vim.notify("Reminders: \n"..
                    "K          => LSP hover \n"..
-                   "              Then <c-w>w to focus floating window\n"..
-                   "C-u / C-d  => scroll docs in completion window\n" ..
                    "l/L        => end of word / WORD\n" ..
-                   "<leader>pw => workspace symbols"
+                   "<leader>cf => copy path\n" ..
+                   "<leader>dfb => diff view\n"
         )
     end,
 })

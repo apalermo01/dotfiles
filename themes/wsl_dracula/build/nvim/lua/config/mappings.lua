@@ -64,6 +64,10 @@ map("x", "<leader>p", '"_dP')
 -- yank to system clipboard without any gymnastics
 map({ "v", "n" }, "<leader>yc", '"+y')
 map({ "v", "n" }, "<leader>pc", '"+p')
+map("n", "<leader>cf", function()
+    vim.fn.setreg("+", vim.fn.expand("%:p"))
+    print("copied absolute path " .. vim.fn.expand("%:p"))
+end, { desc = "copy absolute path" })
 
 -- TODO: set up tmux sessionizer
 
@@ -98,7 +102,26 @@ map("n", "<leader>t", "<cmd>Neotree toggle<CR>", {desc = "toggle neotree"})
 -- map("n", "[]", "k$][%?}<CR>")
 
 -- diffview
-map("n", "<leader>df", "<cmd>DiffviewFileHistory %<cr>")
+map("n", "<leader>dfh", "<cmd>DiffviewFileHistory %<cr>")
+map("n", "<leader>dfb", function() 
+    require('telescope.builtin').git_branches({
+        attach_mappings = function(prompt_bufrn, map)
+            local actions = require("telescope.actions")
+            local action_state = require("telescope.actions.state")
+
+            actions.select_default:replace(function()
+                actions.close(prompt_bufrn)
+                local selection = action_state.get_selected_entry()
+                if selection then
+                    vim.cmd("DiffviewOpen " .. selection.value ..  '...HEAD')
+                end
+            end)
+
+            return true
+        end
+    })
+
+end, { desc = "diff view on branch"} )
 
 -- automatically go back into visual mode after indenting
 map("v", ">", ">gv")

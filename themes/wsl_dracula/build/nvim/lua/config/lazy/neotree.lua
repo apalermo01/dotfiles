@@ -9,16 +9,37 @@ return {
 		},
 		lazy = false, -- neo-tree will lazily load itself
 		opts = {
+            close_if_last_window = true,
 			window = {
-                ['e'] = "move_cursor_up"
-				-- mappings = {
-				-- ['e'] = function() vim.api.nvim_exec('Neotree focus filesystem left', true) end,
-				-- ['b'] = function() vim.api.nvim_exec('Neotree focus buffers left', true) end,
-				-- ['g'] = function() vim.api.nvim_exec('Neotree focus git_status left', true) end,
-				-- },
+				mappings = {
+					-- ["e"] = "move_cursor_up",
+					['f'] = function() vim.api.nvim_exec('Neotree focus filesystem left', true) end,
+					['b'] = function() vim.api.nvim_exec('Neotree focus buffers left', true) end,
+					['g'] = function() vim.api.nvim_exec('Neotree focus git_status left', true) end,
+				},
 			},
+            -- buffers = {
+            --     window = {
+            --         mappings = {
+            --             ["e"] = "move_cursor_up",
+            --             ["n"] = "move_cursor_down"
+            --         },
+            --     },
+            -- },
+            -- git_status = {
+            --     window = {
+            --         mappings = {
+            --             ["e"] = "move_cursor_up",
+            --             ["n"] = "move_cursor_down"
+            --         },
+            --     },
+            -- },
 			filesystem = {
 				window = {
+					mappings = {
+						["e"] = "move_cursor_up",
+						["n"] = "move_cursor_down",
+					},
 					fuzzy_finder_mappings = {
 						["<down>"] = "move_cursor_down",
 						["<C-n>"] = "move_cursor_down",

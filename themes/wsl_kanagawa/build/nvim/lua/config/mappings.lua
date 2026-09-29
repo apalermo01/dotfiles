@@ -64,6 +64,10 @@ map("x", "<leader>p", '"_dP')
 -- yank to system clipboard without any gymnastics
 map({ "v", "n" }, "<leader>yc", '"+y')
 map({ "v", "n" }, "<leader>pc", '"+p')
+map("n", "<leader>cf", function()
+    vim.fn.setreg("+", vim.fn.expand("%:p"))
+    print("copied absolute path " .. vim.fn.expand("%:p"))
+end, { desc = "copy absolute path" })
 
 -- TODO: set up tmux sessionizer
 
@@ -117,7 +121,7 @@ map("n", "<leader>dfb", function()
         end
     })
 
-end)
+end, { desc = "diff view on branch"} )
 
 -- automatically go back into visual mode after indenting
 map("v", ">", ">gv")

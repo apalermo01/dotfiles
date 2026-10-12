@@ -9,6 +9,14 @@ return {
 		},
 		lazy = false, -- neo-tree will lazily load itself
 		opts = {
+            -- event_handlers = {
+            --     {
+            --         envent = "neo_tree_buffer_enter",
+            --         handler = function(arg)
+            --             vim.opt_local.relativenumber = true
+            --         end,
+            --     }
+            -- },
             close_if_last_window = true,
 			window = {
 				mappings = {

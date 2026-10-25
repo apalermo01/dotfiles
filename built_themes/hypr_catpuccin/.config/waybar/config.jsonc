@@ -1,0 +1,7 @@
+// adapted from https://github.com/zhaleff/BlackNode/blob/master/Configs/.config/waybar/config.jsonc
+// Copyright (c) 2026 Zhaleff && HollowSec. All Rights Reserved.
+{
+    "include": [
+        "./Layouts/blacknode.jsonc"
+    ]
+}

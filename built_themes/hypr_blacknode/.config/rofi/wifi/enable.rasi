@@ -1,0 +1,76 @@
+/*****----- Import Wallust -----*****/
+@import "~/.cache/wallust/rofi.rasi"
+
+configuration {
+	show-icons: false;
+}
+
+window {
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+    width:            320px;
+    enabled:          true;
+    border-radius:    12px;
+    background-color: var(background);
+}
+
+mainbox {
+    enabled:          true;
+    spacing:          0px;
+    background-color: transparent;
+    orientation:      horizontal;
+    children:         [ "inputbar", "listview" ];
+}
+
+inputbar {
+    enabled:          true;
+    padding:          28px 0px 28px 24px;
+    background-color: transparent;
+    text-color:       var(foreground);
+    children:         [ "textbox-prompt-colon" ];
+}
+
+textbox-prompt-colon {
+    enabled:          true;
+    expand:           false;
+    str:              "";
+    padding:          12px 24px 12px 14px;
+    border-radius:    100%;
+    background-color: var(color2);
+    text-color:       var(background);
+}
+
+listview {
+    enabled:          true;
+    columns:          1;
+    lines:            1;
+    cycle:            true;
+    dynamic:          false;
+    layout:           vertical;
+    spacing:          0px;
+    margin:           28px 24px;
+    border-radius:    8px;
+    background-color: var(color0);
+    text-color:       var(foreground);
+}
+
+element {
+    enabled:          true;
+    padding:          12px 8px;
+    border-radius:    12px;
+    background-color: transparent;
+    text-color:       var(foreground);
+}
+
+element selected.normal {
+    background-color: var(color6);
+    text-color:       var(background);
+}
+
+element-text {
+    padding:          0px 16px;
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}

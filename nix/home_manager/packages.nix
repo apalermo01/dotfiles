@@ -33,7 +33,7 @@ in
       zinit
       fortune
       cowsay
-      pywal
+      # pywal
       wallust
       stow
       glib

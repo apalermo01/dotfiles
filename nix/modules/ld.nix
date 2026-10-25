@@ -36,9 +36,9 @@
         cairo
         freetype
         curlWithGnuTls
-        glibmm
+        # glibmm
         glib
-        libsigcxx
+        # libsigcxx
         fftwFloat
         libsndfile
         lilv

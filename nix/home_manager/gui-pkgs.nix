@@ -11,7 +11,7 @@
 
   config = lib.mkIf config.modules.gui-pkgs.enable {
     home.packages = with pkgs; [
-      pywalfox-native
+      # pywalfox-native
       libnotify
       xournalpp
       kitty

@@ -49,6 +49,7 @@
               "cursor"
               "datagrip"
               "discord"
+              "discord-unwrapped"
               "obsidian"
               "xp-pen-deco-01-v2-driver"
               "via"

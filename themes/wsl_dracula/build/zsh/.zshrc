@@ -18,6 +18,7 @@ echo "* j                         = open jupyter lab (if available)          *"
 echo "* cat_all                   = cat all files in directory               *"
 echo "* ^x^e                      = open command in editor                   *"
 echo "* da                        = print the date (%Y-%m-%d)                *"
+echo "* planning                  = open weekly plan                         *"
 echo "************************************************************************"
 
 #######
@@ -227,17 +228,18 @@ function _devcontainers() {
               local label="test-container=$(basename "$PWD")"
               devcontainer up --id-label "$label" \
                   --workspace-folder .
+
               # After container is up, clone/apply dotfiles inside it
-              devcontainer exec --id-label "$label" --workspace-folder . \
-                bash -lc 'set -euo pipefail; \
-                  if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
-                  DOTPATH="$HOME/Documents/git/dotfiles"; \
-                  mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
-                  if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
-"$DOTPATH" pull --ff-only; fi; \
-                  sudo apt-get update -y && sudo apt-get install -y stow; \
-                  cd "$DOTPATH"; \
-                  bash ./scripts/switch_theme.sh wsl_dracula'
+#               devcontainer exec --id-label "$label" --workspace-folder . \
+#                 bash -lc 'set -euo pipefail; \
+#                   if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
+#                   DOTPATH="$HOME/Documents/git/dotfiles"; \
+#                   mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
+#                   if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
+# "$DOTPATH" pull --ff-only; fi; \
+#                   sudo apt-get update -y && sudo apt-get install -y stow; \
+#                   cd "$DOTPATH"; \
+#                   bash ./scripts/switch_theme.sh wsl_dracula'
             }
         dur() {
               local label="test-container=$(basename "$PWD")"
@@ -354,6 +356,7 @@ alias onp='new_personal_note'
 # other
 alias personal='bash ~/Scripts/personal_docs.sh'
 alias reading='bash ~/Scripts/reading_session.sh'
+alias planning='bash ~/Scripts/open_weekly_plan.sh'
 alias notes='cd ~/Documents/git/notes'
 alias n='cd ~/Documents/git/notes'
 alias o='obsidian'

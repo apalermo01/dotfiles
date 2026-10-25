@@ -32,6 +32,7 @@
     markdown.enable = true;
     node.enable = true;
     matugen.enable = true;
+    rust.enable = true;
   };
 
   programs.zoxide.enable = true;

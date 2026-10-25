@@ -228,17 +228,18 @@ function _devcontainers() {
               local label="test-container=$(basename "$PWD")"
               devcontainer up --id-label "$label" \
                   --workspace-folder .
+
               # After container is up, clone/apply dotfiles inside it
-              devcontainer exec --id-label "$label" --workspace-folder . \
-                bash -lc 'set -euo pipefail; \
-                  if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
-                  DOTPATH="$HOME/Documents/git/dotfiles"; \
-                  mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
-                  if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
-"$DOTPATH" pull --ff-only; fi; \
-                  sudo apt-get update -y && sudo apt-get install -y stow; \
-                  cd "$DOTPATH"; \
-                  bash ./scripts/switch_theme.sh wsl_dracula'
+#               devcontainer exec --id-label "$label" --workspace-folder . \
+#                 bash -lc 'set -euo pipefail; \
+#                   if [ ! -d $HOME/Scripts ]; then mkdir $HOME/Scripts; fi; \
+#                   DOTPATH="$HOME/Documents/git/dotfiles"; \
+#                   mkdir -p "$(dirname "$DOTPATH")" "$HOME/.config/ricer" "$HOME/Scripts"; \
+#                   if [ ! -d "$DOTPATH/.git" ]; then git clone --depth 1 https://github.com/apalermo01/dotfiles "$DOTPATH"; else git -C
+# "$DOTPATH" pull --ff-only; fi; \
+#                   sudo apt-get update -y && sudo apt-get install -y stow; \
+#                   cd "$DOTPATH"; \
+#                   bash ./scripts/switch_theme.sh wsl_dracula'
             }
         dur() {
               local label="test-container=$(basename "$PWD")"

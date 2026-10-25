@@ -75,6 +75,16 @@
     jack.enable = true;
   };
 
+  services.jack = {
+    jackd.enable = false;
+    alsa.enable = false;
+    loopback = {
+      enable = true;
+    };
+  };
+
+  hardware.pulseaudio.package = pkgs.pulseaudio.override { jackaudiosupport = true; };
+
   services.logind.settings.Login = {
     HandleLidSwitchDocked = "ignore";
     HandleLidSwitchExternalPower = "ignore";

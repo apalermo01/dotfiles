@@ -15,7 +15,10 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       # rustup
-      # rustlings
+      rustlings
+      rust-analyzer
+      cargo
+      rustc
     ];
   };
 }

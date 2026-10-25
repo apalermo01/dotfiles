@@ -15,6 +15,8 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       nodejs
+      typescrpit-language-server
+
     ];
   };
 }

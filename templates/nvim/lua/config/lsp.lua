@@ -8,6 +8,10 @@ local capabilities =
 
 -- server settings
 local servers = {
+
+    ts_ls = {
+        capabilities = capabilities,
+    },
 	lua_ls = {
 		capabilities = capabilities,
 		cmd = IS_NIXOS and { "lua-language-server" } or nil,

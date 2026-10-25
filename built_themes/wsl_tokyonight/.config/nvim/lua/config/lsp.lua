@@ -73,6 +73,10 @@ local servers = {
     pyright = {
         capabilities = capabilities
     },
+
+    rust_analyzer = {
+        capabilities = capabilities
+    }
 }
 
 for name, config in pairs(servers) do

@@ -25,14 +25,14 @@ return {
         },
         frontmatter = {
             enabled = true,
-            sort = { 'id', 'aliases', 'version', 'tags', 'date_created', 'date_modified', 'type', 'project', 'area'}
+            -- sort = { 'id', 'aliases', 'version', 'tags', 'date_created', 'date_modified', 'type', 'project', 'area'}
         },
         templates = {
             folder = OBSIDIAN_TEMPLATE_FOLDER,
             date_format = "%Y-%m-%d",
             time_format = "%H:%M",
         },
-        new_notes_location = "current_dir",
+        new_notes_location = "0-Inbox",
         notes_subdir = OBSIDIAN_NOTES_SUBDIR,
 
         note_id_func = function(title)

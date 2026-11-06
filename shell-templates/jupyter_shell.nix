@@ -5,7 +5,7 @@
 with pkgs;
 
 let
-  py = python312;
+  py = python314;
   pypkgs = py.withPackages (
     pythonPkgs: with pythonPkgs; [
       ipython
